@@ -1,0 +1,38 @@
+
+
+.mainblock {
+    font: 100% / 1.5 monospace, sans-serif;
+    font-size: 15px;
+
+    padding: 15px;
+    border-radius: 5px;
+    border-style: dotted;
+    border-width: 2px;
+}
+
+
+
+input,
+button,
+select,
+optgroup{
+  height: 35px;
+}
+
+/* Define the animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Apply the animation to the target element */
+.elementToFade {
+  animation: fadeInOut 2s ease-in-out infinite;
+}

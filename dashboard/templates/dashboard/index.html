@@ -1,0 +1,511 @@
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+
+
+{% block basebody %}
+{% load custom_tags %}
+
+ 
+
+<div class="row mainblock m-4 " >
+    <!-- MAIN -->
+    <div class="col-10">
+
+
+        <div class="d-flex justify-content-between" >
+            {% if admin_settings.running %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit" name="stop" class="btn btn-warning  btn-sm m-2" >End thread {{ admin_settings.thread_name }}</button>
+
+                </form>
+
+            {% else %}
+
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit" name="start" class="btn btn-success btn-sm m-2">Start a new thread</button>
+
+                </form>
+
+            {% endif %}   
+            <div>
+                <div class="d-flex justify-content-between" >
+                    <a href="/admin34k5jh34KJSHDF345kjh2234sdf" class="mx-5">admin</a>
+                    <a href="/logout">logout</a>
+
+                </div>         
+            </div>         
+        </div>
+
+        <div class="d-flex justify-content-start mt-2 mb-2 gap-5">
+
+
+                <form method="POST" class="d-flex justify-content-start gap-1">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-start">
+                        <select class="form-select form-select-sm" style="height: 30px; width: 90px;"  name="admin_settings_fiat_coin"  required>
+                                {% for coin in fiat_coins %}
+                                    <option value="{{coin}}" {% if admin_settings.fiat_coin == coin %} selected {% endif %}   >{{coin}}</option>
+                                {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm ms-2" style="height: 30px;" >Set fiat coin</button>
+
+                    </div>
+                </form>
+    
+
+
+
+                <form method="POST" class="d-flex justify-content-start gap-1">
+                    {% csrf_token %}
+                    <input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 120px;"/>
+                    <button type="submit" class="btn btn-primary btn-sm" style="height: 30px;" >Set secure profit ratio</button>
+                </form>
+            
+        </div>
+            
+        <div class="d-flex justify-content-end mt-2 mb-2 gap-5">
+
+
+
+                <form method="POST" class="d-flex justify-content-start gap-1">
+                    {% csrf_token %}
+                    <input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_interval" value="{{admin_settings.interval}}" style="width: 50px;"/>
+                    <button type="submit" class="btn btn-primary btn-sm" style="height: 30px;" >Set interval</button>
+                </form>
+
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit" name="admin_settings_alarms" class="btn btn-primary btn-sm ">
+                        {% if admin_settings.alarms %}
+                            Disable alarms
+                        {% else %}
+                            Enable alarms
+                        {% endif %}
+                    </button>
+
+                </form>
+
+
+
+                <button type="button"  class="btn btn-primary btn-sm" onclick="update_balances();">Update balances</button>
+
+
+        </div>
+        
+        <div class="d-flex justify-content-between">
+
+            {% for coin in coins %}
+                <div><p id="{{coin}}_price" class="h5"></p></div>
+            {% endfor %}
+
+            <div><p id="gas_price" class="h5"></p></div>
+            <div><p id="prices_update_epoch" class="small"></p></div>
+            <div><p id="gas_update_epoch" class="small"></p></div>
+        </div>
+        
+
+        <div class="d-flex justify-content-start border rounded p-2">
+            <p class="me-3"><strong>Balances:</strong></p>
+
+            
+            <div class="d-flex justify-content-start ms-5">
+                <p class="me-3"><strong>eth</strong></p>
+                <div>
+                    <p class=" mb-0" id="admin_settings_balances_eth"> </p>
+                    <p class=" mt-0" id="admin_settings_balances_eth_value"> </p>
+                </div>
+            </div>
+            
+
+            {% for coin in coins %}
+
+                <div class="d-flex justify-content-start ms-5">
+                    <p class="me-3"><strong>{{coin}}</strong></p>
+                    <div>
+                        <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
+                        <p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            
+            {% for coin in fiat_coins %}
+
+                <div class="d-flex justify-content-start ms-5">
+                    <p class="me-3"><strong>{{coin}}</strong></p>
+                    <div>
+                        <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
+                        <p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            
+            
+        </div>
+
+
+        <!-- NEW POSITION -->
+
+    <div class="border rounded p-2 mt-2 mb-5 ">
+        
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="d-flex justify-content-between">
+
+                <div class="d-flex justify-content-start">
+                    <p>Name:</p>
+                    <input type="text" class="form-control form-control-sm" name="new_position_name" value="{{new_position_name}}" required/>
+                </div>
+
+
+                
+                <div class="d-flex justify-content-start">
+
+                    <select class="form-select form-select-sm" id="new_position_coin_select" style="height: 30px;"  name="coin"  required>
+                        
+                            {% for coin in coins %}
+                                <option value="{{coin}}">{{coin}}</option>
+                            {% endfor %}
+
+                    </select>
+                </div>
+    
+                    
+
+
+                <div class="d-flex justify-content-start">
+                    <p>Entry capital:</p>
+                    <input type="number" class="form-control form-control-sm" name="entry_capital" id="entry_capital" step="any" required/>
+                </div>
+
+
+                <div class="d-flex justify-content-start" > 
+                    <p>Stop loss price:</p>
+                    <input type="number" class="form-control form-control-sm" name="stop_loss_price" id="stop_loss_price" step="any" required/>
+                </div>
+
+
+
+                <div class="d-flex justify-content-start">
+                    <p>Min profit exit price:</p>
+                    <input type="number" class="form-control form-control-sm" name="min_profit_exit_price" id="min_profit_exit_price" step="any" required/>
+                </div>
+
+
+
+            </div>
+                
+            <div class="d-flex justify-content-between">
+                <p id="profit_amount_at_min_profit_exit_price"></p>
+                <p id="loss_amount_at_stop_loss_price"></p>
+                <p id="ambition_ratio"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                
+                <div class="d-flex justify-content-start">
+                    <p id="most_recent_quote"></p>
+                    <button type="button"  class="btn btn-primary btn-sm m-1" onclick="update_both_way_quotes();">Quote</button>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success btn-sm gas_sensetive_dom" >Create new position</button>
+                </div>
+            </div>
+
+                
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+                {% for position in positions %}
+
+                    <div class="border rounded p-2 mb-5">
+
+
+                        <div class="d-flex justify-content-between">
+
+                            <div id="position_{{position.uuid}}_first_cell_html"></div>
+
+
+                            <div id="position_{{position.uuid}}_td2_html"></div>
+                            <div id="position_{{position.uuid}}_td3_html"></div>
+                            <div id="position_{{position.uuid}}_td4_html"></div>
+                            <div id="position_{{position.uuid}}_td5_html"></div>
+                            <div id="position_{{position.uuid}}_td6_html"></div>
+
+                            
+                        </div>
+
+
+                        <div class="d-flex justify-content-between m-3">
+
+                            {% if position.active %}
+                                <div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                                        <button class="btn btn-primary btn-sm" name="position_action_activate">
+                                            {% if position.active %}
+                                                Dectivate
+                                            {% else %}
+                                                Activate
+                                            {% endif %}
+                                        </button>
+                                    </form>
+                                </div>
+
+
+                                
+
+                                <div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                                        <button class="btn btn-danger btn-sm gas_sensetive_dom"  name="position_action_exit_now">
+                                            Exit now
+                                        </button>
+                                    </form>
+                                </div>
+                                        
+                                <div>
+                                    <form method="POST" class="d-flex justify-content-between gap-1" >
+                                        {% csrf_token %}
+                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                                        stop loss:
+                                        <input type="number" class="form-control form-control-sm" name="position_stop_loss_price" value="{{position.stop_loss_price}}" style="width: 100px;"  step="any"/>
+                                        <button class="btn btn-primary btn-sm" name="position_action_set_stop_loss_price">Set</button>
+                                    </form>
+                                </div>
+                                
+                                <div>
+                                    <form method="POST" class="d-flex justify-content-between gap-1">
+                                        {% csrf_token %}
+                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                                        min profit exit price:
+                                        <input type="number" class="form-control form-control-sm" name="position_min_profit_exit_price" value="{{position.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
+                                        <button class="btn btn-primary btn-sm" name="position_action_set_min_profit_exit_price">Set</button>
+                                    </form>
+                                </div>
+
+                                <div>
+                                    <form method="POST" class="d-flex justify-content-between gap-1">
+                                        {% csrf_token %}
+                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                                        <select class="form-select form-select-sm" style="height: 30px; width: 300px;"  name="auto_exit_style"  required>
+                                                {% for auto_exit_style in auto_exit_styles %}
+                                                    <option value="{{auto_exit_style}}" {% if position.auto_exit_style == auto_exit_style %} selected {% endif %}   >{{auto_exit_style}}</option>
+                                                {% endfor %}
+                                        </select>
+                                        <button class="btn btn-warning btn-sm" name="position_setting_auto_exit">set auto exit style</button>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <div>                                    
+                                    <p class="m-0"><strong>position is closed</strong>
+                                </div>
+
+                                <div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                                        <button class="btn btn-warning btn-sm" name="position_action_delete">
+                                            Delete Position
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div>
+                                    <p>Final Profit USD : <span class="small p-1 rounded {% if position.final_profit_usd > 0 %}  bg-success {% else %} bg-danger {% endif %}">{{position.final_profit_usd}}</span></p>
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+
+
+                        {% for transaction in position.transaction_set.all %}
+
+
+                                
+                                <div class="d-flex justify-content-between txrow border p-1 mb-1">
+                                    <div>slipage: {{transaction.slipage}}</div>
+                                    <div>fee: {{transaction.fee}}</div>
+                                    <div>name: <a href="https://etherscan.io/tx/{{transaction.hash}}" target="_blank">{{transaction.name}}</a></div>
+                                    <div>{{transaction.transaction_type}}<br>{{transaction.uniswap_version}}</div>
+                                    <div>
+                                        <div>token_effective_price: {{transaction.token_effective_price}}</div>
+                                        <div>token_nominal_price: {{transaction.token_nominal_price}}</div>
+                                    </div>
+                                    {% if transaction.type == "token_to_fiat" %}
+                                    <div>
+                                        <div>token_amount_spent: {{transaction.token_amount_spent}}</div>
+                                        <div>fiat_amount_recieved: {{transaction.fiat_amount_recieved}}</div>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        <div>fiat_amount_spent: {{transaction.fiat_amount_spent}}</div>
+                                        <div>token_amount_recieved: {{transaction.token_amount_recieved}}</div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                        {% endfor %}
+
+                    </div>
+
+
+
+                {% endfor %}
+
+                
+        
+        <style type="text/css">
+        html,
+        body,
+        #chart_container {
+            width: 100%;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+        }
+        </style>
+
+    
+
+    <!-- MANUAL OPERATIONS -->
+
+    <div class="border rounded p-2 ">
+
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            
+
+
+
+            <div class="d-flex justify-content-start">
+
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="fiat_to_token_amount" value="1" required />
+
+                <p class="mx-1 mt-1">Fiat to</p>
+
+
+                {% include "dashboard/subtempelates/coins_template.html" %}
+
+                    
+                <button type="submit" name="fiat_to_token" class="btn btn-primary btn-sm m-1">Fiat to Token</button>
+
+            </div>
+
+            
+            
+
+
+        </form>
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            <div class="d-flex justify-content-start">
+                
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="token_to_fiat_amount" value="0.002127" required />
+                
+                {% include "dashboard/subtempelates/coins_template.html" %}
+
+
+                <p class="mx-1 mt-1">Token to fiat</p>
+
+                <button type="submit" name="fiat_to_token" class="btn btn-primary btn-sm m-1">Token to fiat</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+
+
+    <div id="chart_container"></div>
+
+
+    </div>
+
+    <!-- EVENTS -->
+    <div class="col-2">
+
+        <h4>Events</h4>
+        <form method="POST">
+            
+            {% csrf_token %}
+
+            {% for position in positions %}
+                <h5 class="p-2  border rounded">{{position.name}}</h5>
+                
+                <form method="POST">
+                    {% csrf_token %}
+
+
+                    <div class="d-flex justify-content-start">
+                        <input type="text" name="position_uuid" value="{{position.uuid}}" hidden />
+                        <button type="submit" name="delete_position_events" class="btn btn-warning btn-sm m-1">Delete position events</button>
+                    </div>
+
+                </form>
+
+                {% for event in position.event_set.all %}
+                    <div class="form-check m-0 mb-2">
+                        <input class="form-check-input" type="checkbox" value="{{event.uuid}}" name="event_delete" id="flexCheckDefault{{event.uuid}}">
+                        <label class="form-check-label" for="flexCheckDefault{{event.uuid}}">
+                            <p class="m-0 mb-2" style="font-size: 11px;"><span  style="font-size: 8px;">{% epoch_to_datetime event.epoch_created %}</span> {{event.description}}</p>
+                        </label>
+                    </div>
+                {% endfor %}
+                
+
+            {% endfor %}
+
+
+        </form>
+
+    </div>
+    
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+    });
+
+</script>
+{% endblock %}

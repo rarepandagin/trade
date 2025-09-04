@@ -1,0 +1,13 @@
+
+
+<div class="d-flex justify-content-start">
+
+    <select class="form-select form-select-sm" style="height: 30px;"  name="coin"  required>
+        
+            {% for coin in coins %}
+                <option value="{{coin}}">{{coin}}</option>
+            {% endfor %}
+
+    </select>
+</div>
+    
