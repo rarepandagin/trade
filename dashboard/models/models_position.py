@@ -5,6 +5,7 @@ from dashboard.models import models_position
 import copy
 
 from dashboard.models.coins import *
+from dashboard.models import models_order
 
 in_loss = "in_loss"
 reaching_min_profit_exit_price = "reaching_min_profit_exit_price"
@@ -20,26 +21,6 @@ position_states = {
     exited_in_profit : "exited_in_profit",
 }
 
-short = "short"
-long = "long"
-
-position_types = {
-    short: "short",
-    long: "long",
-}
-
-auto_exit_style_both_ways = "auto_exit_style_both_ways"
-auto_exit_style_only_after_min_profit = "auto_exit_style_only_after_min_profit"
-auto_exit_style_only_below_stop_loss = "auto_exit_style_only_below_stop_loss"
-auto_exit_style_never = "auto_exit_style_never"
-
-
-auto_exit_styles = {
-    auto_exit_style_both_ways : "auto_exit_style_both_ways",
-    auto_exit_style_only_after_min_profit : "auto_exit_style_only_after_min_profit",
-    auto_exit_style_only_below_stop_loss : "auto_exit_style_only_below_stop_loss",
-    auto_exit_style_never: "auto_exit_style_never",
-}
 
 
 class Position(models.Model):
@@ -47,16 +28,9 @@ class Position(models.Model):
     id = models.BigAutoField(primary_key=True)
 
     # initial setup
+    order = models.ForeignKey(models_order.Order, on_delete=models.SET_NULL, null=True)
 
-    name = models.TextField(default="", null=True, blank=True)
-
-    coin = models.CharField(choices=coins, default=weth)
-
-    position_type = models.CharField(choices=position_types, default=long)
-    
     coin_amount = models.FloatField(default=0)
-
-    entry_capital = models.FloatField(default=0)
 
     entry_price = models.FloatField(default=0)
 
@@ -81,10 +55,8 @@ class Position(models.Model):
     ambition_ratio                             = models.FloatField(default=0)
 
     # calculated
-    price = models.FloatField(default=0, null=True, blank=True)
-
+    price = models.FloatField(default=0)
     value = models.FloatField(default=0, null=True, blank=True)
-
     growth_usd = models.FloatField(default=0, null=True, blank=True)
     
     growth_percentage_from_entry_price              = models.FloatField(default=0, null=True, blank=True)
@@ -105,11 +77,9 @@ class Position(models.Model):
     # settings
     display_on_chart = models.BooleanField(default=True)
     # auto_exit = models.BooleanField(default=False)
-    auto_exit_style     = models.CharField(choices=auto_exit_styles,   default=auto_exit_style_only_after_min_profit)
+    auto_exit_style     = models.CharField(choices=models_order.auto_exit_styles,   default=models_order.auto_exit_style_only_after_min_profit)
 
 
-    # on exit
-    transaction_hash = models.TextField(default="", null=True, blank=True)
 
     def __str__(self):
         return self.description()
@@ -134,6 +104,7 @@ class Position(models.Model):
         self.entry_price                = round(self.entry_price, 2)
         self.stop_loss_price            = round(self.stop_loss_price, 2)
         self.initial_stop_loss_price    = round(self.initial_stop_loss_price, 2)
+        self.min_profit_exit_price    = round(self.min_profit_exit_price, 2)
         self.exit_price                 = round(self.exit_price, 2)
         
         self.profit_amount_at_min_profit_exit_price         = round(self.profit_amount_at_min_profit_exit_price, 2)
@@ -149,7 +120,7 @@ class Position(models.Model):
         from dashboard.models import models_transaction
 
 
-        new_transaction = tk.create_token_to_fiat_transaction(self.coin_amount, self.coin)
+        new_transaction = tk.create_token_to_fiat_transaction(self.coin_amount, self.order.coin)
 
         new_transaction.position = self
         new_transaction.save()
@@ -162,7 +133,7 @@ class Position(models.Model):
             # identify all transactions that belong to this position and sum their gas fees
             total_gas_fees = sum([x.fee for x in models_transaction.Transaction.objects.filter(position=self)])
 
-            self.final_profit_usd = new_transaction.fiat_amount_recieved - self.entry_capital - total_gas_fees
+            self.final_profit_usd = new_transaction.fiat_amount_recieved - self.order.entry_capital - total_gas_fees
 
             self.active = False
             self.save()
@@ -181,15 +152,7 @@ class Position(models.Model):
             self.active = False
             self.save()
 
-            new_event = models_event.Event(
-                    position=self,
-                    description=f"attempt to exit failed. failed to execute exit transaction.",
-                    event_type=models_event.transaction_failed,
-                    needs_notification=True,
-                )
-            new_event.save()
-
-            print("\n\n\n\n !!!!!!!!!!!!!!!! tx failed\n\n\n\n")
+            tk.create_new_notification(title="TX Failed whilte exiting position", message=f"tx for position {self.order.name} failed at execution")
 
 
 
@@ -197,7 +160,7 @@ class Position(models.Model):
 
 
     def description(self):
-        return f"{self.name} ({self.state})"
+        return f"{self.order.name} ({self.state})"
 
 
     def reset(self):
@@ -208,8 +171,6 @@ class Position(models.Model):
     def evaluate(self):
         try:
             from dashboard.models import models_event
-            
-
             
             if self.min_profit_exit_price < self.price:
 
@@ -264,11 +225,11 @@ class Position(models.Model):
             # EXIT
             if self.price < self.stop_loss_price:
                 # exiting:
-                if self.auto_exit_style in [auto_exit_style_both_ways, auto_exit_style_only_below_stop_loss]:
+                if self.auto_exit_style in [models_position.auto_exit_style_both_ways, models_position.auto_exit_style_only_below_stop_loss]:
 
                     self.exit_position()
 
-                elif self.auto_exit_style == auto_exit_style_only_after_min_profit:
+                elif self.auto_exit_style == models_position.auto_exit_style_only_after_min_profit:
                     if self.stop_loss_price_increased:
                         self.exit_position()
 

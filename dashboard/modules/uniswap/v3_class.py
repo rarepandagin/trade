@@ -373,7 +373,6 @@ class Uniswap():
 
 
             slipage_to_fee = int(slipage * 1_000_000) / fee
-            # print(f"raw: {slipage_to_fee}")
             slipage_to_fee = max(slipage_to_fee, 1.0)
             slipage_to_fee = min(slipage_to_fee, 5.0)
 

@@ -8,7 +8,7 @@ import threading
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync   
 
-from dashboard.models import models_position, models_candle, models_event, models_transaction
+from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
 import numpy as np
 
 stop_event = threading.Event()
@@ -59,13 +59,11 @@ def heart_beat_thread(data):
     while True:
         admin_settings = tk.get_admin_settings()
 
-        # print(data)
-
         positions = models_position.Position.objects.filter(active=True)
 
         for position in positions:
 
-            position.price = admin_settings.prices[position.coin.lower()]
+            position.price = admin_settings.prices[position.order.coin.lower()]
 
             position.evaluate()
 
@@ -75,10 +73,14 @@ def heart_beat_thread(data):
         # positions final report
         positions = models_position.Position.objects.all()
         positions_dict = [tk.serialize_object(x) for x in positions]
+        for position in positions_dict:
+            position['order'] = tk.serialize_object(models_order.Order.objects.get(id=position['order']))
 
 
-
-
+        orders = models_order.Order.objects.filter(active=True, executed=False)
+        for order in orders:
+            order.evaluate()
+            order.save()
 
 
         # candle
@@ -249,6 +251,56 @@ def get_response(request):
 
 
 
+
+
+
+            elif 'update_order' in request.POST:
+                order_uuid = request.POST['order_uuid']
+                order = models_order.Order.objects.get(uuid=order_uuid)
+
+                order.name                      = request.POST['order_action_set_name']
+                order.entry_capital             = eval(request.POST['order_action_set_entry_capital'])
+                order.order_price               = eval(request.POST['order_action_set_order_price'])
+                order.min_profit_exit_price     = eval(request.POST['order_action_set_min_profit_exit_price'])
+                order.stop_loss_price           = eval(request.POST['order_action_set_stop_loss_price'])
+                
+                order.save()
+
+
+
+            elif 'order_execute_now' in request.POST:
+                order_uuid = request.POST['order_uuid']
+                order = models_order.Order.objects.get(uuid=order_uuid)
+                if order.active and (not order.fullfiled):
+                    order.execute()
+                    order.save()
+
+            elif 'order_delete' in request.POST:
+                order_uuid = request.POST['order_uuid']
+                order = models_order.Order.objects.get(uuid=order_uuid)
+                order.delete()
+
+            elif 'order_deactivate' in request.POST:
+                order_uuid = request.POST['order_uuid']
+                order = models_order.Order.objects.get(uuid=order_uuid)
+                if order.active:
+                    order.active = False
+                    order.save()
+
+            elif 'order_activate' in request.POST:
+                order_uuid = request.POST['order_uuid']
+                order = models_order.Order.objects.get(uuid=order_uuid)
+                if not order.active:
+                    order.active = True
+                    order.save()
+
+
+
+
+
+
+
+
             elif 'event_delete' in request.POST:
                 event_uuids = request.POST.getlist('event_delete')
                 for event_uuid in event_uuids:
@@ -260,42 +312,44 @@ def get_response(request):
                 position = models_position.Position.objects.get(uuid=position_uuid)
                 models_event.Event.objects.filter(position=position).delete()
 
-            elif 'new_position_name' in request.POST:
-                new_position_name       = request.POST['new_position_name']
+
+
+
+            elif 'new_order_name' in request.POST:
+                new_order_name          = request.POST['new_order_name']
+                coin                    = request.POST['coin']
+                
                 entry_capital           = eval(request.POST['entry_capital'])
+                order_price           = eval(request.POST['order_price'])
+                
                 min_profit_exit_price   = eval(request.POST['min_profit_exit_price'])
                 stop_loss_price         = eval(request.POST['stop_loss_price'])
-                coin                    = request.POST['coin']
 
+                execute_order_now_with_live_price = 'execute_order_now_with_live_price' in request.POST
 
+                new_order = models_order.Order(
+                    name = new_order_name,
+                    coin = coin,
+                    entry_capital = entry_capital,
+                    order_price = order_price,
+                    min_profit_exit_price = min_profit_exit_price,
+                    stop_loss_price = stop_loss_price,
+                )
 
-                new_transaction = tk.create_fiat_to_token_transaction(entry_capital, coin)
-
-
-                if new_transaction.state == models_transaction.transaction_state_succesful:
-
-                    new_position = models_position.Position(
-                        name = new_position_name,
-                        coin = coin,
-                        position_type = models_position.long,
-                        coin_amount = new_transaction.token_amount_recieved,
-                        entry_capital = entry_capital,
-
-                        entry_price=new_transaction.token_effective_price,
-
-                        min_profit_exit_price = min_profit_exit_price,
-                        stop_loss_price = stop_loss_price,
-                        initial_stop_loss_price = stop_loss_price,
-                    )
-
-                    new_position.save()
-
-                    new_transaction.position = new_position
-                    new_transaction.save()
-
-
+                if execute_order_now_with_live_price:
+                    admin_settings = tk.get_admin_settings
+                    new_order.order_price = admin_settings.prices[coin.lower()]
                 else:
-                    print("TX failed")
+                    new_order.order_price = order_price
+
+
+                new_order.save()
+
+                if execute_order_now_with_live_price:
+                    new_order.execute()
+
+                    new_order.save()
+
 
 
             elif 'position_action_exit_now' in request.POST:
@@ -317,8 +371,8 @@ def get_response(request):
                 coin = request.POST['coin']
                 transaction = tk.create_fiat_to_token_transaction(fiat_to_token_amount, coin=coin)
                 
-                print(f'tx name: {transaction.name}')
-                
+                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}')
+
 
 
             elif 'token_to_fiat_amount' in request.POST:
@@ -327,7 +381,7 @@ def get_response(request):
 
                 transaction = tk.create_token_to_fiat_transaction(token_to_fiat_amount, coin=coin)
 
-                print(f'tx name: {transaction.name}')
+                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}')
 
 
 
@@ -349,12 +403,12 @@ def get_response(request):
 
     context.dict['admin_settings'] =  tk.get_admin_settings()
     context.dict['positions'] =  models_position.Position.objects.all().order_by('-id')
-    context.dict['position_types'] =  models_position.position_types
+    context.dict['orders'] =  models_order.Order.objects.all().order_by('-id')
 
-    context.dict['new_position_name'] =  tk.get_new_random_name()
+    context.dict['new_random_name'] =  tk.get_new_random_name()
     context.dict['coins'] =  models_transaction.coins
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
-    context.dict['auto_exit_styles'] =  models_position.auto_exit_styles
+    context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
 
     return context.response()
 

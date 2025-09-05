@@ -58,7 +58,7 @@ function update_positions_table(payload){
         let first_cell_html = ''
         
         if (position.active){
-            first_cell_html = `<span class="badge rounded-pill bg-primary fs-6">${position.name}</span>`
+            first_cell_html = `<span class="badge rounded-pill bg-primary fs-6">${position.order.name}</span>`
 
                 
             if (position.price < position.stop_loss_price){
@@ -81,7 +81,7 @@ function update_positions_table(payload){
             }
 
         } else {
-            first_cell_html = `<span class="badge rounded-pill bg-secondary">${position.name}</span>`
+            first_cell_html = `<span class="badge rounded-pill bg-secondary">${position.order.name}</span>`
         }
 
 
@@ -92,11 +92,11 @@ function update_positions_table(payload){
 
         let td2_html = `
         
-                        ${position.coin}
+                        ${position.order.coin}
                         <br>
                         (${position.coin_amount})
                         <br>
-                        Entry Capital: ${position.entry_capital}`
+                        Entry Capital: ${position.order.entry_capital}`
 
         if (position.stop_loss_price_increased){
             td2_html += `

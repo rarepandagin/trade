@@ -7,7 +7,8 @@ from dashboard.models import *
 
 admin.site.register(Event)
 admin.site.register(AdminSettings)
-
+admin.site.register(Position)
+admin.site.register(Order)
 
 
 class adminViewCandle(admin.ModelAdmin):
@@ -33,9 +34,5 @@ class adminViewTransaction(admin.ModelAdmin):
 
         )
 admin.site.register(Transaction, adminViewTransaction)
-
-class adminViewPosition(admin.ModelAdmin):
-    list_display = ('id', 'name', 'coin', 'coin_amount')
-admin.site.register(Position, adminViewPosition)
 
 

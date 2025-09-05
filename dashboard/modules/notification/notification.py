@@ -18,8 +18,7 @@ class NotificationClass:
             print(payload)
 
             url = f"https://api.telegram.org/bot{self.toekn}/sendMessage?chat_id={self.chat_id}&text={payload}&parse_mode=HTML"
-            response = requests.get(url)
-            print(response.json())   
+            requests.get(url)
 
 
         except:

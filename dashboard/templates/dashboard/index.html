@@ -157,7 +157,7 @@
 
 
         <!-- NEW POSITION -->
-
+    <h1>New Order</h1>
     <div class="border rounded p-2 mt-2 mb-5 ">
         
         <form method="POST">
@@ -167,7 +167,7 @@
 
                 <div class="d-flex justify-content-start">
                     <p>Name:</p>
-                    <input type="text" class="form-control form-control-sm" name="new_position_name" value="{{new_position_name}}" required/>
+                    <input type="text" class="form-control form-control-sm" name="new_order_name" value="{{new_random_name}}" required/>
                 </div>
 
 
@@ -221,8 +221,21 @@
                     <button type="button"  class="btn btn-primary btn-sm m-1" onclick="update_both_way_quotes();">Quote</button>
                 </div>
 
+                <div class="form-check ">
+                      <input class="form-check-input" type="checkbox" value="" id="execute_order_now_with_live_price" name="execute_order_now_with_live_price">
+
+                    <label class="form-check-label" for="execute_order_now_with_live_price">
+                        <p >execute order now with live price</p>
+                    </label>
+                </div>
+
+                <div class="d-flex justify-content-start">
+                    <p>Order price:</p>
+                    <input type="number" class="form-control form-control-sm"  step="any" min="0" name="order_price"/>
+                </div>
+
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-success btn-sm gas_sensetive_dom" >Create new position</button>
+                    <button class="btn btn-success btn-sm gas_sensetive_dom" >Place new order</button>
                 </div>
             </div>
 
@@ -236,170 +249,253 @@
 
 
 
-
-
-
-
+    <!-- ORDERS -->
+    <h1>Orders</h1>
     
+    {% for order in orders %}
+
+        
 
 
-                {% for position in positions %}
-
-                    <div class="border rounded p-2 mb-5">
+            <div class="border rounded p-2 mb-5">
 
 
-                        <div class="d-flex justify-content-between">
 
-                            <div id="position_{{position.uuid}}_first_cell_html"></div>
+                <form method="POST" >
+                    {% csrf_token %}
 
+                    <input type="text" name="update_order" hidden>
+                    <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
 
-                            <div id="position_{{position.uuid}}_td2_html"></div>
-                            <div id="position_{{position.uuid}}_td3_html"></div>
-                            <div id="position_{{position.uuid}}_td4_html"></div>
-                            <div id="position_{{position.uuid}}_td5_html"></div>
-                            <div id="position_{{position.uuid}}_td6_html"></div>
+                    <div class="d-flex justify-content-between">
 
-                            
+                        <div>
+                            <input type="text" class="form-control form-control-sm" name="order_action_set_name" value="{{order.name}}" style="width: 300px;"/>
+                            <p>({{order.coin}})</p>
+                            <p class="small m-0">Active: {{order.active}}</p>
+                            <p class="small m-0">Executed: {{order.executed}}</p>
+                            <p class="small m-0">Fullfiled: {{order.fullfiled}}</p>
+                        </div>
+
+                        <div>
+                            <p>entry capital:</p>
+                            <input type="number" class="form-control form-control-sm" name="order_action_set_entry_capital" value="{{order.entry_capital}}" style="width: 100px;"  step="any"/>
                         </div>
 
 
-                        <div class="d-flex justify-content-between m-3">
-
-                            {% if position.active %}
-                                <div>
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
-                                        <button class="btn btn-primary btn-sm" name="position_action_activate">
-                                            {% if position.active %}
-                                                Dectivate
-                                            {% else %}
-                                                Activate
-                                            {% endif %}
-                                        </button>
-                                    </form>
-                                </div>
-
-
-                                
-
-                                <div>
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
-                                        <button class="btn btn-danger btn-sm gas_sensetive_dom"  name="position_action_exit_now">
-                                            Exit now
-                                        </button>
-                                    </form>
-                                </div>
-                                        
-                                <div>
-                                    <form method="POST" class="d-flex justify-content-between gap-1" >
-                                        {% csrf_token %}
-                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
-                                        stop loss:
-                                        <input type="number" class="form-control form-control-sm" name="position_stop_loss_price" value="{{position.stop_loss_price}}" style="width: 100px;"  step="any"/>
-                                        <button class="btn btn-primary btn-sm" name="position_action_set_stop_loss_price">Set</button>
-                                    </form>
-                                </div>
-                                
-                                <div>
-                                    <form method="POST" class="d-flex justify-content-between gap-1">
-                                        {% csrf_token %}
-                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
-                                        min profit exit price:
-                                        <input type="number" class="form-control form-control-sm" name="position_min_profit_exit_price" value="{{position.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
-                                        <button class="btn btn-primary btn-sm" name="position_action_set_min_profit_exit_price">Set</button>
-                                    </form>
-                                </div>
-
-                                <div>
-                                    <form method="POST" class="d-flex justify-content-between gap-1">
-                                        {% csrf_token %}
-                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
-                                        <select class="form-select form-select-sm" style="height: 30px; width: 300px;"  name="auto_exit_style"  required>
-                                                {% for auto_exit_style in auto_exit_styles %}
-                                                    <option value="{{auto_exit_style}}" {% if position.auto_exit_style == auto_exit_style %} selected {% endif %}   >{{auto_exit_style}}</option>
-                                                {% endfor %}
-                                        </select>
-                                        <button class="btn btn-warning btn-sm" name="position_setting_auto_exit">set auto exit style</button>
-                                    </form>
-                                </div>
-                            {% else %}
-                                <div>                                    
-                                    <p class="m-0"><strong>position is closed</strong>
-                                </div>
-
-                                <div>
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <input name="position_uuid" value="{{position.uuid}}" hidden />
-                                        <button class="btn btn-warning btn-sm" name="position_action_delete">
-                                            Delete Position
-                                        </button>
-                                    </form>
-                                </div>
-
-                                <div>
-                                    <p>Final Profit USD : <span class="small p-1 rounded {% if position.final_profit_usd > 0 %}  bg-success {% else %} bg-danger {% endif %}">{{position.final_profit_usd}}</span></p>
-                                </div>
-                            {% endif %}
+                        <div>
+                            <p>order price:</p>
+                            <input type="number" class="form-control form-control-sm" name="order_action_set_order_price" value="{{order.order_price}}" style="width: 100px;"  step="any"/>
 
                         </div>
 
+                        <div>
+                            <p>min_profit_exit_price:</p>
+                            <input type="number" class="form-control form-control-sm" name="order_action_set_min_profit_exit_price" value="{{order.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
+                        </div>
 
+                        <div>
+                            <p>stop_loss_price:</p>
+                            <input type="number" class="form-control form-control-sm" name="order_action_set_stop_loss_price" value="{{order.stop_loss_price}}" style="width: 100px;"  step="any"/>
+                        </div>
 
-                        {% for transaction in position.transaction_set.all %}
-
-
-                                
-                                <div class="d-flex justify-content-between txrow border p-1 mb-1">
-                                    <div>slipage: {{transaction.slipage}}</div>
-                                    <div>fee: {{transaction.fee}}</div>
-                                    <div>name: <a href="https://etherscan.io/tx/{{transaction.hash}}" target="_blank">{{transaction.name}}</a></div>
-                                    <div>{{transaction.transaction_type}}<br>{{transaction.uniswap_version}}</div>
-                                    <div>
-                                        <div>token_effective_price: {{transaction.token_effective_price}}</div>
-                                        <div>token_nominal_price: {{transaction.token_nominal_price}}</div>
-                                    </div>
-                                    {% if transaction.type == "token_to_fiat" %}
-                                    <div>
-                                        <div>token_amount_spent: {{transaction.token_amount_spent}}</div>
-                                        <div>fiat_amount_recieved: {{transaction.fiat_amount_recieved}}</div>
-                                    </div>
-                                    {% else %}
-                                    <div>
-                                        <div>fiat_amount_spent: {{transaction.fiat_amount_spent}}</div>
-                                        <div>token_amount_recieved: {{transaction.token_amount_recieved}}</div>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                                
-                        {% endfor %}
+                        <button class="btn btn-primary btn-sm m-1" >set</button>
 
                     </div>
 
 
+                    
+                </form>
 
-                {% endfor %}
+
+
+                <div class="d-flex justify-content-start border rounded p-1">
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
+                        {% if order.active %}
+                            <button class="btn btn-primary btn-danger btn-sm m-1" name="order_execute_now">Execute now</button>
+                        {% endif %}
+                    </form>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
+
+                        <button class="btn btn-primary btn-warning btn-sm m-1" name="order_delete">Delete order</button>
+                    </form>
+
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
+                        {% if order.active %}
+                            <button class="btn btn-primary  btn-success btn-sm m-1" name="order_deactivate">Deacticate order</button>
+                        {% else %}
+                            <button class="btn btn-primary btn-secondary btn-sm m-1" name="order_activate">Acticate order</button>
+
+                        {% endif %}
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+    {% endfor %}
+
+
+
+
+    <!-- Positions -->
+    <h1>Positions</h1>
+
+    {% for position in positions %}
+
+        <div class="border rounded p-2 mb-5">
+
+
+            <div class="d-flex justify-content-between">
+
+                <div id="position_{{position.uuid}}_first_cell_html"></div>
+
+
+                <div id="position_{{position.uuid}}_td2_html"></div>
+                <div id="position_{{position.uuid}}_td3_html"></div>
+                <div id="position_{{position.uuid}}_td4_html"></div>
+                <div id="position_{{position.uuid}}_td5_html"></div>
+                <div id="position_{{position.uuid}}_td6_html"></div>
 
                 
-        
-        <style type="text/css">
-        html,
-        body,
-        #chart_container {
-            width: 100%;
-            height: 500px;
-            margin: 0;
-            padding: 0;
-        }
-        </style>
+            </div>
+
+
+            <div class="d-flex justify-content-between m-3">
+
+                {% if position.active %}
+                    <div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input name="position_uuid" value="{{position.uuid}}" hidden />
+                            <button class="btn btn-primary btn-sm" name="position_action_activate">
+                                {% if position.active %}
+                                    Dectivate
+                                {% else %}
+                                    Activate
+                                {% endif %}
+                            </button>
+                        </form>
+                    </div>
+
+
+                    
+
+                    <div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input name="position_uuid" value="{{position.uuid}}" hidden />
+                            <button class="btn btn-danger btn-sm gas_sensetive_dom"  name="position_action_exit_now">
+                                Exit now
+                            </button>
+                        </form>
+                    </div>
+                            
+                    <div>
+                        <form method="POST" class="d-flex justify-content-between gap-1" >
+                            {% csrf_token %}
+                            <input name="position_uuid" value="{{position.uuid}}" hidden />
+                            stop loss:
+                            <input type="number" class="form-control form-control-sm" name="position_stop_loss_price" value="{{position.stop_loss_price}}" style="width: 100px;"  step="any"/>
+                            <button class="btn btn-primary btn-sm" name="position_action_set_stop_loss_price">Set</button>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        <form method="POST" class="d-flex justify-content-between gap-1">
+                            {% csrf_token %}
+                            <input name="position_uuid" value="{{position.uuid}}" hidden />
+                            min profit exit price:
+                            <input type="number" class="form-control form-control-sm" name="position_min_profit_exit_price" value="{{position.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
+                            <button class="btn btn-primary btn-sm" name="position_action_set_min_profit_exit_price">Set</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <form method="POST" class="d-flex justify-content-between gap-1">
+                            {% csrf_token %}
+                            <input name="position_uuid" value="{{position.uuid}}" hidden />
+                            <select class="form-select form-select-sm" style="height: 30px; width: 300px;"  name="auto_exit_style"  required>
+                                    {% for auto_exit_style in auto_exit_styles %}
+                                        <option value="{{auto_exit_style}}" {% if position.auto_exit_style == auto_exit_style %} selected {% endif %}   >{{auto_exit_style}}</option>
+                                    {% endfor %}
+                            </select>
+                            <button class="btn btn-warning btn-sm" name="position_setting_auto_exit">set auto exit style</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <div>                                    
+                        <p class="m-0"><strong>position is closed</strong>
+                    </div>
+
+                    <div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input name="position_uuid" value="{{position.uuid}}" hidden />
+                            <button class="btn btn-warning btn-sm" name="position_action_delete">
+                                Delete Position
+                            </button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <p>Final Profit USD : <span class="small p-1 rounded {% if position.final_profit_usd > 0 %}  bg-success {% else %} bg-danger {% endif %}">{{position.final_profit_usd}}</span></p>
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+
+            {% for transaction in position.transaction_set.all %}
+
+
+                    
+                    <div class="d-flex justify-content-between txrow border p-1 mb-1">
+                        <div>slipage: {{transaction.slipage}}</div>
+                        <div>fee: {{transaction.fee}}</div>
+                        <div>name: <a href="https://etherscan.io/tx/{{transaction.hash}}" target="_blank">{{transaction.name}}</a></div>
+                        <div>{{transaction.transaction_type}}<br>{{transaction.uniswap_version}}</div>
+                        <div>
+                            <div>token_effective_price: {{transaction.token_effective_price}}</div>
+                            <div>token_nominal_price: {{transaction.token_nominal_price}}</div>
+                        </div>
+                        {% if transaction.type == "token_to_fiat" %}
+                        <div>
+                            <div>token_amount_spent: {{transaction.token_amount_spent}}</div>
+                            <div>fiat_amount_recieved: {{transaction.fiat_amount_recieved}}</div>
+                        </div>
+                        {% else %}
+                        <div>
+                            <div>fiat_amount_spent: {{transaction.fiat_amount_spent}}</div>
+                            <div>token_amount_recieved: {{transaction.token_amount_recieved}}</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+            {% endfor %}
+
+        </div>
+
+
+
+    {% endfor %}
 
     
 
     <!-- MANUAL OPERATIONS -->
-
+    <h1>Manual Operations</h1>
     <div class="border rounded p-2 ">
 
 
@@ -437,7 +533,7 @@
 
             <div class="d-flex justify-content-start">
                 
-                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="token_to_fiat_amount" value="0.002127" required />
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="token_to_fiat_amount" value="0.000231957530" required />
                 
                 {% include "dashboard/subtempelates/coins_template.html" %}
 
@@ -454,7 +550,7 @@
     </div>
 
 
-
+    <!-- CHART -->
     <div id="chart_container"></div>
 
 

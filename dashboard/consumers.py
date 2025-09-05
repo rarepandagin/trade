@@ -74,7 +74,6 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
     # Receive message from room group
     async def message_channel_dashboard(self, event):
         message = event['message']
-        # print("chat_message")
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
