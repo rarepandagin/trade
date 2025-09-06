@@ -9,48 +9,8 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync   
 
 from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
-import numpy as np
 
 stop_event = threading.Event()
-
-def exponential_moving_average(values, window_size, alpha=None):
-    """
-    Calculate the Exponential Moving Average (EMA) for a list of values.
-    
-    Parameters:
-    values (list or array-like): The input data series.
-    window_size (int): The number of periods to use for the EMA calculation.
-    alpha (float, optional): The smoothing factor (0 < alpha < 1). If None, it is calculated as 2/(1+window_size).
-    
-    Returns:
-    numpy.ndarray: An array of EMA values.
-    """
-    # Convert input to numpy array
-    values = np.array(values)
-    
-    # Validate inputs
-    if window_size <= 0:
-        raise ValueError("window_size must be a positive integer.")
-    if alpha is None:
-        alpha = 2 / (1 + window_size)
-    if not (0 < alpha < 1):
-        raise ValueError("alpha must be between 0 and 1.")
-    
-    # Initialize EMA array
-    ema = np.zeros_like(values)
-    
-    # First EMA value is the first value in the series
-    ema[0] = values[0]
-    
-    # Calculate EMA for the rest of the values
-    for i in range(1, len(values)):
-        ema[i] = alpha * values[i] + (1 - alpha) * ema[i-1]
-    
-    return ema
-
-
-
-
 
 def heart_beat_thread(data):
 
@@ -162,16 +122,20 @@ def get_response(request):
 
                 # if not admin_settings['running']:
                 if admin_settings.thread_name in [x.name for x in threading.enumerate()]:
+                    tk.logger.info(f"resuming thread {admin_settings.thread_name}")
                     admin_settings.running = True
                     admin_settings.save()
                 
                 else:
                     new_thread_name = tk.get_new_uuid()
+                    tk.logger.info(f"starting new thread {new_thread_name}")
 
                     stop_event.clear()
                     t = Thread(target=heart_beat_thread, args=(f"{new_thread_name} launched at {tk.get_epoch_now()}",))
                     t.name = new_thread_name
                     t.start()
+
+                    tk.logger.info(f"new thread {new_thread_name} started")
 
                     admin_settings.thread_name = new_thread_name
                     admin_settings.running = True

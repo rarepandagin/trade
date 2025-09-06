@@ -4,6 +4,7 @@ import socket
 hostname = socket.gethostname()
 host_private_ip = socket.gethostbyname(hostname)
 import time
+import numpy as np
 
 
 from dashboard.modules.logger import logger_class
@@ -52,6 +53,40 @@ logger = logger_class.logger_model()
 
 
 
+def exponential_moving_average(values, window_size, alpha=None):
+    """
+    Calculate the Exponential Moving Average (EMA) for a list of values.
+    
+    Parameters:
+    values (list or array-like): The input data series.
+    window_size (int): The number of periods to use for the EMA calculation.
+    alpha (float, optional): The smoothing factor (0 < alpha < 1). If None, it is calculated as 2/(1+window_size).
+    
+    Returns:
+    numpy.ndarray: An array of EMA values.
+    """
+    # Convert input to numpy array
+    values = np.array(values)
+    
+    # Validate inputs
+    if window_size <= 0:
+        raise ValueError("window_size must be a positive integer.")
+    if alpha is None:
+        alpha = 2 / (1 + window_size)
+    if not (0 < alpha < 1):
+        raise ValueError("alpha must be between 0 and 1.")
+    
+    # Initialize EMA array
+    ema = np.zeros_like(values)
+    
+    # First EMA value is the first value in the series
+    ema[0] = values[0]
+    
+    # Calculate EMA for the rest of the values
+    for i in range(1, len(values)):
+        ema[i] = alpha * values[i] + (1 - alpha) * ema[i-1]
+    
+    return ema
 
 
 
