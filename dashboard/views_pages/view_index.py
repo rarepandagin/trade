@@ -101,7 +101,7 @@ def heart_beat_thread(data):
         time.sleep(admin_settings.interval)
 
         if stop_event.is_set():
-            print(f"Thread received stop signal and is exiting.")
+            tk.logger.info(f"Thread received stop signal and is exiting.")
             break
 
 def get_response(request):
