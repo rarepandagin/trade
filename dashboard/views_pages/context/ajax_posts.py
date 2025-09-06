@@ -1,6 +1,7 @@
 import json
 from dashboard.views_pages import toolkit as tk
 from dashboard.models import models_position
+from traceback import format_exc
 
 def handle_ajax_posts(self, request):
 
@@ -26,13 +27,17 @@ def handle_ajax_posts(self, request):
     elif request.POST['req'] == 'update_balances':
         from dashboard.modules.uniswap.v3_class import Uniswap
 
-        uniswap = Uniswap()
+        try:
+
+            uniswap = Uniswap()
 
 
-        balances = uniswap.check_balance()
-        admin_settings = tk.get_admin_settings()
-        admin_settings.balances = balances
-        admin_settings.save()
+            balances = uniswap.check_balance()
+            admin_settings = tk.get_admin_settings()
+            admin_settings.balances = balances
+            admin_settings.save()
+        except:
+            tk.logger.info(format_exc())
 
     elif  request.POST['req'] == 'update_both_way_quotes':
         from dashboard.modules.uniswap.v3_class import Uniswap
