@@ -1,0 +1,149 @@
+2025-09-05 16:35:05.790500 - initiating W3...
+2025-09-05 16:35:05.807612 - uniswap fully initiated
+2025-09-05 16:35:05.808848 - performing V3 Quote
+2025-09-05 16:35:07.124449 - quote: 0.22427787966550208
+2025-09-05 16:35:07.125019 - performing V3 Quote
+2025-09-05 16:35:07.719285 - quote: 0.22427787966550208
+2025-09-05 16:35:07.720940 - slipage_to_fee: -0.0003914822479720132
+2025-09-05 16:35:07.722670 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1000.0     V3
+2025-09-05 16:35:07.722723 - <-> swapping 1000.0 usdc for 0.22419011321600718 weth -- fee_teir: 500
+2025-09-05 16:35:07.725006 - building tx for action: exactInputSingle
+2025-09-05 16:35:08.466662 - waiting for https://etherscan.io/tx/0x7947266e56dedb71a64f9bb1535c80e965b4c19ab1e052d2d82f331a75371cc6 
+
+2025-09-05 16:35:37.987238 - ---------------> successful
+2025-09-05 16:35:37.988378 - V3: got_weth: 0.224203317414029
+2025-09-05 18:29:01.357111 - initiating W3...
+2025-09-05 18:29:01.401618 - uniswap fully initiated
+2025-09-05 18:29:01.403363 - performing V3 Quote
+2025-09-05 18:29:02.747043 - quote: 0.11567864662012996
+2025-09-05 18:29:02.748122 - performing V3 Quote
+2025-09-05 18:29:03.355994 - quote: 0.11567864662012996
+2025-09-05 18:29:03.368077 - slipage_to_fee: 0.0005110438998207801
+2025-09-05 18:29:03.370017 - performing fiat_to_token (usdc -> weth)     fiat_amount: 500.0     V3
+2025-09-05 18:29:03.370584 - <-> swapping 500.0 usdc for 0.115737793713586 weth -- fee_teir: 500
+2025-09-05 18:29:03.372968 - building tx for action: exactInputSingle
+2025-09-05 18:29:04.090271 - waiting for https://etherscan.io/tx/0x6432d332a91ff57220a662851faf1e3c2296180047cc06c775774d0d1964ec53 
+
+2025-09-05 18:29:38.132833 - -------------> failed
+2025-09-05 18:36:21.702818 - initiating W3...
+2025-09-05 18:36:21.717043 - uniswap fully initiated
+2025-09-05 18:36:21.718784 - performing V3 Quote
+2025-09-05 18:36:23.100375 - quote: 0.2329082713642271
+2025-09-05 18:36:23.100988 - performing V3 Quote
+2025-09-05 18:36:23.706055 - quote: 0.2329082713642271
+2025-09-05 18:36:23.709399 - slipage_to_fee: 0.0016363657145269008
+2025-09-05 18:36:23.711069 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1000.0     V3
+2025-09-05 18:36:23.711691 - <-> swapping 1000.0 usdc for 0.23329001915311057 weth -- fee_teir: 500
+2025-09-05 18:36:23.712825 - building tx for action: exactInputSingle
+2025-09-05 18:36:24.419154 - waiting for https://etherscan.io/tx/0x82a54e3c4d6208aa1becd8ec1bfd86e5116b9d5441d58dc197d071cb15a8074b 
+
+2025-09-05 18:37:14.131401 - ---------------> successful
+2025-09-05 18:37:14.133200 - V3: got_weth: 0.23335907700511938
+2025-09-05 19:10:00.136026 - initiating W3...
+2025-09-05 19:10:00.184081 - uniswap fully initiated
+2025-09-05 19:10:00.185864 - performing V3 Quote
+2025-09-05 19:10:01.968341 - quote: 0.4664032553690228
+2025-09-05 19:10:01.968846 - performing V3 Quote
+2025-09-05 19:10:02.568799 - quote: 0.4664032553690228
+2025-09-05 19:10:02.581141 - slipage_to_fee: 8.039283062888804e-05
+2025-09-05 19:10:02.582876 - performing fiat_to_token (usdc -> weth)     fiat_amount: 2000     V3
+2025-09-05 19:10:02.583464 - <-> swapping 2000 usdc for 0.4664407538615464 weth -- fee_teir: 500
+2025-09-05 19:10:02.585087 - building tx for action: exactInputSingle
+2025-09-05 19:10:03.322403 - waiting for https://etherscan.io/tx/0xf137c0bee200146b33eb92e44db6f39e34ef085509dc86d28246e25b2dc0a2b0 
+
+2025-09-05 19:10:38.057608 - ---------------> successful
+2025-09-05 19:10:38.058697 - V3: got_weth: 0.46713208022382086
+2025-09-05 19:15:14.187939 - initiating W3...
+2025-09-05 19:15:14.205006 - uniswap fully initiated
+2025-09-05 19:15:14.205566 - check_balance...
+2025-09-05 19:15:14.206071 - eth_balance...
+2025-09-05 19:15:15.137047 - weth_balance...
+2025-09-05 19:15:15.754967 - dai_balance...
+2025-09-05 19:15:16.367199 - wbtc_balance...
+2025-09-05 19:15:17.287367 - wsol_balance...
+2025-09-05 19:15:18.109781 - usdc_balance...
+2025-09-05 19:15:18.707945 - usdt_balance...
+2025-09-05 21:12:22.891297 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 175, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001B742DCCE90>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20175,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B742DCCE90>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20175,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B742DCCE90>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-05 22:23:38.670790 - initiating W3...
+2025-09-05 22:23:38.690673 - uniswap fully initiated
+2025-09-05 22:23:38.691740 - check_balance...
+2025-09-05 22:23:38.692311 - eth_balance...
+2025-09-05 22:23:40.657176 - weth_balance...
+2025-09-05 22:23:41.491790 - dai_balance...
+2025-09-05 22:23:42.245329 - wbtc_balance...
+2025-09-05 22:23:42.918887 - wsol_balance...
+2025-09-05 22:23:43.598022 - usdc_balance...
+2025-09-05 22:23:44.252161 - usdt_balance...

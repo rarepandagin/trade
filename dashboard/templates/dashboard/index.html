@@ -234,6 +234,15 @@
                     <input type="number" class="form-control form-control-sm"  step="any" min="0" name="order_price"/>
                 </div>
 
+                <div class="d-flex justify-content-start">
+                    <p>Order mode:</p>
+                    <select class="form-select" name="order_mode">
+                        {% for order_mode in order_modes %}
+                            <option value="{{order_mode}}" {% if order_mode == 'buy_if_price_is_below' %} selected {% endif %}>{{order_mode}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
                 <div class="d-flex justify-content-end">
                     <button class="btn btn-success btn-sm gas_sensetive_dom" >Place new order</button>
                 </div>
@@ -271,7 +280,8 @@
 
                         <div>
                             <input type="text" class="form-control form-control-sm" name="order_action_set_name" value="{{order.name}}" style="width: 300px;"/>
-                            <p>({{order.coin}})</p>
+                            <p class="small m-0">({{order.coin}})</p>
+                            <p class="small m-0">Mode: {{order.mode}}</p>
                             <p class="small m-0">Active: {{order.active}}</p>
                             <p class="small m-0">Executed: {{order.executed}}</p>
                             <p class="small m-0">Fullfiled: {{order.fullfiled}}</p>

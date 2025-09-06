@@ -72,3 +72,6 @@ user-agents==2.2.0
 websocket-client==1.8.0
 xmltodict==0.14.2
 zope.interface==7.2
+web3
+python-binance
+random_username

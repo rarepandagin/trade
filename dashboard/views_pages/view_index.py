@@ -318,7 +318,8 @@ def get_response(request):
             elif 'new_order_name' in request.POST:
                 new_order_name          = request.POST['new_order_name']
                 coin                    = request.POST['coin']
-                
+                order_mode              = request.POST['order_mode']
+
                 entry_capital           = eval(request.POST['entry_capital'])
                 order_price           = eval(request.POST['order_price'])
                 
@@ -330,6 +331,7 @@ def get_response(request):
                 new_order = models_order.Order(
                     name = new_order_name,
                     coin = coin,
+                    mode = order_mode,
                     entry_capital = entry_capital,
                     order_price = order_price,
                     min_profit_exit_price = min_profit_exit_price,
@@ -337,7 +339,7 @@ def get_response(request):
                 )
 
                 if execute_order_now_with_live_price:
-                    admin_settings = tk.get_admin_settings
+                    admin_settings = tk.get_admin_settings()
                     new_order.order_price = admin_settings.prices[coin.lower()]
                 else:
                     new_order.order_price = order_price
@@ -403,12 +405,13 @@ def get_response(request):
 
     context.dict['admin_settings'] =  tk.get_admin_settings()
     context.dict['positions'] =  models_position.Position.objects.all().order_by('-id')
-    context.dict['orders'] =  models_order.Order.objects.all().order_by('-id')
+    context.dict['orders'] =  models_order.Order.objects.filter(executed=False).order_by('-id')
 
     context.dict['new_random_name'] =  tk.get_new_random_name()
     context.dict['coins'] =  models_transaction.coins
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
+    context.dict['order_modes'] =  models_order.order_modes
 
     return context.response()
 

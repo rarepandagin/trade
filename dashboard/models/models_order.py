@@ -18,6 +18,13 @@ auto_exit_styles = {
     auto_exit_style_never: "auto_exit_style_never",
 }
 
+buy_if_price_is_above = "buy_if_price_is_above"
+buy_if_price_is_below = "buy_if_price_is_below"
+
+order_modes = {
+    buy_if_price_is_above : "buy_if_price_is_above",
+    buy_if_price_is_below : "buy_if_price_is_below",
+}
 
 class Order(models.Model):
 
@@ -29,6 +36,7 @@ class Order(models.Model):
 
     coin = models.CharField(choices=coins, default=weth)
 
+    mode = models.CharField(choices=order_modes, default=buy_if_price_is_below)
 
     entry_capital = models.FloatField(default=0)
 
@@ -110,10 +118,11 @@ class Order(models.Model):
             new_transaction.save()
 
             self.fullfiled = True
+            tk.create_new_notification(title="Buy order fullfiled", message=f"order {self.name} fullfiled")
 
         else:
-            tk.create_new_notification(title="TX Failed", message=f"tx for order {self.name} failed at execution")
             self.fullfiled = False
+            tk.create_new_notification(title="TX Failed", message=f"tx for order {self.name} failed at execution")
 
 
         self.active = False
@@ -126,9 +135,13 @@ class Order(models.Model):
     
                 admin_settings = tk.get_admin_settings()
 
-                if admin_settings.prices[self.coin.lower()] < self.order_price :
-                    self.execute()
+                if self.mode == buy_if_price_is_below:
+                    if admin_settings.prices[self.coin.lower()] < self.order_price :
+                        self.execute()
 
+                elif self.mode == buy_if_price_is_above:
+                    if self.order_price < admin_settings.prices[self.coin.lower()] :
+                        self.execute()  
 
         except:
             tk.create_new_notification("runtime error", format_exc())

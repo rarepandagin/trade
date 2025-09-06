@@ -225,11 +225,11 @@ class Position(models.Model):
             # EXIT
             if self.price < self.stop_loss_price:
                 # exiting:
-                if self.auto_exit_style in [models_position.auto_exit_style_both_ways, models_position.auto_exit_style_only_below_stop_loss]:
+                if self.auto_exit_style in [models_order.auto_exit_style_both_ways, models_order.auto_exit_style_only_below_stop_loss]:
 
                     self.exit_position()
 
-                elif self.auto_exit_style == models_position.auto_exit_style_only_after_min_profit:
+                elif self.auto_exit_style == models_order.auto_exit_style_only_after_min_profit:
                     if self.stop_loss_price_increased:
                         self.exit_position()
 
