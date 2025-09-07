@@ -5,7 +5,7 @@ class AdminSettings(models.Model):
 
     id = models.BigAutoField(primary_key=True)
     
-    pulse_locked = models.BooleanField(default=False)
+    pulses_are_being_blocked = models.BooleanField(default=False)
 
     # settings
     alarms = models.BooleanField(default=True)

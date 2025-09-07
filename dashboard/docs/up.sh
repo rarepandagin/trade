@@ -53,3 +53,13 @@ sudo systemctl restart nginx
 
 
 sudo systemctl restart daphne.service
+
+
+cd /home/sammy/trade_beats/
+chmod +x ./collector.py
+nohup python ./collector.py  > script1.log 2>&1 & 
+
+chmod +x ./pulse_maker.py
+nohup python ./pulse_maker.py > script2.log 2>&1 &
+
+tail -f /home/sammy/trade_beats/logs.txt

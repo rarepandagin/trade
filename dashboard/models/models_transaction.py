@@ -20,10 +20,14 @@ transaction_states = {
 
 token_to_fiat = "token_to_fiat"
 fiat_to_token = "fiat_to_token"
+wrap_eth = "wrap_eth"
+unwrap_weth = "unwrap_weth"
 
 transaction_types = {
     token_to_fiat: "token_to_fiat",
     fiat_to_token: "fiat_to_token",
+    wrap_eth: "wrap_eth",
+    unwrap_weth: "unwrap_weth",
 }
 
 
@@ -154,3 +158,17 @@ class Transaction(models.Model):
                 else:
                     self.state = transaction_state_failed
     
+
+            elif self.transaction_type == wrap_eth:
+                if uniswap.wrap_eth(eth_amount=self.token_amount_spent):
+                    self.state = transaction_state_succesful
+                else:
+                    self.state = transaction_state_failed
+
+
+            elif self.transaction_type == unwrap_weth:
+                if uniswap.unwrap_weth(eth_amount=self.token_amount_spent):
+                    self.state = transaction_state_succesful
+                else:
+                    self.state = transaction_state_failed
+

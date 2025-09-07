@@ -19,7 +19,22 @@ def get_response(request):
 
         else:
 
-            if 'admin_settings_alarms' in request.POST:
+
+            if 'unblock_pulses' in request.POST:
+                admin_settings = tk.get_admin_settings()
+                admin_settings.pulses_are_being_blocked = False
+                admin_settings.save()
+
+            
+            elif 'block_pulses' in request.POST:
+                admin_settings = tk.get_admin_settings()
+                admin_settings.pulses_are_being_blocked = True
+                admin_settings.save()
+
+
+            
+
+            elif 'admin_settings_alarms' in request.POST:
                 admin_settings = tk.get_admin_settings()
                 admin_settings.alarms = not admin_settings.alarms
                 admin_settings.save()
@@ -202,7 +217,7 @@ def get_response(request):
                 coin = request.POST['coin']
                 transaction = tk.create_fiat_to_token_transaction(fiat_to_token_amount, coin=coin)
                 
-                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}')
+                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
 
 
 
@@ -212,7 +227,24 @@ def get_response(request):
 
                 transaction = tk.create_token_to_fiat_transaction(token_to_fiat_amount, coin=coin)
 
-                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}')
+                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
+
+
+
+            elif 'eth_amount_to_wrap' in request.POST:
+                eth_amount_to_wrap = eval(request.POST['eth_amount_to_wrap'])
+
+                transaction = tk.wrap_eth(eth_amount_to_wrap)
+
+                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
+
+
+            elif 'weth_amount_to_unwrap' in request.POST:
+                weth_amount_to_unwrap = eval(request.POST['weth_amount_to_unwrap'])
+
+                transaction = tk.unwrap_weth(weth_amount_to_unwrap)
+
+                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
 
 
 

@@ -14,6 +14,27 @@
 
 
         <div class="d-flex justify-content-between" >
+             {% if admin_settings.pulses_are_being_blocked %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit" name="unblock_pulses" class="btn btn-warning  btn-sm m-2" >Pulses are blocked - Click to unblock</button>
+
+                </form>
+
+            {% else %}
+
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit" name="block_pulses" class="btn btn-success btn-sm m-2">Pulses are taken in - Click to block</button>
+
+                </form>
+
+            {% endif %}   
+
             <div>
                 <div class="d-flex justify-content-between" >
                     <a href="/admin34k5jh34KJSHDF345kjh2234sdf" class="mx-5">admin</a>
@@ -531,6 +552,35 @@
                 <p class="mx-1 mt-1">Token to fiat</p>
 
                 <button type="submit" name="fiat_to_token" class="btn btn-primary btn-sm m-1">Token to fiat</button>
+            </div>
+
+        </form>
+
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            <div class="d-flex justify-content-start">
+                
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="eth_amount_to_wrap" value="0.001" required />
+                
+                <button type="submit" class="btn btn-primary btn-sm m-1">Wrap eth</button>
+            </div>
+
+        </form>
+
+
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            <div class="d-flex justify-content-start">
+                
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="weth_amount_to_unwrap" value="0.001" required />
+                
+                <button type="submit" class="btn btn-primary btn-sm m-1">Unwrap weth</button>
             </div>
 
         </form>

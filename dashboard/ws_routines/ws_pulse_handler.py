@@ -9,14 +9,14 @@ def handle_ws_pulse(payload):
 
             admin_settings = tk.get_admin_settings()
 
-            if admin_settings.pulse_locked:
-                tk.logger.info(f'pulse_locked in on. rejecting the pulse...')
-                raise
+            if admin_settings.pulses_are_being_blocked:
+                tk.logger.info(f'pulses_are_being_blocked in on. rejecting the pulse...')
+                return None
 
             else:
                 tk.logger.info(f'effective pulse: {payload}')
 
-                admin_settings.pulse_locked = True
+                admin_settings.pulses_are_being_blocked = True
                 admin_settings.save()
 
 
@@ -113,7 +113,7 @@ def handle_ws_pulse(payload):
             }
 
 
-            admin_settings.pulse_locked = False
+            admin_settings.pulses_are_being_blocked = False
             admin_settings.save()
 
 

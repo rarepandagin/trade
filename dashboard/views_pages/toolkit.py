@@ -171,3 +171,41 @@ def create_token_to_fiat_transaction(token_to_fiat_amount, coin):
     transaction.save()
 
     return transaction
+
+
+def wrap_eth(eth_amount_to_wrap):
+    from dashboard.models import models_transaction
+    
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.wrap_eth,
+        token_amount_spent=eth_amount_to_wrap,
+    )
+
+    transaction.save()
+    
+    transaction.actualize()
+
+    transaction.save()
+
+    return transaction
+
+
+
+def unwrap_weth(eth_amount_to_wrap):
+    from dashboard.models import models_transaction
+    
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.unwrap_weth,
+        token_amount_spent=eth_amount_to_wrap,
+    )
+
+    transaction.save()
+    
+    transaction.actualize()
+
+    transaction.save()
+
+    return transaction
+
