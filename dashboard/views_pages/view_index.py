@@ -2,112 +2,13 @@ import json
 from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
 from .context import context_class
-import time
-from threading import Thread
-import threading
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync   
 
 from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
 
-stop_event = threading.Event()
-
-def heart_beat_thread(data):
-
-    channel_layer = get_channel_layer()
-
-    while True:
-        admin_settings = tk.get_admin_settings()
-
-        positions = models_position.Position.objects.filter(active=True)
-
-        for position in positions:
-
-            position.price = admin_settings.prices[position.order.coin.lower()]
-
-            position.evaluate()
-
-            position.save()
-
-        
-        # positions final report
-        positions = models_position.Position.objects.all()
-        positions_dict = [tk.serialize_object(x) for x in positions]
-        for position in positions_dict:
-            position['order'] = tk.serialize_object(models_order.Order.objects.get(id=position['order']))
-
-
-        orders = models_order.Order.objects.filter(active=True, executed=False)
-        for order in orders:
-            order.evaluate()
-            order.save()
-
-
-        # candle
-        # coin = "ETH"
-        # interval = Client.KLINE_INTERVAL_1MINUTE
-
-        # candles = binance.get_coin_candles(coin=coin, interval=interval)
-
-
-        # for candle in candles:
-        #     new_candle = models_candle.Candle(
-        #         coin=coin,
-        #         interval=interval,
-        #         open_time   =        candle[0],
-        #         open        = float( candle[1]),
-        #         high        = float( candle[2]),
-        #         low         = float( candle[3]),
-        #         close       = float( candle[4]),
-        #         volume      = float( candle[5]),
-        #         close_time  =        candle[6],
-        #     )
-
-        #     candle_already_exist = models_candle.Candle.objects.filter(coin=coin, interval=interval, open_time=new_candle.open_time).exists()
-
-        #     if not candle_already_exist:
-        #         new_candle.save()
-
-
-        # candles = models_candle.Candle.objects.filter(coin=coin, interval=interval)
-
-        # candles_dict = [tk.serialize_object(x) for x in candles]
-
-        # candles_dict = sorted(candles_dict, key=lambda x: x['open_time'])
-
-        # ema = exponential_moving_average([x['close'] for x in candles_dict], 200)
-        # ema = [round(float(x), 2) for x in ema]
-
-        # for idx, candle_dict in enumerate(candles_dict):
-        #     candle_dict['ema'] = ema[idx]
-
-        async_to_sync(channel_layer.group_send)(
-            'chat_1',  # The group name
-            {
-                'type': 'message_channel_dashboard',
-                'message': {
-                    "topic": "update_positions_table",
-                    "payload": {
-                        "positions_dict": positions_dict,
-                        # "candles_dict": candles_dict,
-                        # "ema": ema,
-                        "alarm": "",
-                        "admin_settings": tk.serialize_object(admin_settings),
-                    }
-                }
-            }
-        )
-
-        time.sleep(admin_settings.interval)
-
-        if stop_event.is_set():
-            tk.logger.info(f"Thread received stop signal and is exiting.")
-            break
 
 def get_response(request):
 
     context = context_class.context_class(request, template='dashboard/index.html')
-    events = None
 
     if request.method == "POST":
         if 'req' in request.POST:
@@ -117,44 +18,8 @@ def get_response(request):
 
 
         else:
-            if 'start' in request.POST:
-                admin_settings = tk.get_admin_settings()
 
-                # if not admin_settings['running']:
-                if admin_settings.thread_name in [x.name for x in threading.enumerate()]:
-                    tk.logger.info(f"resuming thread {admin_settings.thread_name}")
-                    admin_settings.running = True
-                    admin_settings.save()
-                
-                else:
-                    new_thread_name = tk.get_new_uuid()
-                    tk.logger.info(f"starting new thread {new_thread_name}")
-
-                    stop_event.clear()
-                    t = Thread(target=heart_beat_thread, args=(f"{new_thread_name} launched at {tk.get_epoch_now()}",))
-                    t.name = new_thread_name
-                    t.start()
-
-                    tk.logger.info(f"new thread {new_thread_name} started")
-
-                    admin_settings.thread_name = new_thread_name
-                    admin_settings.running = True
-                    admin_settings.save()
-            
-            
-            elif 'stop' in request.POST:
-                admin_settings = tk.get_admin_settings()
-
-                if admin_settings.running:
-
-                    # thread =  [x for x in threading.enumerate() if x.name == admin_settings.thread_name][0]
-
-                    stop_event.set()
-                    admin_settings.thread_name = ''
-                    admin_settings.running = False
-                    admin_settings.save()
-            
-            elif 'admin_settings_alarms' in request.POST:
+            if 'admin_settings_alarms' in request.POST:
                 admin_settings = tk.get_admin_settings()
                 admin_settings.alarms = not admin_settings.alarms
                 admin_settings.save()
@@ -350,22 +215,6 @@ def get_response(request):
                 tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}')
 
 
-
-    admin_settings = tk.get_admin_settings()
-
-    # make sure the thread is running or not
-    thread = None
-    try:
-        thread =  [x for x in threading.enumerate() if x.name == admin_settings.thread_name][0]
-    except:
-        pass
-
-
-    if thread is None:
-        admin_settings.thread_name = ''
-        admin_settings.running = False
-        admin_settings.save()
-            
 
     context.dict['admin_settings'] =  tk.get_admin_settings()
     context.dict['positions'] =  models_position.Position.objects.all().order_by('-id')

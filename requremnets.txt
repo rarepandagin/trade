@@ -75,3 +75,4 @@ zope.interface==7.2
 web3
 python-binance
 random_username
+python-dotenv

@@ -11,6 +11,8 @@ function ws_msg_handler(message_event) {
 
     try {
         incoming_message = JSON.parse(message_event.data).message;
+        // console.log(incoming_message);
+
     } catch (error) {
         deactivate_busy_mode()
         console.error(error)

@@ -14,26 +14,6 @@
 
 
         <div class="d-flex justify-content-between" >
-            {% if admin_settings.running %}
-
-                <form method="POST">
-                    {% csrf_token %}
-
-                    <button type="submit" name="stop" class="btn btn-warning  btn-sm m-2" >End thread {{ admin_settings.thread_name }}</button>
-
-                </form>
-
-            {% else %}
-
-
-                <form method="POST">
-                    {% csrf_token %}
-
-                    <button type="submit" name="start" class="btn btn-success btn-sm m-2">Start a new thread</button>
-
-                </form>
-
-            {% endif %}   
             <div>
                 <div class="d-flex justify-content-between" >
                     <a href="/admin34k5jh34KJSHDF345kjh2234sdf" class="mx-5">admin</a>

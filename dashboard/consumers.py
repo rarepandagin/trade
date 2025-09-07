@@ -1,20 +1,32 @@
 import codecs
 import json
 import compress_pickle
-
-from channels.generic.websocket import AsyncWebsocketConsumer
 from threading import Thread
+from channels.generic.websocket import AsyncWebsocketConsumer
+from dashboard.ws_routines.ws_pulse_handler import handle_ws_pulse
 
-ws_key = '26d25f4f-cd7d-4482-aae2-8a80781a33d4'
+ws_key = 'XiKd2uXZuT5vBU5mr2Qi'
 
 def decompress_pickle_object(obj):
     return compress_pickle.loads(codecs.decode(obj.encode(), "base64"), compression="gzip")
 
+class CustomThread(Thread):
+    def __init__(self, target, args=()):
+        super().__init__(target=target, args=args)
+        self._return = None
+
+    def run(self):
+        if self._target is not None:
+            self._return = self._target(*self._args, **self._kwargs)
+
+    def join(self):
+        super().join()
+        return self._return
 
 class websocker_consumer_dashboard(AsyncWebsocketConsumer):
     async def connect(self):
 
-        _, protocol, _, user_id, _ = self.scope['path'].split('/')
+        _, _, _, user_id, _ = self.scope['path'].split('/')
 
         self.user_id = 1
 
@@ -41,35 +53,30 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         text_data_json = json.loads(decompress_pickle_object(text_data))
 
-        if 'key' not in text_data_json:
-            return
-
-        if text_data_json['key'] != ws_key:
+        if text_data_json.get('key', '') != ws_key:
             return
 
         message = text_data_json['message']
         topic = message['topic']
 
-        if topic == 'new_project':
 
-            # unless it is done, it is a not concern to db; but rather only to the JS
-            if 'completed' in message:
+        if topic == 'pulse':
 
-                t = Thread(
-                    target=ws_new_project.handle_new_projects,
-                    args=(message,)
+
+            thread = CustomThread(target=handle_ws_pulse, args=(message,))
+            thread.start()
+            message_to_forward = thread.join()
+
+            if message_to_forward is not None:
+
+                # Send message to room group
+                await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {
+                        'type': 'message_channel_dashboard',
+                        'message': message_to_forward
+                    }
                 )
-                t.start()
-
-
-        # Send message to room group
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {
-                'type': 'message_channel_dashboard',
-                'message': message
-            }
-        )
 
     # Receive message from room group
     async def message_channel_dashboard(self, event):

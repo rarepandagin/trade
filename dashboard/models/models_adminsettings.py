@@ -5,8 +5,7 @@ class AdminSettings(models.Model):
 
     id = models.BigAutoField(primary_key=True)
     
-    running = models.BooleanField(default=False)
-    thread_name = models.TextField(default='', blank=True, null=True)
+    pulse_locked = models.BooleanField(default=False)
 
     # settings
     alarms = models.BooleanField(default=True)
