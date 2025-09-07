@@ -1,3 +1,7 @@
+PRODUCTION = False
+
+
+
 """
 WSGI config for mysite project.
 
@@ -16,8 +20,12 @@ from django.core.wsgi import get_wsgi_application
 
 # Load environment variables from .env file
 # Use the path relative to the wsgi.py file
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+if PRODUCTION:
+    env_filepath = "/home/sammy/.env"
+else:
+    env_filepath = "C:\\Users\\user\\Desktop\\.env"
+
+load_dotenv(env_filepath)
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
