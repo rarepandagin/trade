@@ -3,7 +3,7 @@ import json
 import compress_pickle
 from threading import Thread
 from channels.generic.websocket import AsyncWebsocketConsumer
-from dashboard.ws_routines.ws_pulse_handler import handle_ws_pulse
+# from dashboard.ws_routines.ws_pulse_handler import handle_ws_pulse
 
 ws_key = 'XiKd2uXZuT5vBU5mr2Qi'
 
@@ -24,21 +24,12 @@ class CustomThread(Thread):
         return self._return
 
 class websocker_consumer_dashboard(AsyncWebsocketConsumer):
-    still_processing = False
-
 
     async def connect(self):
 
-        if self.still_processing:
-            # Reject the connection immediately
-            await self.close(code=4000)
-            return
+        _, _, _, _, _ = self.scope['path'].split('/')
 
-        _, _, _, user_id, _ = self.scope['path'].split('/')
-
-        self.user_id = 1
-
-        self.room_name = f"chat_{user_id}"
+        self.room_name = f"chat_1"
         self.room_group_name = self.room_name
 
         # Join room group
@@ -59,7 +50,7 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        self.still_processing = True
+        # self.still_processing = True
 
         text_data_json = json.loads(decompress_pickle_object(text_data))
 
@@ -70,26 +61,26 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
         topic = message['topic']
 
 
-        if topic == 'pulse':
+        # if topic == 'pulse':
 
 
-            thread = CustomThread(target=handle_ws_pulse, args=(message,))
-            thread.start()
-            message_to_forward = thread.join()
+        #     thread = CustomThread(target=handle_ws_pulse, args=(message,))
+        #     thread.start()
+        #     message_to_forward = thread.join()
 
-            if message_to_forward is not None:
+        #     if message_to_forward is not None:
 
                 # Send message to room group
-                await self.channel_layer.group_send(
-                    self.room_group_name,
-                    {
-                        'type': 'message_channel_dashboard',
-                        'message': message_to_forward
-                    }
-                )
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'message_channel_dashboard',
+                'message': message
+            }
+        )
                 # self.still_processing = True
 
-        self.still_processing = False
+        # self.still_processing = False
 
 
     # Receive message from room group

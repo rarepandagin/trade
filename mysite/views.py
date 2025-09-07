@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import redirect
 from django.template import loader
 
@@ -11,7 +12,8 @@ from django.http import HttpResponse
 from dashboard.views_pages import toolkit as tk
 from django.contrib.auth.decorators import login_required
 import requests
-
+from django.views.decorators.http import require_http_methods
+from dashboard.ws_routines.ws_pulse_handler import handle_ws_pulse
 
 @never_cache
 @csrf_exempt
@@ -80,3 +82,14 @@ def login_view(request):
 
     return HttpResponse(template.render(context, request))
 
+
+
+
+@never_cache
+@csrf_exempt
+@require_http_methods(["POST"])
+
+def api_view(request):
+
+    ret = handle_ws_pulse(request)
+    return HttpResponse(json.dumps(ret))

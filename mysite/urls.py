@@ -28,6 +28,8 @@ urlpatterns = [
     path('logout/',     views.logout_view,   name='logout'),
     path('login/',      views.login_view,      name='login'),
 
+    path('api/',      views.api_view,      name='api'),
+
     path('dashboard/', include('dashboard.urls')),
 
 
