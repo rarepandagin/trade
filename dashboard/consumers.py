@@ -24,7 +24,15 @@ class CustomThread(Thread):
         return self._return
 
 class websocker_consumer_dashboard(AsyncWebsocketConsumer):
+    still_processing = False
+
+
     async def connect(self):
+
+        if self.still_processing:
+            # Reject the connection immediately
+            await self.close(code=4000)
+            return
 
         _, _, _, user_id, _ = self.scope['path'].split('/')
 
@@ -51,6 +59,8 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
+        self.still_processing = True
+
         text_data_json = json.loads(decompress_pickle_object(text_data))
 
         if text_data_json.get('key', '') != ws_key:
@@ -77,6 +87,10 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
                         'message': message_to_forward
                     }
                 )
+                # self.still_processing = True
+
+        self.still_processing = False
+
 
     # Receive message from room group
     async def message_channel_dashboard(self, event):
