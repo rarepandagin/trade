@@ -16,7 +16,7 @@ from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync   
-# from threading import Thread
+from threading import Thread
 # import asyncio
 
 @never_cache
@@ -124,12 +124,12 @@ def api_view(request):
 
         # from mysite.dispatch import send_message_to_frontend_async
 
-        send_message_to_frontend(ret['payload'])
-        tk.logger.info(f'send_message_to_frontend')
+        # send_message_to_frontend(ret['payload'])
 
         # await asyncio.run(send_message_to_frontend_async(ret['pyload']))   
-        # t = Thread(target=heart_beat_thread, args=(ret['payload'],))
-        # t.start()
+        t = Thread(target=send_message_to_frontend, args=(ret['payload'],))
+        t.start()
+        tk.logger.info(f'send_message_to_frontend')
 
         # channel_layer = get_channel_layer()
 
