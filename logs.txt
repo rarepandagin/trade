@@ -13692,3 +13692,264 @@ redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The rem
 2025-09-08 10:50:57.608110 - --------> effective pulse: {'epoch': 1757314257, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 10:51:02.692925 - --------> effective pulse: {'epoch': 1757314262, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 10:51:07.795775 - --------> effective pulse: {'epoch': 1757314267, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:12.864838 - --------> effective pulse: {'epoch': 1757314272, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:17.953246 - --------> effective pulse: {'epoch': 1757314277, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:23.073880 - --------> effective pulse: {'epoch': 1757314282, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:28.166449 - --------> effective pulse: {'epoch': 1757314288, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:33.248011 - --------> effective pulse: {'epoch': 1757314293, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:38.323647 - --------> effective pulse: {'epoch': 1757314298, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:43.417652 - --------> effective pulse: {'epoch': 1757314303, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:48.505658 - --------> effective pulse: {'epoch': 1757314308, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:53.607818 - --------> effective pulse: {'epoch': 1757314313, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:51:58.674680 - --------> effective pulse: {'epoch': 1757314318, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:03.749797 - --------> effective pulse: {'epoch': 1757314323, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:08.822983 - --------> effective pulse: {'epoch': 1757314328, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:13.896622 - --------> effective pulse: {'epoch': 1757314333, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:18.992931 - --------> effective pulse: {'epoch': 1757314338, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:24.080058 - --------> effective pulse: {'epoch': 1757314344, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:29.154018 - --------> effective pulse: {'epoch': 1757314349, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:34.226704 - --------> effective pulse: {'epoch': 1757314354, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:39.317678 - --------> effective pulse: {'epoch': 1757314359, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:44.406861 - --------> effective pulse: {'epoch': 1757314364, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:49.496850 - --------> effective pulse: {'epoch': 1757314369, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:54.584987 - --------> effective pulse: {'epoch': 1757314374, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:52:59.687067 - --------> effective pulse: {'epoch': 1757314379, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:04.802372 - --------> effective pulse: {'epoch': 1757314384, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:09.884776 - --------> effective pulse: {'epoch': 1757314389, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:14.971885 - --------> effective pulse: {'epoch': 1757314394, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:20.063087 - --------> effective pulse: {'epoch': 1757314400, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:25.139594 - --------> effective pulse: {'epoch': 1757314405, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:30.209794 - --------> effective pulse: {'epoch': 1757314410, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:35.398751 - --------> effective pulse: {'epoch': 1757314415, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:40.458154 - --------> effective pulse: {'epoch': 1757314420, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:45.530468 - --------> effective pulse: {'epoch': 1757314425, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:50.622895 - --------> effective pulse: {'epoch': 1757314430, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:53:55.709271 - --------> effective pulse: {'epoch': 1757314435, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:00.795803 - --------> effective pulse: {'epoch': 1757314440, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:05.870198 - --------> effective pulse: {'epoch': 1757314445, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:10.950965 - --------> effective pulse: {'epoch': 1757314450, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:16.044598 - --------> effective pulse: {'epoch': 1757314455, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:21.138145 - --------> effective pulse: {'epoch': 1757314461, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:26.225210 - --------> effective pulse: {'epoch': 1757314466, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:31.310805 - --------> effective pulse: {'epoch': 1757314471, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:36.413386 - --------> effective pulse: {'epoch': 1757314476, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:41.501656 - --------> effective pulse: {'epoch': 1757314481, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:46.579710 - --------> effective pulse: {'epoch': 1757314486, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:51.671701 - --------> effective pulse: {'epoch': 1757314491, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:54:56.776854 - --------> effective pulse: {'epoch': 1757314496, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:01.866056 - --------> effective pulse: {'epoch': 1757314501, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:06.952086 - --------> effective pulse: {'epoch': 1757314506, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:12.022158 - --------> effective pulse: {'epoch': 1757314511, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:17.104422 - --------> effective pulse: {'epoch': 1757314517, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:22.189964 - --------> effective pulse: {'epoch': 1757314522, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:27.273635 - --------> effective pulse: {'epoch': 1757314527, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:32.361392 - --------> effective pulse: {'epoch': 1757314532, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:37.449557 - --------> effective pulse: {'epoch': 1757314537, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:42.536926 - --------> effective pulse: {'epoch': 1757314542, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:47.620690 - --------> effective pulse: {'epoch': 1757314547, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:52.706612 - --------> effective pulse: {'epoch': 1757314552, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:55:57.823587 - --------> effective pulse: {'epoch': 1757314557, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:02.920254 - --------> effective pulse: {'epoch': 1757314562, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:07.990658 - --------> effective pulse: {'epoch': 1757314567, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:13.093576 - --------> effective pulse: {'epoch': 1757314573, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:18.193553 - --------> effective pulse: {'epoch': 1757314578, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:23.285220 - --------> effective pulse: {'epoch': 1757314583, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:28.372017 - --------> effective pulse: {'epoch': 1757314588, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:33.471539 - --------> effective pulse: {'epoch': 1757314593, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:38.565179 - --------> effective pulse: {'epoch': 1757314598, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:43.636733 - --------> effective pulse: {'epoch': 1757314603, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:48.707752 - --------> effective pulse: {'epoch': 1757314608, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:53.790582 - --------> effective pulse: {'epoch': 1757314613, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:56:58.878812 - --------> effective pulse: {'epoch': 1757314618, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:03.958743 - --------> effective pulse: {'epoch': 1757314623, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:09.080975 - --------> effective pulse: {'epoch': 1757314628, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:14.168716 - --------> effective pulse: {'epoch': 1757314634, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:19.240138 - --------> effective pulse: {'epoch': 1757314639, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:24.328870 - --------> effective pulse: {'epoch': 1757314644, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:29.423879 - --------> effective pulse: {'epoch': 1757314649, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:34.513174 - --------> effective pulse: {'epoch': 1757314654, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:39.591044 - --------> effective pulse: {'epoch': 1757314659, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:44.679765 - --------> effective pulse: {'epoch': 1757314664, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:49.769879 - --------> effective pulse: {'epoch': 1757314669, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:54.863626 - --------> effective pulse: {'epoch': 1757314674, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:57:59.938935 - --------> effective pulse: {'epoch': 1757314679, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:05.051712 - --------> effective pulse: {'epoch': 1757314684, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:10.172122 - --------> effective pulse: {'epoch': 1757314690, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:15.280834 - --------> effective pulse: {'epoch': 1757314695, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:20.358097 - --------> effective pulse: {'epoch': 1757314700, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:25.450412 - --------> effective pulse: {'epoch': 1757314705, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:30.546274 - --------> effective pulse: {'epoch': 1757314710, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:35.617482 - --------> effective pulse: {'epoch': 1757314715, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:40.689032 - --------> effective pulse: {'epoch': 1757314720, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:45.760679 - --------> effective pulse: {'epoch': 1757314725, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:50.851612 - --------> effective pulse: {'epoch': 1757314730, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:58:55.921533 - --------> effective pulse: {'epoch': 1757314735, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:01.025036 - --------> effective pulse: {'epoch': 1757314740, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:06.114936 - --------> effective pulse: {'epoch': 1757314746, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:11.208779 - --------> effective pulse: {'epoch': 1757314751, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:16.270262 - --------> effective pulse: {'epoch': 1757314756, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:21.379270 - --------> effective pulse: {'epoch': 1757314761, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:26.472886 - --------> effective pulse: {'epoch': 1757314766, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:31.556627 - --------> effective pulse: {'epoch': 1757314771, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:36.638268 - --------> effective pulse: {'epoch': 1757314776, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:41.729446 - --------> effective pulse: {'epoch': 1757314781, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:46.841566 - --------> effective pulse: {'epoch': 1757314786, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:51.928766 - --------> effective pulse: {'epoch': 1757314791, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 10:59:56.989721 - --------> effective pulse: {'epoch': 1757314796, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:02.103729 - --------> effective pulse: {'epoch': 1757314802, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:07.237410 - --------> effective pulse: {'epoch': 1757314807, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:12.331346 - --------> effective pulse: {'epoch': 1757314812, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:17.445687 - --------> effective pulse: {'epoch': 1757314817, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:22.545806 - --------> effective pulse: {'epoch': 1757314822, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:27.643635 - --------> effective pulse: {'epoch': 1757314827, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:32.845197 - --------> effective pulse: {'epoch': 1757314832, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:37.938612 - --------> effective pulse: {'epoch': 1757314837, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:43.017152 - --------> effective pulse: {'epoch': 1757314842, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:48.094705 - --------> effective pulse: {'epoch': 1757314848, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:53.161957 - --------> effective pulse: {'epoch': 1757314853, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:00:58.280072 - --------> effective pulse: {'epoch': 1757314858, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:03.374017 - --------> effective pulse: {'epoch': 1757314863, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:08.457833 - --------> effective pulse: {'epoch': 1757314868, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:13.530800 - --------> effective pulse: {'epoch': 1757314873, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:18.614830 - --------> effective pulse: {'epoch': 1757314878, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:23.702944 - --------> effective pulse: {'epoch': 1757314883, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:30.880364 - --------> effective pulse: {'epoch': 1757314888, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:30.910936 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 86, in handle_a_pulse
+    return {'interval': admin_settings.interval, message: message}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'dict'
+
+2025-09-08 11:01:35.027720 - --------> effective pulse: {'epoch': 1757314894, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:40.149112 - --------> effective pulse: {'epoch': 1757314900, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:47.255885 - --------> effective pulse: {'epoch': 1757314905, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:55.438030 - --------> effective pulse: {'epoch': 1757314914, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:55.659680 - --------> effective pulse: {'epoch': 1757314915, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:55.762751 - --------> effective pulse: {'epoch': 1757314915, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:55.865360 - --------> effective pulse: {'epoch': 1757314915, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:55.967451 - --------> effective pulse: {'epoch': 1757314915, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.077630 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.158813 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.245561 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.341255 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.437844 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.557767 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.680777 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.778808 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.866027 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:56.967626 - --------> effective pulse: {'epoch': 1757314916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:57.075916 - --------> effective pulse: {'epoch': 1757314917, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:57.265347 - --------> effective pulse: {'epoch': 1757314917, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:57.369964 - --------> effective pulse: {'epoch': 1757314917, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:57.477680 - --------> effective pulse: {'epoch': 1757314917, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:57.586059 - --------> effective pulse: {'epoch': 1757314917, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:01:57.680471 - --------> effective pulse: {'epoch': 1757314917, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:03:43.467586 - pulse_maker: Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade_beats\pulse_maker.py", line 22, in main
+    ret = requests.post(url=f'{tk.frontend_host}/api/', json=message, timeout=5*60).json()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 494, in request
+    self.endheaders()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1037, in send
+    self.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 81, in create_connection
+    sock.close()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 501, in close
+    def close(self):
+    
+KeyboardInterrupt
+
+2025-09-08 11:03:45.513706 - pulse_maker: Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade_beats\pulse_maker.py", line 22, in main
+    ret = requests.post(url=f'{tk.frontend_host}/api/', json=message, timeout=5*60).json()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 494, in request
+    self.endheaders()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1037, in send
+    self.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 81, in create_connection
+    sock.close()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 501, in close
+    def close(self):
+    
+KeyboardInterrupt
+
+2025-09-08 11:03:59.335964 - --------> effective pulse: {'epoch': 1757315038, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:04:04.443611 - --------> effective pulse: {'epoch': 1757315044, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:04:09.530618 - --------> effective pulse: {'epoch': 1757315049, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:04:14.656003 - --------> effective pulse: {'epoch': 1757315054, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 11:04:19.746591 - --------> effective pulse: {'epoch': 1757315059, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}

@@ -14,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 import requests
 from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync   
 
 @never_cache
 @csrf_exempt
@@ -92,4 +94,19 @@ def login_view(request):
 def api_view(request):
 
     ret = handle_a_pulse(request)
+
+    
+    if 'message' in ret:
+        
+        channel_layer = get_channel_layer()
+
+        async_to_sync(channel_layer.group_send)(
+            'room_group_name',  # The group name
+            {
+                'type': 'message.channel.dashboard',
+                'message': ret['message']
+            }
+        )
+
+
     return HttpResponse(json.dumps(ret))

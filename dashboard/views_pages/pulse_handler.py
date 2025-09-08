@@ -3,8 +3,6 @@ from dashboard.views_pages import toolkit as tk
 from dashboard.models.models_position import models_position
 from dashboard.models.models_position import models_order
 import json
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync   
 
 
 
@@ -67,15 +65,6 @@ def handle_a_pulse(request):
                     }
                 }
                 
-                channel_layer = get_channel_layer()
-
-                async_to_sync(channel_layer.group_send)(
-                    'room_group_name',  # The group name
-                    {
-                        'type': 'message.channel.dashboard',
-                        'message': message
-                    }
-                )
 
 
 
@@ -83,7 +72,7 @@ def handle_a_pulse(request):
                 admin_settings.save()
 
 
-                return {'interval': admin_settings.interval}
+                return {'interval': admin_settings.interval, "message": message}
 
                 
 
