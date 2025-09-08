@@ -1907,3 +1907,620 @@ DETAIL:  Failing row contains (36, 4285.24, 4570, 4200, 4200, be137f13c94a433094
 2025-09-08 14:12:05.549416 - --------> effective pulse: {'epoch': 1757326325, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 14:12:08.636652 - --------> effective pulse: {'epoch': 1757326328, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 14:12:11.693089 - --------> effective pulse: {'epoch': 1757326331, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:14.778002 - --------> effective pulse: {'epoch': 1757326334, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:17.868560 - --------> effective pulse: {'epoch': 1757326337, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:20.952492 - --------> effective pulse: {'epoch': 1757326340, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:24.024121 - --------> effective pulse: {'epoch': 1757326343, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:27.141056 - --------> effective pulse: {'epoch': 1757326347, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:30.238075 - --------> effective pulse: {'epoch': 1757326350, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:33.317947 - --------> effective pulse: {'epoch': 1757326353, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:36.419161 - --------> effective pulse: {'epoch': 1757326356, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:39.509082 - --------> effective pulse: {'epoch': 1757326359, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:42.582292 - --------> effective pulse: {'epoch': 1757326362, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:45.662521 - --------> effective pulse: {'epoch': 1757326365, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:48.745133 - --------> effective pulse: {'epoch': 1757326368, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:51.815723 - --------> effective pulse: {'epoch': 1757326371, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:54.930380 - --------> effective pulse: {'epoch': 1757326374, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:12:58.025144 - --------> effective pulse: {'epoch': 1757326377, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:01.093083 - --------> effective pulse: {'epoch': 1757326381, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:04.173122 - --------> effective pulse: {'epoch': 1757326384, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:07.266262 - --------> effective pulse: {'epoch': 1757326387, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:10.374312 - --------> effective pulse: {'epoch': 1757326390, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:13.489185 - --------> effective pulse: {'epoch': 1757326393, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:16.589126 - --------> effective pulse: {'epoch': 1757326396, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:19.679445 - --------> effective pulse: {'epoch': 1757326399, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:22.762015 - --------> effective pulse: {'epoch': 1757326402, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:25.925133 - --------> effective pulse: {'epoch': 1757326405, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:29.037966 - --------> effective pulse: {'epoch': 1757326408, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:32.166557 - --------> effective pulse: {'epoch': 1757326412, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:35.290934 - --------> effective pulse: {'epoch': 1757326415, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:38.381932 - --------> effective pulse: {'epoch': 1757326418, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:41.453675 - --------> effective pulse: {'epoch': 1757326421, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:44.549084 - --------> effective pulse: {'epoch': 1757326424, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:47.635434 - --------> effective pulse: {'epoch': 1757326427, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:50.709124 - --------> effective pulse: {'epoch': 1757326430, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:53.794097 - --------> effective pulse: {'epoch': 1757326433, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:57.393709 - --------> effective pulse: {'epoch': 1757326436, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:13:57.434465 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 67, in handle_a_pulse
+    tk.send_message_to_frontend(payload)
+TypeError: send_message_to_frontend() missing 1 required positional argument: 'payload'
+
+2025-09-08 14:14:01.497467 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:06.579228 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:16.241048 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:20.306178 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:24.407012 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:28.464161 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:32.526050 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:36.592217 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:40.686836 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:44.752672 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:48.813582 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:52.862436 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:14:56.920265 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:00.984207 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:05.050946 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:09.242252 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:13.348586 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:17.418915 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:21.476332 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:25.541086 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:29.593472 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:33.643951 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:37.706198 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:41.773639 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:45.841195 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:49.892968 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:53.936794 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:15:58.002359 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:02.046554 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:06.115046 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:10.183217 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:14.230062 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:18.291912 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:22.344187 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:26.407542 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:30.496872 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:34.566245 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:38.663992 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:42.750593 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:46.814043 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:51.023124 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:55.116794 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:16:59.192314 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:03.271064 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:07.341429 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:11.403560 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:15.468248 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:19.531977 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:23.573286 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:27.638701 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:31.696439 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:35.778791 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:39.827314 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:43.902277 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:47.952129 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:52.012950 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:17:56.057393 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:00.104157 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:04.202509 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:08.297492 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:12.388260 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:16.473114 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:20.541127 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:24.620335 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:28.687138 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:32.738924 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:36.785404 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:40.841497 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:44.885533 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:48.979392 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:53.037142 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:18:57.141287 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:01.211126 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:05.275120 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:09.343337 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:13.403349 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:17.448135 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:21.539424 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:25.614986 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:29.685212 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:33.763306 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:37.831321 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:41.899278 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:45.959043 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:50.056696 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:54.116036 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:19:58.212453 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:02.307288 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:06.377321 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:10.468052 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:14.558426 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:18.623303 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:22.687817 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:26.732006 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:31.821049 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:35.894433 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:39.965032 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:44.012822 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:48.068677 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:54.178927 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:20:58.239237 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:02.308069 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:06.364395 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:10.446824 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:14.511971 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:18.602165 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:22.693282 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:26.764630 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:30.811391 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:34.875618 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:38.937988 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:42.993018 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:47.050976 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:51.120586 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:55.216384 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:21:59.261011 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:03.328263 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:07.392915 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:11.453495 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:15.523710 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:19.568512 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:23.641148 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:27.708924 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:31.752363 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:35.836941 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:39.912207 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:43.982705 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:48.042700 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:52.125253 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:22:56.212131 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:00.280308 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:04.328101 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:08.411348 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:12.455993 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:16.516737 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:20.586278 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:24.658359 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:28.718730 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:32.787896 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:36.847100 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:40.928490 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:45.029086 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:49.075372 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:53.142266 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:23:57.206460 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:01.286188 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:05.342090 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:09.414201 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:13.482680 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:17.576174 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:21.633341 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:25.694560 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:29.758816 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:33.827847 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:37.891403 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:41.994006 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:46.055603 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:50.115712 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:54.213442 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:24:58.267082 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:02.368049 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:06.467794 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:10.525978 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:14.616889 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:18.706131 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:22.793029 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:26.861282 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:30.947489 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:35.003928 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:39.086340 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:43.189062 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:47.249242 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:51.344948 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:55.398787 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:25:59.478467 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:03.561910 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:07.623489 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:11.688812 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:15.746729 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:19.791291 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:23.834001 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:27.891344 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:31.933218 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:35.991293 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:40.047008 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:44.115469 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:48.159271 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:52.201644 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:26:56.243315 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:00.308406 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:04.369407 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:08.425409 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:12.491245 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:16.558505 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:20.625186 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:24.673377 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:28.717056 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:32.773431 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:36.834445 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:40.882447 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:44.928804 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:48.995515 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:53.150780 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:27:57.222022 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:01.292085 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:05.385237 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:09.478930 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:13.556031 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:17.620320 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:21.680960 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:25.752864 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:29.827205 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:33.893242 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:37.971025 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:42.015412 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:46.102268 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:50.166612 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:54.223239 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:28:58.313260 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:02.404202 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:06.467121 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:10.562559 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:14.630641 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:18.698907 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:22.791216 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:26.853476 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:30.938054 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:35.023719 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:39.097532 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:43.163246 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:47.243932 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:51.321151 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:55.365540 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:29:59.435240 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:03.483116 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:07.576569 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:11.669126 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:15.752040 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:19.846305 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:23.938274 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:28.013183 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:32.083260 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:36.146701 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:40.186444 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:44.256431 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:48.318542 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:52.384441 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:30:56.464077 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:00.524702 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:04.604790 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:08.659437 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:12.709475 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:16.772588 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:20.828253 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:24.926947 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:29.086266 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:33.192233 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:37.377063 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:41.447761 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:45.532203 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:49.629517 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:53.702277 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:31:57.769610 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:01.835618 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:05.933120 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:10.003161 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:14.073280 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:18.136965 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:22.232395 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:26.310994 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:30.373781 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:34.424173 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:38.503065 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:42.585870 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:46.672921 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:50.742477 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:54.808881 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:32:58.887855 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:02.956181 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:07.018665 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:11.096391 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:15.195893 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:19.248092 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:23.424430 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:27.493043 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:31.560402 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:35.605617 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:39.660147 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:43.718946 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:47.786321 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:51.851115 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:33:55.938136 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:00.015138 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:04.200713 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:08.266211 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:12.333051 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:16.401360 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:20.444740 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:24.520792 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:28.585611 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:32.659147 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:36.728999 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:40.780126 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:44.823619 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:48.890339 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:53.059271 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:34:57.131157 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:01.195497 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:05.262939 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:09.321371 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:13.390731 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:17.481391 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:21.573283 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:25.627361 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:29.683054 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:33.725071 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:37.803365 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:41.866250 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:45.930343 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:49.995216 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:54.059224 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:35:58.127463 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:02.183085 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:06.245372 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:10.310198 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:14.378374 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:18.442592 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:22.508653 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:25.345423 - initiating W3...
+2025-09-08 14:36:25.348485 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:36:26.609180 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:30.772112 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:33.786399 - initiating W3...
+2025-09-08 14:36:33.788399 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:36:34.817484 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:38.861220 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:42.923255 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:47.021109 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:51.074129 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:55.142241 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:36:59.238210 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:04.822076 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:07.309137 - initiating W3...
+2025-09-08 14:37:07.312794 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:37:08.878825 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:12.943343 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:17.098778 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:21.178934 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:25.243681 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:29.329298 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:33.394001 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:37.482287 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:41.571179 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:45.660936 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:49.729196 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:53.827508 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:37:57.893152 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:01.951260 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:06.018041 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:10.061050 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:14.106079 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:18.151146 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:22.213498 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:26.275717 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:30.341153 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:30.558849 - initiating W3...
+2025-09-08 14:38:30.561361 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:38:34.413301 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:38.475275 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:42.551207 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:46.620974 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:50.674555 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:54.738160 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:38:58.816390 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:11.121342 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:15.337000 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:17.509173 - initiating W3...
+2025-09-08 14:39:17.513359 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:39:19.380306 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:23.459491 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:27.525927 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:31.617016 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:35.705212 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:39.751152 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:43.817712 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:47.891156 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:51.974985 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:39:56.040367 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:00.097359 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:04.177731 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:08.236271 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:12.281092 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:16.340715 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:20.394176 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:33.154391 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:38.335369 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:48.501407 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:52.567083 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:40:55.490194 - initiating W3...
+2025-09-08 14:40:55.493285 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:40:56.652546 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:00.709396 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:01.983272 - initiating W3...
+2025-09-08 14:41:01.986273 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:41:04.768761 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:08.827809 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:12.897275 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:15.751820 - initiating W3...
+2025-09-08 14:41:15.755340 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\context\ajax_posts.py", line 33, in handle_ajax_posts
+    uniswap = Uniswap()
+              ^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\uniswap\v3_class.py", line 136, in __init__
+    self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\web3\main.py", line 268, in to_checksum_address
+    return to_checksum_address(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 129, in to_checksum_address
+    norm_address = to_normalized_address(value)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\address.py", line 73, in to_normalized_address
+    hex_address = hexstr_if_str(to_hex, value).lower()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\eth_utils\conversions.py", line 195, in hexstr_if_str
+    raise ValueError(
+ValueError: when sending a str, it must be a hex string. Got: '0x2Ac4E9192846BeC854None'
+
+2025-09-08 14:41:16.963020 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:21.007394 - --------> XXxXX pulses are being blocked.
+2025-09-08 14:41:25.085852 - --------> effective pulse: {'epoch': 1757328085, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:28.205317 - --------> effective pulse: {'epoch': 1757328088, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:31.291216 - --------> effective pulse: {'epoch': 1757328091, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:34.396200 - --------> effective pulse: {'epoch': 1757328094, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:37.591222 - --------> effective pulse: {'epoch': 1757328097, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:40.664179 - --------> effective pulse: {'epoch': 1757328100, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:43.740372 - --------> effective pulse: {'epoch': 1757328103, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:46.840198 - --------> effective pulse: {'epoch': 1757328106, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:49.930928 - --------> effective pulse: {'epoch': 1757328109, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:53.025910 - --------> effective pulse: {'epoch': 1757328112, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:56.124294 - --------> effective pulse: {'epoch': 1757328116, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:41:59.225657 - --------> effective pulse: {'epoch': 1757328119, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:42:02.319075 - --------> effective pulse: {'epoch': 1757328122, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:42:05.421654 - --------> effective pulse: {'epoch': 1757328125, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 14:42:08.496415 - --------> effective pulse: {'epoch': 1757328128, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}

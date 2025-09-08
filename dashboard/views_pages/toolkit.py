@@ -213,7 +213,7 @@ def unwrap_weth(eth_amount_to_wrap):
 
 
 
-def send_message_to_frontend(payload):
+def send_message_to_frontend(topic, payload):
     from channels.layers import get_channel_layer
     from asgiref.sync import async_to_sync   
 
@@ -225,7 +225,7 @@ def send_message_to_frontend(payload):
         {
         'type': 'message_channel_dashboard',
         'message': {
-            "topic": "update_positions_table",
+            "topic": topic,
             "payload": payload
             }
         }

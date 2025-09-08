@@ -8,6 +8,9 @@ class logger_model:
 
 
     def info(self, message):
+        from dashboard.views_pages import toolkit as tk
+
+
 
         content = f"{str(datetime.now())} - {message}\n"
 
@@ -15,3 +18,5 @@ class logger_model:
             f.write(content)
 
         print(content)
+
+        tk.send_message_to_frontend(topic='backend_process_ongoing', payload=message)

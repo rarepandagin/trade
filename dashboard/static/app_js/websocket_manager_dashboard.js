@@ -31,6 +31,11 @@ function ws_msg_handler(message_event) {
         update_positions_table(incoming_message.payload)
 
 
+    } else if (incoming_message.topic === "backend_process_ongoing"){
+        
+        backend_process_ongoing(incoming_message.payload)
+    
+    
     }
 
 }

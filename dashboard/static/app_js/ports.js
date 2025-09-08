@@ -400,6 +400,11 @@ function update_positions_table(payload){
 
 
 
+function backend_process_ongoing(payload){
+    console.log(payload);
+}
+
+
 function update_balances(){
     ajax_call('update_balances', {})
 }

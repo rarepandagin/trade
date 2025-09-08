@@ -28,6 +28,7 @@ def handle_ajax_posts(self, request):
         from dashboard.modules.uniswap.v3_class import Uniswap
 
         try:
+            tk.send_message_to_frontend(topic='backend_process_ongoing', payload='started')
 
             uniswap = Uniswap()
 
@@ -36,6 +37,9 @@ def handle_ajax_posts(self, request):
             admin_settings = tk.get_admin_settings()
             admin_settings.balances = balances
             admin_settings.save()
+
+            tk.send_message_to_frontend(topic='backend_process_ongoing', payload='ended')
+
         except:
             tk.logger.info(format_exc())
 
