@@ -16,7 +16,8 @@ from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync   
-from threading import Thread
+# from threading import Thread
+# import asyncio
 
 @never_cache
 @csrf_exempt
@@ -87,7 +88,7 @@ def login_view(request):
 
 
 
-def heart_beat_thread(payload):
+def send_message_to_frontend(payload):
 
 
     channel_layer = get_channel_layer()
@@ -108,19 +109,26 @@ def heart_beat_thread(payload):
 
 
 
+    
+
 @never_cache
 @csrf_exempt
 @require_http_methods(["POST"])
-
 def api_view(request):
+    ret = {}
 
     ret = handle_a_pulse(request)
 
     
     if 'payload' in ret:
 
-        t = Thread(target=heart_beat_thread, args=(ret['payload'],))
-        t.start()
+        # from mysite.dispatch import send_message_to_frontend_async
+
+        send_message_to_frontend(ret['payload'])
+
+        # await asyncio.run(send_message_to_frontend_async(ret['pyload']))   
+        # t = Thread(target=heart_beat_thread, args=(ret['payload'],))
+        # t.start()
 
         # channel_layer = get_channel_layer()
 
@@ -134,6 +142,7 @@ def api_view(request):
         #         }
         #     }
         # )
+        pass
 
 
     return HttpResponse(json.dumps(ret))

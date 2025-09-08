@@ -2,10 +2,32 @@ import json
 from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
 from .context import context_class
+from dashboard.views_pages.pulse_handler import handle_a_pulse
 
 from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
+# from channels.layers import get_channel_layer
+# from asgiref.sync import async_to_sync   
+# from threading import Thread
 
 
+
+# def heart_beat_thread(payload):
+
+
+#     channel_layer = get_channel_layer()
+
+#     async_to_sync(channel_layer.group_send)(
+#         'room_group_name',  # The group name
+#         {
+#         'type': 'message_channel_dashboard',
+#         'message': {
+#             "topic": "update_positions_table",
+#             "payload": payload
+#             }
+#         }
+#     )
+    
+                
 def get_response(request):
 
     context = context_class.context_class(request, template='dashboard/index.html')
@@ -246,6 +268,14 @@ def get_response(request):
 
                 tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
 
+
+    # ret_handle_a_pulse = handle_a_pulse(request)
+
+    
+    # if 'payload' in ret_handle_a_pulse:
+
+    #     t = Thread(target=heart_beat_thread, args=(ret_handle_a_pulse['payload'],))
+    #     t.start()
 
 
     context.dict['admin_settings'] =  tk.get_admin_settings()

@@ -9,7 +9,10 @@ import json
 
 def handle_a_pulse(request):
 
-        payload = json.loads(request.body.decode('utf-8'))
+        try:
+            payload = json.loads(request.body.decode('utf-8'))
+        except:
+            return {}
 
         if payload.get('key', '') != 'XiKd2uXZuT5vBU5mr2Qi':
             return {}
