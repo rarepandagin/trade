@@ -124,11 +124,11 @@ def api_view(request):
 
         # from mysite.dispatch import send_message_to_frontend_async
 
-        # send_message_to_frontend(ret['payload'])
+        send_message_to_frontend(ret['payload'])
 
         # await asyncio.run(send_message_to_frontend_async(ret['pyload']))   
-        t = Thread(target=send_message_to_frontend, args=(ret['payload'],))
-        t.start()
+        # t = Thread(target=send_message_to_frontend, args=(ret['payload'],))
+        # t.start()
         tk.logger.info(f'send_message_to_frontend')
 
         # channel_layer = get_channel_layer()

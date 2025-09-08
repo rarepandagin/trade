@@ -221,6 +221,9 @@ https://stackoverflow.com/questions/41408359/requestdatatoobig-request-body-exce
 
 # Django Production Setup:
 
+pip install -U 'channels[daphne]' channels-redis
+
+
 
 issue of failing to connect to WSS:
 make sure that the asgi lines are invoked
