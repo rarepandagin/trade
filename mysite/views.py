@@ -125,6 +125,7 @@ def api_view(request):
         # from mysite.dispatch import send_message_to_frontend_async
 
         send_message_to_frontend(ret['payload'])
+        tk.logger.info(f'send_message_to_frontend')
 
         # await asyncio.run(send_message_to_frontend_async(ret['pyload']))   
         # t = Thread(target=heart_beat_thread, args=(ret['payload'],))
