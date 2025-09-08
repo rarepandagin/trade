@@ -90,6 +90,9 @@ class Transaction(models.Model):
 
     def actualize(self):
 
+        tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'starting to actualize tx {self.name} ({self.transaction_type})', 'color': 'green'})
+
+
 
         # before actualizing any transaction, we need to make sure that the gas price is lower than a resonable amount
         admin_settings = tk.get_admin_settings()
@@ -173,3 +176,9 @@ class Transaction(models.Model):
                 else:
                     self.state = transaction_state_failed
 
+
+        if self.state == transaction_state_succesful:
+            tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'tx {self.name} ({self.transaction_type}) was successful', 'color': 'green'})
+
+        elif self.state == transaction_state_failed:
+            tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'tx {self.name} ({self.transaction_type}) failed', 'color': 'red'})

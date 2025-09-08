@@ -60,16 +60,18 @@ function update_positions_table(payload){
         if (position.active){
             first_cell_html = `<span class="badge rounded-pill bg-primary fs-6">${position.order.name}</span>`
 
-                
+            let stated_cleaned = position.state.replace("_", " ")
+
             if (position.price < position.stop_loss_price){
                 first_cell_html += `<div class="spinner-grow ms-2" style="width: 1px; height: 1px;" role="status">
                                     <span>Exit now</span>
                                 </div>`
             }
+
             first_cell_html += `
                 <br>
                 <span class="badge rounded-pill bg-${position_state_color[position.state]}">
-                    ${position.state}
+                    ${stated_cleaned}
                 </span>
             `
 
@@ -406,6 +408,19 @@ function logger_to_frontend(payload){
     const textarea = document.getElementById('logger_textarea');
     textarea.value = `${payload}\n${textarea.value}`;   
 
+}
+
+
+function display_toaster(payload){
+    Toastify({
+
+        text: payload.message,
+        style: {
+            background: payload.color,
+        },
+        duration: 3000
+
+    }).showToast();
 }
 
 

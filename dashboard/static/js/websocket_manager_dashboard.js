@@ -37,6 +37,13 @@ function ws_msg_handler(message_event) {
         logger_to_frontend(incoming_message.payload)
     
     
+    
+
+    } else if (incoming_message.topic === "display_toaster"){
+        
+        display_toaster(incoming_message.payload)
+    
+    
     }
 
 }

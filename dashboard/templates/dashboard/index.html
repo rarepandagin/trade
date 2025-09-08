@@ -55,7 +55,7 @@
                                     <option value="{{coin}}" {% if admin_settings.fiat_coin == coin %} selected {% endif %}   >{{coin}}</option>
                                 {% endfor %}
                         </select>
-                        <button type="submit" class="btn btn-primary btn-sm ms-2" style="height: 30px;" >Set fiat coin</button>
+                        <button type="submit" class="btn btn-primary btn-sm ms-2" style="height: 30px;" >Set fiat</button>
 
                     </div>
                 </form>
@@ -65,7 +65,7 @@
 
                 <form method="POST" class="d-flex justify-content-start gap-1">
                     {% csrf_token %}
-                    <input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 120px;"/>
+                    <input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 80px;"/>
                     <button type="submit" class="btn btn-primary btn-sm" style="height: 30px;" >Set secure profit ratio</button>
                 </form>
             
@@ -267,7 +267,7 @@
 
 
     <!-- ORDERS -->
-    <h1>Orders</h1>
+    <h1>Orders ({{orders|length}})</h1>
     
     {% for order in orders %}
 
@@ -287,7 +287,7 @@
                     <div class="d-flex justify-content-between  flex-sm-row flex-column gap-2">
 
                         <div>
-                            <input type="text" class="form-control form-control-sm" name="order_action_set_name" value="{{order.name}}" style="width: 300px;"/>
+                            <input type="text" class="form-control form-control-sm" name="order_action_set_name" value="{{order.name}}" style="width: 200px;"/>
                             <p class="small m-0">({{order.coin}})</p>
                             <p class="small m-0">Mode: {{order.mode}}</p>
                             <p class="small m-0">Active: {{order.active}}</p>
@@ -306,6 +306,8 @@
                             <input type="number" class="form-control form-control-sm" name="order_action_set_order_price" value="{{order.order_price}}" style="width: 100px;"  step="any"/>
 
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-between  flex-sm-row flex-column gap-2">
 
                         <div>
                             <p>min_profit_exit_price:</p>
@@ -368,7 +370,7 @@
 
 
     <!-- Positions -->
-    <h1>Positions</h1>
+    <h1>Positions ({{positions|length}})</h1>
 
     {% for position in positions %}
 
@@ -383,6 +385,7 @@
                 <div id="position_{{position.uuid}}_td2_html"></div>
                 <div id="position_{{position.uuid}}_td3_html"></div>
                 <div id="position_{{position.uuid}}_td4_html"></div>
+
                 <div id="position_{{position.uuid}}_td5_html"></div>
                 <div id="position_{{position.uuid}}_td6_html"></div>
 
@@ -439,6 +442,9 @@
                             <button class="btn btn-primary btn-sm" name="position_action_set_min_profit_exit_price">Set</button>
                         </form>
                     </div>
+                    </div>
+
+                                <div class="d-flex justify-content-between m-3  flex-sm-row flex-column  gap-2">
 
                     <div>
                         <form method="POST" class="d-flex justify-content-between gap-1">
@@ -486,18 +492,18 @@
                         <div>name: <a href="https://etherscan.io/tx/{{transaction.hash}}" target="_blank">{{transaction.name}}</a></div>
                         <div>{{transaction.transaction_type}}<br>{{transaction.uniswap_version}}</div>
                         <div>
-                            <div>token_effective_price: {{transaction.token_effective_price}}</div>
-                            <div>token_nominal_price: {{transaction.token_nominal_price}}</div>
+                            <div>token effective price: {{transaction.token_effective_price}}</div>
+                            <div>token nominal price: {{transaction.token_nominal_price}}</div>
                         </div>
                         {% if transaction.type == "token_to_fiat" %}
                         <div>
-                            <div>token_amount_spent: {{transaction.token_amount_spent}}</div>
-                            <div>fiat_amount_recieved: {{transaction.fiat_amount_recieved}}</div>
+                            <div>token amount spent: {{transaction.token_amount_spent}}</div>
+                            <div>fiat amount recieved: {{transaction.fiat_amount_recieved}}</div>
                         </div>
                         {% else %}
                         <div>
-                            <div>fiat_amount_spent: {{transaction.fiat_amount_spent}}</div>
-                            <div>token_amount_recieved: {{transaction.token_amount_recieved}}</div>
+                            <div>fiat amount spent: {{transaction.fiat_amount_spent}}</div>
+                            <div>token amount recieved: {{transaction.token_amount_recieved}}</div>
                         </div>
                         {% endif %}
                     </div>
