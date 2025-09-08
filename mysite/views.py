@@ -86,26 +86,6 @@ def login_view(request):
 
 
 
-def send_message_to_frontend(payload):
-
-
-    channel_layer = get_channel_layer()
-
-    async_to_sync(channel_layer.group_send)(
-        'room_group_name',  # The group name
-        {
-        'type': 'message_channel_dashboard',
-        'message': {
-            "topic": "update_positions_table",
-            "payload": payload
-            }
-        }
-    )
-    
-                
-
-
-
 
     
 
@@ -115,8 +95,5 @@ def send_message_to_frontend(payload):
 def api_view(request):
 
     ret = handle_a_pulse(request)
-
-    if 'payload' in ret:
-        send_message_to_frontend(ret['payload'])
 
     return HttpResponse(json.dumps(ret))

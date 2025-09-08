@@ -209,3 +209,25 @@ def unwrap_weth(eth_amount_to_wrap):
 
     return transaction
 
+
+
+
+
+def send_message_to_frontend(payload):
+    from channels.layers import get_channel_layer
+    from asgiref.sync import async_to_sync   
+
+
+    channel_layer = get_channel_layer()
+
+    async_to_sync(channel_layer.group_send)(
+        'room_group_name',  # The group name
+        {
+        'type': 'message_channel_dashboard',
+        'message': {
+            "topic": "update_positions_table",
+            "payload": payload
+            }
+        }
+    )
+    

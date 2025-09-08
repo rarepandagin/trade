@@ -58,19 +58,20 @@ def handle_a_pulse(request):
                     order.save()
 
 
-
                 payload =  {
                         "positions_dict": positions_dict,
                         "alarm": "",
                         "admin_settings": tk.serialize_object(admin_settings),
                     }
 
+                tk.send_message_to_frontend(payload)
+
 
                 admin_settings.pulses_are_being_blocked = False
                 admin_settings.save()
 
 
-                return {'interval': admin_settings.interval, "payload": payload}
+                return {'interval': admin_settings.interval}
 
                 
 
