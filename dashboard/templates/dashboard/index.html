@@ -13,7 +13,7 @@
     <div class="col-10">
 
 
-        <div class="d-flex justify-content-between" >
+        <div class="d-flex justify-content-between  flex-sm-row flex-column" >
              {% if admin_settings.pulses_are_being_blocked %}
 
                 <form method="POST">
@@ -36,7 +36,7 @@
             {% endif %}   
 
             <div>
-                <div class="d-flex justify-content-between" >
+                <div class="d-flex justify-content-between " >
                     <a href="/admin34k5jh34KJSHDF345kjh2234sdf" class="mx-5">admin</a>
                     <a href="/logout">logout</a>
 
@@ -44,7 +44,7 @@
             </div>         
         </div>
 
-        <div class="d-flex justify-content-start mt-2 mb-2 gap-5">
+        <div class="d-flex justify-content-start mt-2 mb-2 gap-5  flex-sm-row flex-column">
 
 
                 <form method="POST" class="d-flex justify-content-start gap-1">
@@ -71,7 +71,7 @@
             
         </div>
             
-        <div class="d-flex justify-content-end mt-2 mb-2 gap-5">
+        <div class="d-flex justify-content-end mt-2 mb-2 gap-5  flex-sm-row flex-column">
 
 
 
@@ -114,11 +114,11 @@
         </div>
         
 
-        <div class="d-flex justify-content-start border rounded p-2">
+        <div class="d-flex justify-content-startborder rounded p-2  flex-sm-row flex-column ">
             <p class="me-3"><strong>Balances:</strong></p>
 
             
-            <div class="d-flex justify-content-start ms-5">
+            <div class="d-flex justify-content-startms-5  flex-sm-row flex-column ">
                 <p class="me-3"><strong>eth</strong></p>
                 <div>
                     <p class=" mb-0" id="admin_settings_balances_eth"> </p>
@@ -129,7 +129,7 @@
 
             {% for coin in coins %}
 
-                <div class="d-flex justify-content-start ms-5">
+                <div class="d-flex justify-content-start ms-5 flex-sm-row flex-column ">
                     <p class="me-3"><strong>{{coin}}</strong></p>
                     <div>
                         <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
@@ -142,7 +142,7 @@
             
             {% for coin in fiat_coins %}
 
-                <div class="d-flex justify-content-start ms-5">
+                <div class="d-flex justify-content-start ms-5  flex-sm-row flex-column">
                     <p class="me-3"><strong>{{coin}}</strong></p>
                     <div>
                         <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>

@@ -16,8 +16,6 @@ from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync   
-from threading import Thread
-# import asyncio
 
 @never_cache
 @csrf_exempt
@@ -115,35 +113,10 @@ def send_message_to_frontend(payload):
 @csrf_exempt
 @require_http_methods(["POST"])
 def api_view(request):
-    ret = {}
 
     ret = handle_a_pulse(request)
 
-    
     if 'payload' in ret:
-
-        # from mysite.dispatch import send_message_to_frontend_async
-
         send_message_to_frontend(ret['payload'])
-
-        # await asyncio.run(send_message_to_frontend_async(ret['pyload']))   
-        # t = Thread(target=send_message_to_frontend, args=(ret['payload'],))
-        # t.start()
-        tk.logger.info(f'send_message_to_frontend')
-
-        # channel_layer = get_channel_layer()
-
-        # async_to_sync(channel_layer.group_send)(
-        #     'room_group_name',  # The group name
-        #     {
-        #     'type': 'message_channel_dashboard',
-        #     'message': {
-        #         "topic": "update_positions_table",
-        #         "payload": ret['payload']
-        #         }
-        #     }
-        # )
-        pass
-
 
     return HttpResponse(json.dumps(ret))
