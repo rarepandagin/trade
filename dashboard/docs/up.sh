@@ -7,6 +7,7 @@ sudo systemctl stop pulse_maker.service
 rm -rf trade/
 git clone git@github.com:rarepandagin/trade.git
 cp -rf trade/* ./myprojectdir/
+rm -rf trade/
 
 rm -rf trade_beats/
 git clone git@github.com:rarepandagin/trade_beats.git
@@ -32,6 +33,10 @@ rm /home/sammy/trade_beats/logs.txt
 
 
 source ~/myprojectdir/myprojectenv/bin/activate
+
+
+rm -rf /home/sammy/myprojectdir/static
+
 python ~/myprojectdir/manage.py collectstatic
 
 
@@ -40,7 +45,7 @@ python /home/sammy/myprojectdir/manage.py migrate
 
 
 # echo "Daemon Reload"
-# sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 
 echo "Postgres"
 sudo systemctl restart postgresql
