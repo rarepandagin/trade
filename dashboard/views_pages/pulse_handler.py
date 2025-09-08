@@ -9,7 +9,7 @@ from asgiref.sync import async_to_sync
 
 
 
-def handle_ws_pulse(request):
+def handle_a_pulse(request):
 
         payload = json.loads(request.body.decode('utf-8'))
 
@@ -22,11 +22,11 @@ def handle_ws_pulse(request):
                 admin_settings = tk.get_admin_settings()
 
                 if admin_settings.pulses_are_being_blocked:
-                    tk.logger.info(f'pulses_are_being_blocked in on. rejecting the pulse...')
+                    tk.logger.info(f'--------> XXxXX pulses are being blocked.')
                     return {}
 
                 else:
-                    tk.logger.info(f'effective pulse: {payload}')
+                    tk.logger.info(f'--------> effective pulse: {payload}')
 
                     admin_settings.pulses_are_being_blocked = True
                     admin_settings.save()
