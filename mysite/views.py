@@ -16,6 +16,7 @@ from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync   
+from threading import Thread
 
 @never_cache
 @csrf_exempt
@@ -86,6 +87,26 @@ def login_view(request):
 
 
 
+def heart_beat_thread(payload):
+
+
+    channel_layer = get_channel_layer()
+
+    async_to_sync(channel_layer.group_send)(
+        'room_group_name',  # The group name
+        {
+        'type': 'message_channel_dashboard',
+        'message': {
+            "topic": "update_positions_table",
+            "payload": payload
+            }
+        }
+    )
+    
+                
+
+
+
 
 @never_cache
 @csrf_exempt
@@ -96,17 +117,23 @@ def api_view(request):
     ret = handle_a_pulse(request)
 
     
-    if 'message' in ret:
-        
-        channel_layer = get_channel_layer()
+    if 'payload' in ret:
 
-        async_to_sync(channel_layer.group_send)(
-            'room_group_name',  # The group name
-            {
-                'type': 'message.channel.dashboard',
-                'message': ret['message']
-            }
-        )
+        t = Thread(target=heart_beat_thread, args=(ret['payload'],))
+        t.start()
+
+        # channel_layer = get_channel_layer()
+
+        # async_to_sync(channel_layer.group_send)(
+        #     'room_group_name',  # The group name
+        #     {
+        #     'type': 'message_channel_dashboard',
+        #     'message': {
+        #         "topic": "update_positions_table",
+        #         "payload": ret['payload']
+        #         }
+        #     }
+        # )
 
 
     return HttpResponse(json.dumps(ret))

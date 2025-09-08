@@ -56,23 +56,18 @@ def handle_a_pulse(request):
 
 
 
-                message = {
-                    "topic": "update_positions_table",
-                    "payload": {
+                payload =  {
                         "positions_dict": positions_dict,
                         "alarm": "",
                         "admin_settings": tk.serialize_object(admin_settings),
                     }
-                }
-                
-
 
 
                 admin_settings.pulses_are_being_blocked = False
                 admin_settings.save()
 
 
-                return {'interval': admin_settings.interval, "message": message}
+                return {'interval': admin_settings.interval, "payload": payload}
 
                 
 
