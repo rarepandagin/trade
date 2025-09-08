@@ -124,3 +124,543 @@
 2025-09-08 12:05:48.346557 - send_message_to_frontend
 2025-09-08 12:05:53.420651 - --------> effective pulse: {'epoch': 1757318753, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 12:05:53.434763 - send_message_to_frontend
+2025-09-08 12:05:58.502000 - --------> effective pulse: {'epoch': 1757318758, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:05:58.520430 - send_message_to_frontend
+2025-09-08 12:06:03.587377 - --------> effective pulse: {'epoch': 1757318763, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:03.612950 - send_message_to_frontend
+2025-09-08 12:06:08.697930 - --------> effective pulse: {'epoch': 1757318768, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:08.721695 - send_message_to_frontend
+2025-09-08 12:06:13.798577 - --------> effective pulse: {'epoch': 1757318773, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:13.814693 - send_message_to_frontend
+2025-09-08 12:06:18.894605 - --------> effective pulse: {'epoch': 1757318778, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:18.909769 - send_message_to_frontend
+2025-09-08 12:06:23.991264 - --------> effective pulse: {'epoch': 1757318783, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:24.017021 - send_message_to_frontend
+2025-09-08 12:06:29.093750 - --------> effective pulse: {'epoch': 1757318789, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:29.120694 - send_message_to_frontend
+2025-09-08 12:06:34.191227 - --------> effective pulse: {'epoch': 1757318794, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:34.207678 - send_message_to_frontend
+2025-09-08 12:06:39.271207 - --------> effective pulse: {'epoch': 1757318799, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:39.294568 - send_message_to_frontend
+2025-09-08 12:06:44.343135 - --------> effective pulse: {'epoch': 1757318804, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:44.368984 - send_message_to_frontend
+2025-09-08 12:06:49.427018 - --------> effective pulse: {'epoch': 1757318809, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:49.443030 - send_message_to_frontend
+2025-09-08 12:06:54.500614 - --------> effective pulse: {'epoch': 1757318814, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:54.528318 - send_message_to_frontend
+2025-09-08 12:06:59.601717 - --------> effective pulse: {'epoch': 1757318819, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:06:59.617080 - send_message_to_frontend
+2025-09-08 12:07:04.676908 - --------> effective pulse: {'epoch': 1757318824, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:04.710057 - send_message_to_frontend
+2025-09-08 12:07:09.755702 - --------> effective pulse: {'epoch': 1757318829, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:09.811383 - send_message_to_frontend
+2025-09-08 12:07:14.881924 - --------> effective pulse: {'epoch': 1757318834, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:14.907251 - send_message_to_frontend
+2025-09-08 12:07:19.965718 - --------> effective pulse: {'epoch': 1757318839, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:19.981810 - send_message_to_frontend
+2025-09-08 12:07:25.047191 - --------> effective pulse: {'epoch': 1757318844, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:25.062219 - send_message_to_frontend
+2025-09-08 12:07:30.262894 - --------> effective pulse: {'epoch': 1757318850, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:30.277525 - send_message_to_frontend
+2025-09-08 12:07:35.339596 - --------> effective pulse: {'epoch': 1757318855, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:35.356736 - send_message_to_frontend
+2025-09-08 12:07:40.402759 - --------> effective pulse: {'epoch': 1757318860, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:40.416012 - send_message_to_frontend
+2025-09-08 12:07:45.577467 - --------> effective pulse: {'epoch': 1757318865, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:45.605674 - send_message_to_frontend
+2025-09-08 12:07:50.691608 - --------> effective pulse: {'epoch': 1757318870, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:50.709257 - send_message_to_frontend
+2025-09-08 12:07:55.775844 - --------> effective pulse: {'epoch': 1757318875, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:07:55.801208 - send_message_to_frontend
+2025-09-08 12:08:00.876687 - --------> effective pulse: {'epoch': 1757318880, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:00.901906 - send_message_to_frontend
+2025-09-08 12:08:05.973389 - --------> effective pulse: {'epoch': 1757318885, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:05.986435 - send_message_to_frontend
+2025-09-08 12:08:11.060965 - --------> effective pulse: {'epoch': 1757318890, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:11.101410 - send_message_to_frontend
+2025-09-08 12:08:16.146723 - --------> effective pulse: {'epoch': 1757318896, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:16.175586 - send_message_to_frontend
+2025-09-08 12:08:21.245093 - --------> effective pulse: {'epoch': 1757318901, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:21.260602 - send_message_to_frontend
+2025-09-08 12:08:26.454407 - --------> effective pulse: {'epoch': 1757318906, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:26.481792 - send_message_to_frontend
+2025-09-08 12:08:31.547661 - --------> effective pulse: {'epoch': 1757318911, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:31.562163 - send_message_to_frontend
+2025-09-08 12:08:36.649448 - --------> effective pulse: {'epoch': 1757318916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:36.670935 - send_message_to_frontend
+2025-09-08 12:08:41.734769 - --------> effective pulse: {'epoch': 1757318921, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:41.749929 - send_message_to_frontend
+2025-09-08 12:08:46.819688 - --------> effective pulse: {'epoch': 1757318926, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:46.849294 - send_message_to_frontend
+2025-09-08 12:08:51.948069 - --------> effective pulse: {'epoch': 1757318931, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:51.961598 - send_message_to_frontend
+2025-09-08 12:08:57.039701 - --------> effective pulse: {'epoch': 1757318936, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:08:57.056592 - send_message_to_frontend
+2025-09-08 12:09:02.119848 - --------> effective pulse: {'epoch': 1757318942, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:02.144739 - send_message_to_frontend
+2025-09-08 12:09:07.214728 - --------> effective pulse: {'epoch': 1757318947, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:07.244767 - send_message_to_frontend
+2025-09-08 12:09:12.315516 - --------> effective pulse: {'epoch': 1757318952, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:12.343564 - send_message_to_frontend
+2025-09-08 12:09:17.401812 - --------> effective pulse: {'epoch': 1757318957, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:17.427698 - send_message_to_frontend
+2025-09-08 12:09:22.485742 - --------> effective pulse: {'epoch': 1757318962, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:22.513574 - send_message_to_frontend
+2025-09-08 12:09:27.586722 - --------> effective pulse: {'epoch': 1757318967, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:27.601231 - send_message_to_frontend
+2025-09-08 12:09:32.689688 - --------> effective pulse: {'epoch': 1757318972, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:32.717759 - send_message_to_frontend
+2025-09-08 12:09:37.782133 - --------> effective pulse: {'epoch': 1757318977, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:37.824339 - send_message_to_frontend
+2025-09-08 12:09:42.878974 - --------> effective pulse: {'epoch': 1757318982, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:42.903811 - send_message_to_frontend
+2025-09-08 12:09:47.970624 - --------> effective pulse: {'epoch': 1757318987, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:47.991960 - send_message_to_frontend
+2025-09-08 12:09:53.066490 - --------> effective pulse: {'epoch': 1757318992, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:53.093721 - send_message_to_frontend
+2025-09-08 12:09:58.161658 - --------> effective pulse: {'epoch': 1757318998, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:09:58.188310 - send_message_to_frontend
+2025-09-08 12:10:03.270748 - --------> effective pulse: {'epoch': 1757319003, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:03.295863 - send_message_to_frontend
+2025-09-08 12:10:08.359784 - --------> effective pulse: {'epoch': 1757319008, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:08.376705 - send_message_to_frontend
+2025-09-08 12:10:13.439648 - --------> effective pulse: {'epoch': 1757319013, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:13.454638 - send_message_to_frontend
+2025-09-08 12:10:18.513795 - --------> effective pulse: {'epoch': 1757319018, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:18.539131 - send_message_to_frontend
+2025-09-08 12:10:23.599561 - --------> effective pulse: {'epoch': 1757319023, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:23.614558 - send_message_to_frontend
+2025-09-08 12:10:28.677734 - --------> effective pulse: {'epoch': 1757319028, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:28.694679 - send_message_to_frontend
+2025-09-08 12:10:33.761843 - --------> effective pulse: {'epoch': 1757319033, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:33.787014 - send_message_to_frontend
+2025-09-08 12:10:38.849611 - --------> effective pulse: {'epoch': 1757319038, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:38.874827 - send_message_to_frontend
+2025-09-08 12:10:43.936340 - --------> effective pulse: {'epoch': 1757319043, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:43.952863 - send_message_to_frontend
+2025-09-08 12:10:49.010485 - --------> effective pulse: {'epoch': 1757319048, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:49.035835 - send_message_to_frontend
+2025-09-08 12:10:54.100411 - --------> effective pulse: {'epoch': 1757319054, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:54.118076 - send_message_to_frontend
+2025-09-08 12:10:59.202812 - --------> effective pulse: {'epoch': 1757319059, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:10:59.218915 - send_message_to_frontend
+2025-09-08 12:11:04.280604 - --------> effective pulse: {'epoch': 1757319064, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:04.297696 - send_message_to_frontend
+2025-09-08 12:11:09.371359 - --------> effective pulse: {'epoch': 1757319069, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:09.397667 - send_message_to_frontend
+2025-09-08 12:11:14.465779 - --------> effective pulse: {'epoch': 1757319074, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:14.492808 - send_message_to_frontend
+2025-09-08 12:11:19.575387 - --------> effective pulse: {'epoch': 1757319079, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:19.600301 - send_message_to_frontend
+2025-09-08 12:11:24.669936 - --------> effective pulse: {'epoch': 1757319084, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:24.686177 - send_message_to_frontend
+2025-09-08 12:11:29.754664 - --------> effective pulse: {'epoch': 1757319089, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:29.781995 - send_message_to_frontend
+2025-09-08 12:11:34.857362 - --------> effective pulse: {'epoch': 1757319094, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:34.872250 - send_message_to_frontend
+2025-09-08 12:11:39.938908 - --------> effective pulse: {'epoch': 1757319099, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:39.964728 - send_message_to_frontend
+2025-09-08 12:11:45.051542 - --------> effective pulse: {'epoch': 1757319104, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:11:45.461767 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (36, 4285.24, 4570, 4200, 4200, be137f13c94a433094c7cce452df85e0, t, reaching_min_profit_exit_price, 0, f, 66.45, 19.89, null, 1001.28, 1.28, 0.13, 24.52, 1.93, 0, 1757083034, 1757319105, 0, t, 3.34, auto_exit_style_only_after_min_profit, 5, 0.23335907700511938).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 45, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 114, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (36, 4285.24, 4570, 4200, 4200, be137f13c94a433094c7cce452df85e0, t, reaching_min_profit_exit_price, 0, f, 66.45, 19.89, null, 1001.28, 1.28, 0.13, 24.52, 1.93, 0, 1757083034, 1757319105, 0, t, 3.34, auto_exit_style_only_after_min_profit, 5, 0.23335907700511938).
+
+
+2025-09-08 12:11:49.522025 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:11:53.607378 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:11:57.671114 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:01.726932 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:05.804813 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:09.868591 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:13.955952 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:18.134688 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:22.191040 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:26.260985 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:30.349266 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:34.417461 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:38.471716 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:42.558197 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:46.601650 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:50.671729 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:54.726728 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:12:58.785653 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:02.859864 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:06.914874 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:10.986266 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:15.188531 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:19.254650 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:23.344862 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:27.412958 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:31.469387 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:35.560613 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:39.623999 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:43.689818 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:47.734910 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:51.816879 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:55.877730 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:13:59.939270 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:04.006372 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:08.085992 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:12.129512 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:16.188750 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:20.256709 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:24.301739 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:28.356362 - --------> XXxXX pulses are being blocked.
+2025-09-08 12:14:32.442903 - --------> effective pulse: {'epoch': 1757319272, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:14:32.472193 - send_message_to_frontend
+2025-09-08 12:14:37.516196 - --------> effective pulse: {'epoch': 1757319277, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:14:37.543224 - send_message_to_frontend
+2025-09-08 12:14:42.610522 - --------> effective pulse: {'epoch': 1757319282, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:14:42.637711 - send_message_to_frontend
+2025-09-08 12:14:47.717804 - --------> effective pulse: {'epoch': 1757319287, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:14:47.733155 - send_message_to_frontend
+2025-09-08 12:14:52.791065 - --------> effective pulse: {'epoch': 1757319292, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:14:52.807552 - send_message_to_frontend
+2025-09-08 12:14:57.876612 - --------> effective pulse: {'epoch': 1757319297, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:14:57.901347 - send_message_to_frontend
+2025-09-08 12:15:02.981620 - --------> effective pulse: {'epoch': 1757319302, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:03.006951 - send_message_to_frontend
+2025-09-08 12:15:08.057605 - --------> effective pulse: {'epoch': 1757319308, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:08.084755 - send_message_to_frontend
+2025-09-08 12:15:13.134890 - --------> effective pulse: {'epoch': 1757319313, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:13.160786 - send_message_to_frontend
+2025-09-08 12:15:18.211070 - --------> effective pulse: {'epoch': 1757319318, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:18.240129 - send_message_to_frontend
+2025-09-08 12:15:23.310677 - --------> effective pulse: {'epoch': 1757319323, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:23.326826 - send_message_to_frontend
+2025-09-08 12:15:28.387537 - --------> effective pulse: {'epoch': 1757319328, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:28.402875 - send_message_to_frontend
+2025-09-08 12:15:33.501251 - --------> effective pulse: {'epoch': 1757319333, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:33.516323 - send_message_to_frontend
+2025-09-08 12:15:38.589023 - --------> effective pulse: {'epoch': 1757319338, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:38.602956 - send_message_to_frontend
+2025-09-08 12:15:43.669860 - --------> effective pulse: {'epoch': 1757319343, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:43.686600 - send_message_to_frontend
+2025-09-08 12:15:48.750888 - --------> effective pulse: {'epoch': 1757319348, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:48.764719 - send_message_to_frontend
+2025-09-08 12:15:53.840610 - --------> effective pulse: {'epoch': 1757319353, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:53.870375 - send_message_to_frontend
+2025-09-08 12:15:58.957399 - --------> effective pulse: {'epoch': 1757319358, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:15:58.987623 - send_message_to_frontend
+2025-09-08 12:16:04.063353 - --------> effective pulse: {'epoch': 1757319363, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:04.079040 - send_message_to_frontend
+2025-09-08 12:16:09.159497 - --------> effective pulse: {'epoch': 1757319369, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:09.185625 - send_message_to_frontend
+2025-09-08 12:16:14.264467 - --------> effective pulse: {'epoch': 1757319374, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:14.291721 - send_message_to_frontend
+2025-09-08 12:16:19.360213 - --------> effective pulse: {'epoch': 1757319379, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:19.378421 - send_message_to_frontend
+2025-09-08 12:16:24.427637 - --------> effective pulse: {'epoch': 1757319384, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:24.446026 - send_message_to_frontend
+2025-09-08 12:16:29.499207 - --------> effective pulse: {'epoch': 1757319389, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:29.536436 - send_message_to_frontend
+2025-09-08 12:16:34.598892 - --------> effective pulse: {'epoch': 1757319394, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:34.626642 - send_message_to_frontend
+2025-09-08 12:16:39.682739 - --------> effective pulse: {'epoch': 1757319399, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:39.701945 - send_message_to_frontend
+2025-09-08 12:16:44.777955 - --------> effective pulse: {'epoch': 1757319404, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:44.804652 - send_message_to_frontend
+2025-09-08 12:16:49.873693 - --------> effective pulse: {'epoch': 1757319409, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:49.901778 - send_message_to_frontend
+2025-09-08 12:16:54.968083 - --------> effective pulse: {'epoch': 1757319414, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:16:54.986712 - send_message_to_frontend
+2025-09-08 12:17:00.061628 - --------> effective pulse: {'epoch': 1757319419, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:00.077748 - send_message_to_frontend
+2025-09-08 12:17:05.151773 - --------> effective pulse: {'epoch': 1757319425, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:05.168328 - send_message_to_frontend
+2025-09-08 12:17:10.226643 - --------> effective pulse: {'epoch': 1757319430, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:10.251209 - send_message_to_frontend
+2025-09-08 12:17:15.313020 - --------> effective pulse: {'epoch': 1757319435, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:15.341092 - send_message_to_frontend
+2025-09-08 12:17:20.409178 - --------> effective pulse: {'epoch': 1757319440, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:20.426781 - send_message_to_frontend
+2025-09-08 12:17:25.486876 - --------> effective pulse: {'epoch': 1757319445, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:25.504693 - send_message_to_frontend
+2025-09-08 12:17:30.577665 - --------> effective pulse: {'epoch': 1757319450, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:30.606637 - send_message_to_frontend
+2025-09-08 12:17:35.654798 - --------> effective pulse: {'epoch': 1757319455, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:35.683854 - send_message_to_frontend
+2025-09-08 12:17:40.752065 - --------> effective pulse: {'epoch': 1757319460, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:40.779538 - send_message_to_frontend
+2025-09-08 12:17:45.846857 - --------> effective pulse: {'epoch': 1757319465, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:45.868617 - send_message_to_frontend
+2025-09-08 12:17:50.938661 - --------> effective pulse: {'epoch': 1757319470, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:50.953684 - send_message_to_frontend
+2025-09-08 12:17:56.023904 - --------> effective pulse: {'epoch': 1757319475, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:17:56.043574 - send_message_to_frontend
+2025-09-08 12:18:01.117031 - --------> effective pulse: {'epoch': 1757319481, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:01.142071 - send_message_to_frontend
+2025-09-08 12:18:06.316616 - --------> effective pulse: {'epoch': 1757319486, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:06.343681 - send_message_to_frontend
+2025-09-08 12:18:11.412032 - --------> effective pulse: {'epoch': 1757319491, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:11.429561 - send_message_to_frontend
+2025-09-08 12:18:16.493156 - --------> effective pulse: {'epoch': 1757319496, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:16.517742 - send_message_to_frontend
+2025-09-08 12:18:21.607205 - --------> effective pulse: {'epoch': 1757319501, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:21.634765 - send_message_to_frontend
+2025-09-08 12:18:26.710991 - --------> effective pulse: {'epoch': 1757319506, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:26.737666 - send_message_to_frontend
+2025-09-08 12:18:31.786237 - --------> effective pulse: {'epoch': 1757319511, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:31.804003 - send_message_to_frontend
+2025-09-08 12:18:36.872840 - --------> effective pulse: {'epoch': 1757319516, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:36.899086 - send_message_to_frontend
+2025-09-08 12:18:41.974619 - --------> effective pulse: {'epoch': 1757319521, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:42.001683 - send_message_to_frontend
+2025-09-08 12:18:47.066810 - --------> effective pulse: {'epoch': 1757319527, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:47.092393 - send_message_to_frontend
+2025-09-08 12:18:52.181705 - --------> effective pulse: {'epoch': 1757319532, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:52.209578 - send_message_to_frontend
+2025-09-08 12:18:57.279433 - --------> effective pulse: {'epoch': 1757319537, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:18:57.296533 - send_message_to_frontend
+2025-09-08 12:19:02.366891 - --------> effective pulse: {'epoch': 1757319542, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:02.381734 - send_message_to_frontend
+2025-09-08 12:19:07.457812 - --------> effective pulse: {'epoch': 1757319547, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:07.473840 - send_message_to_frontend
+2025-09-08 12:19:12.559414 - --------> effective pulse: {'epoch': 1757319552, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:12.586893 - send_message_to_frontend
+2025-09-08 12:19:17.694958 - --------> effective pulse: {'epoch': 1757319557, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:17.709765 - send_message_to_frontend
+2025-09-08 12:19:22.765704 - --------> effective pulse: {'epoch': 1757319562, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:22.793197 - send_message_to_frontend
+2025-09-08 12:19:27.860904 - --------> effective pulse: {'epoch': 1757319567, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:27.887130 - send_message_to_frontend
+2025-09-08 12:19:32.975472 - --------> effective pulse: {'epoch': 1757319572, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:32.989895 - send_message_to_frontend
+2025-09-08 12:19:38.067995 - --------> effective pulse: {'epoch': 1757319577, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:38.083592 - send_message_to_frontend
+2025-09-08 12:19:43.148035 - --------> effective pulse: {'epoch': 1757319583, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:43.175295 - send_message_to_frontend
+2025-09-08 12:19:48.248180 - --------> effective pulse: {'epoch': 1757319588, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:48.274572 - send_message_to_frontend
+2025-09-08 12:19:53.343108 - --------> effective pulse: {'epoch': 1757319593, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:53.368656 - send_message_to_frontend
+2025-09-08 12:19:58.425793 - --------> effective pulse: {'epoch': 1757319598, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:19:58.455432 - send_message_to_frontend
+2025-09-08 12:20:03.525566 - --------> effective pulse: {'epoch': 1757319603, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:03.569559 - send_message_to_frontend
+2025-09-08 12:20:08.668947 - --------> effective pulse: {'epoch': 1757319608, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:08.711316 - send_message_to_frontend
+2025-09-08 12:20:13.779296 - --------> effective pulse: {'epoch': 1757319613, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:13.805776 - send_message_to_frontend
+2025-09-08 12:20:18.875859 - --------> effective pulse: {'epoch': 1757319618, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:18.930398 - send_message_to_frontend
+2025-09-08 12:20:24.011539 - --------> effective pulse: {'epoch': 1757319623, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:24.040164 - send_message_to_frontend
+2025-09-08 12:20:29.109124 - --------> effective pulse: {'epoch': 1757319629, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:29.123684 - send_message_to_frontend
+2025-09-08 12:20:34.192954 - --------> effective pulse: {'epoch': 1757319634, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:34.208930 - send_message_to_frontend
+2025-09-08 12:20:39.274799 - --------> effective pulse: {'epoch': 1757319639, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:39.289982 - send_message_to_frontend
+2025-09-08 12:20:44.337321 - --------> effective pulse: {'epoch': 1757319644, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:44.353676 - send_message_to_frontend
+2025-09-08 12:20:49.417086 - --------> effective pulse: {'epoch': 1757319649, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:49.441763 - send_message_to_frontend
+2025-09-08 12:20:54.535570 - --------> effective pulse: {'epoch': 1757319654, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:54.549537 - send_message_to_frontend
+2025-09-08 12:20:59.665806 - --------> effective pulse: {'epoch': 1757319659, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:20:59.691606 - send_message_to_frontend
+2025-09-08 12:21:04.760710 - --------> effective pulse: {'epoch': 1757319664, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:04.785875 - send_message_to_frontend
+2025-09-08 12:21:09.830154 - --------> effective pulse: {'epoch': 1757319669, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:09.844990 - send_message_to_frontend
+2025-09-08 12:21:14.910135 - --------> effective pulse: {'epoch': 1757319674, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:14.928746 - send_message_to_frontend
+2025-09-08 12:21:19.990358 - --------> effective pulse: {'epoch': 1757319679, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:20.015974 - send_message_to_frontend
+2025-09-08 12:21:25.080117 - --------> effective pulse: {'epoch': 1757319685, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:25.111862 - send_message_to_frontend
+2025-09-08 12:21:30.183902 - --------> effective pulse: {'epoch': 1757319690, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:30.210356 - send_message_to_frontend
+2025-09-08 12:21:35.259103 - --------> effective pulse: {'epoch': 1757319695, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:35.273699 - send_message_to_frontend
+2025-09-08 12:21:40.371534 - --------> effective pulse: {'epoch': 1757319700, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:40.398710 - send_message_to_frontend
+2025-09-08 12:21:45.449111 - --------> effective pulse: {'epoch': 1757319705, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:45.496281 - send_message_to_frontend
+2025-09-08 12:21:50.566914 - --------> effective pulse: {'epoch': 1757319710, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:50.593870 - send_message_to_frontend
+2025-09-08 12:21:55.650835 - --------> effective pulse: {'epoch': 1757319715, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:21:55.679346 - send_message_to_frontend
+2025-09-08 12:22:00.726956 - --------> effective pulse: {'epoch': 1757319720, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:00.743054 - send_message_to_frontend
+2025-09-08 12:22:05.787329 - --------> effective pulse: {'epoch': 1757319725, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:05.811954 - send_message_to_frontend
+2025-09-08 12:22:10.907582 - --------> effective pulse: {'epoch': 1757319730, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:10.932226 - send_message_to_frontend
+2025-09-08 12:22:16.028252 - --------> effective pulse: {'epoch': 1757319735, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:16.053842 - send_message_to_frontend
+2025-09-08 12:22:21.146347 - --------> effective pulse: {'epoch': 1757319741, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:21.173863 - send_message_to_frontend
+2025-09-08 12:22:26.218604 - --------> effective pulse: {'epoch': 1757319746, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:26.231538 - send_message_to_frontend
+2025-09-08 12:22:31.282937 - --------> effective pulse: {'epoch': 1757319751, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:31.299014 - send_message_to_frontend
+2025-09-08 12:22:36.347567 - --------> effective pulse: {'epoch': 1757319756, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:36.363768 - send_message_to_frontend
+2025-09-08 12:22:41.428830 - --------> effective pulse: {'epoch': 1757319761, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:41.457920 - send_message_to_frontend
+2025-09-08 12:22:46.523194 - --------> effective pulse: {'epoch': 1757319766, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:46.547161 - send_message_to_frontend
+2025-09-08 12:22:51.632978 - --------> effective pulse: {'epoch': 1757319771, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:51.647277 - send_message_to_frontend
+2025-09-08 12:22:56.710621 - --------> effective pulse: {'epoch': 1757319776, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:22:56.736849 - send_message_to_frontend
+2025-09-08 12:23:01.814711 - --------> effective pulse: {'epoch': 1757319781, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:01.841235 - send_message_to_frontend
+2025-09-08 12:23:06.917973 - --------> effective pulse: {'epoch': 1757319786, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:06.933056 - send_message_to_frontend
+2025-09-08 12:23:11.995946 - --------> effective pulse: {'epoch': 1757319791, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:12.011973 - send_message_to_frontend
+2025-09-08 12:23:17.079950 - --------> effective pulse: {'epoch': 1757319797, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:17.094650 - send_message_to_frontend
+2025-09-08 12:23:22.144618 - --------> effective pulse: {'epoch': 1757319802, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:22.160816 - send_message_to_frontend
+2025-09-08 12:23:27.229375 - --------> effective pulse: {'epoch': 1757319807, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:27.245412 - send_message_to_frontend
+2025-09-08 12:23:32.313003 - --------> effective pulse: {'epoch': 1757319812, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:32.339622 - send_message_to_frontend
+2025-09-08 12:23:37.419287 - --------> effective pulse: {'epoch': 1757319817, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:37.458493 - send_message_to_frontend
+2025-09-08 12:23:42.536631 - --------> effective pulse: {'epoch': 1757319822, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:42.567133 - send_message_to_frontend
+2025-09-08 12:23:47.626824 - --------> effective pulse: {'epoch': 1757319827, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:47.642074 - send_message_to_frontend
+2025-09-08 12:23:52.685322 - --------> effective pulse: {'epoch': 1757319832, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:52.711646 - send_message_to_frontend
+2025-09-08 12:23:57.814913 - --------> effective pulse: {'epoch': 1757319837, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:23:57.842928 - send_message_to_frontend
+2025-09-08 12:24:02.907192 - --------> effective pulse: {'epoch': 1757319842, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:02.932122 - send_message_to_frontend
+2025-09-08 12:24:07.987581 - --------> effective pulse: {'epoch': 1757319847, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:08.003759 - send_message_to_frontend
+2025-09-08 12:24:13.094713 - --------> effective pulse: {'epoch': 1757319853, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:13.108446 - send_message_to_frontend
+2025-09-08 12:24:18.153857 - --------> effective pulse: {'epoch': 1757319858, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:18.181300 - send_message_to_frontend
+2025-09-08 12:24:23.244938 - --------> effective pulse: {'epoch': 1757319863, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:23.258953 - send_message_to_frontend
+2025-09-08 12:24:28.318930 - --------> effective pulse: {'epoch': 1757319868, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:28.363777 - send_message_to_frontend
+2025-09-08 12:24:33.417290 - --------> effective pulse: {'epoch': 1757319873, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:33.430766 - send_message_to_frontend
+2025-09-08 12:24:38.489128 - --------> effective pulse: {'epoch': 1757319878, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:38.537345 - send_message_to_frontend
+2025-09-08 12:24:43.597996 - --------> effective pulse: {'epoch': 1757319883, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:43.624812 - send_message_to_frontend
+2025-09-08 12:24:48.669597 - --------> effective pulse: {'epoch': 1757319888, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:48.684894 - send_message_to_frontend
+2025-09-08 12:24:53.755730 - --------> effective pulse: {'epoch': 1757319893, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:53.781822 - send_message_to_frontend
+2025-09-08 12:24:58.846170 - --------> effective pulse: {'epoch': 1757319898, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:24:58.871725 - send_message_to_frontend
+2025-09-08 12:25:03.930240 - --------> effective pulse: {'epoch': 1757319903, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:03.946236 - send_message_to_frontend
+2025-09-08 12:25:08.997625 - --------> effective pulse: {'epoch': 1757319908, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:09.024682 - send_message_to_frontend
+2025-09-08 12:25:14.067727 - --------> effective pulse: {'epoch': 1757319914, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:14.093728 - send_message_to_frontend
+2025-09-08 12:25:19.147880 - --------> effective pulse: {'epoch': 1757319919, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:19.178181 - send_message_to_frontend
+2025-09-08 12:25:24.261699 - --------> effective pulse: {'epoch': 1757319924, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:24.277908 - send_message_to_frontend
+2025-09-08 12:25:29.343932 - --------> effective pulse: {'epoch': 1757319929, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:29.359725 - send_message_to_frontend
+2025-09-08 12:25:34.425254 - --------> effective pulse: {'epoch': 1757319934, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:34.442919 - send_message_to_frontend
+2025-09-08 12:25:39.533104 - --------> effective pulse: {'epoch': 1757319939, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:39.560483 - send_message_to_frontend
+2025-09-08 12:25:44.618829 - --------> effective pulse: {'epoch': 1757319944, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:44.646034 - send_message_to_frontend
+2025-09-08 12:25:49.715654 - --------> effective pulse: {'epoch': 1757319949, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:49.743598 - send_message_to_frontend
+2025-09-08 12:25:54.811412 - --------> effective pulse: {'epoch': 1757319954, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:54.825128 - send_message_to_frontend
+2025-09-08 12:25:59.913610 - --------> effective pulse: {'epoch': 1757319959, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:25:59.926962 - send_message_to_frontend
+2025-09-08 12:26:04.996148 - --------> effective pulse: {'epoch': 1757319964, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:05.013845 - send_message_to_frontend
+2025-09-08 12:26:10.058236 - --------> effective pulse: {'epoch': 1757319970, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:10.084842 - send_message_to_frontend
+2025-09-08 12:26:15.144847 - --------> effective pulse: {'epoch': 1757319975, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:15.175710 - send_message_to_frontend
+2025-09-08 12:26:20.243935 - --------> effective pulse: {'epoch': 1757319980, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:20.259644 - send_message_to_frontend
+2025-09-08 12:26:25.339489 - --------> effective pulse: {'epoch': 1757319985, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:25.379543 - send_message_to_frontend
+2025-09-08 12:26:30.449798 - --------> effective pulse: {'epoch': 1757319990, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:30.477702 - send_message_to_frontend
+2025-09-08 12:26:35.543852 - --------> effective pulse: {'epoch': 1757319995, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:35.571642 - send_message_to_frontend
+2025-09-08 12:26:40.631002 - --------> effective pulse: {'epoch': 1757320000, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:40.646621 - send_message_to_frontend
+2025-09-08 12:26:45.710791 - --------> effective pulse: {'epoch': 1757320005, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:45.738478 - send_message_to_frontend
+2025-09-08 12:26:50.806963 - --------> effective pulse: {'epoch': 1757320010, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:50.833724 - send_message_to_frontend
+2025-09-08 12:26:55.910784 - --------> effective pulse: {'epoch': 1757320015, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:26:55.932907 - send_message_to_frontend
+2025-09-08 12:27:01.001170 - --------> effective pulse: {'epoch': 1757320020, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:01.026726 - send_message_to_frontend
+2025-09-08 12:27:06.086467 - --------> effective pulse: {'epoch': 1757320026, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:06.100994 - send_message_to_frontend
+2025-09-08 12:27:11.167018 - --------> effective pulse: {'epoch': 1757320031, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:11.194575 - send_message_to_frontend
+2025-09-08 12:27:16.253822 - --------> effective pulse: {'epoch': 1757320036, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:16.280561 - send_message_to_frontend
+2025-09-08 12:27:21.334893 - --------> effective pulse: {'epoch': 1757320041, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:21.360606 - send_message_to_frontend
+2025-09-08 12:27:26.422928 - --------> effective pulse: {'epoch': 1757320046, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:26.447128 - send_message_to_frontend
+2025-09-08 12:27:31.525702 - --------> effective pulse: {'epoch': 1757320051, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 12:27:31.540048 - send_message_to_frontend
