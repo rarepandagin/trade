@@ -402,7 +402,7 @@ class Uniswap():
 
             slipage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.3)
+            slipage_to_fee = trim_slipage(slipage, 0.5)
             admin_settings.added_slipage_multiplier_fiat_to_coin = slipage_to_fee
             admin_settings.save()
             tk.logger.info(f"slipage_to_fee: {slipage}")
@@ -426,7 +426,7 @@ class Uniswap():
             expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
             slipage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.1)
+            slipage_to_fee = trim_slipage(slipage, 0.15)
             admin_settings.added_slipage_multiplier_coin_to_fiat = slipage_to_fee
             admin_settings.save()
 
