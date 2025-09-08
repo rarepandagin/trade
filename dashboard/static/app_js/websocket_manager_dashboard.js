@@ -14,6 +14,7 @@ function ws_msg_handler(message_event) {
         console.log('.');
         
 
+
     } catch (error) {
         deactivate_busy_mode()
         console.error(error)

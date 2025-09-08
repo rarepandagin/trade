@@ -102,23 +102,23 @@
 
         </div>
         
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mt-5 flex-sm-row flex-column">
 
             {% for coin in coins %}
-                <div><p id="{{coin}}_price" class="h5"></p></div>
+                <div><p id="{{coin}}_price" ></p></div>
             {% endfor %}
 
-            <div><p id="gas_price" class="h5"></p></div>
+            <div><p id="gas_price" ></p></div>
             <div><p id="prices_update_epoch" class="small"></p></div>
             <div><p id="gas_update_epoch" class="small"></p></div>
         </div>
         
 
-        <div class="d-flex justify-content-startborder rounded p-2  flex-sm-row flex-column ">
-            <p class="me-3"><strong>Balances:</strong></p>
+        <div class="d-flex justify-content-start border rounded p-2  flex-sm-row flex-column ">
 
             
-            <div class="d-flex justify-content-startms-5  flex-sm-row flex-column ">
+            
+            <div class="d-flex justify-content-start ms-5 ">
                 <p class="me-3"><strong>eth</strong></p>
                 <div>
                     <p class=" mb-0" id="admin_settings_balances_eth"> </p>
@@ -129,7 +129,7 @@
 
             {% for coin in coins %}
 
-                <div class="d-flex justify-content-start ms-5 flex-sm-row flex-column ">
+                <div class="d-flex justify-content-start ms-5 ">
                     <p class="me-3"><strong>{{coin}}</strong></p>
                     <div>
                         <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
@@ -138,11 +138,12 @@
                 </div>
 
             {% endfor %}
+        </div>
+        <div class="d-flex justify-content-start border rounded p-2  flex-sm-row flex-column ">
 
-            
             {% for coin in fiat_coins %}
 
-                <div class="d-flex justify-content-start ms-5  flex-sm-row flex-column">
+                <div class="d-flex justify-content-start ms-5 ">
                     <p class="me-3"><strong>{{coin}}</strong></p>
                     <div>
                         <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
@@ -158,13 +159,13 @@
 
 
         <!-- NEW POSITION -->
-    <h1>New Order</h1>
+    <h1 class="mt-5">New Order</h1>
     <div class="border rounded p-2 mt-2 mb-5 ">
         
         <form method="POST">
             {% csrf_token %}
 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
 
                 <div class="d-flex justify-content-start">
                     <p>Name:</p>
@@ -191,7 +192,9 @@
                     <p>Entry capital:</p>
                     <input type="number" class="form-control form-control-sm" name="entry_capital" id="entry_capital" step="any" required/>
                 </div>
+            </div>
 
+            <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
 
                 <div class="d-flex justify-content-start" > 
                     <p>Stop loss price:</p>
@@ -200,7 +203,7 @@
 
 
 
-                <div class="d-flex justify-content-start">
+                <div class="d-flex justify-content-start gap-2 ">
                     <p>Min profit exit price:</p>
                     <input type="number" class="form-control form-control-sm" name="min_profit_exit_price" id="min_profit_exit_price" step="any" required/>
                 </div>
@@ -209,7 +212,7 @@
 
             </div>
                 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between gap-2  flex-sm-row flex-column ">
                 <p id="profit_amount_at_min_profit_exit_price"></p>
                 <p id="loss_amount_at_stop_loss_price"></p>
                 <p id="ambition_ratio"></p>
@@ -219,8 +222,12 @@
                 
                 <div class="d-flex justify-content-start">
                     <p id="most_recent_quote"></p>
-                    <button type="button"  class="btn btn-primary btn-sm m-1" onclick="update_both_way_quotes();">Quote</button>
+                    <button type="button"  class="btn btn-primary btn-sm ms-3" onclick="update_both_way_quotes();">Quote</button>
                 </div>
+            </div>
+
+
+            <div class="d-flex justify-content-between gap-2 mt-2  flex-sm-row flex-column ">
 
                 <div class="form-check ">
                       <input class="form-check-input" type="checkbox" value="" id="execute_order_now_with_live_price" name="execute_order_now_with_live_price">
@@ -277,7 +284,7 @@
                     <input type="text" name="update_order" hidden>
                     <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between  flex-sm-row flex-column gap-2">
 
                         <div>
                             <input type="text" class="form-control form-control-sm" name="order_action_set_name" value="{{order.name}}" style="width: 300px;"/>
@@ -320,7 +327,7 @@
 
 
 
-                <div class="d-flex justify-content-start border rounded p-1">
+                <div class="d-flex justify-content-start border rounded p-1 gap-2 flex-sm-row flex-column ">
 
                     <form method="POST">
                         {% csrf_token %}
@@ -342,9 +349,9 @@
                         {% csrf_token %}
                         <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
                         {% if order.active %}
-                            <button class="btn btn-primary  btn-success btn-sm m-1" name="order_deactivate">Deacticate order</button>
+                            <button class="btn btn-primary  btn-success btn-sm m-1" name="order_deactivate">Deactivate order</button>
                         {% else %}
-                            <button class="btn btn-primary btn-secondary btn-sm m-1" name="order_activate">Acticate order</button>
+                            <button class="btn btn-primary btn-secondary btn-sm m-1" name="order_activate">Activate order</button>
 
                         {% endif %}
                     </form>
@@ -368,7 +375,7 @@
         <div class="border rounded p-2 mb-5">
 
 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between  flex-sm-row flex-column  gap-2">
 
                 <div id="position_{{position.uuid}}_first_cell_html"></div>
 
@@ -383,7 +390,7 @@
             </div>
 
 
-            <div class="d-flex justify-content-between m-3">
+            <div class="d-flex justify-content-between m-3  flex-sm-row flex-column  gap-2">
 
                 {% if position.active %}
                     <div>
@@ -392,7 +399,7 @@
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
                             <button class="btn btn-primary btn-sm" name="position_action_activate">
                                 {% if position.active %}
-                                    Dectivate
+                                    Deactivate
                                 {% else %}
                                     Activate
                                 {% endif %}
@@ -473,7 +480,7 @@
 
 
                     
-                    <div class="d-flex justify-content-between txrow border p-1 mb-1">
+                    <div class="d-flex justify-content-between txrow border p-1 mb-1  flex-sm-row flex-column  gap-2">
                         <div>slipage: {{transaction.slipage}}</div>
                         <div>fee: {{transaction.fee}}</div>
                         <div>name: <a href="https://etherscan.io/tx/{{transaction.hash}}" target="_blank">{{transaction.name}}</a></div>
@@ -590,48 +597,48 @@
     </div>
 
 
-    <!-- CHART -->
-    <div id="chart_container"></div>
+
+        <div>
+            <h1>Events</h1>
+
+            <form method="POST">
+                
+                {% csrf_token %}
+
+                {% for position in positions %}
+                    <h5 class="p-2  border rounded">{{position.name}}</h5>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
 
 
+                        <div class="d-flex justify-content-start">
+                            <input type="text" name="position_uuid" value="{{position.uuid}}" hidden />
+                            <button type="submit" name="delete_position_events" class="btn btn-warning btn-sm m-1">Delete position events</button>
+                        </div>
+
+                    </form>
+
+                    {% for event in position.event_set.all %}
+                        <div class="form-check m-0 mb-2">
+                            <input class="form-check-input" type="checkbox" value="{{event.uuid}}" name="event_delete" id="flexCheckDefault{{event.uuid}}">
+                            <label class="form-check-label" for="flexCheckDefault{{event.uuid}}">
+                                <p class="m-0 mb-2" style="font-size: 11px;"><span  style="font-size: 8px;">{% epoch_to_datetime event.epoch_created %}</span> {{event.description}}</p>
+                            </label>
+                        </div>
+                    {% endfor %}
+                    
+
+                {% endfor %}
+
+
+            </form>
+        </div>
     </div>
 
     <!-- EVENTS -->
     <div class="col-2">
-
-        <h4>Events</h4>
-        <form method="POST">
-            
-            {% csrf_token %}
-
-            {% for position in positions %}
-                <h5 class="p-2  border rounded">{{position.name}}</h5>
-                
-                <form method="POST">
-                    {% csrf_token %}
-
-
-                    <div class="d-flex justify-content-start">
-                        <input type="text" name="position_uuid" value="{{position.uuid}}" hidden />
-                        <button type="submit" name="delete_position_events" class="btn btn-warning btn-sm m-1">Delete position events</button>
-                    </div>
-
-                </form>
-
-                {% for event in position.event_set.all %}
-                    <div class="form-check m-0 mb-2">
-                        <input class="form-check-input" type="checkbox" value="{{event.uuid}}" name="event_delete" id="flexCheckDefault{{event.uuid}}">
-                        <label class="form-check-label" for="flexCheckDefault{{event.uuid}}">
-                            <p class="m-0 mb-2" style="font-size: 11px;"><span  style="font-size: 8px;">{% epoch_to_datetime event.epoch_created %}</span> {{event.description}}</p>
-                        </label>
-                    </div>
-                {% endfor %}
-                
-
-            {% endfor %}
-
-
-        </form>
+        <textarea class="form-control" id="logger_textarea" rows="90"></textarea>
 
     </div>
     

@@ -402,6 +402,10 @@ function update_positions_table(payload){
 
 function logger_to_frontend(payload){
     console.log(payload);
+
+    const textarea = document.getElementById('logger_textarea');
+    textarea.value = `${payload}\n${textarea.value}`;   
+
 }
 
 
