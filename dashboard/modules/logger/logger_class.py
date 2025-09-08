@@ -19,4 +19,4 @@ class logger_model:
 
         print(content)
 
-        tk.send_message_to_frontend(topic='backend_process_ongoing', payload=message)
+        tk.send_message_to_frontend(topic='logger_to_frontend', payload=message)

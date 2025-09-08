@@ -160,3 +160,12 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+
+
+if DEBUG:
+    import os
+    from dotenv import load_dotenv
+    env_filepath = "C:\\Users\\user\\Desktop\\.env"
+
+    load_dotenv(env_filepath)

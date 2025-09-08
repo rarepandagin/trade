@@ -90,7 +90,6 @@ class Transaction(models.Model):
 
     def actualize(self):
 
-        tk.send_message_to_frontend(topic='backend_process_ongoing', payload='backend_process_ongoing')
 
         # before actualizing any transaction, we need to make sure that the gas price is lower than a resonable amount
         admin_settings = tk.get_admin_settings()

@@ -400,7 +400,7 @@ function update_positions_table(payload){
 
 
 
-function backend_process_ongoing(payload){
+function logger_to_frontend(payload){
     console.log(payload);
 }
 

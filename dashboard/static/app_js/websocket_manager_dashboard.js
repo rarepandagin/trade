@@ -11,7 +11,7 @@ function ws_msg_handler(message_event) {
 
     try {
         incoming_message = JSON.parse(message_event.data).message;
-        console.log(incoming_message);
+        console.log('.');
         
 
     } catch (error) {
@@ -31,9 +31,9 @@ function ws_msg_handler(message_event) {
         update_positions_table(incoming_message.payload)
 
 
-    } else if (incoming_message.topic === "backend_process_ongoing"){
+    } else if (incoming_message.topic === "logger_to_frontend"){
         
-        backend_process_ongoing(incoming_message.payload)
+        logger_to_frontend(incoming_message.payload)
     
     
     }
