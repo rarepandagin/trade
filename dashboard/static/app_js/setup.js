@@ -10,7 +10,7 @@ function setup_ws(){
         protocol = 'wss'
     }
 
-    const conn_string = protocol + '://'+ window.location.host+ '/ws/dashboard/'+ 'x'+ '/';
+    const conn_string = protocol + '://'+ window.location.host+ '/ws/api/';
 
     const socket = new WebSocket(conn_string);
 

@@ -27,10 +27,10 @@ class websocker_consumer_dashboard(AsyncWebsocketConsumer):
 
     async def connect(self):
 
-        _, _, _, _, _ = self.scope['path'].split('/')
+        # _, _, _, _, _ = self.scope['path'].split('/')
 
-        self.room_name = f"chat_1"
-        self.room_group_name = self.room_name
+        self.room_name = "room_name"
+        self.room_group_name = "room_group_name"
 
         # Join room group
         await self.channel_layer.group_add(

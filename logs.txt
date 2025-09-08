@@ -11751,3 +11751,709 @@
 2025-09-08 08:13:51.362043 - --------> effective pulse: {'epoch': 1757304831, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 08:14:00.626512 - --------> effective pulse: {'epoch': 1757304838, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
 2025-09-08 08:14:05.752504 - --------> effective pulse: {'epoch': 1757304845, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:10.940773 - --------> effective pulse: {'epoch': 1757304850, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:16.057657 - --------> effective pulse: {'epoch': 1757304855, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:21.149899 - --------> effective pulse: {'epoch': 1757304861, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:26.252807 - --------> effective pulse: {'epoch': 1757304866, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:31.339934 - --------> effective pulse: {'epoch': 1757304871, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:36.403552 - --------> effective pulse: {'epoch': 1757304876, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:41.485211 - --------> effective pulse: {'epoch': 1757304881, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:46.546004 - --------> effective pulse: {'epoch': 1757304886, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:51.609570 - --------> effective pulse: {'epoch': 1757304891, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:14:56.684562 - --------> effective pulse: {'epoch': 1757304896, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:01.793858 - --------> effective pulse: {'epoch': 1757304901, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:06.876901 - --------> effective pulse: {'epoch': 1757304906, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:11.955871 - --------> effective pulse: {'epoch': 1757304911, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:17.010879 - --------> effective pulse: {'epoch': 1757304916, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:22.069045 - --------> effective pulse: {'epoch': 1757304922, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:27.139969 - --------> effective pulse: {'epoch': 1757304927, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:32.200521 - --------> effective pulse: {'epoch': 1757304932, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:37.302784 - --------> effective pulse: {'epoch': 1757304937, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:42.413152 - --------> effective pulse: {'epoch': 1757304942, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:47.494398 - --------> effective pulse: {'epoch': 1757304947, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:52.601037 - --------> effective pulse: {'epoch': 1757304952, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:15:57.714094 - --------> effective pulse: {'epoch': 1757304957, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:02.799093 - --------> effective pulse: {'epoch': 1757304962, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:07.915746 - --------> effective pulse: {'epoch': 1757304967, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:13.011406 - --------> effective pulse: {'epoch': 1757304972, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:18.101499 - --------> effective pulse: {'epoch': 1757304978, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:23.184659 - --------> effective pulse: {'epoch': 1757304983, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:28.279495 - --------> effective pulse: {'epoch': 1757304988, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:33.349945 - --------> effective pulse: {'epoch': 1757304993, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:38.429479 - --------> effective pulse: {'epoch': 1757304998, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:43.504951 - --------> effective pulse: {'epoch': 1757305003, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:48.569339 - --------> effective pulse: {'epoch': 1757305008, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:53.639178 - --------> effective pulse: {'epoch': 1757305013, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:16:58.731148 - --------> effective pulse: {'epoch': 1757305018, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:03.802404 - --------> effective pulse: {'epoch': 1757305023, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:08.881210 - --------> effective pulse: {'epoch': 1757305028, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:14.017148 - --------> effective pulse: {'epoch': 1757305033, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:19.105866 - --------> effective pulse: {'epoch': 1757305039, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:24.193529 - --------> effective pulse: {'epoch': 1757305044, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:29.290727 - --------> effective pulse: {'epoch': 1757305049, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:34.385040 - --------> effective pulse: {'epoch': 1757305054, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:39.467824 - --------> effective pulse: {'epoch': 1757305059, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:44.557532 - --------> effective pulse: {'epoch': 1757305064, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:49.674135 - --------> effective pulse: {'epoch': 1757305069, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:54.794139 - --------> effective pulse: {'epoch': 1757305074, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:17:59.887274 - --------> effective pulse: {'epoch': 1757305079, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:04.974745 - --------> effective pulse: {'epoch': 1757305084, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:10.094808 - --------> effective pulse: {'epoch': 1757305090, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:15.182776 - --------> effective pulse: {'epoch': 1757305095, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:20.356198 - --------> effective pulse: {'epoch': 1757305100, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:25.437322 - --------> effective pulse: {'epoch': 1757305105, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:30.515074 - --------> effective pulse: {'epoch': 1757305110, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:35.627979 - --------> effective pulse: {'epoch': 1757305115, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:40.753103 - --------> effective pulse: {'epoch': 1757305120, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:45.824329 - --------> effective pulse: {'epoch': 1757305125, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:50.911231 - --------> effective pulse: {'epoch': 1757305130, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:18:55.983882 - --------> effective pulse: {'epoch': 1757305135, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:01.060278 - --------> effective pulse: {'epoch': 1757305141, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:06.124258 - --------> effective pulse: {'epoch': 1757305146, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:11.220282 - --------> effective pulse: {'epoch': 1757305151, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:16.329872 - --------> effective pulse: {'epoch': 1757305156, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:21.434520 - --------> effective pulse: {'epoch': 1757305161, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:26.539981 - --------> effective pulse: {'epoch': 1757305166, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:31.655105 - --------> effective pulse: {'epoch': 1757305171, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:36.735200 - --------> effective pulse: {'epoch': 1757305176, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:41.806362 - --------> effective pulse: {'epoch': 1757305181, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:46.879976 - --------> effective pulse: {'epoch': 1757305186, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:51.982219 - --------> effective pulse: {'epoch': 1757305191, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:19:57.074403 - --------> effective pulse: {'epoch': 1757305197, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:02.171993 - --------> effective pulse: {'epoch': 1757305202, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:07.241859 - --------> effective pulse: {'epoch': 1757305207, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:12.358407 - --------> effective pulse: {'epoch': 1757305212, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:17.437129 - --------> effective pulse: {'epoch': 1757305217, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:22.524474 - --------> effective pulse: {'epoch': 1757305222, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:27.603299 - --------> effective pulse: {'epoch': 1757305227, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:32.694467 - --------> effective pulse: {'epoch': 1757305232, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:37.769180 - --------> effective pulse: {'epoch': 1757305237, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:42.841960 - --------> effective pulse: {'epoch': 1757305242, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:47.924550 - --------> effective pulse: {'epoch': 1757305247, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:53.013632 - --------> effective pulse: {'epoch': 1757305252, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:20:58.114046 - --------> effective pulse: {'epoch': 1757305258, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:03.214364 - --------> effective pulse: {'epoch': 1757305263, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:08.276399 - --------> effective pulse: {'epoch': 1757305268, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:13.361434 - --------> effective pulse: {'epoch': 1757305273, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:18.455118 - --------> effective pulse: {'epoch': 1757305278, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:23.664332 - --------> effective pulse: {'epoch': 1757305283, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:28.754513 - --------> effective pulse: {'epoch': 1757305288, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:33.817853 - --------> effective pulse: {'epoch': 1757305293, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:38.905523 - --------> effective pulse: {'epoch': 1757305298, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:43.980424 - --------> effective pulse: {'epoch': 1757305303, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:49.068030 - --------> effective pulse: {'epoch': 1757305309, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:54.206648 - --------> effective pulse: {'epoch': 1757305314, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:21:59.301224 - --------> effective pulse: {'epoch': 1757305319, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:04.396685 - --------> effective pulse: {'epoch': 1757305324, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:09.469266 - --------> effective pulse: {'epoch': 1757305329, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:14.550718 - --------> effective pulse: {'epoch': 1757305334, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:19.622685 - --------> effective pulse: {'epoch': 1757305339, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:24.700964 - --------> effective pulse: {'epoch': 1757305344, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:29.785349 - --------> effective pulse: {'epoch': 1757305349, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:34.861816 - --------> effective pulse: {'epoch': 1757305354, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:39.969626 - --------> effective pulse: {'epoch': 1757305359, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:45.047305 - --------> effective pulse: {'epoch': 1757305364, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:50.130688 - --------> effective pulse: {'epoch': 1757305370, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:22:55.197847 - --------> effective pulse: {'epoch': 1757305375, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:00.260431 - --------> effective pulse: {'epoch': 1757305380, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:05.354933 - --------> effective pulse: {'epoch': 1757305385, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:10.450184 - --------> effective pulse: {'epoch': 1757305390, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:15.532954 - --------> effective pulse: {'epoch': 1757305395, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:20.648949 - --------> effective pulse: {'epoch': 1757305400, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:25.773632 - --------> effective pulse: {'epoch': 1757305405, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:30.862635 - --------> effective pulse: {'epoch': 1757305410, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:35.949074 - --------> effective pulse: {'epoch': 1757305415, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:41.031851 - --------> effective pulse: {'epoch': 1757305420, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:46.126590 - --------> effective pulse: {'epoch': 1757305426, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:51.205050 - --------> effective pulse: {'epoch': 1757305431, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:23:56.320725 - --------> effective pulse: {'epoch': 1757305436, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:01.394650 - --------> effective pulse: {'epoch': 1757305441, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:06.450533 - --------> effective pulse: {'epoch': 1757305446, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:11.528845 - --------> effective pulse: {'epoch': 1757305451, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:16.589779 - --------> effective pulse: {'epoch': 1757305456, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:21.669451 - --------> effective pulse: {'epoch': 1757305461, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:26.737920 - --------> effective pulse: {'epoch': 1757305466, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:31.819005 - --------> effective pulse: {'epoch': 1757305471, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:36.883186 - --------> effective pulse: {'epoch': 1757305476, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:41.963715 - --------> effective pulse: {'epoch': 1757305481, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:47.061619 - --------> effective pulse: {'epoch': 1757305486, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:52.155172 - --------> effective pulse: {'epoch': 1757305492, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:24:57.216610 - --------> effective pulse: {'epoch': 1757305497, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:02.326728 - --------> effective pulse: {'epoch': 1757305502, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:07.428570 - --------> effective pulse: {'epoch': 1757305507, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:12.545158 - --------> effective pulse: {'epoch': 1757305512, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:17.631333 - --------> effective pulse: {'epoch': 1757305517, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:22.720559 - --------> effective pulse: {'epoch': 1757305522, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:27.818268 - --------> effective pulse: {'epoch': 1757305527, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:32.894717 - --------> effective pulse: {'epoch': 1757305532, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:37.989464 - --------> effective pulse: {'epoch': 1757305537, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:43.104875 - --------> effective pulse: {'epoch': 1757305543, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:48.209736 - --------> effective pulse: {'epoch': 1757305548, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:53.308895 - --------> effective pulse: {'epoch': 1757305553, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:25:58.377405 - --------> effective pulse: {'epoch': 1757305558, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:03.460984 - --------> effective pulse: {'epoch': 1757305563, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:08.589312 - --------> effective pulse: {'epoch': 1757305568, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:13.662897 - --------> effective pulse: {'epoch': 1757305573, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:18.741880 - --------> effective pulse: {'epoch': 1757305578, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:23.822803 - --------> effective pulse: {'epoch': 1757305583, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:28.912641 - --------> effective pulse: {'epoch': 1757305588, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:33.999437 - --------> effective pulse: {'epoch': 1757305593, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:39.098305 - --------> effective pulse: {'epoch': 1757305599, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:44.195140 - --------> effective pulse: {'epoch': 1757305604, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:49.284998 - --------> effective pulse: {'epoch': 1757305609, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:54.400091 - --------> effective pulse: {'epoch': 1757305614, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:26:59.473263 - --------> effective pulse: {'epoch': 1757305619, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:04.564286 - --------> effective pulse: {'epoch': 1757305624, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:09.653668 - --------> effective pulse: {'epoch': 1757305629, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:14.711814 - --------> effective pulse: {'epoch': 1757305634, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:19.793781 - --------> effective pulse: {'epoch': 1757305639, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:24.892479 - --------> effective pulse: {'epoch': 1757305644, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:29.990246 - --------> effective pulse: {'epoch': 1757305649, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:35.106443 - --------> effective pulse: {'epoch': 1757305655, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:40.176281 - --------> effective pulse: {'epoch': 1757305660, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:45.264662 - --------> effective pulse: {'epoch': 1757305665, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:50.327577 - --------> effective pulse: {'epoch': 1757305670, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:27:55.414585 - --------> effective pulse: {'epoch': 1757305675, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:00.489607 - --------> effective pulse: {'epoch': 1757305680, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:05.575851 - --------> effective pulse: {'epoch': 1757305685, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:10.671124 - --------> effective pulse: {'epoch': 1757305690, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:15.760377 - --------> effective pulse: {'epoch': 1757305695, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:20.842330 - --------> effective pulse: {'epoch': 1757305700, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:25.917088 - --------> effective pulse: {'epoch': 1757305705, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:30.994030 - --------> effective pulse: {'epoch': 1757305710, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:36.074886 - --------> effective pulse: {'epoch': 1757305716, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:41.151811 - --------> effective pulse: {'epoch': 1757305721, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:46.224334 - --------> effective pulse: {'epoch': 1757305726, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:51.325071 - --------> effective pulse: {'epoch': 1757305731, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:28:56.435246 - --------> effective pulse: {'epoch': 1757305736, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:01.526898 - --------> effective pulse: {'epoch': 1757305741, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:06.595723 - --------> effective pulse: {'epoch': 1757305746, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:11.689537 - --------> effective pulse: {'epoch': 1757305751, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:16.787446 - --------> effective pulse: {'epoch': 1757305756, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:21.874654 - --------> effective pulse: {'epoch': 1757305761, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:26.959968 - --------> effective pulse: {'epoch': 1757305766, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:32.022275 - --------> effective pulse: {'epoch': 1757305771, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:37.108520 - --------> effective pulse: {'epoch': 1757305777, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:42.180595 - --------> effective pulse: {'epoch': 1757305782, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:47.281246 - --------> effective pulse: {'epoch': 1757305787, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:52.384001 - --------> effective pulse: {'epoch': 1757305792, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:29:57.489733 - --------> effective pulse: {'epoch': 1757305797, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:02.587564 - --------> effective pulse: {'epoch': 1757305802, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:07.709303 - --------> effective pulse: {'epoch': 1757305807, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:12.805336 - --------> effective pulse: {'epoch': 1757305812, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:17.907189 - --------> effective pulse: {'epoch': 1757305817, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:22.991049 - --------> effective pulse: {'epoch': 1757305822, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:28.064356 - --------> effective pulse: {'epoch': 1757305828, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:33.172614 - --------> effective pulse: {'epoch': 1757305833, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:38.248203 - --------> effective pulse: {'epoch': 1757305838, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:43.340026 - --------> effective pulse: {'epoch': 1757305843, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:48.403485 - --------> effective pulse: {'epoch': 1757305848, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:53.467522 - --------> effective pulse: {'epoch': 1757305853, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:30:58.550700 - --------> effective pulse: {'epoch': 1757305858, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:03.650300 - --------> effective pulse: {'epoch': 1757305863, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:08.725691 - --------> effective pulse: {'epoch': 1757305868, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:13.828633 - --------> effective pulse: {'epoch': 1757305873, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:18.905942 - --------> effective pulse: {'epoch': 1757305878, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:24.013490 - --------> effective pulse: {'epoch': 1757305883, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:29.073055 - --------> effective pulse: {'epoch': 1757305889, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:34.148427 - --------> effective pulse: {'epoch': 1757305894, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:39.227453 - --------> effective pulse: {'epoch': 1757305899, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:44.338033 - --------> effective pulse: {'epoch': 1757305904, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:49.426158 - --------> effective pulse: {'epoch': 1757305909, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:54.501948 - --------> effective pulse: {'epoch': 1757305914, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:31:59.606928 - --------> effective pulse: {'epoch': 1757305919, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:04.672292 - --------> effective pulse: {'epoch': 1757305924, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:09.745421 - --------> effective pulse: {'epoch': 1757305929, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:14.836486 - --------> effective pulse: {'epoch': 1757305934, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:19.938735 - --------> effective pulse: {'epoch': 1757305939, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:25.018233 - --------> effective pulse: {'epoch': 1757305944, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:30.104525 - --------> effective pulse: {'epoch': 1757305950, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:35.207649 - --------> effective pulse: {'epoch': 1757305955, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:40.297975 - --------> effective pulse: {'epoch': 1757305960, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:45.389918 - --------> effective pulse: {'epoch': 1757305965, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:50.514838 - --------> effective pulse: {'epoch': 1757305970, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:32:55.621942 - --------> effective pulse: {'epoch': 1757305975, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:00.721944 - --------> effective pulse: {'epoch': 1757305980, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:05.817237 - --------> effective pulse: {'epoch': 1757305985, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:10.920585 - --------> effective pulse: {'epoch': 1757305990, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:16.019426 - --------> effective pulse: {'epoch': 1757305995, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:21.132977 - --------> effective pulse: {'epoch': 1757306001, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:26.239695 - --------> effective pulse: {'epoch': 1757306006, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:31.316848 - --------> effective pulse: {'epoch': 1757306011, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:36.401278 - --------> effective pulse: {'epoch': 1757306016, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:41.490282 - --------> effective pulse: {'epoch': 1757306021, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:46.597223 - --------> effective pulse: {'epoch': 1757306026, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:51.673824 - --------> effective pulse: {'epoch': 1757306031, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:33:56.758169 - --------> effective pulse: {'epoch': 1757306036, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:01.857819 - --------> effective pulse: {'epoch': 1757306041, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:06.938565 - --------> effective pulse: {'epoch': 1757306046, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:12.018221 - --------> effective pulse: {'epoch': 1757306051, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:17.136152 - --------> effective pulse: {'epoch': 1757306057, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:22.215717 - --------> effective pulse: {'epoch': 1757306062, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:27.315938 - --------> effective pulse: {'epoch': 1757306067, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:32.400683 - --------> effective pulse: {'epoch': 1757306072, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:37.482208 - --------> effective pulse: {'epoch': 1757306077, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:42.592664 - --------> effective pulse: {'epoch': 1757306082, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:47.675655 - --------> effective pulse: {'epoch': 1757306087, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:52.734951 - --------> effective pulse: {'epoch': 1757306092, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:34:57.811871 - --------> effective pulse: {'epoch': 1757306097, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:02.887257 - --------> effective pulse: {'epoch': 1757306102, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:07.968493 - --------> effective pulse: {'epoch': 1757306107, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:14.695103 - --------> effective pulse: {'epoch': 1757306112, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:19.782469 - --------> effective pulse: {'epoch': 1757306119, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:24.901782 - --------> effective pulse: {'epoch': 1757306124, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:29.976558 - --------> effective pulse: {'epoch': 1757306129, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:35.063265 - --------> effective pulse: {'epoch': 1757306134, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:35:42.060224 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:35:46.140380 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:35:50.223361 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:35:54.294840 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:35:58.357770 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:02.398556 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:06.481584 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:10.559817 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:14.618220 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:18.685240 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:22.735213 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:27.807081 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:31.868961 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:35.930107 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:40.004361 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:44.075145 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:48.133091 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:52.191996 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:36:56.259358 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:00.320902 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:04.389216 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:08.452331 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:20.148527 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:24.203730 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:28.248991 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:32.302077 - --------> effective pulse: {'epoch': 1757306252, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:37:36.561955 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 305, in connect_check_health
+    await self.retry.call_with_retry(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\retry.py", line 50, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 760, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1137, in create_connection
+    raise exceptions[0]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1107, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1010, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 729, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 803, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 599, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 72, in handle_a_pulse
+    async_to_sync(channel_layer.send)(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\asgiref\sync.py", line 262, in __call__
+    return call_result.result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\asgiref\sync.py", line 302, in main_wrap
+    result = await awaitable
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\channels_redis\core.py", line 191, in send
+    await connection.zremrangebyscore(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 1149, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 1182, in ensure_connection
+    await connection.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 315, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+
+2025-09-08 08:37:40.625021 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:44.681824 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:48.745317 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:52.821063 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:37:56.862728 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:00.915158 - --------> effective pulse: {'epoch': 1757306280, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:38:05.025215 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 305, in connect_check_health
+    await self.retry.call_with_retry(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\retry.py", line 50, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 760, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1137, in create_connection
+    raise exceptions[0]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1107, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1010, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 729, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 803, in _poll
+    value = callback(transferred, key, ov)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 599, in finish_connect
+    ov.getresult()
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 72, in handle_a_pulse
+    async_to_sync(channel_layer.send)(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\asgiref\sync.py", line 262, in __call__
+    return call_result.result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\asgiref\sync.py", line 302, in main_wrap
+    result = await awaitable
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\channels_redis\core.py", line 191, in send
+    await connection.zremrangebyscore(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 1149, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 1182, in ensure_connection
+    await connection.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\redis\asyncio\connection.py", line 315, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+
+2025-09-08 08:38:09.093929 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:13.154853 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:17.218782 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:21.285936 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:25.341611 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:29.418543 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:33.481783 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:37.539364 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:41.599554 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:45.679510 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:49.738707 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:53.829699 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:38:57.912509 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:02.000240 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:06.053668 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:10.156497 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:14.260197 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:18.341373 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:22.409400 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:26.469423 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:30.536213 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:34.598969 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:38.655601 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:42.712724 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:46.778050 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:50.842198 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:54.924138 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:39:59.000293 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:03.057368 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:07.121253 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:11.169567 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:15.239838 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:19.312423 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:23.401050 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:27.477382 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:31.551567 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:35.615724 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:39.673553 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:43.729283 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:47.787136 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:51.827654 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:55.882372 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:40:59.968249 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:04.030010 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:08.114933 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:12.182506 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:16.252188 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:20.317246 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:24.376861 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:28.454994 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:32.517735 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:36.578591 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:40.641145 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:44.709881 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:48.803194 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:52.872381 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:41:56.930311 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:00.998621 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:05.068227 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:09.128986 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:13.187120 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:17.248159 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:21.289058 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:25.337181 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:29.387440 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:33.457127 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:37.514318 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:41.589663 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:45.654171 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:49.736994 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:53.799560 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:42:57.856227 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:01.948067 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:06.016179 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:10.114784 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:14.187564 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:18.253263 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:22.320739 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:26.402919 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:30.458191 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:34.516614 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:38.585340 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:42.644956 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:46.721586 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:50.792969 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:54.848879 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:43:58.917554 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:02.988838 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:07.050096 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:11.118514 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:15.165759 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:19.244656 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:23.306255 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:27.374558 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:31.441125 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:35.484281 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:39.525761 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:43.570802 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:47.645699 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:51.705120 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:44:55.751618 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:01.931215 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:06.003881 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:10.087228 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:14.145756 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:18.199107 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:22.259052 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:26.355804 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:30.423394 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:34.517956 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:38.590415 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:42.660083 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:46.725947 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:50.812361 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:45:59.417660 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:03.483566 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:07.540580 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:11.606154 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:15.650896 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:19.712195 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:23.784910 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:27.872308 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:31.933395 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:35.999804 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:40.055179 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:44.140481 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:48.213417 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:52.279839 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:46:56.352664 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:00.428341 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:04.485211 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:10.193425 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:14.255140 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:18.312381 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:22.389026 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:26.453845 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:30.506528 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:47:34.582263 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:52:43.413676 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:52:47.494406 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:52:51.562740 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:52:55.660511 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:52:59.738567 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:03.783143 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:07.846571 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:11.935361 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:16.003940 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:20.051590 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:24.119131 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:28.201320 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:32.263249 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:36.321393 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:40.390316 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:44.946305 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:49.024111 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:53.120138 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:53:57.191443 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:01.252464 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:05.309735 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:21.263701 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:25.331032 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:29.382529 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:33.440445 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:37.509537 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:41.572485 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:45.643435 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:49.706161 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:53.783713 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:54:57.829382 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:01.899491 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:05.976504 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:10.041609 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:14.127128 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:18.198617 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:22.272735 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:26.346808 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:30.422051 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:34.485068 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:38.560327 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:42.623570 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:46.683352 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:50.774527 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:54.847953 - --------> XXxXX pulses are being blocked.
+2025-09-08 08:55:58.906347 - --------> effective pulse: {'epoch': 1757307358, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:04.015052 - --------> effective pulse: {'epoch': 1757307363, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:09.098421 - --------> effective pulse: {'epoch': 1757307369, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:14.191475 - --------> effective pulse: {'epoch': 1757307374, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:19.394408 - --------> effective pulse: {'epoch': 1757307379, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:24.511168 - --------> effective pulse: {'epoch': 1757307384, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:29.583024 - --------> effective pulse: {'epoch': 1757307389, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:34.668382 - --------> effective pulse: {'epoch': 1757307394, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:39.767576 - --------> effective pulse: {'epoch': 1757307399, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:44.844964 - --------> effective pulse: {'epoch': 1757307404, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:49.931546 - --------> effective pulse: {'epoch': 1757307409, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:56:55.055630 - --------> effective pulse: {'epoch': 1757307415, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:00.189927 - --------> effective pulse: {'epoch': 1757307420, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:05.251998 - --------> effective pulse: {'epoch': 1757307425, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:10.352801 - --------> effective pulse: {'epoch': 1757307430, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:15.452221 - --------> effective pulse: {'epoch': 1757307435, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:20.567000 - --------> effective pulse: {'epoch': 1757307440, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:25.629802 - --------> effective pulse: {'epoch': 1757307445, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:30.749784 - --------> effective pulse: {'epoch': 1757307450, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:35.857962 - --------> effective pulse: {'epoch': 1757307455, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:40.952333 - --------> effective pulse: {'epoch': 1757307460, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:46.030069 - --------> effective pulse: {'epoch': 1757307465, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:51.134735 - --------> effective pulse: {'epoch': 1757307471, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:56.227454 - --------> effective pulse: {'epoch': 1757307476, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:57:59.121109 - --------> effective pulse: {'epoch': 1757307478, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:04.248386 - --------> effective pulse: {'epoch': 1757307484, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:09.356174 - --------> effective pulse: {'epoch': 1757307489, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:14.476684 - --------> effective pulse: {'epoch': 1757307494, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:19.572277 - --------> effective pulse: {'epoch': 1757307499, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:24.670810 - --------> effective pulse: {'epoch': 1757307504, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:29.747688 - --------> effective pulse: {'epoch': 1757307509, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:34.855877 - --------> effective pulse: {'epoch': 1757307514, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:39.943242 - --------> effective pulse: {'epoch': 1757307519, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:45.026014 - --------> effective pulse: {'epoch': 1757307524, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:50.206005 - --------> effective pulse: {'epoch': 1757307530, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:58:55.279501 - --------> effective pulse: {'epoch': 1757307535, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:00.354104 - --------> effective pulse: {'epoch': 1757307540, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:05.975432 - --------> effective pulse: {'epoch': 1757307545, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:11.106295 - --------> effective pulse: {'epoch': 1757307551, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:17.181952 - --------> effective pulse: {'epoch': 1757307556, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:22.295408 - --------> effective pulse: {'epoch': 1757307562, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:27.399107 - --------> effective pulse: {'epoch': 1757307567, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:32.475622 - --------> effective pulse: {'epoch': 1757307572, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:37.564591 - --------> effective pulse: {'epoch': 1757307577, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:47.291351 - --------> effective pulse: {'epoch': 1757307586, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:52.429421 - --------> effective pulse: {'epoch': 1757307592, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 08:59:57.500319 - --------> effective pulse: {'epoch': 1757307597, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:05.253246 - --------> effective pulse: {'epoch': 1757307604, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:10.357405 - --------> effective pulse: {'epoch': 1757307610, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:15.453194 - --------> effective pulse: {'epoch': 1757307615, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:20.526939 - --------> effective pulse: {'epoch': 1757307620, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:25.617731 - --------> effective pulse: {'epoch': 1757307625, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:30.717001 - --------> effective pulse: {'epoch': 1757307630, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:38.331137 - --------> effective pulse: {'epoch': 1757307637, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:43.426996 - --------> effective pulse: {'epoch': 1757307643, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:48.519418 - --------> effective pulse: {'epoch': 1757307648, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:53.595041 - --------> effective pulse: {'epoch': 1757307653, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:00:58.661253 - --------> effective pulse: {'epoch': 1757307658, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:03.736773 - --------> effective pulse: {'epoch': 1757307663, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:08.844094 - --------> effective pulse: {'epoch': 1757307668, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:13.947059 - --------> effective pulse: {'epoch': 1757307673, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:19.046945 - --------> effective pulse: {'epoch': 1757307678, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:24.137121 - --------> effective pulse: {'epoch': 1757307684, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:29.225508 - --------> effective pulse: {'epoch': 1757307689, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:34.353439 - --------> effective pulse: {'epoch': 1757307694, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:39.480304 - --------> effective pulse: {'epoch': 1757307699, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:46.073122 - --------> effective pulse: {'epoch': 1757307704, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:51.225759 - --------> effective pulse: {'epoch': 1757307711, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:01:56.477723 - --------> effective pulse: {'epoch': 1757307716, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:01.598171 - --------> effective pulse: {'epoch': 1757307721, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:06.675315 - --------> effective pulse: {'epoch': 1757307726, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:11.762959 - --------> effective pulse: {'epoch': 1757307731, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:16.887799 - --------> effective pulse: {'epoch': 1757307736, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:22.466210 - --------> effective pulse: {'epoch': 1757307741, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:27.569032 - --------> effective pulse: {'epoch': 1757307747, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:33.218903 - --------> effective pulse: {'epoch': 1757307752, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:38.326692 - --------> effective pulse: {'epoch': 1757307758, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:43.409625 - --------> effective pulse: {'epoch': 1757307763, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:48.545629 - --------> effective pulse: {'epoch': 1757307768, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:53.656563 - --------> effective pulse: {'epoch': 1757307773, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:02:58.749547 - --------> effective pulse: {'epoch': 1757307778, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:03.858196 - --------> effective pulse: {'epoch': 1757307783, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:08.964329 - --------> effective pulse: {'epoch': 1757307788, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:14.046766 - --------> effective pulse: {'epoch': 1757307793, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:19.134730 - --------> effective pulse: {'epoch': 1757307799, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:24.191526 - --------> effective pulse: {'epoch': 1757307804, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:29.303398 - --------> effective pulse: {'epoch': 1757307809, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:34.392674 - --------> effective pulse: {'epoch': 1757307814, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:39.454887 - --------> effective pulse: {'epoch': 1757307819, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:44.543922 - --------> effective pulse: {'epoch': 1757307824, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:49.659257 - --------> effective pulse: {'epoch': 1757307829, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:54.779349 - --------> effective pulse: {'epoch': 1757307834, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:03:59.873402 - --------> effective pulse: {'epoch': 1757307839, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:04.992771 - --------> effective pulse: {'epoch': 1757307844, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:10.078671 - --------> effective pulse: {'epoch': 1757307850, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:15.294048 - --------> effective pulse: {'epoch': 1757307855, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:20.387653 - --------> effective pulse: {'epoch': 1757307860, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:25.470918 - --------> effective pulse: {'epoch': 1757307865, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:30.613878 - --------> effective pulse: {'epoch': 1757307870, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:35.691199 - --------> effective pulse: {'epoch': 1757307875, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:40.759670 - --------> effective pulse: {'epoch': 1757307880, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:43.567654 - --------> effective pulse: {'epoch': 1757307883, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:48.679294 - --------> effective pulse: {'epoch': 1757307888, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:53.779415 - --------> effective pulse: {'epoch': 1757307893, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:04:58.846930 - --------> effective pulse: {'epoch': 1757307898, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:03.920631 - --------> effective pulse: {'epoch': 1757307903, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:09.001329 - --------> effective pulse: {'epoch': 1757307908, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:14.080648 - --------> effective pulse: {'epoch': 1757307914, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:19.158747 - --------> effective pulse: {'epoch': 1757307919, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:24.247433 - --------> effective pulse: {'epoch': 1757307924, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:29.326974 - --------> effective pulse: {'epoch': 1757307929, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:34.420684 - --------> effective pulse: {'epoch': 1757307934, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:39.538644 - --------> effective pulse: {'epoch': 1757307939, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:44.634096 - --------> effective pulse: {'epoch': 1757307944, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:49.768489 - --------> effective pulse: {'epoch': 1757307949, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:54.835622 - --------> effective pulse: {'epoch': 1757307954, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:05:59.929132 - --------> effective pulse: {'epoch': 1757307959, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}
+2025-09-08 09:06:05.006927 - --------> effective pulse: {'epoch': 1757307964, 'key': 'XiKd2uXZuT5vBU5mr2Qi'}

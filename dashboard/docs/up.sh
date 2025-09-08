@@ -1,5 +1,9 @@
 #!/bin/sh
 
+sudo systemctl stop collector.service
+sudo systemctl stop pulse_maker.service
+
+
 rm -rf trade/
 git clone git@github.com:rarepandagin/trade.git
 cp -rf trade/* ./myprojectdir/
@@ -35,10 +39,10 @@ python /home/sammy/myprojectdir/manage.py migrate
 
 
 
-echo "Daemon Reload"
-sudo systemctl daemon-reload
+# echo "Daemon Reload"
+# sudo systemctl daemon-reload
 
-#echo "Postgres"
+echo "Postgres"
 sudo systemctl restart postgresql
 
 echo "Gunicorn"
@@ -46,20 +50,30 @@ sudo systemctl restart gunicorn
 sudo systemctl restart gunicorn.socket
 
 sudo systemctl restart gunicorn.service
-sudo systemctl start daphne.service
+
+
+# echo "Gunicorn"
+# sudo systemctl start daphne.service
 
 echo "Nginx"
 sudo systemctl restart nginx
 
 
+echo "Gunicorn"
 sudo systemctl restart daphne.service
 
 
-cd /home/sammy/trade_beats/
-chmod +x ./collector.py
-nohup python ./collector.py  > script1.log 2>&1 & 
+echo "Collector"
+sudo systemctl restart collector.service
+echo "Pulse Maker"
+sudo systemctl restart pulse_maker.service
 
-chmod +x ./pulse_maker.py
-nohup python ./pulse_maker.py > script2.log 2>&1 &
 
-tail -f /home/sammy/trade_beats/logs.txt
+# cd /home/sammy/trade_beats/
+# chmod +x ./collector.py
+# nohup python ./collector.py  > script1.log 2>&1 & 
+
+# chmod +x ./pulse_maker.py
+# nohup python ./pulse_maker.py > script2.log 2>&1 &
+
+# tail -f /home/sammy/trade_beats/logs.txt

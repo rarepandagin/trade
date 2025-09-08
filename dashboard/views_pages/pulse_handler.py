@@ -70,9 +70,9 @@ def handle_a_pulse(request):
                 channel_layer = get_channel_layer()
 
                 async_to_sync(channel_layer.group_send)(
-                    'chat_1',  # The group name
+                    'room_group_name',  # The group name
                     {
-                        'type': 'message_channel_dashboard',
+                        'type': 'message.channel.dashboard',
                         'message': message
                     }
                 )
