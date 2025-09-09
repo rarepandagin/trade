@@ -392,8 +392,10 @@ function update_positions_table(payload){
 
 
 
-
-
+$(".heart-container").addClass("beat");
+setTimeout(function() {
+    $(".heart-container").removeClass("beat");
+}, 1000);
     
 }
 

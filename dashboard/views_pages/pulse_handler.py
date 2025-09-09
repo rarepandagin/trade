@@ -81,7 +81,3 @@ def handle_a_pulse(request):
 
                 tk.logger.info(format_exc())
                 return {}
-
-            finally:
-                admin_settings.pulses_are_being_blocked = False
-                admin_settings.save()
