@@ -1030,7 +1030,7 @@ class Uniswap():
                     receipt = self.w3.eth.get_transaction_receipt(tx_hash)
                     break
                 except:
-                    time.sleep(0.05)
+                    time.sleep(0.3)
 
 
         except:
