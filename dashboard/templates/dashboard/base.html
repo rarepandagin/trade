@@ -31,7 +31,7 @@
 
 
 	{% if DEBUG %}
-		    <link href="{% static 'css/style.css' %}" rel="stylesheet"  crossorigin="anonymous">
+		    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 			<script src="{% static '/js/ports.js' %}"></script>
 			<script src="{% static '/js/ajax_handler.js' %}"></script>
@@ -39,7 +39,7 @@
 
 	{% else %}
 
-			<link href="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/style.css" rel="stylesheet">
+			<link href="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/style.css" rel="stylesheet"  crossorigin="anonymous">
 
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ports.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ajax_handler.js"></script>
