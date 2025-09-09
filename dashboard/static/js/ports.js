@@ -1,4 +1,6 @@
-
+let candle_chart_data;
+var coin = 'ETH';
+const verbose = false;
 
 
 function update_positions_table(payload){

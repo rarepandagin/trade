@@ -1,10 +1,12 @@
 
 
 .mainblock {
-    font: 100% / 1.4 monospace, sans-serif;
-    font-size: 14px;
 
     padding: 10px;
+
+    font-size: 14px;
+    font: 100% / 1.4 monospace, sans-serif;
+
     border-radius: 5px;
     border-style: solid;
     border-width: 1px;

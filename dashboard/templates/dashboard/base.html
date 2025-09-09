@@ -21,7 +21,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
 
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 	
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
@@ -31,19 +30,24 @@
 
 
 
+	{% if DEBUG %}
+		    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-			<script src="{% static '/js/global.js' %}"></script>
 			<script src="{% static '/js/ports.js' %}"></script>
 
-			<script src="{% static '/js/toolkit.js' %}"></script>
 
 			<script src="{% static '/js/ajax_handler.js' %}"></script>
 
-			<script src="{% static '/js/wss.js' %}"></script>
+			<script src="{% static '/js/websocket_manager.js' %}"></script>
+	{% else %}
 
+			<link href="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/style.css" rel="stylesheet">
 
-			<script src="{% static '/js/websocket_manager_dashboard.js' %}"></script>
+			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ports.js"></script>
+			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ajax_handler.js"></script>
+			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/websocket_manager.js"></script>
 
+	{% endif %}
 
 <!-- 
 			<link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" rel="stylesheet" type="text/css">

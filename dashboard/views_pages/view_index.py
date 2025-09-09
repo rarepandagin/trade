@@ -5,28 +5,8 @@ from .context import context_class
 from dashboard.views_pages.pulse_handler import handle_a_pulse
 
 from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
-# from channels.layers import get_channel_layer
-# from asgiref.sync import async_to_sync   
-# from threading import Thread
 
-
-
-# def heart_beat_thread(payload):
-
-
-#     channel_layer = get_channel_layer()
-
-#     async_to_sync(channel_layer.group_send)(
-#         'room_group_name',  # The group name
-#         {
-#         'type': 'message_channel_dashboard',
-#         'message': {
-#             "topic": "update_positions_table",
-#             "payload": payload
-#             }
-#         }
-#     )
-    
+from mysite import settings    
                 
 def get_response(request):
 
@@ -287,6 +267,8 @@ def get_response(request):
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
     context.dict['order_modes'] =  models_order.order_modes
+
+    context.dict['DEBUG'] =  settings.DEBUG
 
     return context.response()
 
