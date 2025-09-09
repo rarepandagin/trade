@@ -426,7 +426,7 @@ class Uniswap():
             expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
             slipage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.1)
+            slipage_to_fee = trim_slipage(slipage, 0.15)
             admin_settings.added_slipage_multiplier_coin_to_fiat = slipage_to_fee
             admin_settings.save()
 
@@ -683,10 +683,10 @@ class Uniswap():
                                                 amount_out=fiat_return
                                             )
 
-            tx_fee += tx_fee_in_eth * eth_price
 
 
             if got_fiat:
+                tx_fee += tx_fee_in_eth * eth_price
                 return got_fiat, fiat_return, tx_hash, token_price, tx_fee, version
 
 

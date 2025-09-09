@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unrealizer</title>
+    <title>Unrealizer {% if DEBUG %} (LOCAL) {% endif %}</title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -31,14 +31,12 @@
 
 
 	{% if DEBUG %}
-		    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+		    <link href="{% static 'css/style.css' %}" rel="stylesheet"  crossorigin="anonymous">
 
 			<script src="{% static '/js/ports.js' %}"></script>
-
-
 			<script src="{% static '/js/ajax_handler.js' %}"></script>
-
 			<script src="{% static '/js/websocket_manager.js' %}"></script>
+
 	{% else %}
 
 			<link href="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/style.css" rel="stylesheet">

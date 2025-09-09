@@ -152,7 +152,7 @@ class Position(models.Model):
 
 
         else:
-            self.active = False
+            self.auto_exit_style = models_order.auto_exit_style_never
             self.save()
 
             tk.create_new_notification(title="TX Failed while exiting position", message=f"tx for position {self.order.name} failed at execution")

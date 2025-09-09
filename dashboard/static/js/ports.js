@@ -5,10 +5,6 @@ const verbose = false;
 
 function update_positions_table(payload){
 
-
-    let rows = ``
-
-
     const position_state_color = {
         'in_loss':'danger',
         'reaching_min_profit_exit_price':'success',
@@ -16,8 +12,6 @@ function update_positions_table(payload){
         'exited_in_loss':'secondary',
         'exited_in_profit':'secondary',
     }
-
-
 
     payload.positions_dict.forEach(position => {
 
@@ -47,22 +41,23 @@ function update_positions_table(payload){
         // }
 
         let growth_percentage_from_min_profit_exit_price = ``
-        // if (position.active){
+        if (position.active && (position.growth_percentage_from_min_profit_exit_price > 0)){
 
-        //     const growth_percentage_from_min_profit_exit_price_progress_value = position.growth_percentage_from_min_profit_exit_price > 0 ? position.growth_percentage_from_min_profit_exit_price : -position.growth_percentage_from_min_profit_exit_price
-        //     const growth_percentage_from_min_profit_exit_price_progress_color = position.growth_percentage_from_min_profit_exit_price > 0 ? 'bg-success' : ' bg-danger '
-        //     growth_percentage_from_min_profit_exit_price = `                        <p class="small">progress from entry to profit: ${position.growth_percentage_from_min_profit_exit_price} %</p>
-        //                 <div class="progress">
-        //                     <div class="progress-bar ${growth_percentage_from_min_profit_exit_price_progress_color}" role="progressbar"  style="width: ${growth_percentage_from_min_profit_exit_price_progress_value}%"  aria-valuenow="${growth_percentage_from_min_profit_exit_price_progress_value}" aria-valuemin="0" aria-valuemax="100"></div>
-        //                 </div>`
-        // }
+            // const growth_percentage_from_min_profit_exit_price_progress_value = position.growth_percentage_from_min_profit_exit_price > 0 ? position.growth_percentage_from_min_profit_exit_price : -position.growth_percentage_from_min_profit_exit_price
+            const growth_percentage_from_min_profit_exit_price_progress_value = position.growth_percentage_from_min_profit_exit_price
+            const growth_percentage_from_min_profit_exit_price_progress_color = position.growth_percentage_from_min_profit_exit_price > 0 ? 'bg-success' : ' bg-danger '
+            growth_percentage_from_min_profit_exit_price = `                        <p class="small">progress from entry to profit: ${position.growth_percentage_from_min_profit_exit_price} %</p>
+                        <div class="progress">
+                            <div class="progress-bar ${growth_percentage_from_min_profit_exit_price_progress_color}" role="progressbar"  style="width: ${growth_percentage_from_min_profit_exit_price_progress_value}%"  aria-valuenow="${growth_percentage_from_min_profit_exit_price_progress_value}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>`
+        }
 
         let first_cell_html = ''
         
         if (position.active){
             first_cell_html = `<span class="badge rounded-pill bg-primary fs-6">${position.order.name}</span>`
 
-            let stated_cleaned = position.state.replace("_", " ")
+            let stated_cleaned = position.state.replaceAll("_", " ")
 
             if (position.price < position.stop_loss_price){
                 first_cell_html += `<div class="spinner-grow ms-2" style="width: 1px; height: 1px;" role="status">
@@ -98,7 +93,7 @@ function update_positions_table(payload){
         
                         ${position.order.coin}
                         <br>
-                        (${position.coin_amount})
+                        <span class="small">(${position.coin_amount})</span>
                         <br>
                         Entry Capital: ${position.order.entry_capital}`
 
