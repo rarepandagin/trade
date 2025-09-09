@@ -363,7 +363,7 @@ class Uniswap():
             fiat_to_coin=True,
             fiat_amount_in=0.0,
             coin_amount_in=0.0,
-            calls=2,
+            calls=3,
             fee=500
         ):
 
@@ -402,7 +402,7 @@ class Uniswap():
 
             slipage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.5)
+            slipage_to_fee = trim_slipage(slipage, 0.3)
             admin_settings.added_slipage_multiplier_fiat_to_coin = slipage_to_fee
             admin_settings.save()
             tk.logger.info(f"slipage_to_fee: {slipage}")
@@ -426,7 +426,7 @@ class Uniswap():
             expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
             slipage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.15)
+            slipage_to_fee = trim_slipage(slipage, 0.1)
             admin_settings.added_slipage_multiplier_coin_to_fiat = slipage_to_fee
             admin_settings.save()
 
@@ -521,6 +521,7 @@ class Uniswap():
 
 
         admin_settings = tk.get_admin_settings()
+
         fiat_coin = self.get_token_object(admin_settings.fiat_coin)
 
         tk.logger.info(f'performing fiat_to_token ({fiat_coin.name} -> {token})     fiat_amount: {fiat_amount}     V3')
@@ -536,7 +537,9 @@ class Uniswap():
         if got_weth:
 
             tk.logger.info(f'V3: got_weth: {weth_bought}')
+            
             tx_fee += tx_fee_in_eth * eth_price
+
             if token.lower() == 'weth':
                 # we are done
                 return got_weth, weth_bought, tx_hash, eth_price, tx_fee, version

@@ -90,14 +90,14 @@ class Transaction(models.Model):
 
     def actualize(self):
 
-        tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'starting to actualize tx {self.name} ({self.transaction_type})', 'color': 'green'})
+        tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'starting to actualize {self.transaction_type} tx ({self.name})', 'color': 'green'})
 
 
-
-        # before actualizing any transaction, we need to make sure that the gas price is lower than a resonable amount
+        # before actualizing any transaction, we need to make sure that the gas price is lower than a reasonable amount
         admin_settings = tk.get_admin_settings()
         if admin_settings.gas['gas_basic_price'] > admin_settings.max_sane_gas_price:
             self.state = transaction_state_failed
+            tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'gas is too expensive. aborting the tx.', 'color': 'red'})
 
         else:
         
