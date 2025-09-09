@@ -1024,7 +1024,13 @@ class Uniswap():
             tk.logger.info(
                 f'waiting for https://{"" if self.network == "mainnet" else self.network + "."}etherscan.io/tx/{self.w3.to_hex(tx_hash)} \n')
 
-            receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
+            # receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
+            while True:
+                try:
+                    receipt = self.w3.eth.get_transaction_receipt(tx_hash)
+                    break
+                except:
+                    time.sleep(0.05)
 
 
         except:

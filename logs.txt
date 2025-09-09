@@ -294,3 +294,34 @@ web3.exceptions.TimeExhausted: Transaction HexBytes('0x509f9682d0f682549d3e4cbd1
 2025-09-08 21:18:33.733213 - wsol_balance...
 2025-09-08 21:18:34.360120 - usdc_balance...
 2025-09-08 21:18:35.393173 - usdt_balance...
+2025-09-09 08:15:30.635906 - initiating W3...
+2025-09-09 08:15:30.655903 - uniswap fully initiated
+2025-09-09 08:15:30.656906 - performing V3 Quote
+2025-09-09 08:15:32.059942 - quote: 0.000232118139135455
+2025-09-09 08:15:32.063938 - performing V3 Quote
+2025-09-09 08:15:32.723610 - quote: 0.000232118139135455
+2025-09-09 08:15:32.725577 - performing V3 Quote
+2025-09-09 08:15:33.369373 - quote: 0.000232118139135455
+2025-09-09 08:15:33.385360 - slipage_to_fee: 0.0010331646027424426
+2025-09-09 08:15:33.390354 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-09-09 08:15:33.391353 - <-> swapping 1 usdc for 0.00023235820340637128 weth -- fee_teir: 500
+2025-09-09 08:15:33.395355 - building tx for action: exactInputSingle
+2025-09-09 08:15:34.151634 - waiting for https://etherscan.io/tx/0x1cac5164a337ee962c55ea22adb5e7bfe815efd09edf04e861b859fbdb611633 
+
+2025-09-09 08:16:12.870052 - -------------> failed
+2025-09-09 08:17:58.276389 - initiating W3...
+2025-09-09 08:17:58.292644 - uniswap fully initiated
+2025-09-09 08:17:58.294617 - performing V3 Quote
+2025-09-09 08:17:59.657473 - quote: 9.987709
+2025-09-09 08:17:59.662481 - performing V3 Quote
+2025-09-09 08:18:00.328507 - quote: 9.987709
+2025-09-09 08:18:00.329506 - performing V3 Quote
+2025-09-09 08:18:00.972613 - quote: 9.987709
+2025-09-09 08:18:00.974579 - slipage_to_fee: 0.000887492183370794
+2025-09-09 08:18:00.977590 - performing token_to_fiat: 0.0023195753 of weth -> usdc
+2025-09-09 08:18:00.979583 - V3 got_weth: 0.0023195753
+2025-09-09 08:18:00.980595 - <-> swapping 0.0023195753 weth for 9.996580887398 usdc -- fee_teir: 500
+2025-09-09 08:18:00.983582 - building tx for action: exactInputSingle
+2025-09-09 08:18:01.738122 - waiting for https://etherscan.io/tx/0x4efa5c30f636a1165c72ace52a95ac7ecabedbc13069a32af5e56d178f7679bc 
+
+2025-09-09 08:18:36.920556 - ---------------> successful
