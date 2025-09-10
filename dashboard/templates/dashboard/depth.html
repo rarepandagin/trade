@@ -1,0 +1,78 @@
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+
+
+{% block basebody %}
+{% load custom_tags %}
+
+<head>
+
+    <!-- <link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.anychart.com/releases/8.11.0/fonts/css/anychart-font.min.css" rel="stylesheet" type="text/css">  
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js"></script> -->
+
+    <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+
+
+
+</head>
+ 
+    <div id="orderBookPlot" style="width: 600px; height: 600px;"></div>
+
+    <div class="mt-5">
+        
+        <form method="POST" >
+            {% csrf_token %}
+
+            <input type="text" name="update_depth_plot_settings" hidden>
+
+            <div class="d-flex justify-content-around  flex-sm-row flex-column gap-2">
+
+
+                <div class="form-check m-0 mb-2">
+                    <input class="form-check-input" type="checkbox"  name="depth_filtering_active" id="depth_filtering_active" {% if admin_settings.depth_filtering_active %} checked {% endif %}>
+                    <label class="form-check-label" for="depth_filtering_active">
+                        depth_filtering_active
+                    </label>
+                </div>
+
+                <div>
+                    <p>min price:</p>
+                    <input type="number" class="form-control form-control-sm" name="depth_lowest_price" value="{{admin_settings.depth_lowest_price}}" style="width: 100px;"  step="any"/>
+                </div>
+
+                <div>
+                    <p>max price:</p>
+                    <input type="number" class="form-control form-control-sm" name="depth_highest_price" value="{{admin_settings.depth_highest_price}}" style="width: 100px;"  step="any"/>
+                </div>
+
+                <div>
+                    <p>cluster size:</p>
+                    <input type="number" class="form-control form-control-sm" name="depth_cluster_width_usd" value="{{admin_settings.depth_cluster_width_usd}}" style="width: 100px;"  step="any"/>
+                </div>
+
+
+                <button class="btn btn-primary btn-sm m-1" type="submit" >set</button>
+
+            </div>
+
+
+            
+        </form>
+
+    </div>
+<script>
+
+
+    $(document).ready(function () {
+
+        setup_ws_depth();
+
+    })
+
+</script>
+{% endblock %}

@@ -120,7 +120,7 @@ class Position(models.Model):
         from dashboard.models import models_transaction
 
 
-        tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'exiting position {self.order.name}', 'color': 'green'})
+        tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'exiting position {self.order.name}', 'color': 'green'})
 
 
         new_transaction = tk.create_token_to_fiat_transaction(self.coin_amount, self.order.coin)
@@ -195,14 +195,14 @@ class Position(models.Model):
                     if not self.stop_loss_price_increased:
                         message_content = f"{self.order.name} reached min profit price"
                         tk.create_new_notification('Good news', message_content)
-                        tk.send_message_to_frontend(topic='display_toaster', payload={'message': message_content, 'color': 'green'})
+                        tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': message_content, 'color': 'green'})
 
 
                     self.stop_loss_price_increased = True
 
                     self.state = models_position.post_min_profit_exit_price
 
-                    tk.send_message_to_frontend(topic='display_toaster', payload={'message': f'stop loss increased for position {self.order.name}', 'color': 'green'})
+                    tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'stop loss increased for position {self.order.name}', 'color': 'green'})
 
                     new_event = models_event.Event(
                             position=self,

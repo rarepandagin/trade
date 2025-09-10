@@ -14,8 +14,8 @@ from django.contrib.auth.decorators import login_required
 import requests
 from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync   
+from dashboard.views_pages.depth_handler import handle_a_depth_pulse
+from dashboard.views_pages import view_depth
 
 @never_cache
 @csrf_exempt
@@ -86,14 +86,29 @@ def login_view(request):
 
 
 
+@never_cache
+@csrf_exempt
+@login_required(login_url='login', redirect_field_name=None)
+def depth_view(request):
+    return view_depth.get_response(request)
+
 
     
 
 @never_cache
 @csrf_exempt
 @require_http_methods(["POST"])
-def api_view(request):
-
+def api_pulse_view(request):
     ret = handle_a_pulse(request)
-
     return HttpResponse(json.dumps(ret))
+    
+
+
+@never_cache
+@csrf_exempt
+@require_http_methods(["POST"])
+def api_depth_view(request):
+    handle_a_depth_pulse(request)
+    return HttpResponse(json.dumps({}))
+    
+

@@ -28,9 +28,12 @@ urlpatterns = [
     path('logout/',     views.logout_view,   name='logout'),
     path('login/',      views.login_view,      name='login'),
 
-    path('api/',      views.api_view,      name='api'),
+    path('api_pulse/',      views.api_pulse_view,      name='api_pulse'),
+    path('api_depth/',      views.api_depth_view,      name='api_depth'),
 
     path('dashboard/', include('dashboard.urls')),
+    
+    path('depth/',      views.depth_view,      name='depth'),
 
 
     path('admin34k5jh34KJSHDF345kjh2234sdf/', admin.site.urls),

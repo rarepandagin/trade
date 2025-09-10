@@ -28,3 +28,11 @@ class AdminSettings(models.Model):
     
     prices_update_epoch = models.BigIntegerField(default=0)
     gas_update_epoch = models.BigIntegerField(default=0)
+
+
+    depth_filtering_active      = models.BooleanField(default=True)
+    depth_show_cumulative       = models.BooleanField(default=False)
+    depth_lowest_price          = models.FloatField(default=4200)
+    depth_highest_price         = models.FloatField(default=4400)
+    depth_cluster_width_usd     = models.FloatField(default=1)
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Book Visualization</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+    
+  <div id="orderBookPlot" style="width: 600px; height: 400px;"></div>
+  <script>
+    // Sample data: price levels and volumes for bids and asks
+    // Bids are represented with negative x-values (left side)
+    const bids = [
+      { price: 100.0, volume: 50 },
+      { price: 99.5, volume: 75 },
+      { price: 99.0, volume: 100 }
+    ];
+    // Asks are represented with positive x-values (right side)
+    const asks = [
+      { price: 100.5, volume: 60 },
+      { price: 101.0, volume: 40 },
+      { price: 101.5, volume: 25 }
+    ];
+
+    // Prepare data for Plotly
+    const data = [
+      // Bids (left side, green bars)
+      {
+        x: bids.map(bid => -bid.price), // Negative prices for left side
+        y: bids.map(bid => bid.volume),
+        type: 'bar',
+        name: 'Bids',
+        marker: { color: 'green' },
+        orientation: 'v' // Vertical bars
+      },
+      // Asks (right side, red bars)
+      {
+        x: asks.map(ask => ask.price), // Positive prices for right side
+        y: asks.map(ask => ask.volume),
+        type: 'bar',
+        name: 'Asks',
+        marker: { color: 'red' },
+        orientation: 'v' // Vertical bars
+      }
+    ];
+
+    // Layout configuration
+    const layout = {
+      title: 'Order Book',
+      xaxis: {
+        title: 'Price',
+        // The order of categories on the x-axis can be controlled
+        // For a clean order, you might want to sort the data
+        // The default is "trace", which uses the order in the data array
+        // You can also use "category ascending" or "category descending"
+        // to sort by the x-values
+        categoryorder: 'category ascending' // Sorts from lowest to highest price
+      },
+      yaxis: {
+        title: 'Volume'
+      },
+      // The drawing order of traces is determined by their order in the data array
+      // The last trace in the array is drawn on top
+      // To ensure asks are on top of bids, place the asks trace last
+      // This is already the case in the data array above
+      barmode: 'overlay' // Overlap the bars to show the order book structure
+    };
+
+    // Create the plot
+    Plotly.newPlot('orderBookPlot', data, layout);
+  </script>
+</body>
+</html>   

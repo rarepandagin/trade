@@ -8,9 +8,9 @@
 
  
 
-<div class="row mainblock m-4 " >
+    
     <!-- MAIN -->
-    <div class="col-10 heart-container">
+    <div class="col-10">
 
 
         
@@ -36,14 +36,7 @@
                 </form>
 
             {% endif %}   
-
-            <div>
-                <div class="d-flex justify-content-between " >
-                    <a href="/admin34k5jh34KJSHDF345kjh2234sdf" class="mx-5">admin</a>
-                    <a href="/logout">logout</a>
-
-                </div>         
-            </div>         
+  
         </div>
 
         <div class="d-flex justify-content-start mt-2 mb-2 gap-5  flex-sm-row flex-column">
@@ -650,13 +643,17 @@
 
     </div>
     
-</div>
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
 
-    });
+
+    $(document).ready(function () {
+
+        setup_ws_dashboard();
+
+    })
 
 </script>
+
 {% endblock %}

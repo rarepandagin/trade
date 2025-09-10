@@ -3,7 +3,7 @@ from django.template import loader
 import json
 from . import ajax_posts
 from django.http import HttpResponse, HttpResponseRedirect
-
+from mysite import settings
 
 class context_class():
     def __init__(self, request, template):
@@ -11,7 +11,11 @@ class context_class():
         self.template = template
 
 
-        self.dict = {'path': self.request.path}
+        self.dict = {
+            'path': self.request.path,
+            'DEBUG': settings.DEBUG
+
+            }
 
         if request.user.is_authenticated:
 

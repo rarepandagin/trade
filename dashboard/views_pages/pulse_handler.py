@@ -64,7 +64,7 @@ def handle_a_pulse(request):
                         "admin_settings": tk.serialize_object(admin_settings),
                     }
 
-                tk.send_message_to_frontend(topic='update_positions_table', payload=payload)
+                tk.send_message_to_frontend_dashboard(topic='update_positions_table', payload=payload)
 
 
                 admin_settings.pulses_are_being_blocked = False

@@ -268,7 +268,6 @@ def get_response(request):
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
     context.dict['order_modes'] =  models_order.order_modes
 
-    context.dict['DEBUG'] =  settings.DEBUG
 
     return context.response()
 
