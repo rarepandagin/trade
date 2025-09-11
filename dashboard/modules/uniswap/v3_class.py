@@ -454,57 +454,10 @@ class Uniswap():
 
 
 
-    ##############################################################################
-    # ETH WORKS
-
-
-    # LAGACY
-    def eth_to_dai(self, eth_amount, tries):
-
-        for i in range(tries):
-            tk.logger.info(f'performing eth_to_dai     eth_amount: {eth_amount}     V3')
-
-            eth_price = self.get_coin_price('eth')
-
-            dai_return = eth_amount * eth_price
-
-            # V3 eth -> weth -> dai
-            got_dai, dai_return, tx_hash, tx_fee_in_eth, version  = self.swap(
-                                                token_in=self.weth,
-                                                token_out=self.dai,
-                                                amount_in=eth_amount,
-                                                amount_out=dai_return
-                                            )
-
-            tx_fee = tx_fee_in_eth * eth_price
-
-            if got_dai:
-                return got_dai, dai_return, tx_hash, eth_price, tx_fee, version
-
-            # V2
-
-            tk.logger.info(f'!!!!!!     performing eth_to_dai     eth_amount: {eth_amount}     V2')
-
-            tk.logger.info(f'unwraping eth...')
-
-            got_eth = self.unwrap_weth(eth_amount)
-
-            if got_eth:
-                got_dai, dai_bought, tx_hash, tx_fee_in_eth = self.v2_ethToTokenSwapInput(
-                                                                        token_out=self.dai,
-                                                                        eth_to_sell=eth_amount,
-                                                                        token_amount_return=dai_return
-                                                                    )
-                if got_dai:
-                    tx_fee = tx_fee_in_eth * eth_price
-                    return got_dai, dai_bought, tx_hash, eth_price, tx_fee, 'V2'
-
-        return False, None, None, None, None, None
-
 
 
     # COMPLETE
-    def fiat_to_token(self, fiat_amount, token, tries):
+    def fiat_to_token(self, fiat_amount, token, tries, transaction_object):
 
 
         """
@@ -530,7 +483,8 @@ class Uniswap():
                                         token_in=fiat_coin,
                                         token_out=self.weth,
                                         amount_in=fiat_amount,
-                                        amount_out=weth_to_buy
+                                        amount_out=weth_to_buy,
+                                        transaction_object=transaction_object,
                                     )
 
 
@@ -555,7 +509,8 @@ class Uniswap():
                                                 token_in=self.weth,
                                                 token_out=self.get_token_object(token),
                                                 amount_in=weth_bought,
-                                                amount_out=token_to_buy
+                                                amount_out=token_to_buy,
+                                                transaction_object=transaction_object,
                                             )
 
 
@@ -622,7 +577,7 @@ class Uniswap():
 
 
     # COMPLETE
-    def token_to_fiat(self, token_amount, token, tries):
+    def token_to_fiat(self, token_amount, token, tries, transaction_object):
 
         """
         V3:
@@ -659,7 +614,8 @@ class Uniswap():
                                                 token_in=self.get_token_object(token),
                                                 token_out=self.weth,
                                                 amount_in=token_amount,
-                                                amount_out=weth_amount
+                                                amount_out=weth_amount,
+                                                transaction_object=transaction_object,
                                             )
 
             tx_fee += tx_fee_in_eth * eth_price
@@ -680,7 +636,8 @@ class Uniswap():
                                                 token_in=self.weth,
                                                 token_out=fiat_coin,
                                                 amount_in=weth_return,
-                                                amount_out=fiat_return
+                                                amount_out=fiat_return,
+                                                transaction_object=transaction_object,
                                             )
 
 
@@ -798,7 +755,7 @@ class Uniswap():
     # V3
 
 
-    def swap(self, token_in, token_out, amount_in, amount_out):
+    def swap(self, token_in, token_out, amount_in, amount_out, transaction_object):
         try:
 
             """
@@ -817,7 +774,7 @@ class Uniswap():
 
                 action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_teir)
 
-                tx_return = self.build_and_execute_tx(action=action)
+                tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
 
                 successful = tx_return['successful']
                 tx_hash = tx_return['tx_hash']
@@ -987,7 +944,7 @@ class Uniswap():
 
 
 
-    def build_and_execute_tx(self, action, value=0):
+    def build_and_execute_tx(self, action, transaction_object=None, value=0):
 
         receipt = None
 
@@ -1019,6 +976,10 @@ class Uniswap():
             signed_tx = self.w3.eth.account.sign_transaction(tx, private_key=self.account_private_key)
 
             tx_hash = self.w3.eth.send_raw_transaction(signed_tx.raw_transaction)
+
+            if transaction_object is not None:
+                transaction_object.hash = tx_hash
+                transaction_object.save()
 
 
             tk.logger.info(

@@ -27,7 +27,7 @@ intervals = {
 class Candle(models.Model):
     id = models.BigAutoField(primary_key=True)
     uuid = models.TextField(default="", null=True, blank=True)
-    coin = models.CharField(choices=models_position.coins, default=models_position.wbtc)
+    coin = models.CharField(choices=models_position.coins, default=models_position.weth)
     interval = models.CharField(choices=intervals, default=KLINE_INTERVAL_1MINUTE)
 
     open_time = models.BigIntegerField(default=0)

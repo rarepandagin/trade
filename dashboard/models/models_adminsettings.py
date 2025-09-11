@@ -13,7 +13,7 @@ class AdminSettings(models.Model):
     secure_profit_ratio = models.FloatField(default=0.7)
     max_sane_gas_price = models.FloatField(default=4.0)
 
-    fiat_coin = models.CharField(choices=fiat_coins, default=usdt)
+    fiat_coin = models.CharField(choices=fiat_coins, default=usdc)
 
     added_slipage_multiplier_fiat_to_coin = models.FloatField(default=3)
     added_slipage_multiplier_coin_to_fiat = models.FloatField(default=3)

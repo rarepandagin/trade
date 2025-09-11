@@ -1,22 +1,22 @@
 
 weth = "weth"
-wbtc = "wbtc"
-wsol = "wsol"
+# wbtc = "wbtc"
+# wsol = "wsol"
 
 
 coins = {
     weth : "weth",
-    wsol : "wsol",
-    wbtc : "wbtc",
+    # wsol : "wsol",
+    # wbtc : "wbtc",
 }
 
 
-dai = 'dai'
+# dai = 'dai'
 usdc = 'usdc'
-usdt = 'usdt'
+# usdt = 'usdt'
 
 fiat_coins ={
-    dai: 'dai',
+    # dai: 'dai',
     usdc: 'usdc',
-    usdt: 'usdt',
+    # usdt: 'usdt',
 }

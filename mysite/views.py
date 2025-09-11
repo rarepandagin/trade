@@ -16,6 +16,8 @@ from django.views.decorators.http import require_http_methods
 from dashboard.views_pages.pulse_handler import handle_a_pulse
 from dashboard.views_pages.depth_handler import handle_a_depth_pulse
 from dashboard.views_pages import view_depth
+from dashboard.views_pages import view_orders
+from dashboard.views_pages import view_manual
 
 @never_cache
 @csrf_exempt
@@ -91,6 +93,19 @@ def login_view(request):
 @login_required(login_url='login', redirect_field_name=None)
 def depth_view(request):
     return view_depth.get_response(request)
+
+
+@never_cache
+@csrf_exempt
+@login_required(login_url='login', redirect_field_name=None)
+def orders_view(request):
+    return view_orders.get_response(request)
+
+@never_cache
+@csrf_exempt
+@login_required(login_url='login', redirect_field_name=None)
+def manual_view(request):
+    return view_manual.get_response(request)
 
 
     

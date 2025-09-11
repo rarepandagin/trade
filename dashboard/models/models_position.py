@@ -119,7 +119,10 @@ class Position(models.Model):
         from dashboard.models import models_event
         from dashboard.models import models_transaction
 
+        self.auto_exit_style = models_order.auto_exit_style_never
+        self.save()
 
+        
         tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'exiting position {self.order.name}', 'color': 'green'})
 
 

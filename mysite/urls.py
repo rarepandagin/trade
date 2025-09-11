@@ -33,6 +33,8 @@ urlpatterns = [
 
     path('dashboard/', include('dashboard.urls')),
     
+    path('orders/',     views.orders_view,      name='orders'),
+    path('manual/',     views.manual_view,      name='manual'),
     path('depth/',      views.depth_view,      name='depth'),
 
 

@@ -177,22 +177,22 @@ function update_positions_table(payload){
     
 
 
-    $("#admin_settings_balances_eth").html(         `${(payload.admin_settings.balances.eth).toFixed(8)} ETH`)
-    $("#admin_settings_balances_eth_value").html(   `${(payload.admin_settings.balances.eth * payload.admin_settings.prices.eth).toFixed(2)} USD`)
+    $("#admin_settings_balances_eth").html(         `balance: ${(payload.admin_settings.balances.eth).toFixed(8)} ETH`)
+    $("#admin_settings_balances_eth_value").html(   `value: ${(payload.admin_settings.balances.eth * payload.admin_settings.prices.eth).toFixed(2)} USD`)
 
-    $("#admin_settings_balances_weth").html(         `${(payload.admin_settings.balances.weth).toFixed(8)} WETH`)
-    $("#admin_settings_balances_weth_value").html(   `${(payload.admin_settings.balances.weth * payload.admin_settings.prices.eth).toFixed(2)} USD`)
+    $("#admin_settings_balances_weth").html(         `balance: ${(payload.admin_settings.balances.weth).toFixed(8)} WETH`)
+    $("#admin_settings_balances_weth_value").html(   `value: ${(payload.admin_settings.balances.weth * payload.admin_settings.prices.eth).toFixed(2)} USD`)
 
-    $("#admin_settings_balances_wbtc").html(         `${(payload.admin_settings.balances.wbtc).toFixed(8)} WBTC`)
-    $("#admin_settings_balances_wbtc_value").html(   `${(payload.admin_settings.balances.wbtc * payload.admin_settings.prices.btc).toFixed(2)} USD`)
+    // $("#admin_settings_balances_wbtc").html(         `${(payload.admin_settings.balances.wbtc).toFixed(8)} WBTC`)
+    // $("#admin_settings_balances_wbtc_value").html(   `${(payload.admin_settings.balances.wbtc * payload.admin_settings.prices.btc).toFixed(2)} USD`)
 
 
-    $("#admin_settings_balances_wsol").html(         `${(payload.admin_settings.balances.wsol).toFixed(8)} WSOL`)
-    $("#admin_settings_balances_wsol_value").html(   `${(payload.admin_settings.balances.wsol * payload.admin_settings.prices.sol).toFixed(2)} USD`)
+    // $("#admin_settings_balances_wsol").html(         `${(payload.admin_settings.balances.wsol).toFixed(8)} WSOL`)
+    // $("#admin_settings_balances_wsol_value").html(   `${(payload.admin_settings.balances.wsol * payload.admin_settings.prices.sol).toFixed(2)} USD`)
 
-    $("#admin_settings_balances_usdt").html(         `${(payload.admin_settings.balances.usdt).toFixed(2)} USDT`)
-    $("#admin_settings_balances_usdc").html(         `${(payload.admin_settings.balances.usdc).toFixed(2)} USDC`)
-    $("#admin_settings_balances_dai").html(          `${(payload.admin_settings.balances.dai).toFixed(2)} USD`)
+    // $("#admin_settings_balances_usdt").html(         `${(payload.admin_settings.balances.usdt).toFixed(2)} USDT`)
+    $("#admin_settings_balances_usdc").html(         `balance: ${(payload.admin_settings.balances.usdc).toFixed(2)} USDC`)
+    // $("#admin_settings_balances_dai").html(          `${(payload.admin_settings.balances.dai).toFixed(2)} USD`)
 
 
 
@@ -238,9 +238,9 @@ function update_positions_table(payload){
         }
 
 
-        $("#weth_price").html(`weth: ${payload.admin_settings.prices.weth}`);
-        $("#wbtc_price").html(`wbtc: ${payload.admin_settings.prices.wbtc}`);
-        $("#wsol_price").html(`wsol: ${payload.admin_settings.prices.wsol}`);
+        $("#weth_price").html(`weth price: ${payload.admin_settings.prices.weth}`);
+        // $("#wbtc_price").html(`wbtc: ${payload.admin_settings.prices.wbtc}`);
+        // $("#wsol_price").html(`wsol: ${payload.admin_settings.prices.wsol}`);
 
         const epochSeconds = Math.floor(Date.now() / 1000);   
         const delta_time_price_update = epochSeconds - payload.admin_settings.prices_update_epoch;

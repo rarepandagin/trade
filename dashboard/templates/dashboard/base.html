@@ -9,7 +9,8 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -116,7 +117,15 @@ optgroup{
     75% { box-shadow: 0 0 0 #fff; }
     100% { box-shadow: 0 0 10px #fff; }
 }
-   
+
+.menu-item {
+  background-color: blue;
+  border-radius: 10px;
+  padding: 6px;
+
+  color: #fff;
+}
+
 </style>
 
 
@@ -130,10 +139,12 @@ optgroup{
 	<div>
 		<div class="d-flex justify-content-between border rounded p-2 mb-3" >
 
-			<a href="/dashboard/" class="mx-5">Dashboard</a>
-			<a href="/depth/" class="mx-5">Depth</a>
-			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="mx-5">Admin</a>
-			<a href="/logout/">Logout</a>
+			<a href="/dashboard/" class="menu-item">Positions</a>
+			<a href="/orders/" class="menu-item">Orders</a>
+			<a href="/depth/" class="menu-item">Depth</a>
+			<a href="/manual/" class="menu-item">Manual</a>
+			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="menu-item">Admin</a>
+			<a href="/logout/" class="menu-item ">Logout</a>
 
 		</div>         
 	</div>       

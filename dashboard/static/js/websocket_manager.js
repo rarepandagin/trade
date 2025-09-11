@@ -48,9 +48,9 @@ function setup_ws_depth(){
 function ws_msg_handler_dashboard(message_event) {
 
 
-    if (!window.location.pathname.includes('/dashboard/')) {
-        return;
-    }
+    // if (!window.location.pathname.includes('/dashboard/')) {
+    //     return;
+    // }
 
     let incoming_message;
 
@@ -93,9 +93,9 @@ function ws_msg_handler_dashboard(message_event) {
 
 function ws_msg_handler_depth(message_event) {
 
-    if (!window.location.pathname.includes('/depth/')) {
-        return;
-    }
+    // if (!window.location.pathname.includes('/depth/')) {
+    //     return;
+    // }
 
     let incoming_message;
 

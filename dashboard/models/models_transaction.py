@@ -112,7 +112,8 @@ class Transaction(models.Model):
                 got_token, token_bought, tx_hash, token_price, tx_fee, version = uniswap.fiat_to_token(
                         fiat_amount=self.fiat_amount_spent,
                         token=self.coin,
-                        tries=1
+                        tries=1,
+                        transaction_object=self,
                     )
 
 
@@ -122,7 +123,7 @@ class Transaction(models.Model):
                     slipage = round(slipage, 6)
 
                     self.token_amount_recieved = token_bought
-                    self.hash = tx_hash
+                    # self.hash = tx_hash
                     self.uniswap_version = version
                     self.token_nominal_price = token_price
                     self.token_effective_price = self.fiat_amount_spent / self.token_amount_recieved
@@ -141,7 +142,8 @@ class Transaction(models.Model):
                 got_fiat, fiat_bought, tx_hash, token_price, tx_fee, version = uniswap.token_to_fiat(
                     token_amount=self.token_amount_spent,
                     token=self.coin,
-                    tries=1
+                    tries=1,
+                    transaction_object=self,
                 )
 
 
@@ -151,7 +153,7 @@ class Transaction(models.Model):
                     slipage = round(slipage, 6)
 
                     self.fiat_amount_recieved = fiat_bought
-                    self.hash = tx_hash
+                    # self.hash = tx_hash
                     self.uniswap_version = version
                     self.token_nominal_price = token_price
                     self.token_effective_price = self.fiat_amount_recieved / self.token_amount_spent

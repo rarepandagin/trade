@@ -30,38 +30,37 @@ function update_depth_chart(payload){
     // Layout configuration
     const layout = {
       title: 'Order Book',
-      width: 1500,
-      height: 600,
+      template: 'plotly_dark',
+      plot_bgcolor: 'rgba(0, 0, 0, 1)',  
+      paper_bgcolor: '#000000ff'   ,
+
+      margin: {l: 50, r: 100, b: 50, t: 50, pad: 4},
+
       xaxis: {
         title: 'Price',
         range: [payload.admin_settings.depth_lowest_price, payload.admin_settings.depth_highest_price],
         tickmode: 'linear',
+        color: 'white',
         
-        // The order of categories on the x-axis can be controlled
-        // For a clean order, you might want to sort the data
-        // The default is "trace", which uses the order in the data array
-        // You can also use "category ascending" or "category descending"
-        // to sort by the x-values
-        categoryorder: 'category ascending' // Sorts from lowest to highest price
+        categoryorder: 'category ascending' 
       },
       yaxis: {
-        title: 'Volume'
+        title: 'Volume',
+        color: 'white',
+
       },
-      // The drawing order of traces is determined by their order in the data array
-      // The last trace in the array is drawn on top
-      // To ensure asks are on top of bids, place the asks trace last
-      // This is already the case in the data array above
-      barmode: 'overlay' // Overlap the bars to show the order book structure
+      barmode: 'overlay' 
     };
 
     if (payload.admin_settings.depth_filtering_active){
         data[0].width = payload.admin_settings.depth_cluster_width_usd;
         data[1].width = payload.admin_settings.depth_cluster_width_usd;
 
-        layout.xaxis.dtick = payload.admin_settings.depth_cluster_width_usd;
+        layout.xaxis.dtick = 2 * payload.admin_settings.depth_cluster_width_usd;
     }
+    const config = {responsive: true};
 
     // Create the plot
-    Plotly.newPlot('orderBookPlot', data, layout);
+    Plotly.newPlot('orderBookPlot', data, layout, config);
 
 }

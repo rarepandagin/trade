@@ -8,12 +8,12 @@ from dashboard.models import *
 admin.site.register(Event)
 admin.site.register(AdminSettings)
 admin.site.register(Position)
-admin.site.register(Order)
 
 
-class adminViewCandle(admin.ModelAdmin):
-    list_display = ('id', 'coin', 'interval', 'open_time', 'close_time')
-admin.site.register(Candle, adminViewCandle)
+
+# class adminViewCandle(admin.ModelAdmin):
+#     list_display = ('id', 'coin', 'interval', 'open_time', 'close_time')
+# admin.site.register(Candle, adminViewCandle)
 
 class adminViewTransaction(admin.ModelAdmin):
     list_display = (
@@ -31,8 +31,25 @@ class adminViewTransaction(admin.ModelAdmin):
         'token_effective_price',
         'slipage',
         'fee',
-
         )
 admin.site.register(Transaction, adminViewTransaction)
+
+
+
+class adminViewOrder(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'mode',
+        'entry_capital',
+        'order_price',
+        'min_profit_exit_price',
+        'stop_loss_price',
+        'active',
+        'executed',
+        'fullfiled',
+        'epoch_created',
+        )
+admin.site.register(Order, adminViewOrder)
 
 
