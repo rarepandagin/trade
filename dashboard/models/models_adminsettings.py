@@ -10,8 +10,11 @@ class AdminSettings(models.Model):
     # settings
     alarms = models.BooleanField(default=True)
     interval = models.IntegerField(default=5)
+    tx_tries = models.IntegerField(default=2)
     secure_profit_ratio = models.FloatField(default=0.7)
     max_sane_gas_price = models.FloatField(default=4.0)
+
+
 
     fiat_coin = models.CharField(choices=fiat_coins, default=usdc)
 
@@ -35,4 +38,3 @@ class AdminSettings(models.Model):
     depth_lowest_price          = models.FloatField(default=4200)
     depth_highest_price         = models.FloatField(default=4400)
     depth_cluster_width_usd     = models.FloatField(default=1)
-

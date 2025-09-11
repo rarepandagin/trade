@@ -138,25 +138,25 @@ class Uniswap():
         
 
         
-        self.weth = Token(name='weth', network=self.network, address=token_address[self.network]['weth'], decimals=18, fee_teirs = [500],
+        self.weth = Token(name='weth', network=self.network, address=token_address[self.network]['weth'], decimals=18, fee_teirs = 500,
                           abi=weth_abi, w3=self.w3)
         
-        self.wsol = Token(name='wsol', network=self.network, address=token_address[self.network]['wsol'], decimals=9, fee_teirs = [3000],
+        # self.wsol = Token(name='wsol', network=self.network, address=token_address[self.network]['wsol'], decimals=9, fee_teirs = 3000,
+        #                   abi=erc20_abi, w3=self.w3)
+
+        # self.wbtc = Token(name='wbtc', network=self.network, address=token_address[self.network]['wbtc'], decimals=8, fee_teirs = 500,
+        #                   abi=wbtc_abi, w3=self.w3)
+
+
+
+        # self.dai = Token(name='dai', network=self.network, address=token_address[self.network]['dai'], decimals=18, fee_teirs = 500,
+        #                  abi=erc20_abi, w3=self.w3)
+
+        self.usdc = Token(name='usdc', network=self.network, address=token_address[self.network]['usdc'], decimals=6, fee_teirs = 500,
                           abi=erc20_abi, w3=self.w3)
 
-        self.wbtc = Token(name='wbtc', network=self.network, address=token_address[self.network]['wbtc'], decimals=8, fee_teirs = [500, 3000],
-                          abi=wbtc_abi, w3=self.w3)
-
-
-
-        self.dai = Token(name='dai', network=self.network, address=token_address[self.network]['dai'], decimals=18, fee_teirs = [500],
-                         abi=erc20_abi, w3=self.w3)
-
-        self.usdc = Token(name='usdc', network=self.network, address=token_address[self.network]['usdc'], decimals=6, fee_teirs = [500],
-                          abi=erc20_abi, w3=self.w3)
-
-        self.usdt = Token(name='usdt', network=self.network, address=token_address[self.network]['usdt'], decimals=6, fee_teirs = [500],
-                          abi=erc20_abi, w3=self.w3)
+        # self.usdt = Token(name='usdt', network=self.network, address=token_address[self.network]['usdt'], decimals=6, fee_teirs = 500,
+        #                   abi=erc20_abi, w3=self.w3)
 
 
 
@@ -191,20 +191,20 @@ class Uniswap():
         if token_string.lower() in ['eth', 'weth']:
             return self.weth
 
-        elif token_string.lower() == 'dai':
-            return self.dai
-        
-        elif token_string.lower() == 'wbtc':
-            return self.wbtc
-
-        elif token_string.lower() == 'wsol':
-            return self.wsol
-
         elif token_string.lower() == 'usdc':
             return self.usdc
 
-        elif token_string.lower() == 'usdt':
-            return self.usdt
+        # elif token_string.lower() == 'dai':
+        #     return self.dai
+        
+        # elif token_string.lower() == 'wbtc':
+        #     return self.wbtc
+
+        # elif token_string.lower() == 'wsol':
+        #     return self.wsol
+
+        # elif token_string.lower() == 'usdt':
+        #     return self.usdt
         
         else:
             raise
@@ -221,24 +221,14 @@ class Uniswap():
         return {
             'eth': self.eth_balance(),
             'weth': self.weth_balance(),
-            'dai': self.dai_balance(),
-            'wbtc': self.wbtc_balance(),
-            'wsol': self.wsol_balance(),
             'usdc': self.usdc_balance(),
-            'usdt': self.usdt_balance(),
+            # 'dai': self.dai_balance(),
+            # 'wbtc': self.wbtc_balance(),
+            # 'wsol': self.wsol_balance(),
+            # 'usdt': self.usdt_balance(),
         }
 
-    def dai_balance(self):
-        tk.logger.info("dai_balance...")
-        return self.dai.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.dai.decimals)
 
-    def usdc_balance(self):
-        tk.logger.info("usdc_balance...")
-        return self.usdc.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.usdc.decimals)
-
-    def usdt_balance(self):
-        tk.logger.info("usdt_balance...")
-        return self.usdt.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.usdt.decimals)
 
     def eth_balance(self):
         tk.logger.info("eth_balance...")
@@ -248,13 +238,28 @@ class Uniswap():
         tk.logger.info("weth_balance...")
         return self.weth.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.weth.decimals)
 
-    def wbtc_balance(self):
-        tk.logger.info("wbtc_balance...")
-        return self.wbtc.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wbtc.decimals)
 
-    def wsol_balance(self):
-        tk.logger.info("wsol_balance...")
-        return self.wsol.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wsol.decimals)
+    def usdc_balance(self):
+        tk.logger.info("usdc_balance...")
+        return self.usdc.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.usdc.decimals)
+
+
+    # def dai_balance(self):
+    #     tk.logger.info("dai_balance...")
+    #     return self.dai.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.dai.decimals)
+
+    # def usdt_balance(self):
+    #     tk.logger.info("usdt_balance...")
+    #     return self.usdt.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.usdt.decimals)
+
+
+    # def wbtc_balance(self):
+    #     tk.logger.info("wbtc_balance...")
+    #     return self.wbtc.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wbtc.decimals)
+
+    # def wsol_balance(self):
+    #     tk.logger.info("wsol_balance...")
+    #     return self.wsol.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wsol.decimals)
 
 
     def get_network_gas_price(self):
@@ -487,6 +492,7 @@ class Uniswap():
                                         amount_in=fiat_amount,
                                         amount_out=weth_to_buy,
                                         transaction_object=transaction_object,
+                                        tries=tries,
                                     )
 
 
@@ -513,6 +519,7 @@ class Uniswap():
                                                 amount_in=weth_bought,
                                                 amount_out=token_to_buy,
                                                 transaction_object=transaction_object,
+                                                tries=tries,
                                             )
 
 
@@ -524,58 +531,17 @@ class Uniswap():
                     return got_token, token_bought, tx_hash, token_price, tx_fee, version
 
 
-
-
-
-        """
-        V2:
-            dai -> eth -> token
-        """
-
-        # # V2
-        # tk.logger.info(f'!!!!!!  V2   performing fiat_to_token     fiat_amount: {fiat_amount}     V2')
-
-        # if got_weth:
-        #     # V3 has got weth already so no need for V2 to buy eth
-        #     tk.logger.info('V3 got_weth but failed to buy token. so no need for V2 to buy eth.')
-        #     tk.logger.info('V2 unwraps the weth and uses that to buy token')
-        #     got_eth = self.unwrap_weth(weth_bought)
-        #     eth_bought = weth_bought
-        
-        
-        # else:
-        #     got_eth, eth_bought, tx_hash, tx_fee_in_eth = self.v2_tokenToEthSwapInput(
-        #                                                         self.dai,
-        #                                                         token_in_amount=fiat_amount,
-        #                                                         eth_to_buy=weth_to_buy
-        #                                                     )
-                                                            
-        # if got_eth:
-        #     tk.logger.info(f'V2: got_eth: {eth_bought}')
-
-        #     tx_fee += tx_fee_in_eth * eth_price
-
-        #     token_price = self.get_coin_price(token)
-        #     token_amount = eth_bought * eth_price / token_price
-
-
-        #     got_token, token_bought, tx_hash, tx_fee_in_eth = self.v2_ethToTokenSwapInput(
-        #                                                             token_out=self.get_token_object(token),
-        #                                                             eth_to_sell=eth_bought,
-        #                                                             token_amount_return=token_amount
-        #                                                         )
-
-
-        #     if got_token:
-        #         tx_fee += tx_fee_in_eth * eth_price
-
-        #         tk.logger.info(f'V2: got_token: {token_bought}')
-        #         return got_token, token_bought, tx_hash, token_price, tx_fee, 'V2'
-
-
-
-
         return False, None, None, None, None, None
+
+
+
+
+
+
+
+
+
+
 
 
     # COMPLETE
@@ -618,6 +584,7 @@ class Uniswap():
                                                 amount_in=token_amount,
                                                 amount_out=weth_amount,
                                                 transaction_object=transaction_object,
+                                                tries=tries,
                                             )
 
             tx_fee += tx_fee_in_eth * eth_price
@@ -640,6 +607,7 @@ class Uniswap():
                                                 amount_in=weth_return,
                                                 amount_out=fiat_return,
                                                 transaction_object=transaction_object,
+                                                tries=tries,
                                             )
 
 
@@ -647,71 +615,6 @@ class Uniswap():
             if got_fiat:
                 tx_fee += tx_fee_in_eth * eth_price
                 return got_fiat, fiat_return, tx_hash, token_price, tx_fee, version
-
-
-        # V2
-
-        """
-        V2:
-            token -> eth -> dai
-
-            if token is eth:
-                unwrap eth
-                eth -> dai
-            
-            else:
-                token -> eth
-                eth -> dai
-
-
-
-
-        """
-
-        # token_price = self.get_coin_price(token)
-        # eth_price = self.get_coin_price('eth')
-
-        # weth_to_buy = token_amount * token_price / eth_price
-
-
-        # if token.lower == 'weth':
-        #     got_weth = True
-        #     weth_amount = weth_to_buy
-
-        # else:
-        #     # token -> eth
-
-        #     got_weth, weth_amount, tx_hash, tx_fee_in_eth = self.v2_tokenToEthSwapInput(
-        #                                         self.get_token_object(token),
-        #                                         token_in_amount=token_amount,
-        #                                         eth_to_buy=weth_to_buy
-        #                                     )
-
-
-        # if got_weth:
-
-        #     # now we have weth
-
-        #     tk.logger.info(f'!!!!!!     performing eth_to_dai     weth_amount: {weth_amount}     V2')
-
-        #     tk.logger.info(f'unwraping eth...')
-
-        #     dai_return = weth_amount * eth_price
-
-        #     got_eth = self.unwrap_weth(weth_amount)
-
-        #     if got_eth:
-        #         got_dai, dai_bought, tx_hash, tx_fee_in_eth = self.v2_ethToTokenSwapInput(
-        #                                                                 token_out=self.dai,
-        #                                                                 eth_to_sell=weth_amount,
-        #                                                                 token_amount_return=dai_return
-        #                                                             )
-        #         if got_dai:
-        #             tx_fee = tx_fee_in_eth * eth_price
-        #             return got_dai, dai_bought, tx_hash, token_price, tx_fee, 'V2'
-
-            
-
 
 
         return False, None, None, None, None, None
@@ -757,7 +660,7 @@ class Uniswap():
     # V3
 
 
-    def swap(self, token_in, token_out, amount_in, amount_out, transaction_object):
+    def swap(self, token_in, token_out, amount_in, amount_out, transaction_object, tries):
         try:
 
             """
@@ -770,6 +673,8 @@ class Uniswap():
             else:
                 fee_teirs = token_in.fee_teirs
                 fiat_to_coin = True
+
+            fee_teirs = tries * [fee_teirs]
 
 
             for fee_teir in fee_teirs:
@@ -851,79 +756,6 @@ class Uniswap():
 
 
 
-
-
-
-
-    ########################################
-    # V2
-
-
-    def v2_ethToTokenSwapInput(self, token_out, eth_to_sell, token_amount_return):
-        try:
-            tk.logger.info(f"<-> V2 sell {eth_to_sell} eth for {token_amount_return} {token_out.name}")
-
-            eth_to_sell = int(eth_to_sell * pow(10, self.weth.decimals))
-            min_tokens = int((1 - 0.0031) * token_amount_return * pow(10, token_out.decimals))
-            deadline = int(time.time() + 300)  # 5 minutes
-
-            if token_out.name == 'dai':
-                action = self.dai_exchange_contract.functions.ethToTokenSwapInput(min_tokens, deadline)
-
-            else:
-                return False, None, None, None
-
-            tx_return = self.build_and_execute_tx(action=action, value=eth_to_sell)
-
-            successful = tx_return['successful']
-            tx_hash = tx_return['tx_hash']
-            tx_fee_in_eth = tx_return['tx_fee_in_eth']
-
-            if successful:
-                token_bought = tx_return['logs_results'][token_out.name]['amount']
-
-                return successful, token_bought, tx_hash, tx_fee_in_eth
-
-            return False, None, None, None
-
-        except:
-            tk.logger.info(format_exc())
-
-            return False, None, None, None
-
-    def v2_tokenToEthSwapInput(self, token_in, token_in_amount, eth_to_buy):
-        try:
-            tk.logger.info(f"<-> V2 buy {eth_to_buy} eth for {token_in_amount} {token_in.name}")
-
-            eth_to_buy = int(eth_to_buy * pow(10, self.weth.decimals))
-            token_in_amount = int(token_in_amount * pow(10, token_in.decimals))
-
-            tokens_sold = token_in_amount
-            min_eth = int((1 - 0.0031) * eth_to_buy)  # minimum eth bought
-            deadline = int(time.time() + 300)  # 5 minutes
-
-            if token_in.name == 'dai':
-                action = self.dai_exchange_contract.functions.tokenToEthSwapInput(tokens_sold, min_eth, deadline)
-            else:
-                return False, None, None, None
-
-            tx_return = self.build_and_execute_tx(action=action)
-            
-            successful = tx_return['successful']
-            tx_hash = tx_return['tx_hash']
-            tx_fee_in_eth = tx_return['tx_fee_in_eth']
-
-            if successful:
-
-                eth_bought = tx_return['logs_results']['eth']['amount']
-
-                return successful, eth_bought, tx_hash, tx_fee_in_eth
-
-            return False, None, None, None
-        except:
-            tk.logger.info(format_exc())
-
-            return False, None, None, None
 
 
 

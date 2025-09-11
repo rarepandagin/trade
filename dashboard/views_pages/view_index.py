@@ -46,6 +46,11 @@ def get_response(request):
                 admin_settings.interval = int(request.POST['admin_settings_interval'])
                 admin_settings.save()
 
+            elif 'admin_settings_tx_tries' in request.POST:
+                admin_settings = tk.get_admin_settings()
+                admin_settings.tx_tries = int(request.POST['admin_settings_tx_tries'])
+                admin_settings.save()
+
             elif 'admin_settings_fiat_coin' in request.POST:
                 admin_settings = tk.get_admin_settings()
                 admin_settings.fiat_coin = request.POST['admin_settings_fiat_coin']

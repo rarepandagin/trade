@@ -71,6 +71,13 @@
                 </form>
 
 
+                <form method="POST" class="d-flex justify-content-start gap-1">
+                    {% csrf_token %}
+                    <input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_tx_tries" value="{{admin_settings.tx_tries}}" style="width: 50px;"/>
+                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set tx tries</button>
+                </form>
+
+
                 <form method="POST">
                     {% csrf_token %}
 

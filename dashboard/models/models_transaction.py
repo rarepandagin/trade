@@ -112,7 +112,7 @@ class Transaction(models.Model):
                 got_token, token_bought, tx_hash, token_price, tx_fee, version = uniswap.fiat_to_token(
                         fiat_amount=self.fiat_amount_spent,
                         token=self.coin,
-                        tries=1,
+                        tries=admin_settings.tx_tries,
                         transaction_object=self,
                     )
 
@@ -142,7 +142,7 @@ class Transaction(models.Model):
                 got_fiat, fiat_bought, tx_hash, token_price, tx_fee, version = uniswap.token_to_fiat(
                     token_amount=self.token_amount_spent,
                     token=self.coin,
-                    tries=1,
+                    tries=admin_settings.tx_tries,
                     transaction_object=self,
                 )
 
