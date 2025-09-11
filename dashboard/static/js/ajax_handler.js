@@ -14,24 +14,40 @@ function ajax_call(command, tx_payload) {
         },
         success: function (ret_val) {
 
-
-            if (ret_val?.req){
-
-                if (ret_val.success){
-
-                    if (ret_val.req === 'save_rules') {
-
-                        window.location.href = `/dashboard/`;
-
-                    }
-
-                }
-
-            }
+            handle_ajax_returns(ret_val);
 
         }
     })
 }
+
+
+
+
+
+function handle_ajax_returns(ret){
+
+    deactivate_busy_mode();
+
+
+    if (ret?.req){
+        
+
+        if (ret.success){
+
+            $(".check_mark_image").addClass("shiny_once").show();
+
+            location.reload();
+
+        } else {
+            $(".error_mark_image").addClass("shiny_once").show();
+
+        }
+
+    }
+
+}
+
+
 
 
 
@@ -46,3 +62,4 @@ function deactivate_busy_mode(){
     $(".disable_while_busy").removeAttr("disabled").removeClass("disabled");
     $('*').css('cursor','')
 }
+

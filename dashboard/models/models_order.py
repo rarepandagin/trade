@@ -54,6 +54,7 @@ class Order(models.Model):
     uuid = models.TextField(default="", null=True, blank=True)
     active = models.BooleanField(default=True)
     executed = models.BooleanField(default=False)
+    archived = models.BooleanField(default=False)
     fullfiled = models.BooleanField(default=False)
 
 
@@ -94,39 +95,40 @@ class Order(models.Model):
         from dashboard.models import models_position
         from dashboard.models import models_transaction
 
+        if self.active and (not self.fullfiled):
 
-        new_transaction = tk.create_fiat_to_token_transaction(self.entry_capital, self.coin)
-
-
-        if new_transaction.state == models_transaction.transaction_state_succesful:
-
-            new_position = models_position.Position(
-                order=self,
-
-                coin_amount = new_transaction.token_amount_recieved,
-
-                entry_price=new_transaction.token_effective_price,
-
-                min_profit_exit_price = self.min_profit_exit_price,
-                stop_loss_price = self.stop_loss_price,
-                initial_stop_loss_price = self.stop_loss_price,
-            )
-
-            new_position.save()
-
-            new_transaction.position = new_position
-            new_transaction.save()
-
-            self.fullfiled = True
-            tk.create_new_notification(title="Buy order fullfiled", message=f"order {self.name} fullfiled")
-
-        else:
-            self.fullfiled = False
-            tk.create_new_notification(title="TX Failed", message=f"tx for order {self.name} failed at execution")
+            new_transaction = tk.create_fiat_to_token_transaction(self.entry_capital, self.coin)
 
 
-        self.active = False
-        self.executed = True
+            if new_transaction.state == models_transaction.transaction_state_succesful:
+
+                new_position = models_position.Position(
+                    order=self,
+
+                    coin_amount = new_transaction.token_amount_recieved,
+
+                    entry_price=new_transaction.token_effective_price,
+
+                    min_profit_exit_price = self.min_profit_exit_price,
+                    stop_loss_price = self.stop_loss_price,
+                    initial_stop_loss_price = self.stop_loss_price,
+                )
+
+                new_position.save()
+
+                new_transaction.position = new_position
+                new_transaction.save()
+
+                self.fullfiled = True
+                tk.create_new_notification(title="Buy order fulfilled", message=f"order {self.name} fulfilled")
+
+            else:
+                self.fullfiled = False
+                tk.create_new_notification(title="Buy order did not get fulfilled due to tx failure", message=f"tx for order {self.name} failed at execution")
+
+
+            self.active = False
+            self.executed = True
 
 
     def evaluate(self):

@@ -56,7 +56,7 @@ function update_depth_chart(payload){
         data[0].width = payload.admin_settings.depth_cluster_width_usd;
         data[1].width = payload.admin_settings.depth_cluster_width_usd;
 
-        layout.xaxis.dtick = 2 * payload.admin_settings.depth_cluster_width_usd;
+        layout.xaxis.dtick = 4 * payload.admin_settings.depth_cluster_width_usd;
     }
     const config = {responsive: true};
 

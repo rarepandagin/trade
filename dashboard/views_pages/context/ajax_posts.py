@@ -1,6 +1,7 @@
 import json
 from dashboard.views_pages import toolkit as tk
 from dashboard.models import models_position
+from dashboard.models import models_order
 from traceback import format_exc
 
 def handle_ajax_posts(self, request):
@@ -43,6 +44,7 @@ def handle_ajax_posts(self, request):
         except:
             tk.logger.info(format_exc())
 
+
     elif  request.POST['req'] == 'update_both_way_quotes':
         from dashboard.modules.uniswap.v3_class import Uniswap
 
@@ -54,4 +56,24 @@ def handle_ajax_posts(self, request):
 
         coin_amount_in = payload['fiat_amount_in'] / admin_settings.prices['weth']
         uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=coin_amount_in)
+
+
+    elif  request.POST['req'] == 'execute_order':
+        # import time
+        order = models_order.Order.objects.get(uuid=payload['order_uuid'])
+        order.execute()
+        # time.sleep(2)
+        order.save()
+        return {'req': request.POST['req'], 'success': order.fullfiled}
+
+
+
+    elif  request.POST['req'] == 'exit_position':
+        import time
+        position = models_position.Position.objects.get(uuid=payload['position_uuid'])
+        # position.exit_position()
+        time.sleep(2)
+        position.save()
+
+        return {'req': request.POST['req'], 'success': position.exited_gracefully}
 

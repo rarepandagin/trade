@@ -393,17 +393,15 @@ function update_positions_table(payload){
 
 
 $(".heart-container").addClass("beat");
-setTimeout(function() {
-    $(".heart-container").removeClass("beat");
-}, 1000);
-    
+    setTimeout(function() {
+        $(".heart-container").removeClass("beat");
+    }, 1000);
 }
 
 
 
 function logger_to_frontend(payload){
     console.log(payload);
-
     const textarea = document.getElementById('logger_textarea');
     textarea.value = `${payload}\n${textarea.value}`;   
 
@@ -440,3 +438,22 @@ function update_both_way_quotes(){
 function display_position_on_chart(position_uuid){
     ajax_call('display_position_on_chart', {'position_uuid': position_uuid})
 }
+
+
+
+
+function execute_order(order_uuid){
+    activate_busy_mode();
+    console.log(`executing order uuid: ${order_uuid}`);
+    ajax_call('execute_order', {'order_uuid': order_uuid})
+
+}
+
+
+
+function exit_position(position_uuid){
+    activate_busy_mode();
+    console.log(`exiting position position uuid: ${position_uuid}`);
+    ajax_call('exit_position', {'position_uuid': position_uuid})
+}
+

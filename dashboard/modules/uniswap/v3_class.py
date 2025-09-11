@@ -406,6 +406,7 @@ class Uniswap():
             admin_settings.added_slipage_multiplier_fiat_to_coin = slipage_to_fee
             admin_settings.save()
             tk.logger.info(f"slipage_to_fee: {slipage}")
+            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slipage_to_fee}"})
 
         else:
 
@@ -431,6 +432,7 @@ class Uniswap():
             admin_settings.save()
 
             tk.logger.info(f"slipage_to_fee: {slipage}")
+            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slipage_to_fee}"})
 
 
 

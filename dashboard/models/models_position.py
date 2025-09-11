@@ -79,6 +79,9 @@ class Position(models.Model):
     # auto_exit = models.BooleanField(default=False)
     auto_exit_style     = models.CharField(choices=models_order.auto_exit_styles,   default=models_order.auto_exit_style_only_after_min_profit)
 
+    archived = models.BooleanField(default=False)
+
+    exited_gracefully = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -104,9 +107,9 @@ class Position(models.Model):
         self.entry_price                = round(self.entry_price, 2)
         self.stop_loss_price            = round(self.stop_loss_price, 2)
         self.initial_stop_loss_price    = round(self.initial_stop_loss_price, 2)
-        self.min_profit_exit_price    = round(self.min_profit_exit_price, 2)
+        self.min_profit_exit_price      = round(self.min_profit_exit_price, 2)
         self.exit_price                 = round(self.exit_price, 2)
-        
+
         self.profit_amount_at_min_profit_exit_price         = round(self.profit_amount_at_min_profit_exit_price, 2)
         self.loss_amount_at_stop_loss_price                 = round(self.loss_amount_at_stop_loss_price, 2)
         self.ambition_ratio                                    = round(self.ambition_ratio, 2)
@@ -142,6 +145,7 @@ class Position(models.Model):
             self.final_profit_usd = new_transaction.fiat_amount_recieved - self.order.entry_capital - total_gas_fees
 
             self.active = False
+            self.exited_gracefully = True
             self.save()
 
 
@@ -155,8 +159,6 @@ class Position(models.Model):
 
 
         else:
-            self.auto_exit_style = models_order.auto_exit_style_never
-            self.save()
 
             tk.create_new_notification(title="TX Failed while exiting position", message=f"tx for position {self.order.name} failed at execution")
 

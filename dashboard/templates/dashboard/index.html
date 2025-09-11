@@ -9,19 +9,13 @@
  
 
     
-    <!-- MAIN -->
-    <div class="col-10">
-
-
-        
-
         <div class="d-flex justify-content-between  flex-sm-row flex-column " >
              {% if admin_settings.pulses_are_being_blocked %}
 
                 <form method="POST">
                     {% csrf_token %}
 
-                    <button type="submit" name="unblock_pulses" class="btn btn-warning  btn-sm m-2" >Pulses are blocked - Click to unblock</button>
+                    <button type="submit" name="unblock_pulses" class="btn btn-warning  btn-sm m-2 disable_while_busy" >Pulses are blocked - Click to unblock</button>
 
                 </form>
 
@@ -31,7 +25,7 @@
                 <form method="POST">
                     {% csrf_token %}
 
-                    <button type="submit" name="block_pulses" class="btn btn-success btn-sm m-2">Pulses are taken in - Click to block</button>
+                    <button type="submit" name="block_pulses" class="btn btn-success btn-sm m-2 disable_while_busy">Pulses are taken in - Click to block</button>
 
                 </form>
 
@@ -50,7 +44,7 @@
                                     <option value="{{coin}}" {% if admin_settings.fiat_coin == coin %} selected {% endif %}   >{{coin}}</option>
                                 {% endfor %}
                         </select>
-                        <button type="submit" class="btn btn-primary btn-sm ms-2" style="height: 30px;" >Set fiat</button>
+                        <button type="submit" class="btn btn-primary btn-sm ms-2 disable_while_busy" style="height: 30px;" >Set fiat</button>
 
                     </div>
                 </form>
@@ -61,7 +55,7 @@
                 <form method="POST" class="d-flex justify-content-start gap-1">
                     {% csrf_token %}
                     <input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 80px;"/>
-                    <button type="submit" class="btn btn-primary btn-sm" style="height: 30px;" >Set secure profit ratio</button>
+                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set secure profit ratio</button>
                 </form>
             
         </div>
@@ -73,14 +67,14 @@
                 <form method="POST" class="d-flex justify-content-start gap-1">
                     {% csrf_token %}
                     <input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_interval" value="{{admin_settings.interval}}" style="width: 50px;"/>
-                    <button type="submit" class="btn btn-primary btn-sm" style="height: 30px;" >Set interval</button>
+                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set interval</button>
                 </form>
 
 
                 <form method="POST">
                     {% csrf_token %}
 
-                    <button type="submit" name="admin_settings_alarms" class="btn btn-primary btn-sm ">
+                    <button type="submit" name="admin_settings_alarms disable_while_busy" class="btn btn-primary btn-sm ">
                         {% if admin_settings.alarms %}
                             Disable alarms
                         {% else %}
@@ -92,7 +86,7 @@
 
 
 
-                <button type="button"  class="btn btn-primary btn-sm" onclick="update_balances();">Update balances</button>
+                <button type="button"  class="btn btn-primary btn-sm disable_while_busy" onclick="update_balances();">Update balances</button>
 
 
         </div>
@@ -188,7 +182,7 @@
                         <form method="POST">
                             {% csrf_token %}
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
-                            <button class="btn btn-primary btn-sm" name="position_action_activate">
+                            <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_activate">
                                 {% if position.active %}
                                     Deactivate
                                 {% else %}
@@ -202,13 +196,11 @@
                     
 
                     <div>
-                        <form method="POST">
-                            {% csrf_token %}
-                            <input name="position_uuid" value="{{position.uuid}}" hidden />
-                            <button class="btn btn-danger btn-sm gas_sensetive_dom"  name="position_action_exit_now">
-                                Exit now
-                            </button>
-                        </form>
+
+                        <button class="btn btn-danger btn-sm gas_sensetive_dom disable_while_busy" type="button" onclick="exit_position('{{position.uuid}}')"  name="position_action_exit_now">
+                            Exit now
+                        </button>
+
                     </div>
                             
                     <div>
@@ -217,7 +209,7 @@
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
                             stop loss:
                             <input type="number" class="form-control form-control-sm" name="position_stop_loss_price" value="{{position.stop_loss_price}}" style="width: 100px;"  step="any"/>
-                            <button class="btn btn-primary btn-sm" name="position_action_set_stop_loss_price">Set</button>
+                            <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_set_stop_loss_price">Set</button>
                         </form>
                     </div>
                     
@@ -227,7 +219,7 @@
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
                             min profit exit price:
                             <input type="number" class="form-control form-control-sm" name="position_min_profit_exit_price" value="{{position.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
-                            <button class="btn btn-primary btn-sm" name="position_action_set_min_profit_exit_price">Set</button>
+                            <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_set_min_profit_exit_price">Set</button>
                         </form>
                     </div>
                     </div>
@@ -243,7 +235,7 @@
                                         <option value="{{auto_exit_style}}" {% if position.auto_exit_style == auto_exit_style %} selected {% endif %}   >{{auto_exit_style}}</option>
                                     {% endfor %}
                             </select>
-                            <button class="btn btn-warning btn-sm" name="position_setting_auto_exit">set auto exit style</button>
+                            <button class="btn btn-warning btn-sm disable_while_busy" name="position_setting_auto_exit">set auto exit style</button>
                         </form>
                     </div>
                 {% else %}
@@ -255,8 +247,8 @@
                         <form method="POST">
                             {% csrf_token %}
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
-                            <button class="btn btn-warning btn-sm" name="position_action_delete">
-                                Delete Position
+                            <button class="btn btn-warning btn-sm" name="position_action_archive">
+                                Archive position
                             </button>
                         </form>
                     </div>
@@ -331,7 +323,7 @@
 
                         <div class="d-flex justify-content-start">
                             <input type="text" name="position_uuid" value="{{position.uuid}}" hidden />
-                            <button type="submit" name="delete_position_events" class="btn btn-warning btn-sm m-1">Delete position events</button>
+                            <button type="submit" name="delete_position_events" class="btn btn-warning btn-sm m-1 disable_while_busy">Delete position events</button>
                         </div>
 
                     </form>
@@ -351,13 +343,10 @@
 
             </form>
         </div>
-    </div>
+     
 
-    <!-- EVENTS -->
-    <div class="col-2">
-        <textarea class="form-control" id="logger_textarea" rows="90"></textarea>
 
-    </div>
+    
     
 
 

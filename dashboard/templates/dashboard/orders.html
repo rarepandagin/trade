@@ -9,12 +9,6 @@
  
 
     
-    <!-- MAIN -->
-
-
-        
-
-
 
 
         <!-- NEW Order -->
@@ -53,7 +47,9 @@
                 </div>
             </div>
 
+            
             <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
+
                 <div class="d-flex justify-content-start">
                     <p>Order price:</p>
                     <input type="number" class="form-control form-control-sm"  step="any" min="0" value="0" name="order_price"/>
@@ -64,17 +60,14 @@
                     <input type="number" class="form-control form-control-sm" name="stop_loss_price" value="3000" id="stop_loss_price" step="any" required/>
                 </div>
 
-
-
                 <div class="d-flex justify-content-start gap-2 ">
                     <p>Min profit exit price:</p>
                     <input type="number" class="form-control form-control-sm" name="min_profit_exit_price" value="10000" id="min_profit_exit_price" step="any" required/>
                 </div>
 
-
-
             </div>
-                
+
+            
             <div class="d-flex justify-content-between gap-2  flex-sm-row flex-column ">
                 <p id="profit_amount_at_min_profit_exit_price"></p>
                 <p id="loss_amount_at_stop_loss_price"></p>
@@ -92,13 +85,7 @@
 
             <div class="d-flex justify-content-between gap-2 mt-2  flex-sm-row flex-column ">
 
-                <div class="form-check ">
-                      <input class="form-check-input" type="checkbox" value="" id="execute_order_now_with_live_price" name="execute_order_now_with_live_price">
-
-                    <label class="form-check-label" for="execute_order_now_with_live_price">
-                        <p >execute order now with live price</p>
-                    </label>
-                </div>
+                
 
 
                 <div class="d-flex justify-content-start">
@@ -190,19 +177,30 @@
 
                 <div class="d-flex justify-content-start border rounded p-1 gap-2 flex-sm-row flex-column ">
 
+                    <!-- <form method="POST"> -->
+                        <!-- {% csrf_token %} -->
+                        <!-- <input type="text" name="order_uuid" value="{{order.uuid}}" hidden> -->
+                        {% if order.active %}
+                            
+                            <button type="button" class="btn btn-primary btn-danger btn-sm m-1 disable_while_busy"  onclick="execute_order('{{order.uuid}}')">Execute now</button>
+
+
+                        {% endif %}
+                    <!-- </form> -->
+
                     <form method="POST">
                         {% csrf_token %}
                         <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
-                        {% if order.active %}
-                            <button class="btn btn-primary btn-danger btn-sm m-1" name="order_execute_now">Execute now</button>
-                        {% endif %}
+
+                        <button class="btn btn-primary btn-danger btn-sm m-1" name="order_delete">Delete order</button>
                     </form>
 
+
                     <form method="POST">
                         {% csrf_token %}
                         <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
 
-                        <button class="btn btn-primary btn-warning btn-sm m-1" name="order_delete">Delete order</button>
+                        <button class="btn btn-primary btn-warning btn-sm m-1" name="order_archive">Archive order</button>
                     </form>
 
 
@@ -230,6 +228,16 @@
 
 
     
+    <script>
+
+
+        $(document).ready(function () {
+
+            setup_ws_dashboard();
+
+        })
+
+    </script>
 
 
     

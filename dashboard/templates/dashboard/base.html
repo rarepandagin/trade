@@ -119,12 +119,20 @@ optgroup{
 }
 
 .menu-item {
-  background-color: blue;
-  border-radius: 10px;
-  padding: 6px;
+  background-color: rgb(66, 66, 66);
+  border-radius: 5px;
+  padding: 7px;
 
   color: #fff;
 }
+
+.shiny_once  { animation: fadeIn 3s; }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+
+  100% { opacity: 100%;display: block}
+}
+
 
 </style>
 
@@ -136,6 +144,8 @@ optgroup{
 
   <div class="row mainblock m-4  heart-container" >
 
+	
+
 	<div>
 		<div class="d-flex justify-content-between border rounded p-2 mb-3" >
 
@@ -145,19 +155,37 @@ optgroup{
 			<a href="/manual/" class="menu-item">Manual</a>
 			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="menu-item">Admin</a>
 			<a href="/logout/" class="menu-item ">Logout</a>
-
+			<div class="d-flex justify-content-start" style="width: 100px;">
+				<span class="shiny_once shiny_once_object check_mark_image" ><img src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/images/check.png" alt="" style="width: 30px; height: 30px;"/></span>
+				<span class="shiny_once shiny_once_object error_mark_image" ><img src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/images/error.png" alt="" style="width: 26px; height: 26px;"/></span>
+			</div>
 		</div>         
 	</div>       
 
+      <div class="col-10">
+            {% block basebody %}
 
-      {% block basebody %}
-
-      {% endblock %}
-
+            {% endblock %}
+      </div>
+      <div class="col-2">
+        	<textarea class="form-control" id="logger_textarea" rows="90"></textarea>
+	  </div>
   </div>
 
 
+<script>
+	
+		$(".shiny_once").on(
+			"webkitAnimationEnd oanimationend msAnimationEnd animationend",
+			function() {
 
+				$(this).removeClass("shiny_once");
+				$(this).hide();
+			}
+		);
+
+
+</script>
 </body>
 
 </html>

@@ -120,24 +120,18 @@ def get_response(request):
 
 
 
-            elif 'position_action_exit_now' in request.POST:
+            elif 'position_action_archive' in request.POST:
                 position_uuid = request.POST['position_uuid']
                 position = models_position.Position.objects.get(uuid=position_uuid)
 
-                position.exit_position()
+                position.archived = True
                 position.save()
-
-            elif 'position_action_delete' in request.POST:
-                position_uuid = request.POST['position_uuid']
-                position = models_position.Position.objects.get(uuid=position_uuid)
-
-                position.delete()
 
 
 
 
     context.dict['admin_settings'] =  tk.get_admin_settings()
-    context.dict['positions'] =  models_position.Position.objects.all().order_by('-id')
+    context.dict['positions'] =  models_position.Position.objects.filter(archived=False).order_by('-id')
     context.dict['orders'] =  models_order.Order.objects.filter(executed=False).order_by('-id')
 
     context.dict['new_random_name'] =  tk.get_new_random_name()

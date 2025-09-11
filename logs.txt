@@ -1,0 +1,804 @@
+2025-09-11 11:33:31.934349 - initiating W3...
+2025-09-11 11:33:31.951006 - uniswap fully initiated
+2025-09-11 11:33:31.954011 - performing V3 Quote
+2025-09-11 11:33:33.243055 - quote: 0.05005292775168069
+2025-09-11 11:33:33.268333 - performing V3 Quote
+2025-09-11 11:33:33.896259 - quote: 0.05005292775168069
+2025-09-11 11:33:33.899822 - performing V3 Quote
+2025-09-11 11:33:34.521002 - quote: 0.05005292775168069
+2025-09-11 11:33:34.529072 - slipage_to_fee: 0.0004655791627887924
+2025-09-11 11:33:34.534069 - performing V3 Quote
+2025-09-11 11:33:35.133724 - quote: 221.880809
+2025-09-11 11:33:35.134758 - performing V3 Quote
+2025-09-11 11:33:35.744919 - quote: 221.880809
+2025-09-11 11:33:35.749533 - performing V3 Quote
+2025-09-11 11:33:36.378225 - quote: 221.880809
+2025-09-11 11:33:36.392949 - slipage_to_fee: 0.0005368963963963996
+2025-09-11 11:38:41.511750 - initiating W3...
+2025-09-11 11:38:41.529104 - uniswap fully initiated
+2025-09-11 11:38:41.531083 - performing V3 Quote
+2025-09-11 11:38:42.856497 - quote: 0.25034368520960276
+2025-09-11 11:38:42.858064 - performing V3 Quote
+2025-09-11 11:38:43.471041 - quote: 0.25034368520960276
+2025-09-11 11:38:43.475039 - performing V3 Quote
+2025-09-11 11:38:44.086840 - quote: 0.25034368520960276
+2025-09-11 11:38:44.090368 - slipage_to_fee: 0.0008537911568392792
+2025-09-11 11:38:44.093370 - performing V3 Quote
+2025-09-11 11:38:44.690797 - quote: 1110.823942
+2025-09-11 11:38:44.693798 - performing V3 Quote
+2025-09-11 11:38:45.314564 - quote: 1110.823942
+2025-09-11 11:38:45.317604 - performing V3 Quote
+2025-09-11 11:38:45.924924 - quote: 1110.823942
+2025-09-11 11:38:45.941398 - slipage_to_fee: 0.0001584680468046911
+2025-09-11 11:44:47.336361 - initiating W3...
+2025-09-11 11:44:47.354549 - uniswap fully initiated
+2025-09-11 11:44:47.356549 - performing V3 Quote
+2025-09-11 11:44:48.814845 - quote: 0.24981340661885212
+2025-09-11 11:44:48.814845 - performing V3 Quote
+2025-09-11 11:44:49.433034 - quote: 0.24981340661885212
+2025-09-11 11:44:49.436043 - performing V3 Quote
+2025-09-11 11:44:50.068283 - quote: 0.24981340661885212
+2025-09-11 11:44:50.081523 - slipage_to_fee: 0.0010634184420825496
+2025-09-11 11:44:50.084526 - performing V3 Quote
+2025-09-11 11:44:50.682252 - quote: 1111.057061
+2025-09-11 11:44:50.685251 - performing V3 Quote
+2025-09-11 11:44:51.319361 - quote: 1111.057061
+2025-09-11 11:44:51.320325 - performing V3 Quote
+2025-09-11 11:44:51.918546 - quote: 1111.057061
+2025-09-11 11:44:51.922353 - slipage_to_fee: -5.1360036003578804e-05
+2025-09-11 11:45:13.732966 - initiating W3...
+2025-09-11 11:45:13.750349 - uniswap fully initiated
+2025-09-11 11:45:13.754360 - performing V3 Quote
+2025-09-11 11:45:14.942785 - quote: 0.09983483507538829
+2025-09-11 11:45:14.943753 - performing V3 Quote
+2025-09-11 11:45:15.575102 - quote: 0.09983483507538829
+2025-09-11 11:45:15.576102 - performing V3 Quote
+2025-09-11 11:45:16.184641 - quote: 0.09983483507538829
+2025-09-11 11:45:16.192094 - slipage_to_fee: 0.0011209956182389185
+2025-09-11 11:45:16.200610 - performing V3 Quote
+2025-09-11 11:45:16.816214 - quote: 444.051697
+2025-09-11 11:45:16.818609 - performing V3 Quote
+2025-09-11 11:45:17.417715 - quote: 444.051697
+2025-09-11 11:45:17.418857 - performing V3 Quote
+2025-09-11 11:45:18.017320 - quote: 444.051697
+2025-09-11 11:45:18.030304 - slipage_to_fee: -0.00011643468468479045
+2025-09-11 11:46:05.176481 - initiating W3...
+2025-09-11 11:46:05.194062 - uniswap fully initiated
+2025-09-11 11:46:05.197054 - performing V3 Quote
+2025-09-11 11:46:06.496915 - quote: 0.09983533781050982
+2025-09-11 11:46:06.499497 - performing V3 Quote
+2025-09-11 11:46:07.094778 - quote: 0.09983533781050982
+2025-09-11 11:46:07.094778 - performing V3 Quote
+2025-09-11 11:46:07.700888 - quote: 0.09983533781050982
+2025-09-11 11:46:07.714372 - slipage_to_fee: 0.0009113481231891453
+2025-09-11 11:46:07.716888 - performing V3 Quote
+2025-09-11 11:46:08.313975 - quote: 443.958518
+2025-09-11 11:46:08.314973 - performing V3 Quote
+2025-09-11 11:46:08.921544 - quote: 443.958518
+2025-09-11 11:46:08.922466 - performing V3 Quote
+2025-09-11 11:46:09.524969 - quote: 443.958518
+2025-09-11 11:46:09.526986 - slipage_to_fee: 9.342792792786845e-05
+2025-09-11 11:46:17.585419 - initiating W3...
+2025-09-11 11:46:17.601318 - uniswap fully initiated
+2025-09-11 11:46:17.603285 - performing V3 Quote
+2025-09-11 11:46:18.791125 - quote: 0.07487654963269617
+2025-09-11 11:46:18.795056 - performing V3 Quote
+2025-09-11 11:46:19.394742 - quote: 0.07487654963269617
+2025-09-11 11:46:19.396824 - performing V3 Quote
+2025-09-11 11:46:19.994155 - quote: 0.07487654963269617
+2025-09-11 11:46:20.007309 - slipage_to_fee: 0.0009579501169756716
+2025-09-11 11:46:20.010318 - performing V3 Quote
+2025-09-11 11:46:20.598854 - quote: 332.985581
+2025-09-11 11:46:20.599821 - performing V3 Quote
+2025-09-11 11:46:21.199598 - quote: 332.985581
+2025-09-11 11:46:21.200600 - performing V3 Quote
+2025-09-11 11:46:21.794611 - quote: 332.985581
+2025-09-11 11:46:21.807011 - slipage_to_fee: 4.330030030022616e-05
+2025-09-11 11:46:32.279363 - initiating W3...
+2025-09-11 11:46:32.298854 - uniswap fully initiated
+2025-09-11 11:46:32.301853 - performing V3 Quote
+2025-09-11 11:46:33.480725 - quote: 0.07487655138451371
+2025-09-11 11:46:33.481734 - performing V3 Quote
+2025-09-11 11:46:34.088612 - quote: 0.07487655138451371
+2025-09-11 11:46:34.092406 - performing V3 Quote
+2025-09-11 11:46:34.693141 - quote: 0.07487655138451371
+2025-09-11 11:46:34.712664 - slipage_to_fee: 0.000960175288397418
+2025-09-11 11:46:34.720372 - performing V3 Quote
+2025-09-11 11:46:35.394402 - quote: 332.985573
+2025-09-11 11:46:35.395399 - performing V3 Quote
+2025-09-11 11:46:35.990897 - quote: 332.985573
+2025-09-11 11:46:35.991898 - performing V3 Quote
+2025-09-11 11:46:36.599318 - quote: 332.985573
+2025-09-11 11:46:36.601317 - slipage_to_fee: 4.3324324324360236e-05
+2025-09-11 11:46:39.386225 - initiating W3...
+2025-09-11 11:46:39.402748 - uniswap fully initiated
+2025-09-11 11:46:39.404752 - performing V3 Quote
+2025-09-11 11:46:40.701415 - quote: 0.749427559598299
+2025-09-11 11:46:40.705394 - performing V3 Quote
+2025-09-11 11:46:41.327194 - quote: 0.749427559598299
+2025-09-11 11:46:41.329200 - performing V3 Quote
+2025-09-11 11:46:41.916433 - quote: 0.749427559598299
+2025-09-11 11:46:41.919004 - slipage_to_fee: 0.000976862084241682
+2025-09-11 11:46:41.922003 - performing V3 Quote
+2025-09-11 11:46:42.516115 - quote: 3332.799915
+2025-09-11 11:46:42.517176 - performing V3 Quote
+2025-09-11 11:46:43.118442 - quote: 3332.799915
+2025-09-11 11:46:43.120451 - performing V3 Quote
+2025-09-11 11:46:43.715425 - quote: 3332.799915
+2025-09-11 11:46:43.717960 - slipage_to_fee: 6.00315031502984e-05
+2025-09-11 11:47:21.760879 - initiating W3...
+2025-09-11 11:47:21.778372 - uniswap fully initiated
+2025-09-11 11:47:21.780376 - performing V3 Quote
+2025-09-11 11:47:23.104581 - quote: 0.7494295529868336
+2025-09-11 11:47:23.106119 - performing V3 Quote
+2025-09-11 11:47:23.711372 - quote: 0.7494295529868336
+2025-09-11 11:47:23.715318 - performing V3 Quote
+2025-09-11 11:47:24.328117 - quote: 0.7494295529868336
+2025-09-11 11:47:24.347007 - slipage_to_fee: 0.0008977553416841973
+2025-09-11 11:47:24.354031 - performing V3 Quote
+2025-09-11 11:47:24.968959 - quote: 3332.536036
+2025-09-11 11:47:24.970018 - performing V3 Quote
+2025-09-11 11:47:25.560419 - quote: 3332.536036
+2025-09-11 11:47:25.561403 - performing V3 Quote
+2025-09-11 11:47:26.176430 - quote: 3332.536036
+2025-09-11 11:47:26.185044 - slipage_to_fee: 0.000139203120312041
+2025-09-11 11:48:21.187075 - initiating W3...
+2025-09-11 11:48:21.207239 - uniswap fully initiated
+2025-09-11 11:48:21.210292 - performing V3 Quote
+2025-09-11 11:48:22.482834 - quote: 0.1996707177986823
+2025-09-11 11:48:22.483837 - performing V3 Quote
+2025-09-11 11:48:23.091380 - quote: 0.1996707177986823
+2025-09-11 11:48:23.092344 - performing V3 Quote
+2025-09-11 11:48:23.704847 - quote: 0.1996707177986823
+2025-09-11 11:48:23.712693 - slipage_to_fee: 0.0009875875796174632
+2025-09-11 11:48:23.720757 - performing V3 Quote
+2025-09-11 11:48:24.318070 - quote: 887.98007
+2025-09-11 11:48:24.319136 - performing V3 Quote
+2025-09-11 11:48:24.908741 - quote: 887.98007
+2025-09-11 11:48:24.909747 - performing V3 Quote
+2025-09-11 11:48:25.539426 - quote: 887.98007
+2025-09-11 11:48:25.541426 - slipage_to_fee: 2.2443693693744206e-05
+2025-09-11 11:48:34.801963 - initiating W3...
+2025-09-11 11:48:34.816991 - uniswap fully initiated
+2025-09-11 11:48:34.819998 - performing V3 Quote
+2025-09-11 11:48:36.090172 - quote: 0.19967079323388115
+2025-09-11 11:48:36.092143 - performing V3 Quote
+2025-09-11 11:48:36.691996 - quote: 0.19967079323388115
+2025-09-11 11:48:36.694958 - performing V3 Quote
+2025-09-11 11:48:37.304466 - quote: 0.19967079323388115
+2025-09-11 11:48:37.313402 - slipage_to_fee: 0.0011850821119800234
+2025-09-11 11:48:37.323958 - performing V3 Quote
+2025-09-11 11:48:37.922133 - quote: 888.155984
+2025-09-11 11:48:37.923298 - performing V3 Quote
+2025-09-11 11:48:38.506111 - quote: 888.155984
+2025-09-11 11:48:38.506111 - performing V3 Quote
+2025-09-11 11:48:39.116493 - quote: 888.155984
+2025-09-11 11:48:39.129622 - slipage_to_fee: -0.00017565765765751773
+2025-09-11 11:48:46.072974 - initiating W3...
+2025-09-11 11:48:46.088886 - uniswap fully initiated
+2025-09-11 11:48:46.090907 - performing V3 Quote
+2025-09-11 11:48:47.298064 - quote: 0.19967079323388115
+2025-09-11 11:48:47.298666 - performing V3 Quote
+2025-09-11 11:48:47.897871 - quote: 0.19967079323388115
+2025-09-11 11:48:47.898865 - performing V3 Quote
+2025-09-11 11:48:48.490005 - quote: 0.19967079323388115
+2025-09-11 11:48:48.494978 - slipage_to_fee: 0.0013244919000486364
+2025-09-11 11:48:48.499045 - performing V3 Quote
+2025-09-11 11:48:49.141462 - quote: 888.279966
+2025-09-11 11:48:49.145073 - performing V3 Quote
+2025-09-11 11:48:49.742095 - quote: 888.279966
+2025-09-11 11:48:49.743095 - performing V3 Quote
+2025-09-11 11:48:50.366304 - quote: 888.279966
+2025-09-11 11:48:50.368824 - slipage_to_fee: -0.00031527702702696496
+2025-09-11 13:03:30.343289 - initiating W3...
+2025-09-11 13:03:30.362451 - uniswap fully initiated
+2025-09-11 13:03:30.364414 - performing V3 Quote
+2025-09-11 13:03:31.687073 - quote: 0.000450865985357808
+2025-09-11 13:03:31.688032 - performing V3 Quote
+2025-09-11 13:03:32.305280 - quote: 0.000450865985357808
+2025-09-11 13:03:32.307827 - performing V3 Quote
+2025-09-11 13:03:32.915209 - quote: 0.000450865985357808
+2025-09-11 13:03:32.918252 - slipage_to_fee: 0.0011041551098495228
+2025-09-11 13:03:32.921351 - performing fiat_to_token (usdc -> weth)     fiat_amount: 2.0     V3
+2025-09-11 13:03:32.922351 - <-> swapping 2.0 usdc for 0.0004513643616240992 weth -- fee_teir: 500
+2025-09-11 13:03:32.924403 - building tx for action: exactInputSingle
+2025-09-11 13:03:33.646462 - waiting for https://etherscan.io/tx/0x8d1e09697eb50dda95d92795b3562fda3499943050a68e435dfee77d8c4d4af1 
+
+2025-09-11 13:03:48.352485 - ---------------> successful
+2025-09-11 13:03:48.353448 - V3: got_weth: 0.000450865985357808
+2025-09-11 13:36:58.676804 - initiating W3...
+2025-09-11 13:36:58.695751 - uniswap fully initiated
+2025-09-11 13:36:58.697784 - performing V3 Quote
+2025-09-11 13:37:00.001242 - quote: 0.7550528341473681
+2025-09-11 13:37:00.005172 - performing V3 Quote
+2025-09-11 13:37:00.610700 - quote: 0.7550528341473681
+2025-09-11 13:37:00.614709 - performing V3 Quote
+2025-09-11 13:37:01.229050 - quote: 0.7550528341473681
+2025-09-11 13:37:01.243534 - slipage_to_fee: 0.0008949700064568609
+2025-09-11 13:37:01.246541 - performing V3 Quote
+2025-09-11 13:37:01.883922 - quote: 3332.525019
+2025-09-11 13:37:01.885858 - performing V3 Quote
+2025-09-11 13:37:02.503762 - quote: 3332.525019
+2025-09-11 13:37:02.505070 - performing V3 Quote
+2025-09-11 13:37:03.108495 - quote: 3332.525019
+2025-09-11 13:37:03.122363 - slipage_to_fee: 0.00014250855085503852
+2025-09-11 13:37:44.542942 - initiating W3...
+2025-09-11 13:37:44.558443 - uniswap fully initiated
+2025-09-11 13:37:44.560955 - performing V3 Quote
+2025-09-11 13:37:45.743901 - quote: 1.988207
+2025-09-11 13:37:45.745897 - performing V3 Quote
+2025-09-11 13:37:46.374299 - quote: 1.988207
+2025-09-11 13:37:46.378833 - performing V3 Quote
+2025-09-11 13:37:46.985879 - quote: 1.988207
+2025-09-11 13:37:47.001549 - slipage_to_fee: 0.000559446424582063
+2025-09-11 13:37:47.004563 - performing token_to_fiat: 0.000450865985357808 of weth -> usdc
+2025-09-11 13:37:47.007566 - V3 got_weth: 0.000450865985357808
+2025-09-11 13:37:47.009749 - <-> swapping 0.000450865985357808 weth for 1.9893199179154277 usdc -- fee_teir: 500
+2025-09-11 13:37:47.012748 - building tx for action: exactInputSingle
+2025-09-11 13:37:47.742371 - waiting for https://etherscan.io/tx/0xddcc5a0561fc636a331611a44866ea0802ef06c320395d8fd8cca985b31c480c 
+
+2025-09-11 13:38:36.311330 - ---------------> successful
+2025-09-11 14:23:46.724072 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:23:50.808381 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:23:54.891920 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:00.982565 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:06.070305 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:10.133906 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:14.226705 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:18.319603 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:22.418440 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:26.478625 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:30.551583 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+2025-09-11 14:24:34.616290 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 35, in handle_a_pulse
+    for position in positions:
+                    ^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column dashboard_position.exited_gracefully does not exist
+LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
+                                                             ^
+
+
