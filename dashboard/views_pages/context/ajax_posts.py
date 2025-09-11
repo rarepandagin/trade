@@ -69,10 +69,10 @@ def handle_ajax_posts(self, request):
 
 
     elif  request.POST['req'] == 'exit_position':
-        import time
+        # import time
         position = models_position.Position.objects.get(uuid=payload['position_uuid'])
-        # position.exit_position()
-        time.sleep(2)
+        position.exit_position()
+        # time.sleep(2)
         position.save()
 
         return {'req': request.POST['req'], 'success': position.exited_gracefully}
