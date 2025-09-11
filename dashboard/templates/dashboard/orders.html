@@ -195,13 +195,14 @@
                         <button class="btn btn-primary btn-danger btn-sm m-1" name="order_delete">Delete order</button>
                     </form>
 
+                    {% if order.executed %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
 
-                    <form method="POST">
-                        {% csrf_token %}
-                        <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
-
-                        <button class="btn btn-primary btn-warning btn-sm m-1" name="order_archive">Archive order</button>
-                    </form>
+                            <button class="btn btn-primary btn-warning btn-sm m-1" name="order_archive">Archive order</button>
+                        </form>
+                    {% endif %}
 
 
                     <form method="POST">
