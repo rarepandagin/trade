@@ -7,13 +7,10 @@ from dashboard.models import *
 
 admin.site.register(Event)
 admin.site.register(AdminSettings)
-admin.site.register(Position)
 
 
 
-# class adminViewCandle(admin.ModelAdmin):
-#     list_display = ('id', 'coin', 'interval', 'open_time', 'close_time')
-# admin.site.register(Candle, adminViewCandle)
+
 
 class adminViewTransaction(admin.ModelAdmin):
     list_display = (
@@ -40,6 +37,7 @@ class adminViewOrder(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
+        'epoch_created',
         'mode',
         'entry_capital',
         'order_price',
@@ -48,8 +46,21 @@ class adminViewOrder(admin.ModelAdmin):
         'active',
         'executed',
         'fullfiled',
-        'epoch_created',
         )
 admin.site.register(Order, adminViewOrder)
+
+
+
+
+class adminViewPosition(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'epoch_created',
+        'state',
+        'active',
+        'archived',
+        'final_profit_usd',
+        )
+admin.site.register(Position, adminViewPosition)
 
 
