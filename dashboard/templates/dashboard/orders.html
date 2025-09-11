@@ -204,19 +204,23 @@
 
                             <button class="btn btn-primary btn-danger btn-sm m-1" name="order_delete">Delete order</button>
                         </form>
+
+                            
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
+                            {% if order.active %}
+                                <button class="btn btn-primary  btn-success btn-sm m-1" name="order_deactivate">Deactivate order</button>
+                            {% else %}
+                                <button class="btn btn-primary btn-secondary btn-sm m-1" name="order_activate">Activate order</button>
+
+                            {% endif %}
+                        </form>
+
+                        
                     {% endif %}
 
-
-                    <form method="POST">
-                        {% csrf_token %}
-                        <input type="text" name="order_uuid" value="{{order.uuid}}" hidden>
-                        {% if order.active %}
-                            <button class="btn btn-primary  btn-success btn-sm m-1" name="order_deactivate">Deactivate order</button>
-                        {% else %}
-                            <button class="btn btn-primary btn-secondary btn-sm m-1" name="order_activate">Activate order</button>
-
-                        {% endif %}
-                    </form>
 
 
                 </div>
