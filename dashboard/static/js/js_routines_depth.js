@@ -1,6 +1,5 @@
 
-function update_depth_chart(payload){
-
+function draw_depth_bar_plot(payload){
 
     const bids = payload.bids
     const asks = payload.asks
@@ -61,6 +60,49 @@ function update_depth_chart(payload){
     const config = {responsive: true};
 
     // Create the plot
-    Plotly.newPlot('orderBookPlot', data, layout, config);
+    Plotly.newPlot('orderBookBarPlot', data, layout, config);
+
+}
+
+function draw_depth_pie_plot(payload){
+
+    var data = [{
+      type: "pie",
+      values: [payload.best_bid_volume, payload.best_ask_volume], // Example values
+      labels: ["Bid", "Ask"], // Corresponding labels
+      marker: {
+        colors: ['#00862dff', '#a30000ff'] // Custom colors for the slices
+      },
+	textinfo: "label+percent", // Display label and percentage
+      textposition: "inside" // Position text inside the slices
+    }];
+
+    var layout = {
+      height: 400,
+      width: 400,
+	plot_bgcolor: 'rgba(0, 0, 0, 1)',  
+
+      margin: {"t": 0, "b": 0, "l": 0, "r": 0},
+      showlegend: false // Optional: hide the legend
+    };
+
+    Plotly.newPlot('orderBookPiePlot', data, layout);
+
+}
+
+
+function update_depth_chart(payload){
+
+
+	draw_depth_bar_plot(payload);
+	draw_depth_pie_plot(payload);
+
+
+
+    $("#best_bid_price").html(payload.best_bid_price);
+    $("#best_ask_price").html(payload.best_ask_price);
+    $("#best_bid_volume").html(payload.best_bid_volume);
+    $("#best_ask_volume").html(payload.best_ask_volume);
+
 
 }

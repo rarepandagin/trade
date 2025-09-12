@@ -406,7 +406,7 @@ sudo nano /etc/postgresql/16/main/pg_hba.conf
 Add the following line to the end:
 ```host    all             all             0.0.0.0/0               md5```
 
-
+sudo ufw allow 5432/tcp   
 
 
 

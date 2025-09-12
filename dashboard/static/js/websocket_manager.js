@@ -112,5 +112,6 @@ function ws_msg_handler_depth(message_event) {
         update_depth_chart(incoming_message.payload);
     }
 
+
     
 }

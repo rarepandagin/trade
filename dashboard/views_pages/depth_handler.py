@@ -52,9 +52,23 @@ def handle_a_depth_pulse(request):
                     bids = payload['bids']
                     asks = payload['asks']
 
+
+                best_bid_price =    bids[-1][0]
+                best_bid_volume =   bids[-1][1]
+                best_ask_price =    asks[0][0]
+                best_ask_volume =   asks[0][1]
+
                 payload =  {
+                        
                         "bids": bids,
                         "asks": asks,
+
+                        "best_bid_price": best_bid_price,
+                        "best_ask_price": best_ask_price,
+
+                        "best_bid_volume": best_bid_volume,
+                        "best_ask_volume": best_ask_volume,
+
                         "admin_settings": tk.serialize_object(admin_settings)
                     }
 

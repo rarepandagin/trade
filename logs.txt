@@ -815,3 +815,2600 @@ LINE 1: ...uto_exit_style", "dashboard_position"."archived", "dashboard...
 2025-09-11 17:15:25.879759 - V3 got_weth: 0.000450865985357808
 2025-09-11 17:15:37.684888 - <-> swapping 0.000450865985357808 weth for 1.9809022499687974 usdc -- fee_teir: 500
 2025-09-11 17:15:37.888027 - building tx for action: exactInputSingle
+2025-09-11 20:00:07.506461 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53BD6330>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53BD6330>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53BD6330>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:07.522974 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606407, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606407, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:11.598729 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52AEF680>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52AEF680>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52AEF680>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:11.606672 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606411, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606411, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:16.072145 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52AACE30>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52AACE30>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52AACE30>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:16.171144 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606416, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606416, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:20.285487 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53B3FDD0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53B3FDD0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53B3FDD0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:20.292524 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606420, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606420, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:24.372991 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52A1EA20>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A1EA20>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A1EA20>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:24.380989 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606424, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606424, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:28.439239 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52A8C3E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A8C3E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A8C3E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:28.446247 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606428, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606428, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:32.496419 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52A8F560>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A8F560>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A8F560>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:32.502436 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606432, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606432, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:36.583665 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D298E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D298E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D298E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:36.589660 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606436, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606436, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:40.673730 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D2B980>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2B980>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2B980>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:40.680727 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606440, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606440, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:44.754907 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D55BB0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D55BB0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D55BB0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:44.760905 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606444, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606444, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:48.813906 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D57D10>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D57D10>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D57D10>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:48.826872 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606448, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606448, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:52.903466 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D2A690>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2A690>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2A690>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:52.909468 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606452, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606452, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:00:56.961685 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D2B320>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2B320>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2B320>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:00:56.968654 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606456, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606456, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:01.045158 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D2ACC0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2ACC0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2ACC0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:01:01.050669 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606461, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606461, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:05.107358 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D2AB70>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2AB70>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D2AB70>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:01:05.114359 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606465, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606465, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:09.186800 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E53D29670>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D29670>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E53D29670>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:01:09.193835 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606469, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606469, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:13.276688 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52A8FA10>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A8FA10>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A8FA10>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:01:13.283699 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606473, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606473, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:17.364140 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 183, in evaluate
+    if self.min_profit_exit_price < self.price:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 978, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024E52A1D5E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A1D5E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\notification\notification.py", line 21, in send
+    requests.get(url)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8452876784:AAHzQeMZQGmEA8PcqXnGwdyh5y7dBYjiCwg/sendMessage?chat_id=5214991865&text=%3Cb%3Eruntime%20error%3C/b%3E%0A%0ATraceback%20(most%20recent%20call%20last):%0A%20%20File%20%22C:%5CUsers%5Cuser%5CDesktop%5Ctrade%5Cdashboard%5Cmodels%5Cmodels_position.py%22,%20line%20183,%20in%20evaluate%0A%20%20%20%20if%20self.min_profit_exit_price%20%3C%20self.price:%0A%20%20%20%20%20%20%20%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%5E%0ATypeError:%20'%3C'%20not%20supported%20between%20instances%20of%20'float'%20and%20'NoneType'%0A&parse_mode=HTML (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024E52A1D5E0>: Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+
+2025-09-11 20:01:17.373141 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606477, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606477, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:21.875081 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606481, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606481, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:26.673253 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606486, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606486, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:01:31.140973 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606491, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.53, 20.18, -0.42, -0.34, 1757581428, 1757606491, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 20:56:30.470413 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.41, 20.25, -0.33, -0.34, 1757581428, 1757609790, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.41, 20.25, -0.33, -0.34, 1757581428, 1757609790, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+2025-09-11 21:04:35.455935 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.NotNullViolation: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.44, 20.24, -0.35, -0.34, 1757581428, 1757610275, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 41, in handle_a_pulse
+    position.save()
+  File "C:\Users\user\Desktop\trade\dashboard\models\models_position.py", line 117, in save
+    super(Position, self).save(*args, **kwargs)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1138, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\base.py", line 1203, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1286, in _update
+    return query.get_compiler(self.db).execute_sql(ROW_COUNT)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 2060, in execute_sql
+    row_count = super().execute_sql(result_type)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: null value in column "price" of relation "dashboard_position" violates not-null constraint
+DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.44, 20.24, -0.35, -0.34, 1757581428, 1757610275, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
+
+
