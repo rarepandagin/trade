@@ -91,11 +91,84 @@ function draw_depth_pie_plot(payload){
 }
 
 
+function draw_depth_series_plot(payload){
+
+
+    var trace1 = { 
+      x: payload.ticks.map(x=>x['epoch']), 
+      y: payload.ticks.map(x=>x['data']['price']), 
+      mode: 'lines', 
+      name: 'Price',
+      type: 'scatter' ,
+        line: {
+          color: 'rgba(0, 0, 0, 1)',
+          width: 3
+        }
+    };
+
+    var trace2 = { 
+      x: payload.ticks.map(x=>x['epoch']), 
+      y: payload.ticks.map(x=>x['data']['best_ask_price']), 
+      mode: 'lines+markers', 
+      name: 'best_ask_price',
+      type: 'scatter' ,
+      line: {
+          color: 'rgba(255, 0, 0, 1)',
+          width: 1
+        },
+      error_y: {
+        type: 'data',
+        array: payload.ticks.map(x=>x['data']['best_ask_volume']/ 900),
+        visible: true,
+          thickness: 1,
+          width: 1,
+      }
+    };
+
+    var trace3 = { 
+      x: payload.ticks.map(x=>x['epoch']), 
+      y: payload.ticks.map(x=>x['data']['best_bid_price']), 
+      mode: 'lines', 
+      name: 'best_bid_price',
+      type: 'scatter' ,
+      line: {
+          color: 'rgba(4, 0, 255, 1)',
+          width: 1,
+
+      },
+      error_y: {
+        type: 'data',
+        array: payload.ticks.map(x=>x['data']['best_bid_volume']/ 900),
+        visible: true,
+          thickness: 1,
+          width: 1,
+      }
+    };
+
+    var data = [trace1, trace2, trace3];
+
+    var layout = { 
+      margin: {l: 150, r: 100, b: 50, t: 50, pad: 4},
+      width:1500,
+
+      xaxis: { title: { text: 'X-axis' } },
+      yaxis: { title: { text: 'Y-axis' } }
+    };
+    const config = {responsive: true};
+
+    Plotly.newPlot('orderBookSeriesPlot', data, layout, config);   
+
+
+
+}
+
+
 function update_depth_chart(payload){
 
 
 	draw_depth_bar_plot(payload);
-	draw_depth_pie_plot(payload);
+	// draw_depth_pie_plot(payload);
+	draw_depth_series_plot(payload);
 
 
 

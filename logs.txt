@@ -3412,3 +3412,285 @@ django.db.utils.IntegrityError: null value in column "price" of relation "dashbo
 DETAIL:  Failing row contains (41, 4435.91, 10000, 3000, 3000, 98b21cb7841f4c7e938f60e07a23fdd4, t, in_loss, 4410.21, f, 2.51, 0.65, null, 1.99, -0.01, -0.44, 20.24, -0.35, -0.34, 1757581428, 1757610275, 0, f, 3.87, auto_exit_style_never, 14, 0.000450865985357808, f, f).
 
 
+2025-09-12 14:06:40.735662 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    objects_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:40.812072 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    objects_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:40.873175 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    objects_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:41.696939 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    objects_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:42.705277 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    objects_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:43.703192 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    objects_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:44.694984 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                   ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:47.734162 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:47.810363 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:47.871779 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:48.699052 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:49.703418 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = Notification.objects.filter(user=user).order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:50.696321 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:06:53.724326 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                                                     ^^^^
+NameError: name 'user' is not defined
+
+2025-09-12 14:06:53.778538 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                                                     ^^^^
+NameError: name 'user' is not defined
+
+2025-09-12 14:06:54.696375 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                                                     ^^^^
+NameError: name 'user' is not defined
+
+2025-09-12 14:06:55.701008 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                                                     ^^^^
+NameError: name 'user' is not defined
+
+2025-09-12 14:06:56.710133 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                                                     ^^^^
+NameError: name 'user' is not defined
+
+2025-09-12 14:06:57.720350 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.filter(user=user).order_by('-timestamp')[:5]
+                                                     ^^^^
+NameError: name 'user' is not defined
+
+2025-09-12 14:07:01.251109 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.all.order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'order_by'
+
+2025-09-12 14:07:01.306255 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.all.order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'order_by'
+
+2025-09-12 14:07:01.705724 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.all.order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'function' object has no attribute 'order_by'
+
+2025-09-12 14:07:04.727081 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.all().order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'timestamp' into field. Choices are: data, epoch, id
+
+2025-09-12 14:07:04.800301 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.all().order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'timestamp' into field. Choices are: data, epoch, id
+
+2025-09-12 14:07:05.695509 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 72, in handle_a_depth_pulse
+    tick_to_keep = models_tick.Tick.objects.all().order_by('-timestamp')[:5]
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'timestamp' into field. Choices are: data, epoch, id
+
+2025-09-12 14:07:24.227603 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    Notification.objects.exclude(pk__in=objects_to_keep).delete()
+    ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:07:24.301616 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    Notification.objects.exclude(pk__in=objects_to_keep).delete()
+    ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:07:24.705866 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    Notification.objects.exclude(pk__in=objects_to_keep).delete()
+    ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:07:25.725052 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    Notification.objects.exclude(pk__in=objects_to_keep).delete()
+    ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:07:26.714115 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    Notification.objects.exclude(pk__in=objects_to_keep).delete()
+    ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:07:27.695869 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    models_tick.Tick.objects.exclude(pk__in=objects_to_keep).delete()
+    ^^^^^^^^^^^^
+NameError: name 'Notification' is not defined
+
+2025-09-12 14:07:30.231934 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    models_tick.Tick.objects.exclude(pk__in=objects_to_keep).delete()
+                                         ^^^^^^^^^^^^^^^
+NameError: name 'objects_to_keep' is not defined
+
+2025-09-12 14:07:30.314945 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    models_tick.Tick.objects.exclude(pk__in=objects_to_keep).delete()
+                                         ^^^^^^^^^^^^^^^
+NameError: name 'objects_to_keep' is not defined
+
+2025-09-12 14:07:30.714272 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    models_tick.Tick.objects.exclude(pk__in=objects_to_keep).delete()
+                                         ^^^^^^^^^^^^^^^
+NameError: name 'objects_to_keep' is not defined
+
+2025-09-12 14:07:31.700950 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    models_tick.Tick.objects.exclude(pk__in=objects_to_keep).delete()
+                                         ^^^^^^^^^^^^^^^
+NameError: name 'objects_to_keep' is not defined
+
+2025-09-12 14:07:32.713959 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 74, in handle_a_depth_pulse
+    models_tick.Tick.objects.exclude(pk__in=tick_to_keep).delete()
+                                         ^^^^^^^^^^^^^^^
+NameError: name 'objects_to_keep' is not defined
+
+2025-09-12 14:22:27.244346 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 90, in handle_a_depth_pulse
+    "ticks": [tk.serialize_object(x) for x in models_tick.Tick.objects.all().order_by('')],
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword '' into field. Choices are: data, epoch, id
+
+2025-09-12 14:22:27.320905 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 90, in handle_a_depth_pulse
+    "ticks": [tk.serialize_object(x) for x in models_tick.Tick.objects.all().order_by('')],
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword '' into field. Choices are: data, epoch, id
+
+2025-09-12 14:22:27.740160 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 90, in handle_a_depth_pulse
+    "ticks": [tk.serialize_object(x) for x in models_tick.Tick.objects.all().order_by('')],
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword '' into field. Choices are: data, epoch, id
+
+2025-09-12 14:22:28.728965 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\depth_handler.py", line 90, in handle_a_depth_pulse
+    "ticks": [tk.serialize_object(x) for x in models_tick.Tick.objects.all().order_by('epoch')],
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+  File "C:\Users\user\Desktop\p312\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword '' into field. Choices are: data, epoch, id
+

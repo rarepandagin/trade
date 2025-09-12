@@ -1,7 +1,7 @@
 from traceback import format_exc
 from dashboard.views_pages import toolkit as tk
 import json
-
+from dashboard.models import models_tick
 
 
 
@@ -58,6 +58,22 @@ def handle_a_depth_pulse(request):
                 best_ask_price =    asks[0][0]
                 best_ask_volume =   asks[0][1]
 
+
+                models_tick.Tick(
+                    data={
+                        'best_bid_price': best_bid_price,
+                        'best_ask_price': best_ask_price,
+                        'best_bid_volume': best_bid_volume,
+                        'best_ask_volume': best_ask_volume,
+                        'price': admin_settings.prices['weth']
+                        }
+                ).save()
+
+                tick_to_keep = models_tick.Tick.objects.all().order_by('-epoch')[:500] 
+
+                models_tick.Tick.objects.exclude(pk__in=tick_to_keep).delete()   
+
+
                 payload =  {
                         
                         "bids": bids,
@@ -69,7 +85,9 @@ def handle_a_depth_pulse(request):
                         "best_bid_volume": best_bid_volume,
                         "best_ask_volume": best_ask_volume,
 
-                        "admin_settings": tk.serialize_object(admin_settings)
+                        "admin_settings": tk.serialize_object(admin_settings),
+
+                        "ticks": [tk.serialize_object(x) for x in models_tick.Tick.objects.all().order_by('epoch')],
                     }
 
                 tk.send_message_to_frontend_depth(topic='update_depth_chart', payload=payload)

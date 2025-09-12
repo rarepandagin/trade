@@ -7,6 +7,7 @@ from dashboard.models import *
 
 admin.site.register(Event)
 admin.site.register(AdminSettings)
+admin.site.register(Tick)
 
 
 
