@@ -67,7 +67,7 @@ function update_positions_table(payload){
 
             first_cell_html += `
                 <br>
-                <span class="badge rounded-pill bg-${position_state_color[position.state]}">
+                <span class="badge rounded-pill bg-${position_state_color[position.state]} m-1">
                     ${stated_cleaned}
                 </span>
             `

@@ -21,3 +21,11 @@ def time_delta_readable(context, epoch_time):
     datetime_obj = datetime.fromtimestamp(epoch_time)
     return human_readable.date_time(datetime.now() - datetime_obj)
 
+
+
+@register.filter()
+@stringfilter
+@register.simple_tag(takes_context=True)
+def auto_exit_style_filter(context, auto_exit_style):
+    return ' '.join(auto_exit_style.split('_')[3:])
+

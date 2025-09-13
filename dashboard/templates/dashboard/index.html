@@ -237,12 +237,12 @@
                         <form method="POST" class="d-flex justify-content-between gap-1">
                             {% csrf_token %}
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
-                            <select class="form-select form-select-sm" style="height: 30px; width: 300px;"  name="auto_exit_style"  required>
+                            <select class="form-select form-select-sm" style="height: 30px; width: 160px;"  name="auto_exit_style"  required>
                                     {% for auto_exit_style in auto_exit_styles %}
-                                        <option value="{{auto_exit_style}}" {% if position.auto_exit_style == auto_exit_style %} selected {% endif %}   >{{auto_exit_style}}</option>
+                                        <option value="{{auto_exit_style}}" {% if position.auto_exit_style == auto_exit_style %} selected {% endif %}   >{% auto_exit_style_filter auto_exit_style %}</option>
                                     {% endfor %}
                             </select>
-                            <button class="btn btn-warning btn-sm disable_while_busy" name="position_setting_auto_exit">set auto exit style</button>
+                            <button class="btn btn-warning btn-sm disable_while_busy" name="position_setting_auto_exit">set auto exit</button>
                         </form>
                     </div>
                 {% else %}
