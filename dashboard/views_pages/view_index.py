@@ -2,11 +2,9 @@ import json
 from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
 from .context import context_class
-from dashboard.views_pages.pulse_handler import handle_a_pulse
 
-from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
+from dashboard.models import models_position, models_event, models_transaction, models_order
 
-from mysite import settings    
                 
 def get_response(request):
 
@@ -143,6 +141,10 @@ def get_response(request):
     context.dict['coins'] =  models_transaction.coins
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
+
+    context.dict['stats'] = {
+        'total_profit' : sum([x.final_profit_usd for x in models_position.Position.objects.all()])
+    }
 
 
     return context.response()

@@ -2,9 +2,8 @@ import json
 from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
 from .context import context_class
-from dashboard.views_pages.pulse_handler import handle_a_pulse
 
-from dashboard.models import models_position, models_candle, models_event, models_transaction, models_order
+from dashboard.models import models_position,  models_transaction, models_order
 
 from mysite import settings    
                 

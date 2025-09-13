@@ -149,13 +149,13 @@ class Position(models.Model):
             self.save()
 
 
-            new_event = models_event.Event(
-                    position=self,
-                    description=f"exited\nprofit: {self.final_profit_usd}",
-                    event_type=models_event.exited,
-                    needs_notification=True,
-                )
-            new_event.save()
+            # new_event = models_event.Event(
+            #         position=self,
+            #         description=f"exited\nprofit: {self.final_profit_usd}",
+            #         event_type=models_event.exited,
+            #         needs_notification=True,
+            #     )
+            # new_event.save()
 
 
         else:
@@ -209,12 +209,12 @@ class Position(models.Model):
 
                     tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'stop loss increased for position {self.order.name}', 'color': 'green'})
 
-                    new_event = models_event.Event(
-                            position=self,
-                            description=f"stop loss increased from {round(previous_stop_loss, 2)} to {round(self.stop_loss_price, 2)}",
-                            event_type=models_event.stop_loss_price_increased,
-                        )
-                    new_event.save()
+                    # new_event = models_event.Event(
+                    #         position=self,
+                    #         description=f"stop loss increased from {round(previous_stop_loss, 2)} to {round(self.stop_loss_price, 2)}",
+                    #         event_type=models_event.stop_loss_price_increased,
+                    #     )
+                    # new_event.save()
 
 
 
