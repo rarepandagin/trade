@@ -188,20 +188,24 @@
 
             <div class="d-flex justify-content-between m-3  flex-sm-row flex-column  gap-2">
 
+
+
+            
+                <div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input name="position_uuid" value="{{position.uuid}}" hidden />
+                        <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_activate">
+                            {% if position.active %}
+                                Deactivate
+                            {% else %}
+                                Activate
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+
                 {% if position.active %}
-                    <div>
-                        <form method="POST">
-                            {% csrf_token %}
-                            <input name="position_uuid" value="{{position.uuid}}" hidden />
-                            <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_activate">
-                                {% if position.active %}
-                                    Deactivate
-                                {% else %}
-                                    Activate
-                                {% endif %}
-                            </button>
-                        </form>
-                    </div>
 
 
                     
