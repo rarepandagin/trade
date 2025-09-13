@@ -41,19 +41,18 @@
                     
 
 
-                <div class="d-flex justify-content-start">
+                <div class="d-flex justify-content-start gap-2">
                     <p>Entry capital:</p>
-                    <input type="number" class="form-control form-control-sm" name="entry_capital" id="entry_capital" step="any" required/>
+                    <input type="number" class="form-control form-control-sm" name="entry_capital" id="entry_capital" step="any" value="4000" style="width: 100px;"  required/>
+                    <p id="most_recent_quote"></p>
+                    <button type="button"  class="btn btn-primary btn-sm ms-3" onclick="update_both_way_quotes();">Quote</button>
                 </div>
+
             </div>
 
             
             <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
 
-                <div class="d-flex justify-content-start">
-                    <p>Order price:</p>
-                    <input type="number" class="form-control form-control-sm"  step="any" min="0" value="0" name="order_price"/>
-                </div>
 
                 <div class="d-flex justify-content-start" > 
                     <p>Stop loss price:</p>
@@ -62,25 +61,18 @@
 
                 <div class="d-flex justify-content-start gap-2 ">
                     <p>Min profit exit price:</p>
-                    <input type="number" class="form-control form-control-sm" name="min_profit_exit_price" value="10000" id="min_profit_exit_price" step="any" required/>
+                    <input type="number" class="form-control form-control-sm" name="min_profit_exit_price" value="{{suggested_tp_price}}" id="min_profit_exit_price" step="any" required/>
                 </div>
 
             </div>
 
             
             <div class="d-flex justify-content-between gap-2  flex-sm-row flex-column ">
-                <p id="profit_amount_at_min_profit_exit_price"></p>
-                <p id="loss_amount_at_stop_loss_price"></p>
                 <p id="ambition_ratio"></p>
+                <p id="loss_amount_at_stop_loss_price"></p>
+                <p id="profit_amount_at_min_profit_exit_price"></p>
             </div>
 
-            <div class="d-flex justify-content-between">
-                
-                <div class="d-flex justify-content-start">
-                    <p id="most_recent_quote"></p>
-                    <button type="button"  class="btn btn-primary btn-sm ms-3" onclick="update_both_way_quotes();">Quote</button>
-                </div>
-            </div>
 
 
             <div class="d-flex justify-content-between gap-2 mt-2  flex-sm-row flex-column ">
@@ -95,6 +87,10 @@
                             <option value="{{order_mode}}" {% if order_mode == 'buy_if_price_is_below' %} selected {% endif %}>{{order_mode}}</option>
                         {% endfor %}
                     </select>
+                    <div class="d-flex justify-content-start">
+                    <input type="number" class="form-control form-control-sm"  step="any" min="0" value="0" name="order_price"/>
+                </div>
+
                 </div>
 
                 <div class="d-flex justify-content-end">

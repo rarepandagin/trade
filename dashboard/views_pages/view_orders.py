@@ -90,10 +90,10 @@ def get_response(request):
 
 
 
+    admin_settings = tk.get_admin_settings()
 
 
-
-    context.dict['admin_settings'] =  tk.get_admin_settings()
+    context.dict['admin_settings'] =  admin_settings
     context.dict['orders'] =  models_order.Order.objects.filter(archived=False).order_by('-id')
 
     context.dict['new_random_name'] =  tk.get_new_random_name()
@@ -101,6 +101,9 @@ def get_response(request):
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
     context.dict['order_modes'] =  models_order.order_modes
+
+    context.dict['suggested_tp_price'] =  int(1.01*admin_settings.prices['weth'])
+
 
 
     return context.response()

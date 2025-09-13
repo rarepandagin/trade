@@ -85,7 +85,7 @@ class Order(models.Model):
         self.order_price                = round(self.order_price, 2)
         self.stop_loss_price            = round(self.stop_loss_price, 2)
         self.min_profit_exit_price      = round(self.min_profit_exit_price, 2)
-        
+
 
         super(Order, self).save(*args, **kwargs)
 
@@ -96,6 +96,20 @@ class Order(models.Model):
         from dashboard.models import models_transaction
 
         if self.active and (not self.fullfiled):
+
+
+
+            """
+            the PT price can not be smaller that the live price
+            """
+            admin_settings = tk.get_admin_settings()
+            if self.min_profit_exit_price <= admin_settings.prices['weth']:
+
+                tk.create_new_notification(title="Buy order deleted", message=f"PT price of Buy order {self.name} is smaller than the live price. Deleting the order.")
+
+                self.delete()
+                return
+
 
             new_transaction = tk.create_fiat_to_token_transaction(self.entry_capital, self.coin)
 

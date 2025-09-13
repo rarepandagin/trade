@@ -34,12 +34,10 @@ function handle_ajax_returns(ret){
 
         if (ret.success){
 
-            $(".check_mark_image").addClass("shiny_once").show();
 
             location.reload();
 
         } else {
-            $(".error_mark_image").addClass("shiny_once").show();
 
         }
 

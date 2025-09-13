@@ -107,11 +107,15 @@ function update_positions_table(payload){
             td2_html += `
                             <br>
                             profit at MPEP: ${position.profit_amount_at_min_profit_exit_price}
-                            <br>
-                            loss at SLP: ${position.loss_amount_at_stop_loss_price}
-                            <br>
-                            Ambition Factor: ${position.ambition_ratio}
                         `
+            // td2_html += `
+            //                 <br>
+            //                 profit at MPEP: ${position.profit_amount_at_min_profit_exit_price}
+            //                 <br>
+            //                 loss at SLP: ${position.loss_amount_at_stop_loss_price}
+            //                 <br>
+            //                 Ambition Factor: ${position.ambition_ratio}
+            //             `
         }
 
         $(`#position_${position.uuid}_td2_html`).html(td2_html);

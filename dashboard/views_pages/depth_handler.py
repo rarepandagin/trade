@@ -52,7 +52,9 @@ def handle_a_depth_pulse(request):
                     bids = payload['bids']
                     asks = payload['asks']
 
-
+                if len(bids) == 0 or len(asks)==0:
+                    return
+                    
                 best_bid_price =    bids[-1][0]
                 best_bid_volume =   bids[-1][1]
                 best_ask_price =    asks[0][0]
@@ -69,7 +71,7 @@ def handle_a_depth_pulse(request):
                         }
                 ).save()
 
-                tick_to_keep = models_tick.Tick.objects.all().order_by('-epoch')[:500] 
+                tick_to_keep = models_tick.Tick.objects.all().order_by('-epoch')[:250] 
 
                 models_tick.Tick.objects.exclude(pk__in=tick_to_keep).delete()   
 

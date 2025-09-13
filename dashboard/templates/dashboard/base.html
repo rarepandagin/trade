@@ -126,12 +126,6 @@ optgroup{
   color: #fff;
 }
 
-.shiny_once  { animation: fadeIn 3s; }
-@keyframes fadeIn {
-  0% { opacity: 0; }
-
-  100% { opacity: 100%;display: block}
-}
 
 
 </style>
@@ -155,10 +149,7 @@ optgroup{
 			<a href="/manual/" class="menu-item">Manual</a>
 			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="menu-item">Admin</a>
 			<a href="/logout/" class="menu-item ">Logout</a>
-			<div class="d-flex justify-content-start" style="width: 100px;">
-				<span class="shiny_once shiny_once_object check_mark_image" ><img src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/images/check.png" alt="" style="width: 30px; height: 30px;"/></span>
-				<span class="shiny_once shiny_once_object error_mark_image" ><img src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/images/error.png" alt="" style="width: 26px; height: 26px;"/></span>
-			</div>
+
 		</div>         
 	</div>       
 
@@ -173,19 +164,7 @@ optgroup{
   </div>
 
 
-<script>
-	
-		$(".shiny_once").on(
-			"webkitAnimationEnd oanimationend msAnimationEnd animationend",
-			function() {
 
-				$(this).removeClass("shiny_once");
-				$(this).hide();
-			}
-		);
-
-
-</script>
 </body>
 
 </html>
