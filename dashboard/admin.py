@@ -65,3 +65,16 @@ class adminViewPosition(admin.ModelAdmin):
 admin.site.register(Position, adminViewPosition)
 
 
+
+
+class adminViewAlert(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'epoch_created',
+        'alert_type',
+        'alert_price',
+        'executed',
+        )
+admin.site.register(Alert, adminViewAlert)
+
+

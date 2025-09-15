@@ -2,6 +2,7 @@ from traceback import format_exc
 from dashboard.views_pages import toolkit as tk
 from dashboard.models.models_position import models_position
 from dashboard.models.models_position import models_order
+from dashboard.models import models_alert
 import json
 
 
@@ -61,6 +62,15 @@ def handle_a_pulse(request):
             }
 
         tk.send_message_to_frontend_dashboard(topic='update_positions_table', payload=payload)
+
+
+
+        # handle alerts:
+        for alert in models_alert.Alert.objects.filter(executed=False):
+            alert.evaluate()
+            alert.save()
+
+
 
 
         admin_settings.pulses_are_being_blocked = False

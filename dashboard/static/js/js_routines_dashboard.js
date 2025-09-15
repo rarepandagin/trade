@@ -156,11 +156,17 @@ function update_positions_table(payload){
 
 
 
-        const td6_html = `
+        let td6_html = `
                     Value: $ ${position.value}<br>
-                    Growth: $ ${position.growth_usd}
+                    Growth: $ 
 
         `
+
+        if (position.growth_usd > 0){
+            td6_html += `<span class="badge rounded-pill bg-success fs-6">${position.growth_usd}</span>`
+        } else {
+            td6_html += `<span class="badge rounded-pill bg-danger fs-6">${position.growth_usd}</span>`
+        }
 
         $(`#position_${position.uuid}_td6_html`).html(td6_html);
 
