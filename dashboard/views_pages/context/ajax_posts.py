@@ -26,7 +26,7 @@ def handle_ajax_posts(self, request):
 
 
     elif request.POST['req'] == 'update_balances':
-        from dashboard.modules.uniswap.v3_class import Uniswap
+        from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
 
         try:
             tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'starting update_balances', 'color': 'green'})
@@ -46,7 +46,7 @@ def handle_ajax_posts(self, request):
 
 
     elif  request.POST['req'] == 'update_both_way_quotes':
-        from dashboard.modules.uniswap.v3_class import Uniswap
+        from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
 
         uniswap = Uniswap()
         fiat_amount_in = payload['fiat_amount_in']
@@ -64,7 +64,7 @@ def handle_ajax_posts(self, request):
         order.execute()
         # time.sleep(2)
         order.save()
-        return {'req': request.POST['req'], 'success': order.fullfiled}
+        return {'req': request.POST['req'], 'success': order.fulfilled}
 
 
 

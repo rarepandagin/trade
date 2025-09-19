@@ -4,13 +4,13 @@ from dashboard.views_pages import toolkit as tk
 
 from dashboard.models import models_position
 
-stop_loss_price_increased = "stop_loss_price_increased"
+stop_loss_price_improved = "stop_loss_price_improved"
 exited = "exited"
 stop_loss_price_occured_but_auto_exit_is_off = "stop_loss_price_occured_but_auto_exit_is_off"
 transaction_failed = "transaction_failed"
 
 event_types = {
-    stop_loss_price_increased : "stop_loss_price_increased",
+    stop_loss_price_improved : "stop_loss_price_improved",
     stop_loss_price_occured_but_auto_exit_is_off : "stop_loss_price_occured_but_auto_exit_is_off",
     exited : "exited",
     transaction_failed : "transaction_failed",
@@ -24,7 +24,7 @@ class Event(models.Model):
     
     position = models.ForeignKey(models_position.Position, on_delete=models.SET_NULL, null=True)
 
-    event_type = models.CharField(choices=event_types, default=stop_loss_price_increased)
+    event_type = models.CharField(choices=event_types, default=stop_loss_price_improved)
 
     needs_notification = models.BooleanField(default=False)
 

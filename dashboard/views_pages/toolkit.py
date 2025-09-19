@@ -30,9 +30,10 @@ dashboard_app_folder = os.path.join(root_path, 'dashboard')
 modules_folder = os.path.join(dashboard_app_folder, 'modules')
 
 modules_folder_path = os.path.join(dashboard_app_folder, 'modules')
-uniswap_module = os.path.join(modules_folder_path, 'uniswap')
-abi_folder_path = os.path.join(uniswap_module, 'abis')
+dapp_folder_path = os.path.join(modules_folder_path, 'dapps')
 
+uniswap_dapp_folder_path = os.path.join(dapp_folder_path, 'uniswap')
+aave_dapp_folder_path = os.path.join(dapp_folder_path, 'aave')
 
 redirect_to_login = '/login/'
 redirect_to_dashboard = '/dashboard/'
@@ -135,80 +136,6 @@ def create_new_notification(title, message):
     notification = NotificationClass()
     notification.send(title=title, message= message)
                 
-
-
-def create_fiat_to_token_transaction(fiat_to_token_amount, coin):
-    from dashboard.models import models_transaction
-    
-    transaction = models_transaction.Transaction(
-        coin=coin,
-        transaction_type=models_transaction.fiat_to_token,
-        fiat_amount_spent=fiat_to_token_amount,
-    )
-
-    transaction.save()
-    
-    transaction.actualize()
-
-    transaction.save()
-
-    return transaction
-
-
-def create_token_to_fiat_transaction(token_to_fiat_amount, coin):
-    from dashboard.models import models_transaction
-    
-    transaction = models_transaction.Transaction(
-        coin=coin,
-        transaction_type=models_transaction.token_to_fiat,
-        token_amount_spent=token_to_fiat_amount,
-    )
-
-    transaction.save()
-    
-    transaction.actualize()
-
-    transaction.save()
-
-    return transaction
-
-
-def wrap_eth(eth_amount_to_wrap):
-    from dashboard.models import models_transaction
-    
-    transaction = models_transaction.Transaction(
-        coin=models_transaction.weth,
-        transaction_type=models_transaction.wrap_eth,
-        token_amount_spent=eth_amount_to_wrap,
-    )
-
-    transaction.save()
-    
-    transaction.actualize()
-
-    transaction.save()
-
-    return transaction
-
-
-
-def unwrap_weth(eth_amount_to_wrap):
-    from dashboard.models import models_transaction
-    
-    transaction = models_transaction.Transaction(
-        coin=models_transaction.weth,
-        transaction_type=models_transaction.unwrap_weth,
-        token_amount_spent=eth_amount_to_wrap,
-    )
-
-    transaction.save()
-    
-    transaction.actualize()
-
-    transaction.save()
-
-    return transaction
-
 
 
 

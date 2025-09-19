@@ -2,13 +2,18 @@ let candle_chart_data;
 var coin = 'ETH';
 const verbose = false;
 
+function* range(start, end, step = 1) {
+  for (let i = start; i < end; i += step) {
+    yield i;
+  }
+}   
 
 function update_positions_table(payload){
 
     const position_state_color = {
         'in_loss':'danger',
-        'reaching_min_profit_exit_price':'success',
-        'post_min_profit_exit_price':'success',
+        'reaching_profit_take_price':'success',
+        'post_profit_take_price':'success',
         'exited_in_loss':'secondary',
         'exited_in_profit':'secondary',
     }
@@ -26,31 +31,8 @@ function update_positions_table(payload){
                         </div>`
             }
 
-        let growth_percentage_from_stop_loss_price_html = ``
 
-        // if (position.active){
 
-        //     const growth_percentage_from_stop_loss_price_progress_value = position.growth_percentage_from_stop_loss_price > 0 ? position.growth_percentage_from_stop_loss_price : - position.growth_percentage_from_stop_loss_price
-        //     const growth_percentage_from_stop_loss_price_progress_color = position.growth_percentage_from_stop_loss_price > 0 ? 'bg-success' : ' bg-danger '
-        //     growth_percentage_from_stop_loss_price_html = `
-        //                 <p class="small">progress from stop loss to profit: ${position.growth_percentage_from_stop_loss_price} %</p>
-        //                 <div class="progress">
-        //                     <div class="progress-bar ${growth_percentage_from_stop_loss_price_progress_color}" role="progressbar"  style="width: ${growth_percentage_from_stop_loss_price_progress_value}%"  aria-valuenow="${growth_percentage_from_stop_loss_price_progress_value}" aria-valuemin="0" aria-valuemax="100"></div>
-        //                 </div>
-        //     `
-        // }
-
-        let growth_percentage_from_min_profit_exit_price = ``
-        if (position.active && (position.growth_percentage_from_min_profit_exit_price > 0)){
-
-            // const growth_percentage_from_min_profit_exit_price_progress_value = position.growth_percentage_from_min_profit_exit_price > 0 ? position.growth_percentage_from_min_profit_exit_price : -position.growth_percentage_from_min_profit_exit_price
-            const growth_percentage_from_min_profit_exit_price_progress_value = position.growth_percentage_from_min_profit_exit_price
-            const growth_percentage_from_min_profit_exit_price_progress_color = position.growth_percentage_from_min_profit_exit_price > 0 ? 'bg-success' : ' bg-danger '
-            growth_percentage_from_min_profit_exit_price = `                        <p class="small">progress from entry to profit: ${position.growth_percentage_from_min_profit_exit_price} %</p>
-                        <div class="progress">
-                            <div class="progress-bar ${growth_percentage_from_min_profit_exit_price_progress_color}" role="progressbar"  style="width: ${growth_percentage_from_min_profit_exit_price_progress_value}%"  aria-valuenow="${growth_percentage_from_min_profit_exit_price_progress_value}" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>`
-        }
 
         let first_cell_html = ''
         
@@ -72,7 +54,7 @@ function update_positions_table(payload){
                 </span>
             `
 
-            if (position.stop_loss_price_increased){
+            if (position.stop_loss_price_improved){
                 first_cell_html += `
                     <i class="bi bi-check m-0 elementToFade"  style="font-size: 3rem; color: aquamarine;"></i>
                 `
@@ -97,7 +79,7 @@ function update_positions_table(payload){
                         <br>
                         Entry Capital: ${position.order.entry_capital}`
 
-        if (position.stop_loss_price_increased){
+        if (position.stop_loss_price_improved){
             td2_html += `
                             <br>
                             <span style="color: green">profit at increased SLP: ${-position.loss_amount_at_stop_loss_price}</span>
@@ -106,11 +88,11 @@ function update_positions_table(payload){
         else {
             td2_html += `
                             <br>
-                            profit at MPEP: ${position.profit_amount_at_min_profit_exit_price}
+                            profit at MPEP: ${position.profit_amount_at_profit_take_price}
                         `
             // td2_html += `
             //                 <br>
-            //                 profit at MPEP: ${position.profit_amount_at_min_profit_exit_price}
+            //                 profit at MPEP: ${position.profit_amount_at_profit_take_price}
             //                 <br>
             //                 loss at SLP: ${position.loss_amount_at_stop_loss_price}
             //                 <br>
@@ -137,7 +119,6 @@ function update_positions_table(payload){
                         Stop loss: ${position.stop_loss_price} <br>
                         Initial stop loss: ${position.initial_stop_loss_price} <br>
 
-                        ${growth_percentage_from_stop_loss_price_html}
 
         `
 
@@ -145,10 +126,7 @@ function update_positions_table(payload){
 
 
         const td5_html = `
-                        <p>Min profit exit price: ${position.min_profit_exit_price} </p>
-
-                        ${growth_percentage_from_min_profit_exit_price}
-
+                        <p>Profit take price: ${position.profit_take_price} </p>
 
         `
 
@@ -209,24 +187,219 @@ function update_positions_table(payload){
 
 
     // NEW POSITION CALCULATIONS
+    const entry_price            = eval($("#order_entry_price").val());
 
-    const entry_capital_input_value = eval($("#entry_capital").val());
-    const stop_loss_price_input_value = eval($("#stop_loss_price").val());
-    const min_profit_exit_price = eval($("#min_profit_exit_price").val());
+    const entry_capital_long     = eval($("#entry_capital_long").val());
+    const stop_loss_price_long   = eval($("#stop_loss_price_long").val());
+    const profit_take_price_long = eval($("#profit_take_price_long").val());
 
-    var new_position_coin_price = payload.admin_settings.prices[$("#new_position_coin_select").val()]
+    
+    const entry_capital_short     = eval($("#entry_capital_short").val());
+    const stop_loss_price_short   = eval($("#stop_loss_price_short").val());
+    const profit_take_price_short = eval($("#profit_take_price_short").val());
 
-    if (entry_capital_input_value && stop_loss_price_input_value && min_profit_exit_price){
+    if (entry_price > 0) {
 
-        let profit_amount_at_min_profit_exit_price = (min_profit_exit_price - new_position_coin_price) * (entry_capital_input_value / new_position_coin_price);
-        let loss_amount_at_stop_loss_price = (new_position_coin_price - stop_loss_price_input_value) * (entry_capital_input_value / new_position_coin_price);
-        let ambition_ratio = profit_amount_at_min_profit_exit_price / loss_amount_at_stop_loss_price;
-        
 
-        $("#profit_amount_at_min_profit_exit_price").html(`profit_amount_at_min_profit_exit_price: ${profit_amount_at_min_profit_exit_price.toFixed(2)}`)
-        $("#loss_amount_at_stop_loss_price").html(`loss_amount_at_stop_loss_price: ${loss_amount_at_stop_loss_price.toFixed(2)}`)
-        $("#ambition_ratio").html(`ambition_ratio: ${ambition_ratio.toFixed(2)}`)
+        const long_data_present = entry_capital_long && stop_loss_price_long && profit_take_price_long;
+        const short_data_present = entry_capital_short && stop_loss_price_short && profit_take_price_short;
+        let valid_long_inputs = false;
+        let valid_short_inputs = false;
+
+        let long_profit_at_take_profit;
+        let long_loss_at_stop_loss;
+        let long_ambition_ratio;
+
+        let short_profit_at_take_profit;
+        let short_loss_at_stop_loss;
+        let short_ambition_ratio;
+
+        if (long_data_present) {
+            long_profit_at_take_profit  = entry_capital_long * (profit_take_price_long - entry_price) / entry_price
+            long_loss_at_stop_loss      = entry_capital_long * (entry_price - stop_loss_price_long) / entry_price
+            long_ambition_ratio         = long_profit_at_take_profit / long_loss_at_stop_loss
+
+            
+            $("#long_profit_at_take_profit").html(  `profit at profit take: ${long_profit_at_take_profit.toFixed(2)} (${(100 * long_profit_at_take_profit / entry_capital_long).toFixed(1)} %)`)
+            $("#long_loss_at_stop_loss").html(      `loss at stop loss:     ${long_loss_at_stop_loss.toFixed(2)}`)
+            $("#long_ambition_ratio").html(         `ambition ratio:        ${long_ambition_ratio.toFixed(2)}`)
+
+            valid_long_inputs = (profit_take_price_long > entry_price) && (entry_price > stop_loss_price_long)
+            
+            if (valid_long_inputs){
+                $("#long_label").removeClass('text-danger')
+                $("#long_label").addClass('text-success')
+            } else {
+                $("#long_label").removeClass('text-success')
+                $("#long_label").addClass('text-danger')
+                // display_toaster({'message': 'Invalid long inputs', 'color': 'red'})
+            }
+        } else{
+                $("#long_label").removeClass('text-danger')
+                $("#long_label").removeClass('text-success')
+
+                $("#long_profit_at_take_profit").html(``)
+                $("#long_loss_at_stop_loss").html(``)
+                $("#long_ambition_ratio").html(``)
+
+        }
+
+
+
+        if (short_data_present) {
+            short_profit_at_take_profit  = entry_capital_short * (entry_price - profit_take_price_short) / entry_price
+            short_loss_at_stop_loss      = entry_capital_short * (stop_loss_price_short - entry_price) / entry_price
+            short_ambition_ratio         = short_profit_at_take_profit / short_loss_at_stop_loss
+
+            
+            $("#short_profit_at_take_profit").html(  `profit at profit take: ${short_profit_at_take_profit.toFixed(2)} (${(100 * short_profit_at_take_profit / entry_capital_short).toFixed(1)} %)`)
+            $("#short_loss_at_stop_loss").html(      `loss at stop loss:     ${short_loss_at_stop_loss.toFixed(2)}`)
+            $("#short_ambition_ratio").html(         `ambition ratio:        ${short_ambition_ratio.toFixed(2)}`)
+
+            
+            const safe_borrow_amount = (0.8 * payload.admin_settings.aave_user_account_data.availableBorrowsBase).toFixed(2)
+
+            if (entry_capital_short >= safe_borrow_amount){
+                // display_toaster({'message': `you are going to borrow too much. max: ${payload.admin_settings.aave_user_account_data.availableBorrowsBase.toFixed(2)} recommended: ${safe_borrow_amount}`, 'color': 'red'})
+            }
+
+
+            valid_short_inputs = (profit_take_price_short < entry_price) && (entry_price < stop_loss_price_short) //&& (entry_capital_short < safe_borrow_amount)
+
+            
+            if (valid_short_inputs){
+                $("#short_label").removeClass('text-danger')
+                $("#short_label").addClass('text-success')
+
+            } else {
+                $("#short_label").removeClass('text-success')
+                $("#short_label").addClass('text-danger')
+
+                // display_toaster({'message': 'Invalid short inputs', 'color': 'red'})
+            }
+
+        }else{
+                $("#short_label").removeClass('text-danger')
+                $("#short_label").removeClass('text-success')
+
+                $("#short_profit_at_take_profit").html(``)
+                $("#short_loss_at_stop_loss").html(``)
+                $("#short_ambition_ratio").html(``)
+
+        }
+
+
+
+        if (valid_long_inputs && valid_short_inputs) {
+
+            $("#total_profit_if_price_goes_down").html(`total profit if price goes down: ${(short_profit_at_take_profit - long_loss_at_stop_loss).toFixed(2)}`)
+            $("#total_profit_if_price_goes_up").html(`total profit if price goes up: ${(long_profit_at_take_profit - short_loss_at_stop_loss).toFixed(2)}`)
+
+            const start_price = Math.floor(Math.min(stop_loss_price_long, profit_take_price_long, stop_loss_price_short, profit_take_price_short))
+            const end_price = Math.floor(Math.max(stop_loss_price_long, profit_take_price_long, stop_loss_price_short, profit_take_price_short))
+
+
+            let prices = [];
+            let long_profits = [];
+            let short_profits = [];
+            let long_and_short_profits = [];
+
+            for (let price = start_price ; price < end_price ; price += 5) {
+                prices.push(price);
+
+
+                let long_profit = 0;
+
+                if (price < stop_loss_price_long){
+                    long_profit = (entry_capital_long * (stop_loss_price_long - entry_price) / entry_price)
+                } else if (price > profit_take_price_long) {
+                    long_profit = (entry_capital_long * (profit_take_price_long - entry_price) / entry_price)
+                }
+                else {
+                    long_profit = (entry_capital_long * (price - entry_price) / entry_price)
+                }
+
+                long_profits.push(long_profit);
+                
+
+
+
+
+                let short_profit = 0;
+
+                if (price > stop_loss_price_short){
+                    short_profit = (entry_capital_short * (entry_price - stop_loss_price_short) / entry_price)
+
+                } else if (price < profit_take_price_short) {
+                    short_profit = (entry_capital_short * (entry_price - profit_take_price_short) / entry_price)
+
+                } else {
+
+                    short_profit = (entry_capital_short * (entry_price - price) / entry_price)
+                }
+                short_profits.push(short_profit);
+                
+
+
+
+                
+
+                
+                long_and_short_profits.push(short_profit + long_profit);
+
+            }
+
+
+            
+
+            var trace1 = {
+                x: prices,
+                y: long_profits,
+                name:'Long',
+                mode: 'lines',
+                type: 'scatter',
+                line: {color:'blue'}
+                };
+
+            var trace2 = {
+                x: prices,
+                y: short_profits,
+                name:'Short',
+                mode: 'lines',
+                type: 'scatter',
+                line: {color:'red'}
+
+                };
+
+            var trace3 = {
+                x: prices,
+                y: long_and_short_profits,
+                name: "Overall",
+                mode: 'lines',
+                type: 'scatter',
+                line: {color:'green'}
+
+                };
+
+            var data = [trace1, trace2, trace3];
+
+            Plotly.newPlot('new_order_profit_loss_overlook', data);   
+
+
+        }
+
+
+
     }
+
+    
+    
+
+
+
+
+
+
     
 
 
@@ -265,7 +438,7 @@ function update_positions_table(payload){
             delta_time_price_update_html = `<p class="bg-danger elementToFade rounded p-1">price updated: ${delta_time_price_update}</p>`
         }
 
-        if (delta_time_gas_update < 5) {
+        if (delta_time_gas_update < payload.admin_settings.gas_update_epoch_max_allowed_delay_seconds) {
             delta_time_gas_update_html = `<p >gas updated: ${delta_time_gas_update}</p>`
         } else {
             delta_time_gas_update_html = `<p class="bg-danger elementToFade rounded p-1">gas updated: ${delta_time_gas_update}</p>`
@@ -292,8 +465,8 @@ function update_positions_table(payload){
     
                 <div class="d-flex justify-content-start gap-5">
                     <div>
-                        fiat to coin: ${payload.admin_settings.added_slipage_multiplier_fiat_to_coin} <br>
-                        coin to fiat: ${payload.admin_settings.added_slipage_multiplier_coin_to_fiat}
+                        fiat to coin: ${payload.admin_settings.added_slippage_multiplier_fiat_to_coin} <br>
+                        coin to fiat: ${payload.admin_settings.added_slippage_multiplier_coin_to_fiat}
                     </div>
                 </div>
 
@@ -350,7 +523,7 @@ function update_positions_table(payload){
     //                     stroke: "1 #ff0000ff"
     //                 });
     //                 controller.horizontalLine({
-    //                     valueAnchor: position.min_profit_exit_price,
+    //                     valueAnchor: position.profit_take_price,
     //                     stroke: "1 #48ff00ff"
     //                 });
 
@@ -406,6 +579,16 @@ $(".heart-container").addClass("beat");
     setTimeout(function() {
         $(".heart-container").removeClass("beat");
     }, 1000);
+
+
+
+$('#healthFactor').html(`Health factor: ${payload.admin_settings.aave_user_account_data.healthFactor.toFixed(2)}`)
+$('#totalDebtBase').html(`Debt: ${payload.admin_settings.aave_user_account_data.totalDebtBase.toFixed(2)} USD`)
+$('#totalCollateralBase').html(`Collateral: ${payload.admin_settings.aave_user_account_data.totalCollateralBase.toFixed(2)} USD`)
+$('#availableBorrowsBase').html(`Available to borrow: ${payload.admin_settings.aave_user_account_data.availableBorrowsBase.toFixed(2)} USD`)
+$('#currentLiquidationThreshold').html(`Liquidation Threshold: ${payload.admin_settings.aave_user_account_data.currentLiquidationThreshold.toFixed(2)}`)
+
+
 }
 
 
@@ -417,6 +600,9 @@ function logger_to_frontend(payload){
 
 }
 
+function refresh_page(){
+    location.reload();
+}
 
 function display_toaster(payload){
     Toastify({

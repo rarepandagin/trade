@@ -10,7 +10,7 @@
 
     
 
-
+    <h3>Uniswap</h3>
     <div class="border rounded p-2 ">
 
 
@@ -95,6 +95,80 @@
 
 
     
+    <h3 class="mt-5">Aave</h3>
+    <div class="border rounded p-2 ">
+
+
+        <form method="POST" class="mb-2">
+            {% csrf_token %}
+
+            <div class="d-flex justify-content-start">
+
+                <button type="submit" name="aave_approve" class="btn btn-primary btn-sm m-1">Approve</button>
+
+            </div>
+
+        </form>
+
+        <form method="POST" class="mb-2">
+            {% csrf_token %}
+
+            <div class="d-flex justify-content-start">
+
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="aave_supply_amount" value="0.0002" required />
+
+                <button type="submit"  class="btn btn-primary btn-sm m-1">Supply collateral</button>
+
+            </div>
+
+        </form>
+
+
+        <form method="POST" class="mb-2">
+            {% csrf_token %}
+
+            <div class="d-flex justify-content-start">
+
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="aave_withdraw_amount" value="0.0002" required />
+
+                <button type="submit"  class="btn btn-primary btn-sm m-1">Withdraw collateral</button>
+
+            </div>
+
+        </form>
+
+
+
+        <form method="POST" class="mb-2">
+            {% csrf_token %}
+
+            <div class="d-flex justify-content-start">
+
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="aave_borrow_amount" value="0.0002" required />
+
+                <button type="submit"  class="btn btn-primary btn-sm m-1">Borrow</button>
+
+            </div>
+
+        </form>
+
+
+
+        <form method="POST" class="mb-2">
+            {% csrf_token %}
+
+            <div class="d-flex justify-content-start">
+
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="aave_repay_amount" value="0.0002" required />
+
+                <button type="submit"  class="btn btn-primary btn-sm m-1">Repay</button>
+
+            </div>
+
+        </form>
+
+
+    </div>
 
 
 <script>

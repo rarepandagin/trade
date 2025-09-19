@@ -3,7 +3,7 @@ from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
 from .context import context_class
 
-from dashboard.models import models_position, models_event, models_transaction, models_order
+from dashboard.models import models_adminsettings, models_position, models_event, models_transaction, models_order
 
                 
 def get_response(request):
@@ -59,6 +59,11 @@ def get_response(request):
                 admin_settings.secure_profit_ratio = eval(request.POST['admin_settings_secure_profit_ratio'])
                 admin_settings.save()
 
+            elif 'admin_settings_gas_speed' in request.POST:
+                admin_settings = tk.get_admin_settings()
+                admin_settings.gas_speed = request.POST['admin_settings_gas_speed']
+                admin_settings.save()
+
 
 
             elif 'position_action_activate' in request.POST:
@@ -83,12 +88,12 @@ def get_response(request):
                 position.initial_stop_loss_price = position_stop_loss_price
                 position.save()
             
-            elif 'position_action_set_min_profit_exit_price' in request.POST:
+            elif 'position_action_set_profit_take_price' in request.POST:
                 position_uuid = request.POST['position_uuid']
                 position = models_position.Position.objects.get(uuid=position_uuid)
                 position.reset()
-                position_min_profit_exit_price = eval(request.POST['position_min_profit_exit_price'])
-                position.min_profit_exit_price = position_min_profit_exit_price
+                position_profit_take_price = eval(request.POST['position_profit_take_price'])
+                position.profit_take_price = position_profit_take_price
                 position.save()
 
             elif 'auto_exit_style' in request.POST:
@@ -140,6 +145,7 @@ def get_response(request):
     context.dict['new_random_name'] =  tk.get_new_random_name()
     context.dict['coins'] =  models_transaction.coins
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
+    context.dict['gas_speeds'] =  models_adminsettings.gas_speeds
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
 
     context.dict['stats'] = {

@@ -31,8 +31,24 @@
 
             {% endif %}   
 
-            <div>
-                <p>Total Profit: {{stats.total_profit}} USD</p>
+            <div class="d-flex justify-content-between gap-5">
+                <div>
+                    <p class="m-0" id="availableBorrowsBase"></p>
+                    <p class="m-0" id="totalDebtBase"></p>
+
+                </div>
+
+                <div>
+                    <p class="m-0" id="totalCollateralBase"></p>
+                    <p class="m-0" id="currentLiquidationThreshold"></p>
+                </div>
+
+                <div>
+                    <p class="m-0" id="healthFactor"></p>
+                    <p class="m-0">Total Profit: {{stats.total_profit}} USD</p>
+
+                </div>
+
             </div>
   
         </div>
@@ -60,6 +76,17 @@
                     {% csrf_token %}
                     <input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 80px;"/>
                     <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set secure profit ratio</button>
+                </form>
+            
+
+                <form method="POST" class="d-flex justify-content-start gap-1">
+                    {% csrf_token %}
+                    <select class="form-select form-select-sm" style="height: 30px; width: 150px;"  name="admin_settings_gas_speed"  required>
+                        {% for gas_speed in gas_speeds %}
+                            <option value="{{gas_speed}}" {% if admin_settings.gas_speed == gas_speed %} selected {% endif %}   >{{gas_speed}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set gas speed</button>
                 </form>
             
         </div>
@@ -105,12 +132,12 @@
         <div class="d-flex justify-content-between mt-5 flex-sm-row flex-column">
 
             {% for coin in coins %}
-                <div><p id="{{coin}}_price" ></p></div>
+                <div><h4 class="text-primary" id="weth_price" ></h4></div>
             {% endfor %}
 
-            <div><p id="gas_price" ></p></div>
-            <div><p id="prices_update_epoch" class="small"></p></div>
-            <div><p id="gas_update_epoch" class="small"></p></div>
+            <div><h4 id="gas_price" ></h4></div>
+            <div><p id="prices_update_epoch" class="small"></p>
+            <p id="gas_update_epoch" class="small"></p></div>
         </div>
         
 
@@ -119,7 +146,7 @@
             
             
             <div class="d-flex justify-content-start ms-5 ">
-                <p class="me-3"><strong>eth</strong></p>
+                <p class="me-3 text-primary"><strong>ETH</strong></p>
                 <div>
                     <p class=" mb-0" id="admin_settings_balances_eth"> </p>
                     <p class=" mt-0" id="admin_settings_balances_eth_value"> </p>
@@ -130,7 +157,7 @@
             {% for coin in coins %}
 
                 <div class="d-flex justify-content-start ms-5 ">
-                    <p class="me-3"><strong>{{coin}}</strong></p>
+                    <p class="me-3  text-primary"><strong>{{coin|upper}}</strong></p>
                     <div>
                         <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
                         <p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
@@ -144,7 +171,7 @@
             {% for coin in fiat_coins %}
 
                 <div class="d-flex justify-content-start ms-5 ">
-                    <p class="me-3"><strong>{{coin}}</strong></p>
+                    <p class="me-3  text-primary"><strong>{{coin|upper}}</strong></p>
                     <div>
                         <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
                         <p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
@@ -232,9 +259,9 @@
                         <form method="POST" class="d-flex justify-content-between gap-1">
                             {% csrf_token %}
                             <input name="position_uuid" value="{{position.uuid}}" hidden />
-                            min profit exit price:
-                            <input type="number" class="form-control form-control-sm" name="position_min_profit_exit_price" value="{{position.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
-                            <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_set_min_profit_exit_price">Set</button>
+                            profit take exit price:
+                            <input type="number" class="form-control form-control-sm" name="position_profit_take_price" value="{{position.profit_take_price}}" style="width: 100px;"  step="any"/>
+                            <button class="btn btn-primary btn-sm disable_while_busy" name="position_action_set_profit_take_price">Set</button>
                         </form>
                     </div>
                     </div>
@@ -278,7 +305,7 @@
 
 
 
-            {% for transaction in position.transaction_set.all %}
+            {% for transaction in position.order.transaction_set.all %}
 
 
                     
@@ -288,7 +315,7 @@
                             <br>
                             {% epoch_to_datetime transaction.epoch_created %}
                         </div>
-                        <div>slipage: {{transaction.slipage}}
+                        <div>slippage: {{transaction.slippage}}
                             <br>
                             fee: {{transaction.fee}}
                         </div>
@@ -300,12 +327,12 @@
                         {% if transaction.type == "token_to_fiat" %}
                         <div>
                             <div>token amount spent: {{transaction.token_amount_spent}}</div>
-                            <div>fiat amount recieved: {{transaction.fiat_amount_recieved}}</div>
+                            <div>fiat amount received: {{transaction.fiat_amount_received}}</div>
                         </div>
                         {% else %}
                         <div>
                             <div>fiat amount spent: {{transaction.fiat_amount_spent}}</div>
-                            <div>token amount recieved: {{transaction.token_amount_recieved}}</div>
+                            <div>token amount received: {{transaction.token_amount_received}}</div>
                         </div>
                         {% endif %}
                     </div>

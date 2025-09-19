@@ -20,14 +20,14 @@ class adminViewTransaction(admin.ModelAdmin):
         'state',
         'transaction_type',
         'uniswap_version',
-        'position',
+        'order',
         'fiat_amount_spent',
-        'token_amount_recieved',
+        'token_amount_received',
         'token_amount_spent',
-        'fiat_amount_recieved',
+        'fiat_amount_received',
         'token_nominal_price',
         'token_effective_price',
-        'slipage',
+        'slippage',
         'fee',
         )
 admin.site.register(Transaction, adminViewTransaction)
@@ -39,14 +39,14 @@ class adminViewOrder(admin.ModelAdmin):
         'id',
         'name',
         'epoch_created',
-        'mode',
+        'entry_condition',
         'entry_capital',
-        'order_price',
-        'min_profit_exit_price',
+        'order_entry_price',
+        'profit_take_price',
         'stop_loss_price',
         'active',
         'executed',
-        'fullfiled',
+        'fulfilled',
         )
 admin.site.register(Order, adminViewOrder)
 

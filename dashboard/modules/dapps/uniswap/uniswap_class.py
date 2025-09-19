@@ -1,15 +1,8 @@
-from web3 import Web3
-import time
-import json
-import os
+from dashboard.modules.dapps.dapp_class import *
 
-from traceback import format_exc
-
-from dashboard.views_pages import toolkit as tk
-import os
 
 # UNISWAP
-token_address = {
+uniswap_token_addresses = {
     'mainnet': {
         'dai': '0x6b175474e89094c44da98b954eedeac495271d0f',
         'weth': '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
@@ -29,7 +22,7 @@ token_address = {
         'usdc': '0x9c8FA1ee532f8Afe9F2E27f06FD836F3C9572f71',
     },
 }
-v3_addresses = {
+uniswap_contract_addresses = {
     'UniswapV3Factory': '0x1F98431c8aD98523631AE4a59f267346ea31F984',
     'Multicall2': '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696',
     'ProxyAdmin': '0xB753548F6E010e7e680BA186F9Ca1BdAB2E90cf2',
@@ -46,29 +39,29 @@ v3_addresses = {
 }
 
 
-v2_addresses = {
-    'dai': '0x2a1530C4C41db0B0b2bB646CB5Eb1A67b7158667',
-}
 
-with open(os.path.join(tk.abi_folder_path, 'uniswap_quoter_abi.json')) as f:
+abis_folder = os.path.join(tk.uniswap_dapp_folder_path, 'abis')
+
+
+with open(os.path.join(abis_folder, 'uniswap_quoter_abi.json')) as f:
     uniswap_quoter_abi = json.load(f)
 
-with open(os.path.join(tk.abi_folder_path, 'erc20ABI.json')) as f:
+with open(os.path.join(abis_folder, 'erc20ABI.json')) as f:
     erc20_abi = json.load(f)
 
-with open(os.path.join(tk.abi_folder_path, 'v3SwapRouterABI.json')) as f:
+with open(os.path.join(abis_folder, 'v3SwapRouterABI.json')) as f:
     v3_swap_router_abi = json.load(f)
 
-with open(os.path.join(tk.abi_folder_path, 'weth_abi.json')) as f:
+with open(os.path.join(abis_folder, 'weth_abi.json')) as f:
     weth_abi = json.load(f)
 
-with open(os.path.join(tk.abi_folder_path, 'wbtc_abi.json')) as f:
+with open(os.path.join(abis_folder, 'wbtc_abi.json')) as f:
     wbtc_abi = json.load(f)
 
-with open(os.path.join(tk.abi_folder_path, 'wsol_abi.json')) as f:
+with open(os.path.join(abis_folder, 'wsol_abi.json')) as f:
     wsol_abi = json.load(f)
 
-with open(os.path.join(tk.abi_folder_path, 'uniswap_quoter_abi.json')) as f:
+with open(os.path.join(abis_folder, 'uniswap_quoter_abi.json')) as f:
     uniswap_quoter_abi = json.load(f)
 
 
@@ -85,40 +78,17 @@ uniswap_token_abi = '[{"name":"Transfer","inputs":[{"type":"address","name":"_fr
 
 
 
-class CustomException(Exception):
-    def __init__(self, message):
-        super().__init__(message)
+class Uniswap(Dapp):
+    def __init__(self):
 
+        super().__init__()
 
-class Token():
-    def __init__(self, name, network, address, abi, decimals, fee_teirs, w3):
-        self.name = name
-        self.network = network
-        self.w3 = w3
-        self.address = self.w3.to_checksum_address(address)
-        self.abi = abi
-        self.contract = self.w3.eth.contract(abi=self.abi, address=self.address)
-        self.decimals = decimals
-        self.fee_teirs = fee_teirs
+        self.dapp_name = 'uniswap'
+        tk.logger.info(f"initiating {self.dapp_name} W3...")
 
-
-
-
-class Uniswap():
-    def __init__(self, network='mainnet'):
+        self.token_addresses = uniswap_token_addresses
         
-        self.network = network
-        
-        self.mainnet_infura_url = f"https://{self.network}.infura.io/v3/3f440b85f4ab47{os.getenv('trader_mainnet_infura_url')}" 
-        
-        
-        self.default_account_address = f"0x2Ac4E9192846BeC854{os.getenv('trader_default_account_address')}"
-
-        self.account_private_key = f"702e0b04f43b0993ee2e33049953b8602{os.getenv('trader_account_private_key')}"
-
-
         self.max_gas_fee_multiplier = 1.5
-
         self.gas_limit = 22_000
         self.gas_custom_token_limit = 160_000
 
@@ -130,32 +100,24 @@ class Uniswap():
         1.00% : 0.0100 : 10000 / 1_000_000
         """
 
-        tk.logger.info("initiating W3...")
-
-        self.w3 = Web3(Web3.HTTPProvider(self.mainnet_infura_url))
-        self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
-
-        
-
-        
-        self.weth = Token(name='weth', network=self.network, address=token_address[self.network]['weth'], decimals=18, fee_teirs = 500,
+        self.weth = Token(name='weth', network=self.network, address=uniswap_token_addresses[self.network]['weth'], decimals=18, fee_tiers = 500,
                           abi=weth_abi, w3=self.w3)
         
-        # self.wsol = Token(name='wsol', network=self.network, address=token_address[self.network]['wsol'], decimals=9, fee_teirs = 3000,
+        # self.wsol = Token(name='wsol', network=self.network, address=uniswap_token_addresses[self.network]['wsol'], decimals=9, fee_tiers = 3000,
         #                   abi=erc20_abi, w3=self.w3)
 
-        # self.wbtc = Token(name='wbtc', network=self.network, address=token_address[self.network]['wbtc'], decimals=8, fee_teirs = 500,
+        # self.wbtc = Token(name='wbtc', network=self.network, address=uniswap_token_addresses[self.network]['wbtc'], decimals=8, fee_tiers = 500,
         #                   abi=wbtc_abi, w3=self.w3)
 
 
 
-        # self.dai = Token(name='dai', network=self.network, address=token_address[self.network]['dai'], decimals=18, fee_teirs = 500,
+        # self.dai = Token(name='dai', network=self.network, address=uniswap_token_addresses[self.network]['dai'], decimals=18, fee_tiers = 500,
         #                  abi=erc20_abi, w3=self.w3)
 
-        self.usdc = Token(name='usdc', network=self.network, address=token_address[self.network]['usdc'], decimals=6, fee_teirs = 500,
+        self.usdc = Token(name='usdc', network=self.network, address=uniswap_token_addresses[self.network]['usdc'], decimals=6, fee_tiers = 500,
                           abi=erc20_abi, w3=self.w3)
 
-        # self.usdt = Token(name='usdt', network=self.network, address=token_address[self.network]['usdt'], decimals=6, fee_teirs = 500,
+        # self.usdt = Token(name='usdt', network=self.network, address=uniswap_token_addresses[self.network]['usdt'], decimals=6, fee_tiers = 500,
         #                   abi=erc20_abi, w3=self.w3)
 
 
@@ -163,51 +125,17 @@ class Uniswap():
         # V3
         self.v3_swap_router_contract = self.w3.eth.contract(abi=v3_swap_router_abi,
                                                             address=self.w3.to_checksum_address(
-                                                                v3_addresses['SwapRouter']))
+                                                                uniswap_contract_addresses['SwapRouter']))
 
-        # V2
-        # self.v2_factory_contract = self.w3.eth.contract(abi=json.loads(uniswap_factory_abi),
-        #                                                 address=self.w3.to_checksum_address(
-        #                                                     uniswap_mainnet_factory_address))
-
-        # self.dai_exchange_address_v2 = self.v2_factory_contract.functions.getExchange(self.dai.address).call()
-        # self.dai_exchange_contract = self.w3.eth.contract(abi=json.loads(uniswap_exchange_abi),
-        #                                                   address=self.dai_exchange_address_v2)
-
-        # self.wbtc_exchange_address = self.v2_factory_contract.functions.getExchange(self.wbtc.address).call()
-        # self.wbtc_exchange_contract = self.w3.eth.contract(abi=json.loads(uniswap_exchange_abi),
-        #                                                    address=self.wbtc_exchange_address)
+        
         # Quoter
         self.uniswap_quoter = self.w3.eth.contract(
                 abi=uniswap_quoter_abi,
-                address=self.w3.to_checksum_address(v3_addresses['Quoter'])
+                address=self.w3.to_checksum_address(uniswap_contract_addresses['Quoter'])
             )
 
         tk.logger.info("uniswap fully initiated")
 
-
-    def get_token_object(self, token_string) -> Token:
-        
-        if token_string.lower() in ['eth', 'weth']:
-            return self.weth
-
-        elif token_string.lower() == 'usdc':
-            return self.usdc
-
-        # elif token_string.lower() == 'dai':
-        #     return self.dai
-        
-        # elif token_string.lower() == 'wbtc':
-        #     return self.wbtc
-
-        # elif token_string.lower() == 'wsol':
-        #     return self.wsol
-
-        # elif token_string.lower() == 'usdt':
-        #     return self.usdt
-        
-        else:
-            raise
 
 
     def get_coin_price(self, coin):
@@ -262,49 +190,29 @@ class Uniswap():
     #     return self.wsol.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wsol.decimals)
 
 
-    def get_network_gas_price(self):
-
-        admin_settings = tk.get_admin_settings()
-
-        full_gas_info = admin_settings.gas
-
-        gas_price_gwei = full_gas_info['gas_basic_price'] + full_gas_info['FastGasPrice']
-
-        return {
-            'maxPriorityFeePerGas_gwei': full_gas_info['FastGasPrice'],
-            'maxFeePerGas_gwei': self.max_gas_fee_multiplier * gas_price_gwei,
-            'tx_fee_eth': gas_price_gwei * self.gas_custom_token_limit / (10 ** 9),
-        }
-
 
     def approve_spenders(self):
         # dai
-        # uniswap.approve(spender=uniswap.dai_exchange_address_v2, token=uniswap.dai)
-        # uniswap.approve(spender=v3_addresses['SwapRouter'], token=uniswap.dai)
+        # uniswap.approve(dapp=self, spender=self.dai_exchange_address_v2, token=uniswap.dai)
+        # uniswap.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
 
         # weth
-        # uniswap.approve(spender=v3_addresses['SwapRouter'], token=uniswap.weth)
+        # uniswap.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
 
         # wbtc
-        # uniswap.approve(spender=uniswap.wbtc_exchange_address, token=uniswap.wbtc)
-        # uniswap.approve(spender=tk.v3_addresses['SwapRouter'], token=uniswap.wbtc)
+        # # uniswap.approve(dapp=self, spender=uniswap.wbtc_exchange_address, token=uniswap.wbtc)
+        # uniswap.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
         
         # wsol
-        # uniswap.approve(spender=uniswap.wsol_exchange_address, token=uniswap.wsol)
+        # uniswap.approve(dapp=self, spender=self.wsol_exchange_address, token=self.wsol)
         
         # usdt
-        # self.approve(spender=v3_addresses['SwapRouter'], token=self.usdt)
+        # self.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.usdt)
 
-        # usdc
-        # self.approve(spender=v3_addresses['SwapRouter'], token=self.usdc)
+        self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdc)
         pass
 
 
-    def approve(self, spender, token):
-
-        action = token.contract.functions.approve(self.w3.to_checksum_address(spender), 2**256 - 1)
-
-        self.build_and_execute_tx(action=action)
 
 
 
@@ -374,16 +282,16 @@ class Uniswap():
 
         admin_settings = tk.get_admin_settings()
 
-        def trim_slipage(slipage, safty_margin):
+        def trim_slippage(slippage, safty_margin):
 
 
-            slipage_to_fee = int(slipage * 1_000_000) / fee
-            slipage_to_fee = max(slipage_to_fee, 1.0)
-            slipage_to_fee = min(slipage_to_fee, 5.0)
+            slippage_to_fee = int(slippage * 1_000_000) / fee
+            slippage_to_fee = max(slippage_to_fee, 1.0)
+            slippage_to_fee = min(slippage_to_fee, 5.0)
 
-            slipage_to_fee += safty_margin
+            slippage_to_fee += safty_margin
 
-            return round(slipage_to_fee, 4)
+            return round(slippage_to_fee, 4)
 
 
 
@@ -405,13 +313,13 @@ class Uniswap():
 
             expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
 
-            slipage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
+            slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.3)
-            admin_settings.added_slipage_multiplier_fiat_to_coin = slipage_to_fee
+            slippage_to_fee = trim_slippage(slippage, 0.3)
+            admin_settings.added_slippage_multiplier_fiat_to_coin = slippage_to_fee
             admin_settings.save()
-            tk.logger.info(f"slipage_to_fee: {slipage}")
-            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slipage_to_fee}"})
+            tk.logger.info(f"slippage_to_fee: {slippage}")
+            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
 
         else:
 
@@ -430,14 +338,14 @@ class Uniswap():
 
             quoted_fiat_amount = min(quoted_fiat_amounts)
             expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
-            slipage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
+            slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
-            slipage_to_fee = trim_slipage(slipage, 0.15)
-            admin_settings.added_slipage_multiplier_coin_to_fiat = slipage_to_fee
+            slippage_to_fee = trim_slippage(slippage, 0.15)
+            admin_settings.added_slippage_multiplier_coin_to_fiat = slippage_to_fee
             admin_settings.save()
 
-            tk.logger.info(f"slipage_to_fee: {slipage}")
-            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slipage_to_fee}"})
+            tk.logger.info(f"slippage_to_fee: {slippage}")
+            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
 
 
 
@@ -665,21 +573,21 @@ class Uniswap():
 
             """
             on side of the swap is always weth
-            the other side of the swap defines, which fee teirs are to be used
+            the other side of the swap defines, which fee tiers are to be used
             """
             if token_in.name == 'weth':
-                fee_teirs = token_out.fee_teirs
+                fee_tiers = token_out.fee_tiers
                 fiat_to_coin = False
             else:
-                fee_teirs = token_in.fee_teirs
+                fee_tiers = token_in.fee_tiers
                 fiat_to_coin = True
 
-            fee_teirs = tries * [fee_teirs]
+            fee_tiers = tries * [fee_tiers]
 
 
-            for fee_teir in fee_teirs:
+            for fee_tier in fee_tiers:
 
-                action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_teir)
+                action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
 
                 tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
 
@@ -690,7 +598,7 @@ class Uniswap():
                 if successful:
                     token_out_bought = tx_return['logs_results'][token_out.name]['amount']
 
-                    return successful, token_out_bought, tx_hash, tx_fee_in_eth, f"V3({fee_teir})"
+                    return successful, token_out_bought, tx_hash, tx_fee_in_eth, f"V3({fee_tier})"
 
             return False, None, None, None, None
 
@@ -706,9 +614,9 @@ class Uniswap():
 
 
 
-    def exactInputSingle(self, fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_teir):
+    def exactInputSingle(self, fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier):
 
-        tk.logger.info(f"<-> swapping {amount_in} {token_in.name} for {amount_out} {token_out.name} -- fee_teir: {fee_teir}")
+        tk.logger.info(f"<-> swapping {amount_in} {token_in.name} for {amount_out} {token_out.name} -- fee_tier: {fee_tier}")
 
         amount_in = int(amount_in * pow(10, token_in.decimals))
         amount_out = int(amount_out * pow(10, token_out.decimals))
@@ -718,17 +626,17 @@ class Uniswap():
         admin_settings = tk.get_admin_settings()
 
         if fiat_to_coin:
-            max_allowed_slipage = (admin_settings.added_slipage_multiplier_fiat_to_coin * fee_teir) / 1_000_000
+            max_allowed_slippage = (admin_settings.added_slippage_multiplier_fiat_to_coin * fee_tier) / 1_000_000
         else:
-            max_allowed_slipage = (admin_settings.added_slipage_multiplier_coin_to_fiat * fee_teir) / 1_000_000
+            max_allowed_slippage = (admin_settings.added_slippage_multiplier_coin_to_fiat * fee_tier) / 1_000_000
 
         tokenIn = token_in.address
         tokenOut = token_out.address
-        fee = int(fee_teir)
+        fee = int(fee_tier)
         recipient = self.w3.eth.default_account
         deadline = int(deadline)
         amountIn = int(amount_in)
-        amountOutMinimum = int((1. - max_allowed_slipage) * amount_out)
+        amountOutMinimum = int((1. - max_allowed_slippage) * amount_out)
         sqrtPriceLimitX96 = int(0)
 
         action = self.v3_swap_router_contract.functions.exactInputSingle((tokenIn,
@@ -775,126 +683,3 @@ class Uniswap():
 
 
 
-
-
-
-    def build_and_execute_tx(self, action, transaction_object=None, value=0):
-
-        receipt = None
-
-        try:
-
-            tk.logger.info(f'building tx for action: {action.fn_name}')
-
-            gas_info = self.get_network_gas_price()
-
-            assert not gas_info is None
-
-            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account) 
-
-
-            tx_settings = {
-                'chainId': 1,
-
-                'from': self.w3.eth.default_account,
-                'value': value,
-
-                'gas': self.gas_custom_token_limit,
-                'maxFeePerGas': self.w3.to_wei(gas_info['maxFeePerGas_gwei'], 'gwei'),
-                'maxPriorityFeePerGas': self.w3.to_wei(gas_info['maxPriorityFeePerGas_gwei'], 'gwei'),
-                'nonce': nonce,
-            }
-
-            tx = action.build_transaction(tx_settings)
-
-            signed_tx = self.w3.eth.account.sign_transaction(tx, private_key=self.account_private_key)
-
-            tx_hash = self.w3.eth.send_raw_transaction(signed_tx.raw_transaction)
-
-            if transaction_object is not None:
-                transaction_object.hash = tx_hash
-                transaction_object.save()
-
-
-            tk.logger.info(
-                f'waiting for https://{"" if self.network == "mainnet" else self.network + "."}etherscan.io/tx/{self.w3.to_hex(tx_hash)} \n')
-
-            receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
-            # while True:
-            #     try:
-            #         receipt = self.w3.eth.get_transaction_receipt(tx_hash)
-            #         break
-            #     except:
-            #         time.sleep(0.3)
-
-
-        except:
-            tk.logger.info(format_exc())
-
-        finally:
-            return self.process_receipt(receipt)
-
-
-
-    def process_log(self, log):
-        log_token = None
-        for token in token_address['mainnet']:
-            if token_address['mainnet'][token].lower() == log.address.lower():
-                log_token = token
-                break
-        
-        if log_token is None:
-            for token in v2_addresses:
-                if v2_addresses[token].lower() == log.address.lower():
-                    if token == 'dai':
-                        log_token = 'eth'
-                        amount = self.w3.to_int(log['topics'][-1])
-                        return 'eth', self.w3.to_int(log['topics'][-1]) / (10 ** 18)
-
-
-        if log_token is None:
-            return "unknown", 0
-
-        else:
-            token = self.get_token_object(log_token)
-            amount = self.w3.to_int(log['data']) / (10 ** token.decimals)
-
-            return token.name, amount
-
-
-
-    def process_receipt(self, receipt):
-
-        if receipt is None:
-
-            return {
-                'successful': False,
-                'tx_hash': "",
-                'tx_fee_in_eth': 0,
-                'logs_results': [],
-            }
-
-        else:
-
-            successful = (receipt.status == 1)
-
-            tx_hash = self.w3.to_hex(receipt.transactionHash)
-
-            tk.logger.info('---------------> successful' if successful else '-------------> failed')
-
-            tx_fee_in_eth = receipt.effectiveGasPrice  * receipt.gasUsed / (10 ** 18)
-
-            logs_results = {}
-
-
-            for idx, log in enumerate(receipt.logs):
-                token_name, token_amount = self.process_log(log)
-                logs_results[f"{token_name}"] = {"idx": idx, "amount": token_amount}
-
-
-            return {
-                'successful': successful,
-                'tx_hash': tx_hash,
-                'tx_fee_in_eth': tx_fee_in_eth,
-                'logs_results': logs_results,
-            }

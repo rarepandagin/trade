@@ -5,7 +5,7 @@ from .context import context_class
 
 from dashboard.models import models_position,  models_transaction, models_order
 
-from mysite import settings    
+from dashboard.views_pages import transaction_dispatch    
                 
 def get_response(request):
 
@@ -23,36 +23,53 @@ def get_response(request):
             if 'fiat_to_token_amount' in request.POST:
                 fiat_to_token_amount = eval(request.POST['fiat_to_token_amount'])
                 coin = request.POST['coin']
-                transaction = tk.create_fiat_to_token_transaction(fiat_to_token_amount, coin=coin)
+                transaction = transaction_dispatch.create_and_actualize_uniswap_fiat_to_token_transaction(fiat_to_token_amount, coin=coin)
                 
-                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
-
 
 
             elif 'token_to_fiat_amount' in request.POST:
                 token_to_fiat_amount = eval(request.POST['token_to_fiat_amount'])
                 coin = request.POST['coin']
-
-                transaction = tk.create_token_to_fiat_transaction(token_to_fiat_amount, coin=coin)
-
-                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
-
+                transaction = transaction_dispatch.create_and_actualize_uniswap_token_to_fiat_transaction(token_to_fiat_amount, coin=coin)
 
 
             elif 'eth_amount_to_wrap' in request.POST:
                 eth_amount_to_wrap = eval(request.POST['eth_amount_to_wrap'])
-
-                transaction = tk.wrap_eth(eth_amount_to_wrap)
-
-                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
-
+                transaction = transaction_dispatch.create_and_actualize_uniswap_wrap_eth(eth_amount_to_wrap)
 
             elif 'weth_amount_to_unwrap' in request.POST:
                 weth_amount_to_unwrap = eval(request.POST['weth_amount_to_unwrap'])
+                transaction = transaction_dispatch.create_and_actualize_uniswap_unwrap_weth(weth_amount_to_unwrap)
 
-                transaction = tk.unwrap_weth(weth_amount_to_unwrap)
 
-                tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.name}, state: {transaction.state}')
+
+
+
+            elif 'aave_approve' in request.POST:
+                transaction = transaction_dispatch.create_and_actualize_aave_approve_transaction()
+
+
+            elif 'aave_supply_amount' in request.POST:
+                amount = eval(request.POST['aave_supply_amount'])
+                transaction = transaction_dispatch.create_and_actualize_aave_supply_transaction(amount)
+
+            elif 'aave_withdraw_amount' in request.POST:
+                amount = eval(request.POST['aave_withdraw_amount'])
+                transaction = transaction_dispatch.create_and_actualize_aave_withdraw_transaction(amount)
+
+
+            elif 'aave_borrow_amount' in request.POST:
+                amount = eval(request.POST['aave_borrow_amount'])
+                transaction = transaction_dispatch.create_and_actualize_aave_borrow_transaction(amount)
+
+
+            elif 'aave_repay_amount' in request.POST:
+                amount = eval(request.POST['aave_repay_amount'])
+                transaction = transaction_dispatch.create_and_actualize_aave_repay_transaction(amount)
+
+
+            tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
 
 
 
@@ -64,7 +81,7 @@ def get_response(request):
     context.dict['coins'] =  models_transaction.coins
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
-    context.dict['order_modes'] =  models_order.order_modes
+    context.dict['entry_conditions'] =  models_order.entry_conditions
 
 
     return context.response()

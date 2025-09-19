@@ -1,5 +1,18 @@
 from django.db import models
+from ens.ens import default
 from dashboard.models.coins import *
+
+
+FastGasPrice = "FastGasPrice"
+SafeGasPrice = "SafeGasPrice"
+ProposeGasPrice = "ProposeGasPrice"
+
+gas_speeds = {
+    FastGasPrice : "FastGasPrice",
+    ProposeGasPrice : "ProposeGasPrice",
+    SafeGasPrice : "SafeGasPrice",
+}
+
 
 class AdminSettings(models.Model):
 
@@ -14,12 +27,12 @@ class AdminSettings(models.Model):
     secure_profit_ratio = models.FloatField(default=0.7)
     max_sane_gas_price = models.FloatField(default=4.0)
 
-
+    gas_speed = models.CharField(choices=gas_speeds, default=FastGasPrice)
 
     fiat_coin = models.CharField(choices=fiat_coins, default=usdc)
 
-    added_slipage_multiplier_fiat_to_coin = models.FloatField(default=3)
-    added_slipage_multiplier_coin_to_fiat = models.FloatField(default=3)
+    added_slippage_multiplier_fiat_to_coin = models.FloatField(default=3)
+    added_slippage_multiplier_coin_to_fiat = models.FloatField(default=3)
 
 
     # calculated on demand
@@ -31,8 +44,15 @@ class AdminSettings(models.Model):
     
     prices_update_epoch = models.BigIntegerField(default=0)
     gas_update_epoch = models.BigIntegerField(default=0)
+    gas_update_epoch_max_allowed_delay_seconds = models.IntegerField(default=10)
+
+    ## aave
+    pulse_counter = models.BigIntegerField(default=0)
+    aave_info_update_pulse_steps = models.IntegerField(default=10)
+    aave_user_account_data = models.JSONField(default=dict)
 
 
+    # depth
     depth_filtering_active      = models.BooleanField(default=True)
     depth_show_cumulative       = models.BooleanField(default=False)
     depth_lowest_price          = models.FloatField(default=4200)

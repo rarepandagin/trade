@@ -7,12 +7,22 @@
 {% load custom_tags %}
 
  
+<head>
+        <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
 
+</head>
     
 
 
-        <!-- NEW Order -->
+    <!-- NEW Order -->
     <h1 class="mt-5">New Order</h1>
+
+                <div class="d-flex justify-content-start gap-2">
+                    <p id="most_recent_quote"></p>
+                    <button type="button"  class="btn btn-primary btn-sm ms-3" onclick="update_both_way_quotes();">Quote</button>
+                </div>
+
+
     <div class="border rounded p-2 mt-2 mb-5 ">
         
         <form method="POST">
@@ -21,81 +31,106 @@
             <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
 
                 <div class="d-flex justify-content-start">
-                    <p>Name:</p>
+                    <p class="me-2 mt-2">Name:</p>
                     <input type="text" class="form-control form-control-sm" name="new_order_name" value="{{new_random_name}}" required/>
                 </div>
 
-
-                
-                <div class="d-flex justify-content-start">
-
-                    <select class="form-select form-select-sm" id="new_position_coin_select" style="height: 30px;"  name="coin"  required>
+                <div >
+                    <div class="d-flex justify-content-start">
                         
-                            {% for coin in coins %}
-                                <option value="{{coin}}">{{coin}}</option>
-                            {% endfor %}
 
-                    </select>
-                </div>
-    
+
+                        <p class="me-2 mt-2">Entry price:</p>
+
+                        <input type="number" class="form-control form-control-sm"  step="any" min="0" value="4600" name="order_entry_price" id="order_entry_price" style="width: 90px;"/>
+
+                        <select class="form-select ms-1" name="order_entry_condition" style="width: 290px;">
+                            {% for order_entry_condition in entry_conditions %}
+                                <option value="{{order_entry_condition}}">{{order_entry_condition}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     
 
+                </div>
+            </div>
 
-                <div class="d-flex justify-content-start gap-2">
-                    <p>Entry capital:</p>
-                    <input type="number" class="form-control form-control-sm" name="entry_capital" id="entry_capital" step="any" value="4000" style="width: 100px;"  required/>
-                    <p id="most_recent_quote"></p>
-                    <button type="button"  class="btn btn-primary btn-sm ms-3" onclick="update_both_way_quotes();">Quote</button>
+            <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column border rounded p-2 mt-5">
+                <h4 id="long_label" class="">Long</h4>
+
+                <div class="d-flex justify-content-start" > 
+                    <p class="me-2 mt-2">Long capital:</p>
+                    <input type="number" class="form-control form-control-sm" name="entry_capital_long" id="entry_capital_long" step="any" value="2000" style="width: 100px;"  required/>
+                </div>
+
+                <div class="d-flex justify-content-start" > 
+                    <p class="me-2 mt-2">Long stop loss:</p>
+                    <input type="number" class="form-control form-control-sm" name="stop_loss_price_long"  id="stop_loss_price_long" step="any"  value="4580" style="width: 90px;" required/>
+                </div>
+
+                <div class="d-flex justify-content-start">
+                    <p class="me-2 mt-2">Long profit take:</p>
+                    <input type="number" class="form-control form-control-sm" name="profit_take_price_long"  id="profit_take_price_long" step="any"  value="4700" style="width: 90px;" required/>
                 </div>
 
             </div>
 
             
             <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
+                <p id="long_ambition_ratio"></p>
+                <p id="long_loss_at_stop_loss"></p>
+                <p id="long_profit_at_take_profit"></p>
+            </div>
 
+            
+            <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column border rounded p-2 mt-5">
+                <h4 id="short_label" class="">Short</h4>
 
                 <div class="d-flex justify-content-start" > 
-                    <p>Stop loss price:</p>
-                    <input type="number" class="form-control form-control-sm" name="stop_loss_price" value="3000" id="stop_loss_price" step="any" required/>
+                    <p class="me-2 mt-2">Short capital:</p>
+                    <input type="number" class="form-control form-control-sm" name="entry_capital_short" id="entry_capital_short" step="any" value="1000" style="width: 100px;"  required/>
                 </div>
 
-                <div class="d-flex justify-content-start gap-2 ">
-                    <p>Min profit exit price:</p>
-                    <input type="number" class="form-control form-control-sm" name="min_profit_exit_price" value="{{suggested_tp_price}}" id="min_profit_exit_price" step="any" required/>
+                <div class="d-flex justify-content-start" > 
+                    <p class="me-2 mt-2">Short stop loss:</p>
+                    <input type="number" class="form-control form-control-sm" name="stop_loss_price_short"  id="stop_loss_price_short" step="any"  value="4700" style="width: 90px;" required/>
+                </div>
+
+                <div class="d-flex justify-content-start">
+                    <p class="me-2 mt-2">Short profit take:</p>
+                    <input type="number" class="form-control form-control-sm" name="profit_take_price_short"  id="profit_take_price_short" step="any"  value="4555" style="width: 90px;" required/>
                 </div>
 
             </div>
 
             
-            <div class="d-flex justify-content-between gap-2  flex-sm-row flex-column ">
-                <p id="ambition_ratio"></p>
-                <p id="loss_amount_at_stop_loss_price"></p>
-                <p id="profit_amount_at_min_profit_exit_price"></p>
+            <div class="d-flex justify-content-between gap-2 flex-sm-row flex-column ">
+                <p id="short_ambition_ratio"></p>
+                <p id="short_loss_at_stop_loss"></p>
+                <p id="short_profit_at_take_profit"></p>
+            </div>
+
+            
+            <div class="d-flex justify-content-between gap-2 mt-5 border rounded flex-sm-row flex-column ">
+                <p id="total_profit_if_price_goes_up"></p>
+                <p id="total_profit_if_price_goes_down"></p>
             </div>
 
 
 
-            <div class="d-flex justify-content-between gap-2 mt-2  flex-sm-row flex-column ">
 
                 
 
 
-                <div class="d-flex justify-content-start">
-                    <p>Order mode:</p>
-                    <select class="form-select" name="order_mode">
-                        {% for order_mode in order_modes %}
-                            <option value="{{order_mode}}" {% if order_mode == 'buy_if_price_is_below' %} selected {% endif %}>{{order_mode}}</option>
-                        {% endfor %}
-                    </select>
-                    <div class="d-flex justify-content-start">
-                    <input type="number" class="form-control form-control-sm"  step="any" min="0" value="0" name="order_price"/>
-                </div>
 
-                </div>
+            <div class="d-flex justify-content-end mt-2">
 
-                <div class="d-flex justify-content-end">
-                    <button class="btn btn-success btn-sm gas_sensetive_dom" >Place order</button>
-                </div>
+                <select class="form-select form-select-sm me-2" name="which_order" id="which_order" style="width: 200px;">
+                    <option value="long" selected>Only long</option>
+                    <option value="short">Only short</option>
+                    <option value="both">Both long and short</option>
+                </select>
+                <button class="btn btn-success btn-sm gas_sensetive_dom">Place order</button>
             </div>
 
                 
@@ -104,8 +139,7 @@
     </div>
 
 
-
-
+    <div id="new_order_profit_loss_overlook"></div>
 
 
     <!-- ORDERS -->
@@ -130,11 +164,11 @@
 
                         <div>
                             <input type="text" class="form-control form-control-sm" name="order_action_set_name" value="{{order.name}}" style="width: 200px;"/>
-                            <p class="small m-0">({{order.coin}})</p>
-                            <p class="small m-0">Mode: {{order.mode}}</p>
+                            <p class="small m-0">{{order.position_type}}ing {{order.coin}}</p>
+                            <p class="small m-0">Entry condition: {{order.entry_condition}}</p>
                             <p class="small m-0">Active: {{order.active}}</p>
                             <p class="small m-0">Executed: {{order.executed}}</p>
-                            <p class="small m-0">Fullfiled: {{order.fullfiled}}</p>
+                            <p class="small m-0">Fulfilled: {{order.fulfilled}}</p>
                         </div>
 
                         <div>
@@ -145,15 +179,15 @@
 
                         <div>
                             <p>order price:</p>
-                            <input type="number" class="form-control form-control-sm" name="order_action_set_order_price" value="{{order.order_price}}" style="width: 100px;"  step="any"/>
+                            <input type="number" class="form-control form-control-sm" name="order_action_set_order_entry_price" value="{{order.order_entry_price}}" style="width: 100px;"  step="any"/>
 
                         </div>
                     </div>
                     <div class="d-flex justify-content-between  flex-sm-row flex-column gap-2">
 
                         <div>
-                            <p>min_profit_exit_price:</p>
-                            <input type="number" class="form-control form-control-sm" name="order_action_set_min_profit_exit_price" value="{{order.min_profit_exit_price}}" style="width: 100px;"  step="any"/>
+                            <p>profit_take_price:</p>
+                            <input type="number" class="form-control form-control-sm" name="order_action_set_profit_take_price" value="{{order.profit_take_price}}" style="width: 100px;"  step="any"/>
                         </div>
 
                         <div>

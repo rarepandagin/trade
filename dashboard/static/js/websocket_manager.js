@@ -76,6 +76,10 @@ function ws_msg_handler_dashboard(message_event) {
 
         update_positions_table(incoming_message.payload)
 
+    } else if (incoming_message.topic === "refresh_page"){
+
+        refresh_page();
+
     } else if (incoming_message.topic === "logger_to_frontend"){
         
         logger_to_frontend(incoming_message.payload)

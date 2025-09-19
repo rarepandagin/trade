@@ -2,34 +2,50 @@ from django.db import models
 
 from dashboard.views_pages import toolkit as tk
 
-from dashboard.models import models_position
-from dashboard.modules.uniswap.v3_class import Uniswap
+from dashboard.models import models_adminsettings, models_order
+from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
+from dashboard.modules.dapps.aave.aave_class import Aave
 
 from dashboard.models.coins import *
 
 
 transaction_state_ongoing = "transaction_state_ongoing"
 transaction_state_failed = "transaction_state_failed"
-transaction_state_succesful = "transaction_state_succesful"
+transaction_state_successful = "transaction_state_successful"
 
 transaction_states = {
     transaction_state_ongoing : "transaction_state_ongoing",
     transaction_state_failed : "transaction_state_failed",
-    transaction_state_succesful : "transaction_state_succesful",
+    transaction_state_successful : "transaction_state_successful",
 }
 
-token_to_fiat = "token_to_fiat"
-fiat_to_token = "fiat_to_token"
-wrap_eth = "wrap_eth"
-unwrap_weth = "unwrap_weth"
+# Uniswap
+uniswap_approve = "uniswap_approve"
+uniswap_token_to_fiat = "uniswap_token_to_fiat"
+uniswap_fiat_to_token = "uniswap_fiat_to_token"
+uniswap_wrap_eth = "uniswap_wrap_eth"
+uniswap_unwrap_weth = "uniswap_unwrap_weth"
+
+# Aave
+aave_approve = "aave_approve"
+aave_supply = "aave_supply"
+aave_withdraw = "aave_withdraw"
+aave_borrow = "aave_borrow"
+aave_repay = "aave_repay"
 
 transaction_types = {
-    token_to_fiat: "token_to_fiat",
-    fiat_to_token: "fiat_to_token",
-    wrap_eth: "wrap_eth",
-    unwrap_weth: "unwrap_weth",
-}
+    uniswap_approve : "uniswap_approve",
+    uniswap_token_to_fiat : "uniswap_token_to_fiat",
+    uniswap_fiat_to_token : "uniswap_fiat_to_token",
+    uniswap_wrap_eth : "uniswap_wrap_eth",
+    uniswap_unwrap_weth : "uniswap_unwrap_weth",
 
+    aave_approve : "aave_approve",
+    aave_supply : "aave_supply",
+    aave_withdraw : "aave_withdraw",
+    aave_borrow : "aave_borrow",
+    aave_repay : "aave_repay",
+}
 
 
 class Transaction(models.Model):
@@ -38,25 +54,25 @@ class Transaction(models.Model):
 
     # initial setup
 
-    transaction_type    = models.CharField(choices=transaction_types,   default=token_to_fiat)
+    transaction_type    = models.CharField(choices=transaction_types,   default=uniswap_token_to_fiat)
     state               = models.CharField(choices=transaction_states,  default=transaction_state_ongoing)
     uniswap_version     = models.TextField(default="", blank=True, null=True)
     
-    position = models.ForeignKey(models_position.Position, on_delete=models.SET_NULL, null=True, blank=True)
+    order = models.ForeignKey(models_order.Order, on_delete=models.SET_NULL, null=True, blank=True)
 
     coin = models.CharField(choices=coins, default=weth)
 
     # fiat_to_token
     fiat_amount_spent        = models.FloatField(default=0)
-    token_amount_recieved     = models.FloatField(default=0)
+    token_amount_received     = models.FloatField(default=0)
     
     # token_to_fiat
     token_amount_spent        = models.FloatField(default=0)
-    fiat_amount_recieved     = models.FloatField(default=0)
+    fiat_amount_received     = models.FloatField(default=0)
     
     token_nominal_price       = models.FloatField(default=0) # from quote
     token_effective_price     = models.FloatField(default=0) # actually what happened
-    slipage                 = models.FloatField(default=0)
+    slippage                 = models.FloatField(default=0)
 
     hash                    = models.TextField(default="", null=True, blank=True)
     fee                     = models.FloatField(default=0)
@@ -93,93 +109,149 @@ class Transaction(models.Model):
         tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'starting to actualize {self.transaction_type} tx ({self.name})', 'color': 'green'})
 
 
-        # before actualizing any transaction, we need to make sure that the gas price is lower than a reasonable amount
+
         admin_settings = tk.get_admin_settings()
-        if admin_settings.gas['gas_basic_price'] > admin_settings.max_sane_gas_price:
+
+        gas_price_is_acceptable = admin_settings.gas['gas_basic_price'] < admin_settings.max_sane_gas_price
+        gas_price_is_recent = tk.get_epoch_now() - admin_settings.gas_update_epoch < admin_settings.gas_update_epoch_max_allowed_delay_seconds
+
+        if not (gas_price_is_acceptable and gas_price_is_recent):
             self.state = transaction_state_failed
-            tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'gas is too expensive. aborting the tx.', 'color': 'red'})
+            tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'gas price is too expensive or outdated. aborting the tx.', 'color': 'red'})
 
         else:
+
+
+            if 'uniswap_' in str(self.transaction_type):
         
-            uniswap = Uniswap()
+                uniswap = Uniswap()
 
-            # relevant added slipage multiplier is calculated by quoting before executing the swap 
+                # relevant added slippage multiplier is calculated by quoting before executing the swap 
 
-            if self.transaction_type == fiat_to_token:
+                if self.transaction_type == uniswap_fiat_to_token:
 
-                uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
+                    admin_settings.gas_speed = models_adminsettings.FastGasPrice
+                    admin_settings.save()
 
-                got_token, token_bought, tx_hash, token_price, tx_fee, version = uniswap.fiat_to_token(
-                        fiat_amount=self.fiat_amount_spent,
+
+                    uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
+
+                    got_token, token_bought, tx_hash, token_price, tx_fee, version = uniswap.fiat_to_token(
+                            fiat_amount=self.fiat_amount_spent,
+                            token=self.coin,
+                            tries=admin_settings.tx_tries,
+                            transaction_object=self,
+                        )
+
+
+                    if got_token:
+                        expected_token_based_on_nominal_price = self.fiat_amount_spent / token_price
+                        slippage = (expected_token_based_on_nominal_price - token_bought) / expected_token_based_on_nominal_price
+                        slippage = round(slippage, 6)
+
+                        self.token_amount_received = token_bought
+                        # self.hash = tx_hash
+                        self.uniswap_version = version
+                        self.token_nominal_price = token_price
+                        self.token_effective_price = self.fiat_amount_spent / self.token_amount_received
+                        self.slippage = slippage
+                        self.state = transaction_state_successful
+                        self.fee = round(tx_fee, 2)
+
+                    else:
+                        self.state = transaction_state_failed
+
+
+                elif self.transaction_type == uniswap_token_to_fiat:
+                    admin_settings.gas_speed = models_adminsettings.FastGasPrice
+                    admin_settings.save()
+
+                    uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=self.token_amount_spent)
+
+                    got_fiat, fiat_bought, tx_hash, token_price, tx_fee, version = uniswap.token_to_fiat(
+                        token_amount=self.token_amount_spent,
                         token=self.coin,
                         tries=admin_settings.tx_tries,
                         transaction_object=self,
                     )
 
 
-                if got_token:
-                    expected_token_based_on_nominal_price = self.fiat_amount_spent / token_price
-                    slipage = (expected_token_based_on_nominal_price - token_bought) / expected_token_based_on_nominal_price
-                    slipage = round(slipage, 6)
+                    if got_fiat:
+                        expected_fiat_base_on_nominal_price = self.token_amount_spent * token_price
+                        slippage = (expected_fiat_base_on_nominal_price-fiat_bought)/expected_fiat_base_on_nominal_price
+                        slippage = round(slippage, 6)
 
-                    self.token_amount_recieved = token_bought
-                    # self.hash = tx_hash
-                    self.uniswap_version = version
-                    self.token_nominal_price = token_price
-                    self.token_effective_price = self.fiat_amount_spent / self.token_amount_recieved
-                    self.slipage = slipage
-                    self.state = transaction_state_succesful
+                        self.fiat_amount_received = fiat_bought
+                        # self.hash = tx_hash
+                        self.uniswap_version = version
+                        self.token_nominal_price = token_price
+                        self.token_effective_price = self.fiat_amount_received / self.token_amount_spent
+                        self.slippage = slippage
+                        self.state = transaction_state_successful
+                        self.fee = round(tx_fee, 2)
+
+                    else:
+                        self.state = transaction_state_failed
+        
+
+                elif self.transaction_type == uniswap_wrap_eth:
+                    if uniswap.wrap_eth(eth_amount=self.token_amount_spent):
+                        self.state = transaction_state_successful
+                    else:
+                        self.state = transaction_state_failed
+
+
+                elif self.transaction_type == uniswap_unwrap_weth:
+                    if uniswap.unwrap_weth(eth_amount=self.token_amount_spent):
+                        self.state = transaction_state_successful
+                    else:
+                        self.state = transaction_state_failed
+
+
+            elif 'aave_' in str(self.transaction_type):
+                aave = Aave()
+
+
+                def process_aave_transaction_receipt(receipt_dict):
+                    
+                    self.hash = receipt_dict['tx_hash'] 
+                    tx_fee = receipt_dict['tx_fee_in_eth'] * admin_settings.prices['weth'] 
                     self.fee = round(tx_fee, 2)
 
-                else:
-                    self.state = transaction_state_failed
+                    if receipt_dict['successful']:
+                        self.state = transaction_state_successful
+                    else:
+                        self.state = transaction_state_failed
 
 
-            elif self.transaction_type == token_to_fiat:
-
-                uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=self.token_amount_spent)
-
-                got_fiat, fiat_bought, tx_hash, token_price, tx_fee, version = uniswap.token_to_fiat(
-                    token_amount=self.token_amount_spent,
-                    token=self.coin,
-                    tries=admin_settings.tx_tries,
-                    transaction_object=self,
-                )
+                if self.transaction_type == aave_approve:
+                    if aave.approve_spenders():
+                        self.state = transaction_state_successful
+                    else:
+                        self.state = transaction_state_failed
 
 
-                if got_fiat:
-                    expected_fiat_base_on_nominal_price = self.token_amount_spent * token_price
-                    slipage = (expected_fiat_base_on_nominal_price-fiat_bought)/expected_fiat_base_on_nominal_price
-                    slipage = round(slipage, 6)
 
-                    self.fiat_amount_recieved = fiat_bought
-                    # self.hash = tx_hash
-                    self.uniswap_version = version
-                    self.token_nominal_price = token_price
-                    self.token_effective_price = self.fiat_amount_recieved / self.token_amount_spent
-                    self.slipage = slipage
-                    self.state = transaction_state_succesful
-                    self.fee = round(tx_fee, 2)
+                elif self.transaction_type == aave_supply:
+                    ret = aave.supply(aave.weth, self.token_amount_spent)
+                    process_aave_transaction_receipt(ret)
 
-                else:
-                    self.state = transaction_state_failed
-    
+                elif self.transaction_type == aave_withdraw:
+                    ret = aave.withdraw(aave.weth, self.token_amount_spent)
+                    process_aave_transaction_receipt(ret)
 
-            elif self.transaction_type == wrap_eth:
-                if uniswap.wrap_eth(eth_amount=self.token_amount_spent):
-                    self.state = transaction_state_succesful
-                else:
-                    self.state = transaction_state_failed
+                elif self.transaction_type == aave_borrow:
+                    ret = aave.borrow(aave.weth, self.token_amount_spent)
+                    process_aave_transaction_receipt(ret)
+
+                elif self.transaction_type == aave_repay:
+                    ret = aave.repay(aave.weth, self.token_amount_spent)
+                    process_aave_transaction_receipt(ret)
 
 
-            elif self.transaction_type == unwrap_weth:
-                if uniswap.unwrap_weth(eth_amount=self.token_amount_spent):
-                    self.state = transaction_state_succesful
-                else:
-                    self.state = transaction_state_failed
 
 
-        if self.state == transaction_state_succesful:
+        if self.state == transaction_state_successful:
             tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'tx {self.name} ({self.transaction_type}) was successful', 'color': 'green'})
 
         elif self.state == transaction_state_failed:

@@ -1,30 +1,42 @@
 from django.db import models
 from traceback import format_exc
 from dashboard.views_pages import toolkit as tk
+from dashboard.views_pages import transaction_dispatch
 
 from dashboard.models.coins import *
 
 
 auto_exit_style_both_ways = "auto_exit_style_both_ways"
-auto_exit_style_only_after_min_profit = "auto_exit_style_only_after_min_profit"
-auto_exit_style_only_below_stop_loss = "auto_exit_style_only_below_stop_loss"
+auto_exit_style_only_after_profit_take_price_reached = "auto_exit_style_only_after_profit_take_price_reached"
+auto_exit_style_only_after_stop_loss_price_reached = "auto_exit_style_only_after_stop_loss_price_reached"
 auto_exit_style_never = "auto_exit_style_never"
 
 
 auto_exit_styles = {
     auto_exit_style_both_ways : "auto_exit_style_both_ways",
-    auto_exit_style_only_after_min_profit : "auto_exit_style_only_after_min_profit",
-    auto_exit_style_only_below_stop_loss : "auto_exit_style_only_below_stop_loss",
+    auto_exit_style_only_after_profit_take_price_reached : "auto_exit_style_only_after_profit_take_price_reached",
+    auto_exit_style_only_after_stop_loss_price_reached : "auto_exit_style_only_after_stop_loss_price_reached",
     auto_exit_style_never: "auto_exit_style_never",
 }
 
-buy_if_price_is_above = "buy_if_price_is_above"
-buy_if_price_is_below = "buy_if_price_is_below"
+execute_if_price_is_above  = "execute_if_price_is_above"
+execute_if_price_is_below  = "execute_if_price_is_below"
 
-order_modes = {
-    buy_if_price_is_above : "buy_if_price_is_above",
-    buy_if_price_is_below : "buy_if_price_is_below",
+entry_conditions = {
+    execute_if_price_is_above  : "execute_if_price_is_above",
+    execute_if_price_is_below  : "execute_if_price_is_below",
 }
+
+
+short = "short"
+long = "long"
+
+position_types = {
+    short : "short",
+    long : "long",
+}
+
+
 
 class Order(models.Model):
 
@@ -36,13 +48,16 @@ class Order(models.Model):
 
     coin = models.CharField(choices=coins, default=weth)
 
-    mode = models.CharField(choices=order_modes, default=buy_if_price_is_below)
+    entry_condition = models.CharField(choices=entry_conditions, default=auto_exit_style_both_ways)
+
+    position_type = models.CharField(choices=position_types, default=long)
 
     entry_capital = models.FloatField(default=0)
 
-    order_price = models.FloatField(default=0)
 
-    min_profit_exit_price = models.FloatField(default=0)
+    order_entry_price = models.FloatField(default=0)
+
+    profit_take_price = models.FloatField(default=0)
 
     stop_loss_price = models.FloatField(default=0)
     
@@ -55,7 +70,7 @@ class Order(models.Model):
     active = models.BooleanField(default=True)
     executed = models.BooleanField(default=False)
     archived = models.BooleanField(default=False)
-    fullfiled = models.BooleanField(default=False)
+    fulfilled = models.BooleanField(default=False)
 
 
     # automatic
@@ -66,7 +81,7 @@ class Order(models.Model):
 
     # settings
     # auto_exit = models.BooleanField(default=False)
-    auto_exit_style     = models.CharField(choices=auto_exit_styles,   default=auto_exit_style_only_after_min_profit)
+    auto_exit_style     = models.CharField(choices=auto_exit_styles,   default=auto_exit_style_only_after_profit_take_price_reached)
 
 
 
@@ -82,9 +97,9 @@ class Order(models.Model):
         else:
             self.epoch_updated = tk.get_epoch_now()
 
-        self.order_price                = round(self.order_price, 2)
+        self.order_entry_price                = round(self.order_entry_price, 2)
         self.stop_loss_price            = round(self.stop_loss_price, 2)
-        self.min_profit_exit_price      = round(self.min_profit_exit_price, 2)
+        self.profit_take_price      = round(self.profit_take_price, 2)
 
 
         super(Order, self).save(*args, **kwargs)
@@ -95,51 +110,111 @@ class Order(models.Model):
         from dashboard.models import models_position
         from dashboard.models import models_transaction
 
-        if self.active and (not self.fullfiled):
+        if self.active and (not self.fulfilled):
 
 
 
             """
-            the PT price can not be smaller that the live price
+            the PT price can not be below that the live price for a long
+            the PT price can not be higher that the live price for a short
             """
+
             admin_settings = tk.get_admin_settings()
-            if self.min_profit_exit_price <= admin_settings.prices['weth']:
 
-                tk.create_new_notification(title="Buy order deleted", message=f"PT price of Buy order {self.name} is smaller than the live price. Deleting the order.")
+            live_price = admin_settings.prices[self.coin.lower()]
+            
+            invalid_profit_take_price = False
+
+            if self.position_type == long and self.profit_take_price <= live_price:
+                invalid_profit_take_price = True
+            
+            if self.position_type == short and self.profit_take_price >= live_price:
+                invalid_profit_take_price = True
+
+            if invalid_profit_take_price:
+
+                tk.create_new_notification(title="Buy order deleted", message=f"invalid profit take price for {self.name}")
 
                 self.delete()
-                return
+                return None
 
 
-            new_transaction = tk.create_fiat_to_token_transaction(self.entry_capital, self.coin)
+            if self.position_type == long:
+
+                buy_transaction = transaction_dispatch.create_and_actualize_uniswap_fiat_to_token_transaction(self.entry_capital, self.coin)
+                buy_transaction.order = self
 
 
-            if new_transaction.state == models_transaction.transaction_state_succesful:
+                if buy_transaction.state == models_transaction.transaction_state_successful:
 
-                new_position = models_position.Position(
-                    order=self,
+                    new_position = models_position.Position(
+                        order=self,
 
-                    coin_amount = new_transaction.token_amount_recieved,
+                        coin_amount = buy_transaction.token_amount_received,
 
-                    entry_price=new_transaction.token_effective_price,
+                        entry_price=buy_transaction.token_effective_price,
 
-                    min_profit_exit_price = self.min_profit_exit_price,
-                    stop_loss_price = self.stop_loss_price,
-                    initial_stop_loss_price = self.stop_loss_price,
-                )
+                        profit_take_price = self.profit_take_price,
+                        stop_loss_price = self.stop_loss_price,
+                        initial_stop_loss_price = self.stop_loss_price,
+                    )
 
-                new_position.save()
+                    new_position.save()
 
-                new_transaction.position = new_position
-                new_transaction.save()
 
-                self.fullfiled = True
-                tk.create_new_notification(title="Buy order fulfilled", message=f"order {self.name} fulfilled")
+                    self.fulfilled = True
+                    tk.create_new_notification(title="Long order fulfilled", message=f"order {self.name} fulfilled")
 
-            else:
-                self.fullfiled = False
-                tk.create_new_notification(title="Buy order did not get fulfilled due to tx failure", message=f"tx for order {self.name} failed at execution")
+                else:
+                    tk.create_new_notification(title="Long order did not get fulfilled due to tx failure", message=f"tx for order {self.name} failed at execution")
+                
+                
+                buy_transaction.save()
 
+
+
+            elif self.position_type == short:
+
+
+                weth_amount_to_borrow = self.entry_capital / live_price
+
+                borrow_transaction = transaction_dispatch.create_and_actualize_aave_borrow_transaction(borrow_amount=weth_amount_to_borrow)
+                borrow_transaction.order = self
+
+
+                if borrow_transaction.state == models_transaction.transaction_state_successful:
+                    tk.create_new_notification(title="Short order borrow was successful", message=f"order name: {self.name}")
+
+                    sell_transaction = transaction_dispatch.create_and_actualize_uniswap_token_to_fiat_transaction(token_to_fiat_amount=weth_amount_to_borrow, coin= self.coin)
+                    sell_transaction.order = self
+
+                    if sell_transaction.state == models_transaction.transaction_state_successful:
+
+                        new_position = models_position.Position(
+                            order=self,
+
+                            coin_amount = weth_amount_to_borrow,
+
+                            entry_price=sell_transaction.token_effective_price,
+
+                            profit_take_price = self.profit_take_price,
+                            stop_loss_price = self.stop_loss_price,
+                            initial_stop_loss_price = self.stop_loss_price,
+                        )
+
+                        new_position.save()
+
+
+                        self.fulfilled = True
+                        tk.create_new_notification(title="Short order fulfilled", message=f"order name: {self.name}")
+
+                    else:
+                        tk.create_new_notification(title="Short order borrow was successful but the swap tx failed", message=f"tx for order {self.name} failed at execution")
+                
+                else:
+                    tk.create_new_notification(title="Short order borrow failed", message=f"order name: {self.name}")
+
+                    
 
             self.active = False
             self.executed = True
@@ -151,13 +226,17 @@ class Order(models.Model):
     
                 admin_settings = tk.get_admin_settings()
 
-                if self.mode == buy_if_price_is_below:
-                    if admin_settings.prices[self.coin.lower()] < self.order_price :
+                live_price = admin_settings.prices[self.coin.lower()]
+
+                if self.entry_condition == execute_if_price_is_below:
+                    if live_price <= self.order_entry_price :
                         self.execute()
 
-                elif self.mode == buy_if_price_is_above:
-                    if self.order_price < admin_settings.prices[self.coin.lower()] :
+                elif self.entry_condition == execute_if_price_is_above:
+                    if self.order_entry_price <= live_price :
                         self.execute()  
+
+ 
 
         except:
             tk.create_new_notification("runtime error", format_exc())

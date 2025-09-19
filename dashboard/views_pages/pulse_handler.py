@@ -4,6 +4,7 @@ from dashboard.models.models_position import models_position
 from dashboard.models.models_position import models_order
 from dashboard.models import models_alert
 import json
+from dashboard.modules.dapps.aave.aave_class import Aave
 
 
 
@@ -37,7 +38,11 @@ def handle_a_pulse(request):
 
             position.price = admin_settings.prices[position.order.coin.lower()]
 
-            position.evaluate()
+            if position.order.position_type == models_order.long:
+                position.evaluate_long()
+            if position.order.position_type == models_order.short:
+                position.evaluate_short()
+
 
             position.save()
 
@@ -51,8 +56,14 @@ def handle_a_pulse(request):
 
         orders = models_order.Order.objects.filter(active=True, executed=False)
         for order in orders:
-            order.evaluate()
-            order.save()
+            ret = order.evaluate()
+            if ret is not None:
+                order.save()
+
+        # handle aave
+        if admin_settings.pulse_counter % admin_settings.aave_info_update_pulse_steps == 0:
+            aave = Aave()
+            admin_settings.aave_user_account_data = aave.getUserAccountData()
 
 
         payload =  {
@@ -72,6 +83,8 @@ def handle_a_pulse(request):
 
 
 
+
+        admin_settings.pulse_counter += 1
 
         admin_settings.pulses_are_being_blocked = False
         admin_settings.save()

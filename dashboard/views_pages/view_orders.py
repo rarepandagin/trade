@@ -26,9 +26,10 @@ def get_response(request):
 
                 order.name                      = request.POST['order_action_set_name']
                 order.entry_capital             = eval(request.POST['order_action_set_entry_capital'])
-                order.order_price               = eval(request.POST['order_action_set_order_price'])
-                order.min_profit_exit_price     = eval(request.POST['order_action_set_min_profit_exit_price'])
+                order.order_entry_price               = eval(request.POST['order_action_set_order_entry_price'])
+                order.profit_take_price         = eval(request.POST['order_action_set_profit_take_price'])
                 order.stop_loss_price           = eval(request.POST['order_action_set_stop_loss_price'])
+
                 
                 order.save()
 
@@ -63,30 +64,85 @@ def get_response(request):
 
 
             elif 'new_order_name' in request.POST:
-                new_order_name          = request.POST['new_order_name']
-                coin                    = request.POST['coin']
-                order_mode              = request.POST['order_mode']
 
-                entry_capital           = eval(request.POST['entry_capital'])
-                order_price           = eval(request.POST['order_price'])
+                which_order             = request.POST['which_order']
+
+                entry_capital_long      = eval(request.POST['entry_capital_long'])
+                stop_loss_price_long    = eval(request.POST['stop_loss_price_long'])
+                profit_take_price_long  = eval(request.POST['profit_take_price_long'])
+
+                entry_capital_short     = eval(request.POST['entry_capital_short'])
+                stop_loss_price_short   = eval(request.POST['stop_loss_price_short'])
+                profit_take_price_short = eval(request.POST['profit_take_price_short'])
+
+                order_entry_price             = eval(request.POST['order_entry_price'])
+
                 
-                min_profit_exit_price   = eval(request.POST['min_profit_exit_price'])
-                stop_loss_price         = eval(request.POST['stop_loss_price'])
+                valid_long_data = True
+                valid_short_data = True
 
-                new_order = models_order.Order(
-                    name = new_order_name,
-                    coin = coin,
-                    mode = order_mode,
-                    entry_capital = entry_capital,
-                    order_price = order_price,
-                    min_profit_exit_price = min_profit_exit_price,
-                    stop_loss_price = stop_loss_price,
-                    
-                )
+                admin_settings = tk.get_admin_settings()
 
-                new_order.save()
+                if which_order in ['long', 'both']:
+                    # check if long inputs are valid
+                    valid_long_data = (stop_loss_price_long < order_entry_price < profit_take_price_long) and (0 < entry_capital_long < admin_settings.prices[admin_settings.fiat_coin])
+
+                if which_order in ['short', 'both']:
+                    # check if short inputs are valid
+                    valid_short_data = (profit_take_price_short < order_entry_price < stop_loss_price_short)
+                    if valid_short_data:
+
+                        valid_short_data = 0 < entry_capital_short < 0.8 * admin_settings.aave_user_account_data.availableBorrowsBase
+
+                if valid_long_data and valid_short_data:
+
+                    order_entry_condition       = request.POST['order_entry_condition']
+                    new_order_name_from_post    = request.POST['new_order_name']
+                    coin                        = request.POST['coin']
 
 
+
+                    if which_order in ['long', 'both']:
+
+                        new_order_long = models_order.Order(
+                            name            = f"{new_order_name_from_post} (long)",
+                            coin            = coin,
+                            entry_condition = order_entry_condition,
+                            order_entry_price     = order_entry_price,
+
+                            position_type       = models_order.long,
+                            entry_capital       = entry_capital_long,
+                            profit_take_price   = profit_take_price_long,
+                            stop_loss_price     = stop_loss_price_long,
+                            
+                        )
+
+                        new_order_long.save()
+
+
+
+                    if which_order in ['short', 'both']:
+
+                        new_order_short = models_order.Order(
+                            name            = f"{new_order_name_from_post} (short)",
+                            coin            = coin,
+                            entry_condition = order_entry_condition,
+                            order_entry_price     = order_entry_price,
+
+                            position_type       = models_order.short,
+                            entry_capital       = entry_capital_short,
+                            profit_take_price   = profit_take_price_short,
+                            stop_loss_price     = stop_loss_price_short,
+                            
+                        )
+
+                        new_order_short.save()
+
+
+
+
+                else:
+                    tk.logger.info('Invalid order')
 
 
 
@@ -100,9 +156,9 @@ def get_response(request):
     context.dict['coins'] =  models_transaction.coins
     context.dict['fiat_coins'] =  models_transaction.fiat_coins
     context.dict['auto_exit_styles'] =  models_order.auto_exit_styles
-    context.dict['order_modes'] =  models_order.order_modes
+    context.dict['entry_conditions'] =  models_order.entry_conditions
+    context.dict['position_types'] =  models_order.position_types
 
-    context.dict['suggested_tp_price'] =  int(1.01*admin_settings.prices['weth'])
 
 
 
