@@ -20,7 +20,11 @@ def get_response(request):
 
         else:
 
-            if 'fiat_to_token_amount' in request.POST:
+            if 'uniswap_approve' in request.POST:
+                transaction = transaction_dispatch.create_and_actualize_uniswap_approve_transaction()
+
+
+            elif 'fiat_to_token_amount' in request.POST:
                 fiat_to_token_amount = eval(request.POST['fiat_to_token_amount'])
                 coin = request.POST['coin']
                 transaction = transaction_dispatch.create_and_actualize_uniswap_fiat_to_token_transaction(fiat_to_token_amount, coin=coin)

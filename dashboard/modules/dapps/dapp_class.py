@@ -32,14 +32,10 @@ class Dapp():
         
 
         
-        ######### start of overwriting second account temporarly ##########
-        # self.default_account_address = f"0x4d3Fccba0F6abcF1be1AAAAeb63ac55d43d24488"
-        # self.account_private_key = f"9a153685f7685ac2c04cfab8d69343b14764cc9c8d087f3e4c3c3e411ccc0d10"
-        ######### end of overwriting second account temporarly ##########
-
         
-        self.default_account_address = f"0x2Ac4E9192846BeC854{os.getenv('trader_default_account_address')}"
-        self.account_private_key = f"702e0b04f43b0993ee2e33049953b8602{os.getenv('trader_account_private_key')}"
+        
+        self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
+        self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
 
 
 

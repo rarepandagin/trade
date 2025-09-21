@@ -8,6 +8,20 @@ def perform_transaction_actualization(transaction):
 
     
 # UNISWAP
+
+def create_and_actualize_uniswap_approve_transaction():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.uniswap_approve,
+        token_amount_spent=0,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+
 def create_and_actualize_uniswap_fiat_to_token_transaction(fiat_to_token_amount, coin):
     from dashboard.models import models_transaction
 

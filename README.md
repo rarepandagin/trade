@@ -86,7 +86,13 @@ but, you need to always maintain a fixed and constant amount of collateral
 
 
 
-place the SL of the hedge at the TP of the main asset
+place the SL of the hedge at a bit after TP of the main asset
+reasons:
+    - making sure we always remain hedged until the main asset exists
+    - there is tiny change that after the main asset exits, the price turns to the side of the hedge asset. in this case, which is rare, we don't need to exit the hedge position and realize the losses.
+    - the extra loss amount is small and acceptable.
+    
+
 allow the PT of the hedge to go (on the wrong direction) further than the SL of the main asset.
 
 adjust the hedging ratio considering for the time when the price ends up going the wrong way

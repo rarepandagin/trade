@@ -1,0 +1,81 @@
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+
+{% load custom_tags %}
+
+{% block basebody %}
+
+ 
+<head>
+        <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+
+</head>
+    
+pair:
+<br>
+{{pair.uuid}}
+
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3>Long</h3>
+            entry_price_long:
+            <input type="number" class="form-control form-control-sm" id="entry_price_long" value="{{pair.long_position.entry_price}}" readonly>
+
+            entry_capital_long
+            <input type="number" class="form-control form-control-sm" id="entry_capital_long" value="{{pair.long_position.order.entry_capital}}" readonly>
+
+            stop_loss_price_long
+            <input type="number" class="form-control form-control-sm" id="stop_loss_price_long" value="{{pair.long_position.stop_loss_price}}" readonly>
+
+            profit_take_price_long
+            <input type="number" class="form-control form-control-sm" id="profit_take_price_long" value="{{pair.long_position.profit_take_price}}" readonly>
+        </div>
+
+        <div>
+
+            <h3>Short</h3>
+            entry_price_short:
+            <input type="number" class="form-control form-control-sm" id="entry_price_short" value="{{pair.short_position.entry_price}}" readonly>
+
+            entry_capital_short
+            <input type="number" class="form-control form-control-sm" id="entry_capital_short" value="{{pair.short_position.order.entry_capital}}" readonly>
+
+            stop_loss_price_short
+            <input type="number" class="form-control form-control-sm" id="stop_loss_price_short" value="{{pair.short_position.stop_loss_price}}" readonly>
+
+            profit_take_price_short
+            <input type="number" class="form-control form-control-sm" id="profit_take_price_short" value="{{pair.short_position.profit_take_price}}" readonly>
+        </div>
+
+    </div>
+
+
+            <div class="d-flex justify-content-between gap-2 mt-5 border rounded flex-sm-row flex-column ">
+                <p id="total_profit_if_price_goes_up"></p>
+                <p id="total_profit_if_price_goes_down"></p>
+            </div>
+
+
+
+    <div id="new_order_profit_loss_overlook_plot"></div>
+
+
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            setup_ws_dashboard();
+
+        })
+
+    </script>
+
+
+    
+
+
+
+{% endblock %}

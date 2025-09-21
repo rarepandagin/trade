@@ -37,6 +37,7 @@
 			<script src="{% static '/js/js_routines_dashboard.js' %}"></script>
 			<script src="{% static '/js/js_routines_depth.js' %}"></script>
 			<script src="{% static '/js/ajax_handler.js' %}"></script>
+			<script src="{% static '/js/pairs.js' %}"></script>
 			<script src="{% static '/js/websocket_manager.js' %}"></script>
 
 	{% else %}
@@ -46,6 +47,7 @@
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/js_routines_dashboard.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/js_routines_depth.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ajax_handler.js"></script>
+			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/pairs.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/websocket_manager.js"></script>
 
 	{% endif %}
@@ -126,7 +128,11 @@ optgroup{
   color: #fff;
 }
 
-
+.highborder {
+	border-color: #fff;
+	border-radius: 3px;
+	border-width: 2px;
+}
 
 </style>
 
@@ -145,6 +151,7 @@ optgroup{
 
 			<a href="/dashboard/" class="menu-item">Positions</a>
 			<a href="/orders/" class="menu-item">Orders</a>
+			<a href="/pairs/" class="menu-item">Pairs</a>
 			<a href="/depth/" class="menu-item">Depth</a>
 			<a href="/manual/" class="menu-item">Manual</a>
 			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="menu-item">Admin</a>
@@ -154,9 +161,212 @@ optgroup{
 	</div>       
 
       <div class="col-10">
-            {% block basebody %}
+        
+        <div class="border rounded p-2 highborder">
+    
+			<div class="d-flex justify-content-between  flex-sm-row flex-column " >
+				{% if admin_settings.pulses_are_being_blocked %}
 
-            {% endblock %}
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<button type="submit" name="unblock_pulses" class="btn btn-warning  btn-sm m-2 disable_while_busy" >Pulses are blocked - Click to unblock</button>
+
+					</form>
+
+				{% else %}
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<button type="submit" name="block_pulses" class="btn btn-success btn-sm m-2 disable_while_busy">Pulses are taken in - Click to block</button>
+
+					</form>
+
+				{% endif %}   
+
+				<div class="d-flex justify-content-between gap-5">
+					<div>
+						<p class="m-0" id="availableBorrowsBase"></p>
+						<p class="m-0" id="totalDebtBase"></p>
+
+					</div>
+
+					<div>
+						<p class="m-0" id="totalCollateralBase"></p>
+						<p class="m-0" id="currentLiquidationThreshold"></p>
+					</div>
+
+					<div>
+						<p class="m-0" id="healthFactor"></p>
+						<p class="m-0">Total Profit: {{stats.total_profit}} USD</p>
+
+					</div>
+
+				</div>
+	
+			</div>
+
+			<div class="d-flex justify-content-start mt-2 mb-2 gap-5  flex-sm-row flex-column">
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<div class="d-flex justify-content-start">
+							<select class="form-select form-select-sm" style="height: 30px; width: 90px;"  name="admin_settings_fiat_coin"  required>
+									{% for coin in fiat_coins %}
+										<option value="{{coin}}" {% if admin_settings.fiat_coin == coin %} selected {% endif %}   >{{coin}}</option>
+									{% endfor %}
+							</select>
+							<button type="submit" class="btn btn-primary btn-sm ms-2 disable_while_busy" style="height: 30px;" >Set fiat</button>
+
+						</div>
+					</form>
+		
+
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 80px;"/>
+						<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set secure profit ratio</button>
+					</form>
+				
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<select class="form-select form-select-sm" style="height: 30px; width: 150px;"  name="admin_settings_gas_speed"  required>
+							{% for gas_speed in gas_speeds %}
+								<option value="{{gas_speed}}" {% if admin_settings.gas_speed == gas_speed %} selected {% endif %}   >{{gas_speed}}</option>
+							{% endfor %}
+						</select>
+						<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set gas speed</button>
+					</form>
+				
+			</div>
+				
+			<div class="d-flex justify-content-end mt-2 mb-2 gap-5  flex-sm-row flex-column">
+
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_interval" value="{{admin_settings.interval}}" style="width: 50px;"/>
+						<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set interval</button>
+					</form>
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_tx_tries" value="{{admin_settings.tx_tries}}" style="width: 50px;"/>
+						<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set tx tries</button>
+					</form>
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+
+						<button type="submit" name="admin_settings_alarms disable_while_busy" class="btn btn-primary btn-sm ">
+							{% if admin_settings.alarms %}
+								Disable alarms
+							{% else %}
+								Enable alarms
+							{% endif %}
+						</button>
+
+					</form>
+
+
+
+					<button type="button"  class="btn btn-primary btn-sm disable_while_busy" onclick="update_balances();">Update balances</button>
+
+
+			</div>
+			
+			
+
+			<div class="d-flex justify-content-start border rounded p-2  flex-sm-row flex-column ">
+
+				
+				
+				<div class="d-flex justify-content-start ms-5 ">
+					<p class="me-3 text-primary"><strong>ETH</strong></p>
+					<div>
+						<p class=" mb-0" id="admin_settings_balances_eth"> </p>
+						<p class=" mt-0" id="admin_settings_balances_eth_value"> </p>
+					</div>
+				</div>
+				
+
+				{% for coin in coins %}
+
+					<div class="d-flex justify-content-start ms-5 ">
+						<p class="me-3  text-primary"><strong>{{coin|upper}}</strong></p>
+						<div>
+							<p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
+							<p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
+						</div>
+					</div>
+
+				{% endfor %}
+
+				<div>
+					{% for coin in fiat_coins %}
+
+						<div class="d-flex justify-content-start ms-5 ">
+							<p class="me-3  text-primary"><strong>{{coin|upper}}</strong></p>
+							<div>
+								<p class=" m-0" id="admin_settings_balances_{{coin}}"> </p>
+							</div>
+						</div>
+
+					{% endfor %}
+
+				</div>
+
+				<p class="ms-5"><span class="text-primary">Total fiat from shorts:</span> {{stats.total_fiat_from_shorts}} USD</p>
+
+			</div>
+
+
+			
+			<div class="d-flex justify-content-between flex-sm-row flex-column m-0">
+
+				{% for coin in coins %}
+					<div><h4 class="text-primary mb-0" id="weth_price" ></h4></div>
+				{% endfor %}
+
+				<div class="m-0">
+					<h4 id="gas_price"  class="m-0"></h4>
+				</div>
+					<p id="prices_update_epoch" class="small m-0"></p>
+					<p id="gas_update_epoch" class="small m-0"></p>
+			</div>
+
+        </div>
+
+        <div class="border rounded p-3 mt-3 highborder" >
+
+				{% block basebody %}
+
+				{% endblock %}
+		</div>
+
       </div>
       <div class="col-2">
         	<textarea class="form-control" id="logger_textarea" rows="90"></textarea>

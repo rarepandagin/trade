@@ -37,15 +37,10 @@ function update_positions_table(payload){
         let first_cell_html = ''
         
         if (position.active){
-            first_cell_html = `<span class="badge rounded-pill bg-primary fs-6">${position.order.name}</span>`
+            first_cell_html = `<span class="badge rounded-pill bg-${position_state_color[position.state]} fs-6">${position.order.name}</span>`
 
             let stated_cleaned = position.state.replaceAll("_", " ")
 
-            if (position.price < position.stop_loss_price){
-                first_cell_html += `<div class="spinner-grow ms-2" style="width: 1px; height: 1px;" role="status">
-                                    <span>Exit now</span>
-                                </div>`
-            }
 
             first_cell_html += `
                 <br>
@@ -72,23 +67,22 @@ function update_positions_table(payload){
 
 
         let td2_html = `
-        
-                        ${position.order.coin}
-                        <br>
-                        <span class="small">(${position.coin_amount})</span>
-                        <br>
-                        Entry Capital: ${position.order.entry_capital}`
-
-        if (position.stop_loss_price_improved){
-            td2_html += `
+                            ${position.order.coin}
                             <br>
-                            <span style="color: green">profit at increased SLP: ${-position.loss_amount_at_stop_loss_price}</span>
+                            Entry Capital: ${position.order.entry_capital}
                         `
-        }
-        else {
+
+                        if (position.is_long){
+                            td2_html += `
+                            <br>
+                            <span class="small">(${position.coin_amount_long})</span>
+                            <br>`
+                        }
+
+
             td2_html += `
                             <br>
-                            profit at MPEP: ${position.profit_amount_at_profit_take_price}
+                            profit at PT: ${position.profit_amount_at_profit_take_price}
                         `
             // td2_html += `
             //                 <br>
@@ -98,7 +92,6 @@ function update_positions_table(payload){
             //                 <br>
             //                 Ambition Factor: ${position.ambition_ratio}
             //             `
-        }
 
         $(`#position_${position.uuid}_td2_html`).html(td2_html);
 
@@ -126,7 +119,8 @@ function update_positions_table(payload){
 
 
         const td5_html = `
-                        <p>Profit take price: ${position.profit_take_price} </p>
+                        <p>Stop loss: ${position.stop_loss_price} </p>
+                        <p>Profit take: ${position.profit_take_price} </p>
 
         `
 
@@ -184,212 +178,66 @@ function update_positions_table(payload){
 
 
 
+    if (window.location.pathname.includes('orders/') || window.location.pathname.includes('pair/')){
 
 
-    // NEW POSITION CALCULATIONS
-    const entry_price            = eval($("#order_entry_price").val());
+            let entry_price_long;
+            let entry_price_short;
 
-    const entry_capital_long     = eval($("#entry_capital_long").val());
-    const stop_loss_price_long   = eval($("#stop_loss_price_long").val());
-    const profit_take_price_long = eval($("#profit_take_price_long").val());
-
-    
-    const entry_capital_short     = eval($("#entry_capital_short").val());
-    const stop_loss_price_short   = eval($("#stop_loss_price_short").val());
-    const profit_take_price_short = eval($("#profit_take_price_short").val());
-
-    if (entry_price > 0) {
-
-
-        const long_data_present = entry_capital_long && stop_loss_price_long && profit_take_price_long;
-        const short_data_present = entry_capital_short && stop_loss_price_short && profit_take_price_short;
-        let valid_long_inputs = false;
-        let valid_short_inputs = false;
-
-        let long_profit_at_take_profit;
-        let long_loss_at_stop_loss;
-        let long_ambition_ratio;
-
-        let short_profit_at_take_profit;
-        let short_loss_at_stop_loss;
-        let short_ambition_ratio;
-
-        if (long_data_present) {
-            long_profit_at_take_profit  = entry_capital_long * (profit_take_price_long - entry_price) / entry_price
-            long_loss_at_stop_loss      = entry_capital_long * (entry_price - stop_loss_price_long) / entry_price
-            long_ambition_ratio         = long_profit_at_take_profit / long_loss_at_stop_loss
+            let entry_capital_long;
+            let stop_loss_price_long;
+            let profit_take_price_long;
 
             
-            $("#long_profit_at_take_profit").html(  `profit at profit take: ${long_profit_at_take_profit.toFixed(2)} (${(100 * long_profit_at_take_profit / entry_capital_long).toFixed(1)} %)`)
-            $("#long_loss_at_stop_loss").html(      `loss at stop loss:     ${long_loss_at_stop_loss.toFixed(2)}`)
-            $("#long_ambition_ratio").html(         `ambition ratio:        ${long_ambition_ratio.toFixed(2)}`)
+            let entry_capital_short;
+            let stop_loss_price_short;
+            let profit_take_price_short;
+        
 
-            valid_long_inputs = (profit_take_price_long > entry_price) && (entry_price > stop_loss_price_long)
+
+            // if (window.location.pathname.includes('orders/')){
             
-            if (valid_long_inputs){
-                $("#long_label").removeClass('text-danger')
-                $("#long_label").addClass('text-success')
-            } else {
-                $("#long_label").removeClass('text-success')
-                $("#long_label").addClass('text-danger')
-                // display_toaster({'message': 'Invalid long inputs', 'color': 'red'})
-            }
-        } else{
-                $("#long_label").removeClass('text-danger')
-                $("#long_label").removeClass('text-success')
+                // entry_price_long       = eval($("#order_entry_price").val());
+                // entry_price_short      = eval($("#order_entry_price").val());
+            
+            // } else if (window.location.pathname.includes('pair/')){
 
-                $("#long_profit_at_take_profit").html(``)
-                $("#long_loss_at_stop_loss").html(``)
-                $("#long_ambition_ratio").html(``)
+                entry_price_long       = eval($("#entry_price_long").val());
+                entry_price_short      = eval($("#entry_price_short").val());
+            // }
+
+
+                entry_capital_long     = eval($("#entry_capital_long").val());
+                stop_loss_price_long   = eval($("#stop_loss_price_long").val());
+                profit_take_price_long = eval($("#profit_take_price_long").val());
+
+                
+                entry_capital_short     = eval($("#entry_capital_short").val());
+                stop_loss_price_short   = eval($("#stop_loss_price_short").val());
+                profit_take_price_short = eval($("#profit_take_price_short").val());
+
+
+        if ((entry_price_long > 0) && (entry_price_short > 0)) {
+
+
+
+
+            draw_pairs_plot(
+                payload.admin_settings.prices.weth,
+                entry_price_long,
+                entry_price_short,
+
+                entry_capital_long,
+                stop_loss_price_long,
+                profit_take_price_long,
+                entry_capital_short,
+                stop_loss_price_short,
+                profit_take_price_short,        
+
+            );
 
         }
-
-
-
-        if (short_data_present) {
-            short_profit_at_take_profit  = entry_capital_short * (entry_price - profit_take_price_short) / entry_price
-            short_loss_at_stop_loss      = entry_capital_short * (stop_loss_price_short - entry_price) / entry_price
-            short_ambition_ratio         = short_profit_at_take_profit / short_loss_at_stop_loss
-
-            
-            $("#short_profit_at_take_profit").html(  `profit at profit take: ${short_profit_at_take_profit.toFixed(2)} (${(100 * short_profit_at_take_profit / entry_capital_short).toFixed(1)} %)`)
-            $("#short_loss_at_stop_loss").html(      `loss at stop loss:     ${short_loss_at_stop_loss.toFixed(2)}`)
-            $("#short_ambition_ratio").html(         `ambition ratio:        ${short_ambition_ratio.toFixed(2)}`)
-
-            
-            const safe_borrow_amount = (0.8 * payload.admin_settings.aave_user_account_data.availableBorrowsBase).toFixed(2)
-
-            if (entry_capital_short >= safe_borrow_amount){
-                // display_toaster({'message': `you are going to borrow too much. max: ${payload.admin_settings.aave_user_account_data.availableBorrowsBase.toFixed(2)} recommended: ${safe_borrow_amount}`, 'color': 'red'})
-            }
-
-
-            valid_short_inputs = (profit_take_price_short < entry_price) && (entry_price < stop_loss_price_short) //&& (entry_capital_short < safe_borrow_amount)
-
-            
-            if (valid_short_inputs){
-                $("#short_label").removeClass('text-danger')
-                $("#short_label").addClass('text-success')
-
-            } else {
-                $("#short_label").removeClass('text-success')
-                $("#short_label").addClass('text-danger')
-
-                // display_toaster({'message': 'Invalid short inputs', 'color': 'red'})
-            }
-
-        }else{
-                $("#short_label").removeClass('text-danger')
-                $("#short_label").removeClass('text-success')
-
-                $("#short_profit_at_take_profit").html(``)
-                $("#short_loss_at_stop_loss").html(``)
-                $("#short_ambition_ratio").html(``)
-
-        }
-
-
-
-        if (valid_long_inputs && valid_short_inputs) {
-
-            $("#total_profit_if_price_goes_down").html(`total profit if price goes down: ${(short_profit_at_take_profit - long_loss_at_stop_loss).toFixed(2)}`)
-            $("#total_profit_if_price_goes_up").html(`total profit if price goes up: ${(long_profit_at_take_profit - short_loss_at_stop_loss).toFixed(2)}`)
-
-            const start_price = Math.floor(Math.min(stop_loss_price_long, profit_take_price_long, stop_loss_price_short, profit_take_price_short))
-            const end_price = Math.floor(Math.max(stop_loss_price_long, profit_take_price_long, stop_loss_price_short, profit_take_price_short))
-
-
-            let prices = [];
-            let long_profits = [];
-            let short_profits = [];
-            let long_and_short_profits = [];
-
-            for (let price = start_price ; price < end_price ; price += 5) {
-                prices.push(price);
-
-
-                let long_profit = 0;
-
-                if (price < stop_loss_price_long){
-                    long_profit = (entry_capital_long * (stop_loss_price_long - entry_price) / entry_price)
-                } else if (price > profit_take_price_long) {
-                    long_profit = (entry_capital_long * (profit_take_price_long - entry_price) / entry_price)
-                }
-                else {
-                    long_profit = (entry_capital_long * (price - entry_price) / entry_price)
-                }
-
-                long_profits.push(long_profit);
-                
-
-
-
-
-                let short_profit = 0;
-
-                if (price > stop_loss_price_short){
-                    short_profit = (entry_capital_short * (entry_price - stop_loss_price_short) / entry_price)
-
-                } else if (price < profit_take_price_short) {
-                    short_profit = (entry_capital_short * (entry_price - profit_take_price_short) / entry_price)
-
-                } else {
-
-                    short_profit = (entry_capital_short * (entry_price - price) / entry_price)
-                }
-                short_profits.push(short_profit);
-                
-
-
-
-                
-
-                
-                long_and_short_profits.push(short_profit + long_profit);
-
-            }
-
-
-            
-
-            var trace1 = {
-                x: prices,
-                y: long_profits,
-                name:'Long',
-                mode: 'lines',
-                type: 'scatter',
-                line: {color:'blue'}
-                };
-
-            var trace2 = {
-                x: prices,
-                y: short_profits,
-                name:'Short',
-                mode: 'lines',
-                type: 'scatter',
-                line: {color:'red'}
-
-                };
-
-            var trace3 = {
-                x: prices,
-                y: long_and_short_profits,
-                name: "Overall",
-                mode: 'lines',
-                type: 'scatter',
-                line: {color:'green'}
-
-                };
-
-            var data = [trace1, trace2, trace3];
-
-            Plotly.newPlot('new_order_profit_loss_overlook', data);   
-
-
-        }
-
-
-
+        
     }
 
     

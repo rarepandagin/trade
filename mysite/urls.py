@@ -33,10 +33,15 @@ urlpatterns = [
 
     path('dashboard/', include('dashboard.urls')),
     
-    path('orders/',     views.orders_view,      name='orders'),
-    path('manual/',     views.manual_view,      name='manual'),
-    path('depth/',      views.depth_view,      name='depth'),
+    path('orders/',                     views.orders_view,      name='orders'),
 
+    path('pairs/',                      views.pairs_view,       name='pairs'),
+    path('pair/<str:pair_uuid>/',       views.pair_view,        name='pair'),
+    
+    path('manual/',                     views.manual_view,      name='manual'),
+    path('depth/',                      views.depth_view,       name='depth'),
+
+    path('global/',                     views.global_view,      name='global'),
 
     path('admin34k5jh34KJSHDF345kjh2234sdf/', admin.site.urls),
 

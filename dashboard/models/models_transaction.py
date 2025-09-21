@@ -128,6 +128,13 @@ class Transaction(models.Model):
 
                 # relevant added slippage multiplier is calculated by quoting before executing the swap 
 
+                if self.transaction_type == uniswap_approve:
+                    if uniswap.approve_spenders():
+                        self.state = transaction_state_successful
+                    else:
+                        self.state = transaction_state_failed
+
+
                 if self.transaction_type == uniswap_fiat_to_token:
 
                     admin_settings.gas_speed = models_adminsettings.FastGasPrice
@@ -211,6 +218,8 @@ class Transaction(models.Model):
             elif 'aave_' in str(self.transaction_type):
                 aave = Aave()
 
+                admin_settings.gas_speed = models_adminsettings.SafeGasPrice
+                admin_settings.save()
 
                 def process_aave_transaction_receipt(receipt_dict):
                     
@@ -240,12 +249,30 @@ class Transaction(models.Model):
                     ret = aave.withdraw(aave.weth, self.token_amount_spent)
                     process_aave_transaction_receipt(ret)
 
+
+
                 elif self.transaction_type == aave_borrow:
-                    ret = aave.borrow(aave.weth, self.token_amount_spent)
+                    if admin_settings.borrow_from_aave:
+                        ret = aave.borrow(aave.weth, self.token_amount_spent)
+                    else:
+                        ret =  {
+                                    'successful': True,
+                                    'tx_hash': "no hash. aave tx was skipped",
+                                    'tx_fee_in_eth': 0,
+                                    'logs_results': [],
+                                }
                     process_aave_transaction_receipt(ret)
 
                 elif self.transaction_type == aave_repay:
-                    ret = aave.repay(aave.weth, self.token_amount_spent)
+                    if admin_settings.borrow_from_aave:
+                        ret = aave.repay(aave.weth, self.token_amount_spent)
+                    else:
+                        ret =  {
+                                    'successful': True,
+                                    'tx_hash': "no hash. aave tx was skipped",
+                                    'tx_fee_in_eth': 0,
+                                    'logs_results': [],
+                                }
                     process_aave_transaction_receipt(ret)
 
 

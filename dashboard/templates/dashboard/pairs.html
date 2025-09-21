@@ -1,0 +1,71 @@
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+
+{% load custom_tags %}
+
+{% block basebody %}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Long active</th>
+            <th>Long capital</th>
+            <th>Long profit</th>
+
+            <th>Short active</th>
+            <th>Short capital</th>
+            <th>Short profit</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        {% for pair in pairs %}
+
+            <tr>
+                <td>
+                    <a href="/pair/{{pair.uuid}}/">{{pair.long_position.order.name}} / {{pair.short_position.order.name}}</a>
+
+                </td>
+                <td>{{pair.long_position.active}}</td>
+                <td>{{pair.long_position.order.entry_capital}}</td>
+                <td>{{pair.long_position.final_profit_usd}}</td>
+                <td>{{pair.short_position.active}}</td>
+                <td>{{pair.short_position.order.entry_capital}}</td>
+                <td>{{pair.short_position.final_profit_usd}}</td>
+
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+
+
+
+    
+
+    
+    <script>
+
+
+        $(document).ready(function () {
+
+            setup_ws_dashboard();
+
+        })
+
+    </script>
+
+
+    
+
+
+
+{% endblock %}

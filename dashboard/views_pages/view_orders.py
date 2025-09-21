@@ -3,7 +3,7 @@ from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
 from .context import context_class
 
-from dashboard.models import models_transaction, models_order
+from dashboard.models import models_transaction, models_order, models_pair
 
                 
 def get_response(request):
@@ -75,59 +75,47 @@ def get_response(request):
                 stop_loss_price_short   = eval(request.POST['stop_loss_price_short'])
                 profit_take_price_short = eval(request.POST['profit_take_price_short'])
 
-                order_entry_price             = eval(request.POST['order_entry_price'])
+                entry_price_long        = eval(request.POST['entry_price_long'])
+                entry_price_short       = eval(request.POST['entry_price_short'])
 
-                
+                entry_condition_short   = request.POST['entry_condition_short']
+                entry_condition_long    = request.POST['entry_condition_long']
+                coin                    = models_order.weth
+                new_order_name_from_post= request.POST['new_order_name']
+
                 valid_long_data = True
                 valid_short_data = True
+
+                pair = None
+                if which_order == 'both':
+                    pair = models_pair.Pair()
+                    pair.save()
 
                 admin_settings = tk.get_admin_settings()
 
                 if which_order in ['long', 'both']:
                     # check if long inputs are valid
-                    valid_long_data = (stop_loss_price_long < order_entry_price < profit_take_price_long) and (0 < entry_capital_long < admin_settings.prices[admin_settings.fiat_coin])
+                    valid_long_data = (stop_loss_price_long < entry_price_long < profit_take_price_long) and (0 < entry_capital_long < admin_settings.balances[admin_settings.fiat_coin])
 
                 if which_order in ['short', 'both']:
                     # check if short inputs are valid
-                    valid_short_data = (profit_take_price_short < order_entry_price < stop_loss_price_short)
-                    if valid_short_data:
+                    valid_short_data = (profit_take_price_short < entry_price_short < stop_loss_price_short)
+                    if valid_short_data and admin_settings.borrow_from_aave:
 
-                        valid_short_data = 0 < entry_capital_short < 0.8 * admin_settings.aave_user_account_data.availableBorrowsBase
+                            valid_short_data = 0 < entry_capital_short < admin_settings.aave_borrow_to_collateral_added_safety_ratio * admin_settings.aave_user_account_data['availableBorrowsBase']
 
                 if valid_long_data and valid_short_data:
 
-                    order_entry_condition       = request.POST['order_entry_condition']
-                    new_order_name_from_post    = request.POST['new_order_name']
-                    coin                        = request.POST['coin']
-
-
-
-                    if which_order in ['long', 'both']:
-
-                        new_order_long = models_order.Order(
-                            name            = f"{new_order_name_from_post} (long)",
-                            coin            = coin,
-                            entry_condition = order_entry_condition,
-                            order_entry_price     = order_entry_price,
-
-                            position_type       = models_order.long,
-                            entry_capital       = entry_capital_long,
-                            profit_take_price   = profit_take_price_long,
-                            stop_loss_price     = stop_loss_price_long,
-                            
-                        )
-
-                        new_order_long.save()
 
 
 
                     if which_order in ['short', 'both']:
 
                         new_order_short = models_order.Order(
-                            name            = f"{new_order_name_from_post} (short)",
-                            coin            = coin,
-                            entry_condition = order_entry_condition,
-                            order_entry_price     = order_entry_price,
+                            name                = f"{new_order_name_from_post} (short)",
+                            coin                = coin,
+                            entry_condition     = entry_condition_short,
+                            order_entry_price    = entry_price_short,
 
                             position_type       = models_order.short,
                             entry_capital       = entry_capital_short,
@@ -136,7 +124,33 @@ def get_response(request):
                             
                         )
 
+
+                        if pair is not None:
+                            new_order_short.pair_uuid = pair.uuid
+
                         new_order_short.save()
+
+
+                    if which_order in ['long', 'both']:
+
+                        new_order_long = models_order.Order(
+                            name                = f"{new_order_name_from_post} (long)",
+                            coin                = coin,
+                            entry_condition     = entry_condition_long,
+                            order_entry_price   = entry_price_long,
+
+                            position_type       = models_order.long,
+                            entry_capital       = entry_capital_long,
+                            profit_take_price   = profit_take_price_long,
+                            stop_loss_price     = stop_loss_price_long,
+                            
+                        )
+
+                        if pair is not None:
+                            new_order_long.pair_uuid = pair.uuid
+
+                        new_order_long.save()
+
 
 
 

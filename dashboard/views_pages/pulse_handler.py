@@ -38,10 +38,7 @@ def handle_a_pulse(request):
 
             position.price = admin_settings.prices[position.order.coin.lower()]
 
-            if position.order.position_type == models_order.long:
-                position.evaluate_long()
-            if position.order.position_type == models_order.short:
-                position.evaluate_short()
+            position.evaluate()
 
 
             position.save()
@@ -57,11 +54,11 @@ def handle_a_pulse(request):
         orders = models_order.Order.objects.filter(active=True, executed=False)
         for order in orders:
             ret = order.evaluate()
-            if ret is not None:
-                order.save()
+            # if ret is not None:
+            order.save()
 
         # handle aave
-        if admin_settings.pulse_counter % admin_settings.aave_info_update_pulse_steps == 0:
+        if admin_settings.borrow_from_aave and admin_settings.pulse_counter % admin_settings.aave_info_update_pulse_steps == 0:
             aave = Aave()
             admin_settings.aave_user_account_data = aave.getUserAccountData()
 

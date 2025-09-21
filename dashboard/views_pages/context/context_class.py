@@ -4,6 +4,11 @@ import json
 from . import ajax_posts
 from django.http import HttpResponse, HttpResponseRedirect
 from mysite import settings
+from dashboard.views_pages import toolkit as tk
+from dashboard.models import models_transaction
+from dashboard.models import models_adminsettings
+from dashboard.models import models_order
+from dashboard.models import models_position
 
 class context_class():
     def __init__(self, request, template):
@@ -46,6 +51,30 @@ class context_class():
     def response(self):
 
         template = loader.get_template(self.template)
+
+        self.dict['admin_settings'] = tk.get_admin_settings()
+        self.dict['coins'] =  models_transaction.coins
+        self.dict['fiat_coins'] =  models_transaction.fiat_coins
+        self.dict['gas_speeds'] =  models_adminsettings.gas_speeds
+        self.dict['auto_exit_styles'] =  models_order.auto_exit_styles
+
+        self.dict['new_random_name'] =  tk.get_new_random_name()
+
+
+        # stats:
+        all_positions = models_position.Position.objects.all()
+        all_positions_active = models_position.Position.objects.filter(active = True)
+
+        total_fiat_from_shorts = round(sum([x.fiat_amount_received_to_sell_and_enter_short for x in all_positions_active if not x.is_long]), 2)
+
+        total_profit = round(sum([x.final_profit_usd for x in all_positions]), 2)
+
+        self.dict['stats'] = {
+            'total_profit' : total_profit,
+            'total_fiat_from_shorts' : total_fiat_from_shorts,
+        }
+
+
 
         if self.request.method == "POST":
 

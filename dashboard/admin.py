@@ -5,9 +5,10 @@ from django.contrib.auth.models import User
 from dashboard.models import *
 
 
-admin.site.register(Event)
+# admin.site.register(Event)
 admin.site.register(AdminSettings)
-admin.site.register(Tick)
+# admin.site.register(Tick)
+admin.site.register(Pair)
 
 
 
@@ -66,15 +67,5 @@ admin.site.register(Position, adminViewPosition)
 
 
 
-
-class adminViewAlert(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'epoch_created',
-        'alert_type',
-        'alert_price',
-        'executed',
-        )
-admin.site.register(Alert, adminViewAlert)
 
 

@@ -99,7 +99,7 @@ class Aave(Dapp):
         # self.approve(spender=aave_contract_addresses[self.network]['pool'], token=self.eth)
         # self.approve(spender=aave_contract_addresses[self.network]['pool'], token=self.usdc)
         # self.approve(spender=aave_contract_addresses[self.network]['pool'], token=self.dai)
-        self.approve(spender=aave_contract_addresses[self.network]['pool'], token=self.weth)
+        # self.approve(spender=aave_contract_addresses[self.network]['pool'], token=self.weth)
         # self.approve(spender=aave_contract_addresses[self.network]['pool'], token=self.wbtc)
         return True
 

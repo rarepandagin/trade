@@ -193,21 +193,21 @@ class Uniswap(Dapp):
 
     def approve_spenders(self):
         # dai
-        # uniswap.approve(dapp=self, spender=self.dai_exchange_address_v2, token=uniswap.dai)
-        # uniswap.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
 
-        # weth
-        # uniswap.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
+
+        # weth DONE
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
 
         # wbtc
-        # # uniswap.approve(dapp=self, spender=uniswap.wbtc_exchange_address, token=uniswap.wbtc)
-        # uniswap.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
+        # self.approve(spender=uniswap.wbtc_exchange_address, token=uniswap.wbtc)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
         
         # wsol
-        # uniswap.approve(dapp=self, spender=self.wsol_exchange_address, token=self.wsol)
+        # self.approve(spender=self.wsol_exchange_address, token=self.wsol)
         
         # usdt
-        # self.approve(dapp=self, spender=uniswap_contract_addresses['SwapRouter'], token=self.usdt)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdt)
 
         self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdc)
         pass

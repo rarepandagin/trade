@@ -8,183 +8,6 @@
 
  
 
-    
-        <div class="d-flex justify-content-between  flex-sm-row flex-column " >
-             {% if admin_settings.pulses_are_being_blocked %}
-
-                <form method="POST">
-                    {% csrf_token %}
-
-                    <button type="submit" name="unblock_pulses" class="btn btn-warning  btn-sm m-2 disable_while_busy" >Pulses are blocked - Click to unblock</button>
-
-                </form>
-
-            {% else %}
-
-
-                <form method="POST">
-                    {% csrf_token %}
-
-                    <button type="submit" name="block_pulses" class="btn btn-success btn-sm m-2 disable_while_busy">Pulses are taken in - Click to block</button>
-
-                </form>
-
-            {% endif %}   
-
-            <div class="d-flex justify-content-between gap-5">
-                <div>
-                    <p class="m-0" id="availableBorrowsBase"></p>
-                    <p class="m-0" id="totalDebtBase"></p>
-
-                </div>
-
-                <div>
-                    <p class="m-0" id="totalCollateralBase"></p>
-                    <p class="m-0" id="currentLiquidationThreshold"></p>
-                </div>
-
-                <div>
-                    <p class="m-0" id="healthFactor"></p>
-                    <p class="m-0">Total Profit: {{stats.total_profit}} USD</p>
-
-                </div>
-
-            </div>
-  
-        </div>
-
-        <div class="d-flex justify-content-start mt-2 mb-2 gap-5  flex-sm-row flex-column">
-
-
-                <form method="POST" class="d-flex justify-content-start gap-1">
-                    {% csrf_token %}
-                    <div class="d-flex justify-content-start">
-                        <select class="form-select form-select-sm" style="height: 30px; width: 90px;"  name="admin_settings_fiat_coin"  required>
-                                {% for coin in fiat_coins %}
-                                    <option value="{{coin}}" {% if admin_settings.fiat_coin == coin %} selected {% endif %}   >{{coin}}</option>
-                                {% endfor %}
-                        </select>
-                        <button type="submit" class="btn btn-primary btn-sm ms-2 disable_while_busy" style="height: 30px;" >Set fiat</button>
-
-                    </div>
-                </form>
-    
-
-
-
-                <form method="POST" class="d-flex justify-content-start gap-1">
-                    {% csrf_token %}
-                    <input type="number" min="0.1" max="1" step="0.01" class="form-control form-control-sm" name="admin_settings_secure_profit_ratio" value="{{admin_settings.secure_profit_ratio}}" style="width: 80px;"/>
-                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set secure profit ratio</button>
-                </form>
-            
-
-                <form method="POST" class="d-flex justify-content-start gap-1">
-                    {% csrf_token %}
-                    <select class="form-select form-select-sm" style="height: 30px; width: 150px;"  name="admin_settings_gas_speed"  required>
-                        {% for gas_speed in gas_speeds %}
-                            <option value="{{gas_speed}}" {% if admin_settings.gas_speed == gas_speed %} selected {% endif %}   >{{gas_speed}}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set gas speed</button>
-                </form>
-            
-        </div>
-            
-        <div class="d-flex justify-content-end mt-2 mb-2 gap-5  flex-sm-row flex-column">
-
-
-
-                <form method="POST" class="d-flex justify-content-start gap-1">
-                    {% csrf_token %}
-                    <input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_interval" value="{{admin_settings.interval}}" style="width: 50px;"/>
-                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set interval</button>
-                </form>
-
-
-                <form method="POST" class="d-flex justify-content-start gap-1">
-                    {% csrf_token %}
-                    <input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_tx_tries" value="{{admin_settings.tx_tries}}" style="width: 50px;"/>
-                    <button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set tx tries</button>
-                </form>
-
-
-                <form method="POST">
-                    {% csrf_token %}
-
-                    <button type="submit" name="admin_settings_alarms disable_while_busy" class="btn btn-primary btn-sm ">
-                        {% if admin_settings.alarms %}
-                            Disable alarms
-                        {% else %}
-                            Enable alarms
-                        {% endif %}
-                    </button>
-
-                </form>
-
-
-
-                <button type="button"  class="btn btn-primary btn-sm disable_while_busy" onclick="update_balances();">Update balances</button>
-
-
-        </div>
-        
-        <div class="d-flex justify-content-between mt-5 flex-sm-row flex-column">
-
-            {% for coin in coins %}
-                <div><h4 class="text-primary" id="weth_price" ></h4></div>
-            {% endfor %}
-
-            <div><h4 id="gas_price" ></h4></div>
-            <div><p id="prices_update_epoch" class="small"></p>
-            <p id="gas_update_epoch" class="small"></p></div>
-        </div>
-        
-
-        <div class="d-flex justify-content-start border rounded p-2  flex-sm-row flex-column ">
-
-            
-            
-            <div class="d-flex justify-content-start ms-5 ">
-                <p class="me-3 text-primary"><strong>ETH</strong></p>
-                <div>
-                    <p class=" mb-0" id="admin_settings_balances_eth"> </p>
-                    <p class=" mt-0" id="admin_settings_balances_eth_value"> </p>
-                </div>
-            </div>
-            
-
-            {% for coin in coins %}
-
-                <div class="d-flex justify-content-start ms-5 ">
-                    <p class="me-3  text-primary"><strong>{{coin|upper}}</strong></p>
-                    <div>
-                        <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
-                        <p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
-                    </div>
-                </div>
-
-            {% endfor %}
-        </div>
-        <div class="d-flex justify-content-start border rounded p-2  flex-sm-row flex-column ">
-
-            {% for coin in fiat_coins %}
-
-                <div class="d-flex justify-content-start ms-5 ">
-                    <p class="me-3  text-primary"><strong>{{coin|upper}}</strong></p>
-                    <div>
-                        <p class=" mb-0" id="admin_settings_balances_{{coin}}"> </p>
-                        <p class=" mt-0" id="admin_settings_balances_{{coin}}_value"> </p>
-                    </div>
-                </div>
-
-            {% endfor %}
-
-            
-            
-        </div>
-
-
 
 
 
@@ -297,7 +120,7 @@
                     </div>
 
                     <div>
-                        <p>Final Profit USD : <span class="small p-1 rounded {% if position.final_profit_usd > 0 %}  bg-success {% else %} bg-danger {% endif %}">{{position.final_profit_usd}}</span></p>
+                        <p>Final Profit USD : <span class="small p-1 rounded {% if position.final_profit_usd > 0 %}  bg-success {% else %} bg-danger {% endif %} fs-6">{{position.final_profit_usd}}</span></p>
                     </div>
                 {% endif %}
 
@@ -311,30 +134,49 @@
                     
                     <div class="d-flex justify-content-between txrow border p-1 mb-1  flex-sm-row flex-column  gap-2">
                         <div>
+                            <p class="m-0 fs-6"><strong>{{transaction.transaction_type}}</strong></p>
                             name: <a href="https://etherscan.io/tx/{{transaction.hash}}" target="_blank">{{transaction.name}}</a>
                             <br>
                             {% epoch_to_datetime transaction.epoch_created %}
-                        </div>
-                        <div>slippage: {{transaction.slippage}}
                             <br>
                             fee: {{transaction.fee}}
                         </div>
-                        <div>{{transaction.transaction_type}}<br>{{transaction.uniswap_version}}</div>
-                        <div>
-                            <div>token effective price: {{transaction.token_effective_price}}</div>
-                            <div>token nominal price: {{transaction.token_nominal_price}}</div>
-                        </div>
-                        {% if transaction.type == "token_to_fiat" %}
-                        <div>
-                            <div>token amount spent: {{transaction.token_amount_spent}}</div>
-                            <div>fiat amount received: {{transaction.fiat_amount_received}}</div>
-                        </div>
-                        {% else %}
-                        <div>
-                            <div>fiat amount spent: {{transaction.fiat_amount_spent}}</div>
-                            <div>token amount received: {{transaction.token_amount_received}}</div>
-                        </div>
+
+                        {% if transaction.transaction_type in "uniswap_token_to_fiat,uniswap_fiat_to_token" %}
+
+                            <div>
+                                <div>slippage: {{transaction.slippage}}</div>
+                                <div>token effective price: {{transaction.token_effective_price}}</div>
+                                <div>token nominal price: {{transaction.token_nominal_price}}</div>
+                            </div>
                         {% endif %}
+
+
+                        {% if transaction.transaction_type == "uniswap_token_to_fiat" %}
+                            <div>
+                                <div>token amount spent: {{transaction.token_amount_spent}}</div>
+                                <div>fiat amount received: {{transaction.fiat_amount_received}}</div>
+                            </div>
+
+                        {% elif transaction.transaction_type == "uniswap_fiat_to_token" %}
+                            <div>
+                                <div>fiat amount spent: {{transaction.fiat_amount_spent}}</div>
+                                <div>token amount received: {{transaction.token_amount_received}}</div>
+                            </div>
+
+                        {% elif transaction.transaction_type == "aave_borrow" %}
+                            <div>
+                                <div>fiat amount borrowed: {{transaction.token_amount_spent}}</div>
+                            </div>
+
+                        {% elif transaction.transaction_type == "aave_repay" %}
+                            <div>
+                                <div>token amount repaid: {{transaction.token_amount_spent}}</div>
+                            </div>
+
+                            
+                        {% endif %}
+                        
                     </div>
                     
             {% endfor %}
@@ -347,49 +189,6 @@
 
     
 
-
-
-<!-- 
-        <div>
-            <h3>Events</h3>
-
-            <form method="POST">
-                
-                {% csrf_token %}
-
-                {% for position in positions %}
-                    <h5 class="p-2  border rounded">{{position.name}}</h5>
-                    
-                    <form method="POST">
-                        {% csrf_token %}
-
-
-                        <div class="d-flex justify-content-start">
-                            <input type="text" name="position_uuid" value="{{position.uuid}}" hidden />
-                            <button type="submit" name="delete_position_events" class="btn btn-warning btn-sm m-1 disable_while_busy">Delete position events</button>
-                        </div>
-
-                    </form>
-
-                    {% for event in position.event_set.all %}
-                        <div class="form-check m-0 mb-2">
-                            <input class="form-check-input" type="checkbox" value="{{event.uuid}}" name="event_delete" id="flexCheckDefault{{event.uuid}}">
-                            <label class="form-check-label" for="flexCheckDefault{{event.uuid}}">
-                                <p class="m-0 mb-2" style="font-size: 11px;"><span  style="font-size: 8px;">{% epoch_to_datetime event.epoch_created %}</span> {{event.description}}</p>
-                            </label>
-                        </div>
-                    {% endfor %}
-                    
-
-                {% endfor %}
-
-
-            </form>
-        </div> -->
-     
-
-
-    
     
 
 
