@@ -5,6 +5,7 @@ from dashboard.views_pages import toolkit as tk
 from dashboard.models import models_adminsettings, models_order
 from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
 from dashboard.modules.dapps.aave.aave_class import Aave
+from dashboard.modules.dapps.arbi.arbi_class import Arbi
 
 from dashboard.models.coins import *
 
@@ -33,6 +34,15 @@ aave_withdraw = "aave_withdraw"
 aave_borrow = "aave_borrow"
 aave_repay = "aave_repay"
 
+
+# arbi
+arbi_balance = "arbi_balance"
+arbi_allowance = "arbi_allowance"
+arbi_action_2 = "arbi_action_2"
+arbi_approve = "arbi_approve"
+arbi_deposit = "arbi_deposit"
+arbi_withdraw = "arbi_withdraw"
+
 transaction_types = {
     uniswap_approve : "uniswap_approve",
     uniswap_token_to_fiat : "uniswap_token_to_fiat",
@@ -45,6 +55,13 @@ transaction_types = {
     aave_withdraw : "aave_withdraw",
     aave_borrow : "aave_borrow",
     aave_repay : "aave_repay",
+
+    arbi_balance : "arbi_balance",
+    arbi_action_2 : "arbi_action_2",
+    arbi_approve : "arbi_approve",
+    arbi_allowance : "arbi_allowance",
+    arbi_deposit : "arbi_deposit",
+    arbi_withdraw : "arbi_withdraw",
 }
 
 
@@ -76,6 +93,10 @@ class Transaction(models.Model):
 
     hash                    = models.TextField(default="", null=True, blank=True)
     fee                     = models.FloatField(default=0)
+
+
+    # case specific fields
+    fiat_loan_amount        = models.FloatField(default=0)
 
 
     # auto
@@ -239,8 +260,6 @@ class Transaction(models.Model):
                     else:
                         self.state = transaction_state_failed
 
-
-
                 elif self.transaction_type == aave_supply:
                     ret = aave.supply(aave.weth, self.token_amount_spent)
                     process_aave_transaction_receipt(ret)
@@ -248,8 +267,6 @@ class Transaction(models.Model):
                 elif self.transaction_type == aave_withdraw:
                     ret = aave.withdraw(aave.weth, self.token_amount_spent)
                     process_aave_transaction_receipt(ret)
-
-
 
                 elif self.transaction_type == aave_borrow:
                     if admin_settings.borrow_from_aave:
@@ -275,6 +292,34 @@ class Transaction(models.Model):
                                 }
                     process_aave_transaction_receipt(ret)
 
+
+            elif 'arbi_' in str(self.transaction_type):
+                arbi = Arbi()
+
+                if self.transaction_type == arbi_balance:
+                    arbi.get_balance()
+
+                elif self.transaction_type == arbi_allowance:
+                    arbi.get_allowance()
+
+
+                elif self.transaction_type == arbi_deposit:
+                    arbi.deposit()
+
+
+                elif self.transaction_type == arbi_withdraw:
+                    arbi.withdraw()
+
+
+                elif self.transaction_type == arbi_action_2:
+                    ret = arbi.perform_flash_loan(arbi.usdc, self.fiat_loan_amount)
+
+
+                elif self.transaction_type == arbi_approve:
+                    if arbi.approve_spenders():
+                        self.state = transaction_state_successful
+                    else:
+                        self.state = transaction_state_failed
 
 
 

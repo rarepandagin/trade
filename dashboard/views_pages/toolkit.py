@@ -34,6 +34,7 @@ dapp_folder_path = os.path.join(modules_folder_path, 'dapps')
 
 uniswap_dapp_folder_path = os.path.join(dapp_folder_path, 'uniswap')
 aave_dapp_folder_path = os.path.join(dapp_folder_path, 'aave')
+arbi_dapp_folder_path = os.path.join(dapp_folder_path, 'arbi')
 
 redirect_to_login = '/login/'
 redirect_to_dashboard = '/dashboard/'

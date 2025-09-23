@@ -53,7 +53,7 @@ with open(os.path.join(abis_folder, 'aave_wbtc_abi.json')) as f:
 class Aave(Dapp):
     def __init__(self):
 
-        super().__init__()
+        super().__init__(network='mainnet')
 
         self.dapp_name = "aave"
         tk.logger.info(f"initiating {self.dapp_name} W3...")

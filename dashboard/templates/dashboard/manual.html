@@ -8,10 +8,43 @@
 
  
 
+    <h3 class="">Arbi</h3>
+
+    <div class="d-flex justify-content-start gap-5 border rounded mb-5">
+
+        <div>
+
+            
+
+            <button type="button" onclick="arbi_balance();" class="btn btn-primary btn-sm m-1">Balance</button>
+            <button type="button" onclick="arbi_deposit();" class="btn btn-primary btn-sm m-1">Deposit</button>
+            <button type="button" onclick="arbi_withdraw();" class="btn btn-primary btn-sm m-1">Withdraw</button>
+
+
+        </div>
+
+
+        <div>
+
+            <button type="button" onclick="arbi_approve();" class="btn btn-primary btn-sm m-1">Approve</button>
+            <button type="button" onclick="arbi_allowance();" class="btn btn-primary btn-sm m-1">Allowance</button>
+
+        </div>
+
+
+        <div>
+
+            <input type="number" min="1" step="1" class="form-control form-control-sm" id="fiat_loan_amount" value="100" style="width: 100px;">
+            <button type="button" onclick="arbi_action_2();" class="btn btn-primary btn-sm m-1">action 2</button>
+
+
+
+        </div>
+    </div>
     
 
     <h3>Uniswap</h3>
-    <div class="border rounded p-2 ">
+    <div class="border rounded p-2" style="display: none;">
 
 
         <form method="POST">
@@ -21,7 +54,7 @@
 
         </form>
 
-        
+
 
         <form method="POST">
             {% csrf_token %}
@@ -105,7 +138,7 @@
 
     
     <h3 class="mt-5">Aave</h3>
-    <div class="border rounded p-2 ">
+    <div class="border rounded p-2 "  style="display: none;">
 
 
         <form method="POST" class="mb-2">
@@ -180,7 +213,48 @@
     </div>
 
 
+
+    
+
 <script>
+
+    function arbi_balance(){
+        activate_busy_mode();
+        ajax_call('arbi_balance', {})
+    }
+
+
+    function arbi_deposit(){
+        activate_busy_mode();
+        ajax_call('arbi_deposit', {})
+    }
+
+
+    function arbi_withdraw(){
+        activate_busy_mode();
+        ajax_call('arbi_withdraw', {})
+    }
+
+
+    function arbi_approve(){
+        activate_busy_mode();
+        ajax_call('arbi_approve', {})
+    }
+
+
+    function arbi_allowance(){
+        activate_busy_mode();
+        ajax_call('arbi_allowance', {})
+    }
+
+
+    function arbi_action_2(){
+        activate_busy_mode();
+        ajax_call('arbi_action_2', {'fiat_loan_amount': $("#fiat_loan_amount").val()})
+    }
+
+
+
 
 
     $(document).ready(function () {

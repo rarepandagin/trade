@@ -141,3 +141,76 @@ def create_and_actualize_aave_repay_transaction(repay_amount):
 
     return perform_transaction_actualization(transaction)
 
+
+
+
+# ARBI
+
+
+def create_and_actualize_arbi_balance_transaction():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_balance,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+
+def create_and_actualize_arbi_action_2_transaction(fiat_loan_amount):
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_action_2,
+        fiat_loan_amount=fiat_loan_amount,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+def create_and_actualize_arbi_approve_transaction():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_approve,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+def create_and_actualize_arbi_allowance_transaction():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_allowance,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+def create_and_actualize_arbi_deposit_transaction():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_deposit,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+def create_and_actualize_arbi_withdraw_transaction():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_withdraw,
+    )
+
+    return perform_transaction_actualization(transaction)
+

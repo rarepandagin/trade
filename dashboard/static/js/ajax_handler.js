@@ -35,7 +35,7 @@ function handle_ajax_returns(ret){
         if (ret.success){
 
 
-            location.reload();
+            // location.reload();
 
         } else {
 
@@ -51,6 +51,7 @@ function handle_ajax_returns(ret){
 
 function activate_busy_mode(){
     $(".disable_while_busy").attr("disabled", true).addClass("disabled");
+    $(".btn").attr("disabled", true).addClass("disabled");
     $('*').css('cursor','wait')
 }
 
@@ -58,6 +59,7 @@ function activate_busy_mode(){
 
 function deactivate_busy_mode(){
     $(".disable_while_busy").removeAttr("disabled").removeClass("disabled");
+    $(".btn").removeAttr("disabled").removeClass("disabled");
     $('*').css('cursor','')
 }
 

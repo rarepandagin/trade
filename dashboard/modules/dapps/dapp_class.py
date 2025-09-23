@@ -1,3 +1,4 @@
+from itertools import chain
 from django.db.models import Empty
 from web3 import Web3
 import time
@@ -23,8 +24,29 @@ class Token():
         self.decimals = decimals
         self.fee_tiers = fee_tiers
 
+
+class Contract():
+    def __init__(self, name, dapp, abi=None):
+        self.name = name
+
+        self.dapp = dapp
+
+        if abi is None:
+            self.abi = self.dapp.abis[self.name]
+        else:
+            self.abi = self.dapp.abis[abi]
+
+        
+        self.address = self.dapp.contract_addresses[self.dapp.network][self.name]
+
+        self.contract = self.dapp.w3.eth.contract(
+            abi=self.abi, 
+            address=self.dapp.w3.to_checksum_address(self.address)
+            )
+
+
 class Dapp():
-    def __init__(self, network='mainnet'):
+    def __init__(self, network):
         self.network = network
 
 
@@ -32,10 +54,16 @@ class Dapp():
         
 
         
+
+        if self.network == 'mainnet':
+            pass
+            # self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
+            # self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
+            
+        else:
+            self.default_account_address = f"0x51DAc1f4A5a7439444D8c1ac49ba42c21Aee13B2"
+            self.account_private_key = f"9108f9ba583eb7d1a8b745a259935a65684e82c8b643cbfd9c866ecfa85a35b6"
         
-        
-        self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
-        self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
 
 
 
@@ -79,6 +107,10 @@ class Dapp():
 
     def get_network_gas_price(self):
 
+        """
+        ensure that maxFeePerGas is set to a value greater than or equal to maxPriorityFeePerGas
+        """
+
         admin_settings = tk.get_admin_settings()
 
         full_gas_info = admin_settings.gas
@@ -118,16 +150,24 @@ class Dapp():
 
             nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account) 
 
+            chainId = 1 if self.network == 'mainnet' else 11155111
 
+            maxFeePerGas = self.w3.to_wei(gas_info['maxFeePerGas_gwei'], 'gwei')
+            maxPriorityFeePerGas = self.w3.to_wei(gas_info['maxPriorityFeePerGas_gwei'], 'gwei')
+            
+            one_gwei = self.w3.to_wei(1, 'gwei')
+            maxPriorityFeePerGas = max(maxPriorityFeePerGas, one_gwei)
+            maxFeePerGas = max(maxFeePerGas, maxPriorityFeePerGas)
+            
             tx_settings = {
-                'chainId': 1,
+                'chainId': chainId,
 
                 'from': self.w3.eth.default_account,
                 'value': value,
 
                 'gas': self.gas_custom_token_limit,
-                'maxFeePerGas': self.w3.to_wei(gas_info['maxFeePerGas_gwei'], 'gwei'),
-                'maxPriorityFeePerGas': self.w3.to_wei(gas_info['maxPriorityFeePerGas_gwei'], 'gwei'),
+                'maxFeePerGas': maxFeePerGas,
+                'maxPriorityFeePerGas': maxPriorityFeePerGas,
                 'nonce': nonce,
             }
 

@@ -81,7 +81,7 @@ uniswap_token_abi = '[{"name":"Transfer","inputs":[{"type":"address","name":"_fr
 class Uniswap(Dapp):
     def __init__(self):
 
-        super().__init__()
+        super().__init__('mainnet')
 
         self.dapp_name = 'uniswap'
         tk.logger.info(f"initiating {self.dapp_name} W3...")

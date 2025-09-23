@@ -72,6 +72,12 @@ def get_response(request):
                 transaction = transaction_dispatch.create_and_actualize_aave_repay_transaction(amount)
 
 
+
+
+
+
+
+
             tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
 
 

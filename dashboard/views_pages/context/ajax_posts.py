@@ -2,7 +2,9 @@ import json
 from dashboard.views_pages import toolkit as tk
 from dashboard.models import models_position
 from dashboard.models import models_order
+from dashboard.models import models_transaction
 from traceback import format_exc
+from dashboard.views_pages import transaction_dispatch    
 
 def handle_ajax_posts(self, request):
 
@@ -76,4 +78,53 @@ def handle_ajax_posts(self, request):
         position.save()
 
         return {'req': request.POST['req'], 'success': position.exited_gracefully}
+
+
+
+
+
+    elif  request.POST['req'] in 'arbi_balance':
+        transaction = transaction_dispatch.create_and_actualize_arbi_balance_transaction()
+        tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
+        return {'req': request.POST['req'], 'success': True}
+
+
+
+
+    elif  request.POST['req'] in 'arbi_deposit':
+        transaction = transaction_dispatch.create_and_actualize_arbi_deposit_transaction()
+        tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
+        return {'req': request.POST['req'], 'success': True}
+
+
+
+    elif  request.POST['req'] in 'arbi_withdraw':
+        transaction = transaction_dispatch.create_and_actualize_arbi_withdraw_transaction()
+        tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
+        return {'req': request.POST['req'], 'success': True}
+
+    elif  request.POST['req'] in 'arbi_action_2':
+        fiat_loan_amount = eval(payload['fiat_loan_amount'])
+        transaction = transaction_dispatch.create_and_actualize_arbi_action_2_transaction(fiat_loan_amount=fiat_loan_amount)
+        tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
+        return {'req': request.POST['req'], 'success': True}
+
+    elif  request.POST['req'] in 'arbi_approve':
+        transaction = transaction_dispatch.create_and_actualize_arbi_approve_transaction()
+        tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
+        return {'req': request.POST['req'], 'success': True}
+
+    elif  request.POST['req'] in 'arbi_allowance':
+        transaction = transaction_dispatch.create_and_actualize_arbi_allowance_transaction()
+        tk.create_new_notification(title="Manual operation completed", message=f'tx name: {transaction.transaction_type} ({transaction.name}), state: {transaction.state}, fee: {transaction.fee}')
+
+        return {'req': request.POST['req'], 'success': True}
+
+
+
 
