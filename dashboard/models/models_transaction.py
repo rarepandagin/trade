@@ -313,6 +313,7 @@ class Transaction(models.Model):
 
                 elif self.transaction_type == arbi_action_2:
                     ret = arbi.perform_flash_loan(arbi.usdc, self.fiat_loan_amount)
+                    # ret = arbi.hello_action()
 
 
                 elif self.transaction_type == arbi_approve:

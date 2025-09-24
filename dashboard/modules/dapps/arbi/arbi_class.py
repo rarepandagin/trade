@@ -1,5 +1,6 @@
 from dashboard.modules.dapps.dapp_class import *
-
+from  threading import Thread
+from mysite import settings
 # ARBI
 
 """
@@ -41,9 +42,11 @@ class Arbi(Dapp):
 
             'sepolia': {
                 'flash_loan':               '0xe50A99785857340df82A4928932cBA81ef06B0d6',
-                'dex':                      '0xb0581C4aB425CDf36fF23593be4C46d08B0F3743',
-                'flash_loan_arbitrage_no_logic':     '0x9568dd9333C2423D60F50B47b5c505B70F05421C',
-                'flash_loan_arbitrage':     '0x293879b3752f990ebD634e2202B55162Fc0C64f8',
+
+                'hello':                    '0xb09B70CaA461e78Daf4e2321F167ba8F8b84584e',
+
+                'dex':                      '0x91e3A428Bf6329E2eb87AD8fe146B6fE90B0f684',
+                'flash_loan_arbitrage':     '0x5b420d39B89CFBc01315C12382cb8E250759d32e',
             }
         }
 
@@ -68,13 +71,16 @@ class Arbi(Dapp):
         with open(os.path.join(self.abis_folder, 'weth.json')) as f:
             self.abis['weth'] = json.load(f)
 
+        with open(os.path.join(self.abis_folder, 'hello.json')) as f:
+            self.abis['hello'] = json.load(f)
+
 
 
 
 
         self.max_gas_fee_multiplier = 2.5
         self.gas_limit = 22_0000
-        self.gas_custom_token_limit = 600_000
+        self.gas_custom_token_limit = 10_000_000
 
 
         
@@ -95,53 +101,12 @@ class Arbi(Dapp):
 
 
 
-        # self.flash_loan_contract = self.w3.eth.contract(abi=flash_loan_abi,
-        #                                                     address=self.w3.to_checksum_address(
-        #                                                         self.contract_addresses[self.network]['flash_loan']))
-
-
-
-        # self.flash_loan_arbitrage = self.w3.eth.contract(abi=flash_loan_arbitrage_abi,
-        #                                                     address=self.w3.to_checksum_address(
-        #                                                         self.contract_addresses[self.network]['flash_loan_arbitrage']))
-
-
-
-        # self.dex = self.w3.eth.contract(abi=dex_abi,
-        #                                                     address=self.w3.to_checksum_address(
-        #                                                         self.contract_addresses[self.network]['dex']))
 
 
         self.flash_loan             = Contract(name='flash_loan',           dapp=self)
         self.flash_loan_arbitrage   = Contract(name='flash_loan_arbitrage', dapp=self)
         self.dex                    = Contract(name='dex',                  dapp=self)
-
-
-
-
-
-
-
-    def approve_spenders(self):
-        # self.approve(spender=self.contract_addresses[self.network]['flash_loan_arbitrage'], token=self.usdc)
-        # self.approve(spender=self.contract_addresses[self.network]['flash_loan_arbitrage'], token=self.dai)
-
-        # self.approve(spender=self.flash_loan.address, token=self.usdc)
-        # self.approve(spender=self.contract_addresses[self.network]['dex'], token=self.dai)
-
-        # action = token.contract.functions.approve(self.w3.to_checksum_address(spender), 2**256 - 1)
-
-        # self.build_and_execute_tx(action=action)
-
-
-
-
-        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.approveDAI(2**256 - 1))
-        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.approveUSDC(2**256 - 1))
-
-
-        return True
-
+        self.hello                  = Contract(name='hello',                dapp=self)
 
 
 
@@ -150,7 +115,7 @@ class Arbi(Dapp):
 
 
         ret = {}
-        for contract in [self.dex, self.flash_loan_arbitrage, self.flash_loan]:
+        for contract in [self.dex, self.flash_loan_arbitrage]:
             ret[contract.name] = {}
             for token in [self.dai, self.usdc]:
                 ret[contract.name][token.name] = contract.contract.functions.getBalance(
@@ -161,46 +126,162 @@ class Arbi(Dapp):
         return ret
 
 
+
+
+
+    def approve_dai_for_flash_loan_arbitrage(self, nonce=None):
+        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.approveDAI(2**256 - 1), nonce=nonce)
+
+
+    def approve_usdc_for_flash_loan_arbitrage(self, nonce=None):
+        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.approveUSDC(2**256 - 1), nonce=nonce)
+
+
+
+
+    def approve_spenders(self):
+
+        # self.approve(spender=self.dex.contract.address, token=self.dai)
+        # self.approve(spender=self.dex.contract.address, token=self.usdc)
+        # self.approve(spender=self.flash_loan_arbitrage.contract.address, token=self.dai)
+        # self.approve(spender=self.flash_loan_arbitrage.contract.address, token=self.usdc)
+        if settings.DEBUG:
+            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account)
+
+            t1 = Thread(target=self.approve_dai_for_flash_loan_arbitrage,    args=(nonce + 0,))
+            t2 = Thread(target=self.approve_usdc_for_flash_loan_arbitrage,   args=(nonce + 1,))
+
+            
+            t1.start()
+            time.sleep(2)
+            t2.start()
+
+            t1.join()
+            t2.join()
+
+
+        else:
+
+            self.approve_dai_for_flash_loan_arbitrage()
+            self.approve_usdc_for_flash_loan_arbitrage()
+
+        return True
+
+
+
+
+
+
+    def deposit_dai_to_dex(self, nonce=None):
+
+        self.build_and_execute_tx(action=self.dai.contract.functions.transfer(
+            self.dex.address,
+            int(2000 * (10 ** self.dai.decimals)),
+        ), nonce= nonce)
+
+    def deposit_usdc_to_dex(self, nonce=None):
+
+        self.build_and_execute_tx(action=self.usdc.contract.functions.transfer(
+            self.dex.address,
+            int(2000 * (10 ** self.usdc.decimals)),
+        ), nonce= nonce)
+
+    def deposit_dai_to_flash_loan_arbitrage(self, nonce=None):
+
+        self.build_and_execute_tx(action=self.dai.contract.functions.transfer(
+            self.flash_loan_arbitrage.address,
+            int(2000 * (10 ** self.dai.decimals)),
+        ), nonce= nonce)
+
+    def deposit_usdc_to_flash_loan_arbitrage(self, nonce=None):
+
+        self.build_and_execute_tx(action=self.usdc.contract.functions.transfer(
+            self.flash_loan_arbitrage.address,
+            int(2000 * (10 ** self.usdc.decimals)),
+        ), nonce= nonce)
+
+
+
     def deposit(self):
+        if settings.DEBUG:
+            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account)
+            
+            t1 = Thread(target=self.deposit_dai_to_dex,                      args=(nonce + 0,))
+            t2 = Thread(target=self.deposit_usdc_to_dex,                     args=(nonce + 1,))
+            t3 = Thread(target=self.deposit_dai_to_flash_loan_arbitrage,     args=(nonce + 2,))
+            t4 = Thread(target=self.deposit_usdc_to_flash_loan_arbitrage,    args=(nonce + 3,))
 
-        self.build_and_execute_tx(action=self.usdc.contract.functions.transfer(
-            self.flash_loan_arbitrage.address,
-            int(2000 * (10 ** self.usdc.decimals)),
-        ))
+            t1.start()
+            time.sleep(2)
+            t2.start()
+            time.sleep(2)
+            t3.start()
+            time.sleep(2)
+            t4.start()
+            time.sleep(2)
 
-        self.build_and_execute_tx(action=self.dai.contract.functions.transfer(
-            self.flash_loan_arbitrage.address,
-            int(2000 * (10 ** self.dai.decimals)),
-        ))
+            t1.join()
+            t2.join()
+            t3.join()
+            t4.join()
+        else:
+
+            self.deposit_dai_to_dex()
+            self.deposit_usdc_to_dex()
+            self.deposit_dai_to_flash_loan_arbitrage()
+            self.deposit_usdc_to_flash_loan_arbitrage()
 
 
-        self.build_and_execute_tx(action=self.usdc.contract.functions.transfer(
-            self.dex.address,
-            int(2000 * (10 ** self.usdc.decimals)),
-        ))
 
-        self.build_and_execute_tx(action=self.dai.contract.functions.transfer(
-            self.dex.address,
-            int(2000 * (10 ** self.dai.decimals)),
-        ))
+    def withdraw_dai_from_dex(self, nonce=None):
+        self.build_and_execute_tx(action=self.dex.contract.functions.withdraw(self.dai.address),nonce=nonce)
 
+    def withdraw_usdc_from_dex(self, nonce=None):
+        self.build_and_execute_tx(action=self.dex.contract.functions.withdraw(self.usdc.address),nonce=nonce)
 
-        # self.build_and_execute_tx(action=self.usdc.contract.functions.transfer(
-        #     self.flash_loan.address,
-        #     int(1000 * (10 ** self.usdc.decimals)),
-        # ))
+    def withdraw_dai_from_flash_loan_arbitrage(self, nonce=None):
+        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.withdraw(self.dai.address),nonce=nonce)
 
-        # self.build_and_execute_tx(action=self.dai.contract.functions.transfer(
-        #     self.flash_loan.address,
-        #     int(1000 * (10 ** self.dai.decimals)),
-        # ))
+    def withdraw_usdc_from_flash_loan_arbitrage(self, nonce=None):
+        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.withdraw(self.usdc.address),nonce=nonce)
+
 
 
     def withdraw(self):
-        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.withdraw(self.dai.address))
-        self.build_and_execute_tx(action=self.flash_loan_arbitrage.contract.functions.withdraw(self.usdc.address))
-        # self.build_and_execute_tx(action=self.flash_loan.contract.functions.withdraw(self.dai.address))
-        # self.build_and_execute_tx(action=self.flash_loan.contract.functions.withdraw(self.usdc.address))
+
+        if settings.DEBUG:
+            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account)
+
+            t1 = Thread(target=self.withdraw_dai_from_dex,                   args=(nonce + 0,))
+            time.sleep(2)
+            t2 = Thread(target=self.withdraw_usdc_from_dex,                  args=(nonce + 1,))
+            time.sleep(2)
+            t3 = Thread(target=self.withdraw_dai_from_flash_loan_arbitrage,  args=(nonce + 2,))
+            time.sleep(2)
+            t4 = Thread(target=self.withdraw_usdc_from_flash_loan_arbitrage, args=(nonce + 3,))
+
+
+            t1.start()
+            time.sleep(2)
+            t2.start()
+            time.sleep(2)
+            t3.start()
+            time.sleep(2)
+            t4.start()
+            time.sleep(2)
+
+            t1.join()
+            t2.join()
+            t3.join()
+            t4.join()
+
+
+        else:
+            self.withdraw_dai_from_dex()
+            self.withdraw_usdc_from_dex()
+            self.withdraw_dai_from_flash_loan_arbitrage()
+            self.withdraw_usdc_from_flash_loan_arbitrage()
+
 
 
         tk.logger.info('withdraw')
@@ -245,7 +326,33 @@ class Arbi(Dapp):
 
         tx_return = self.build_and_execute_tx(action=action)
         
-        return tx_return
+        
+        events = self.flash_loan_arbitrage.contract.events.new_log.get_logs(fromBlock=0, toBlock="latest")
+        for event in events:
+            tk.logger.info(f"EVENT: {event['args']}")
+            
+
+
+    def hello_action(self):
+        # calculator
+
+        # tk.logger.info(self.hello.contract.functions.get().call())
+
+        # self.build_and_execute_tx(action=self.hello.contract.functions.multiply(24))
+
+        # tk.logger.info(self.hello.contract.functions.get().call())
+
+        # TWEETER
+        # tk.logger.info(f"tweet get: {self.hello.contract.functions.getTweet(self.w3.eth.default_account, 0).call()}")
+        # tk.logger.info(f"tweet get: {self.hello.contract.functions.getTweet(self.w3.eth.default_account, 1).call()}")
+        # self.build_and_execute_tx(action=self.hello.contract.functions.unpause())
+        self.build_and_execute_tx(action=self.hello.contract.functions.createTweet("ZZZ BBB"))
+
+        # tk.logger.info(f"tweet get all: {self.hello.contract.functions.getAllTweets().call()}")
+        # tk.logger.info(f"tweet get: {self.hello.contract.functions.getTweet(0).call()}")
 
 
 
+        events = self.hello.contract.events.new_log.get_logs(fromBlock=0, toBlock="latest")
+        for event in events:
+            tk.logger.info(f"EVENT: {event['args']}")

@@ -12,7 +12,6 @@ import os
 
 
 
-
 class Token():
     def __init__(self, name, network, address, abi, decimals, fee_tiers, w3):
         self.name = name
@@ -40,8 +39,8 @@ class Contract():
         self.address = self.dapp.contract_addresses[self.dapp.network][self.name]
 
         self.contract = self.dapp.w3.eth.contract(
-            abi=self.abi, 
-            address=self.dapp.w3.to_checksum_address(self.address)
+                abi=self.abi, 
+                address=self.dapp.w3.to_checksum_address(self.address)
             )
 
 
@@ -136,7 +135,7 @@ class Dapp():
 
 
 
-    def build_and_execute_tx(self, action, transaction_object=None, value=0):
+    def build_and_execute_tx(self, action, transaction_object=None, value=0, nonce=None):
 
         receipt = None
 
@@ -148,7 +147,8 @@ class Dapp():
 
             assert not gas_info is None
 
-            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account) 
+            if nonce is None:
+                nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account) 
 
             chainId = 1 if self.network == 'mainnet' else 11155111
 
