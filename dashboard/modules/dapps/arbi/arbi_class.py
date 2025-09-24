@@ -45,8 +45,8 @@ class Arbi(Dapp):
 
                 'hello':                    '0xb09B70CaA461e78Daf4e2321F167ba8F8b84584e',
 
-                'dex':                      '0x91e3A428Bf6329E2eb87AD8fe146B6fE90B0f684',
-                'flash_loan_arbitrage':     '0x5b420d39B89CFBc01315C12382cb8E250759d32e',
+                'dex':                      '0x7BE8Ed51c978f3374F83E6769647E16d1e48D8D3',
+                'flash_loan_arbitrage':     '0x5Fd9FF3e74c6d74291a9061d86eD665891C59473',
             }
         }
 
