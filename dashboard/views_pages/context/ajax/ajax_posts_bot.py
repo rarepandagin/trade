@@ -1,4 +1,4 @@
-from nt import remove
+
 import os
 from dashboard import models
 import dashboard.views_pages.toolkit as tk
@@ -116,7 +116,7 @@ def handle_ajax_posts_bot(req, payload):
                     epoch=int(row[0] / 1000),
                     price=row[4]) for _, row in df.iterrows()
                     ]
-                    
+
                 models_tick.Tick.objects.bulk_create(model_instances)   
 
 
