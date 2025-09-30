@@ -176,6 +176,7 @@ function update_depth_chart(payload){
     $("#best_ask_price").html(payload.best_ask_price);
     $("#best_bid_volume").html(payload.best_bid_volume);
     $("#best_ask_volume").html(payload.best_ask_volume);
+    $("#mean_price").html(payload.mean_price);
 
 
 }

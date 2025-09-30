@@ -2,7 +2,6 @@ from django.db import models
 
 from dashboard.views_pages import toolkit as tk
 
-from dashboard.models import models_position
 
 price_goes_above = "price_goes_above"
 price_goes_below = "price_goes_below"

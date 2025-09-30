@@ -14,12 +14,10 @@ uniswap_token_addresses = {
         'link': '0x514910771af9ca656af840dff83e8264ecf986ca',
         'wsol': '0xd31a59c85ae9d8edefec411d448f90841571b89c',
     },
-    'ropsten': {
-        'weth': '0xc778417e063141139fce010982780140aa0cd5ab',
-        'mkr': '0xa117d4635d4e04e81fa775e2803010166ada5506',
-        'dai': '0xad6d458402f60fd3bd25163575031acdce07538d',
-        'wbtc': '0xd992CdEA5B16EaF7681fe85b4d537Efb64a1B0F1',
-        'usdc': '0x9c8FA1ee532f8Afe9F2E27f06FD836F3C9572f71',
+    'sepolia': {
+        'weth': '0xfff9976782d46cc05630d1f6ebab18b2324d6b14',
+        'usdc': '0x94a9D9AC8a22534E3FaCa9F4e7F2E2cf85d5E4C8',
+
     },
 }
 uniswap_contract_addresses = {

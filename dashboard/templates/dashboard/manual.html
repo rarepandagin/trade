@@ -25,6 +25,35 @@
 
 
         <div>
+            
+
+
+                <div class="d-flex justify-content-start">
+                    
+                    <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" id="arbi_wrap_eth_amount" value="0.001" required />
+                    
+                    <button type="button" class="btn btn-primary btn-sm m-1" onclick="arbi_wrap_eth();">Wrap eth</button>
+                </div>
+
+
+
+
+
+
+                <div class="d-flex justify-content-start">
+                    
+                    <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" id="arbi_unwrap_weth_amount" value="0.001" required />
+                    
+                    <button type="button" class="btn btn-primary btn-sm m-1" onclick="arbi_unwrap_weth();">Unwrap weth</button>
+                </div>
+
+
+
+
+        </div>
+
+
+        <div>
 
             <button type="button" onclick="arbi_approve();" class="btn btn-primary btn-sm m-1">Approve</button>
             <button type="button" onclick="arbi_allowance();" class="btn btn-primary btn-sm m-1">Allowance</button>
@@ -35,16 +64,19 @@
         <div>
 
             <input type="number" min="1" step="1" class="form-control form-control-sm" id="fiat_loan_amount" value="100" style="width: 100px;">
-            <button type="button" onclick="arbi_action_2();" class="btn btn-primary btn-sm m-1">action 2</button>
+            <button type="button" onclick="arbi_action_2();" class="btn btn-primary btn-sm m-1">Flash loan</button>
 
 
 
+        </div>
+        <div>
+            <button type="button" onclick="arbi_single_swap();" class="btn btn-primary btn-sm m-1">Single Swap</button>
         </div>
     </div>
     
 
     <h3>Uniswap</h3>
-    <div class="border rounded p-2" style="display: none;">
+    <div class="border rounded p-2" >
 
 
         <form method="POST">
@@ -219,41 +251,47 @@
 <script>
 
     function arbi_balance(){
-        activate_busy_mode();
         ajax_call('arbi_balance', {})
     }
 
 
     function arbi_deposit(){
-        activate_busy_mode();
         ajax_call('arbi_deposit', {})
     }
 
 
     function arbi_withdraw(){
-        activate_busy_mode();
         ajax_call('arbi_withdraw', {})
     }
 
 
     function arbi_approve(){
-        activate_busy_mode();
         ajax_call('arbi_approve', {})
     }
 
 
     function arbi_allowance(){
-        activate_busy_mode();
         ajax_call('arbi_allowance', {})
     }
 
 
     function arbi_action_2(){
-        activate_busy_mode();
         ajax_call('arbi_action_2', {'fiat_loan_amount': $("#fiat_loan_amount").val()})
     }
 
+    function arbi_wrap_eth(){
+        ajax_call('arbi_wrap_eth', {'amount': $("#arbi_wrap_eth_amount").val()})
+    }
 
+
+    function arbi_unwrap_weth(){
+        ajax_call('arbi_unwrap_weth', {'amount': $("#arbi_unwrap_weth_amount").val()})
+    }
+
+
+    function arbi_single_swap(){
+        ajax_call('arbi_single_swap', {})
+    }
 
 
 

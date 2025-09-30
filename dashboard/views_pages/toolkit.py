@@ -31,6 +31,8 @@ modules_folder = os.path.join(dashboard_app_folder, 'modules')
 
 modules_folder_path = os.path.join(dashboard_app_folder, 'modules')
 dapp_folder_path = os.path.join(modules_folder_path, 'dapps')
+bot_folder_path = os.path.join(modules_folder_path, 'bots')
+bot_tmp_folder_path = os.path.join(bot_folder_path, 'tmp')
 
 uniswap_dapp_folder_path = os.path.join(dapp_folder_path, 'uniswap')
 aave_dapp_folder_path = os.path.join(dapp_folder_path, 'aave')
@@ -117,7 +119,9 @@ def compress_pickle_object(obj):
 def decompress_pickle_object(obj):
     return compress_pickle.loads(codecs.decode(obj.encode(), "base64"), compression="gzip")
 
-
+def epoch_to_datetime(epoch_time):
+    datetime_obj = datetime.fromtimestamp(epoch_time)
+    return datetime_obj.strftime('%Y-%m-%d %H:%M:%S')
 
 def get_epoch_now():
     return int(time.time())

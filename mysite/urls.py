@@ -40,6 +40,7 @@ urlpatterns = [
     
     path('manual/',                     views.manual_view,      name='manual'),
     path('depth/',                      views.depth_view,       name='depth'),
+    path('bot/',                        views.bot_view,         name='bot'),
 
     path('global/',                     views.global_view,      name='global'),
 

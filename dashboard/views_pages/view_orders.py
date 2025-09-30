@@ -174,6 +174,11 @@ def get_response(request):
     context.dict['position_types'] =  models_order.position_types
 
 
+    context.dict['new_position_entry_price']        = admin_settings.prices['weth']
+    context.dict['new_position_short_stop_loss']    = int(1.01 * admin_settings.prices['weth'])
+    context.dict['new_position_short_profit_take']    = int(0.98 * admin_settings.prices['weth'])
+    context.dict['new_position_long_stop_loss']    = int(0.99 * admin_settings.prices['weth'])
+    context.dict['new_position_long_profit_take']    = int(1.02 * admin_settings.prices['weth'])
 
 
     return context.response()

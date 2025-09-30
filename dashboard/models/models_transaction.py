@@ -42,6 +42,9 @@ arbi_action_2 = "arbi_action_2"
 arbi_approve = "arbi_approve"
 arbi_deposit = "arbi_deposit"
 arbi_withdraw = "arbi_withdraw"
+arbi_wrap_eth = "arbi_wrap_eth"
+arbi_unwrap_weth = "arbi_unwrap_weth"
+arbi_single_swap = "arbi_single_swap"
 
 transaction_types = {
     uniswap_approve : "uniswap_approve",
@@ -62,6 +65,9 @@ transaction_types = {
     arbi_allowance : "arbi_allowance",
     arbi_deposit : "arbi_deposit",
     arbi_withdraw : "arbi_withdraw",
+    arbi_wrap_eth: "arbi_wrap_eth",
+    arbi_unwrap_weth: "arbi_unwrap_weth",
+    arbi_single_swap: "arbi_single_swap",
 }
 
 
@@ -296,8 +302,20 @@ class Transaction(models.Model):
             elif 'arbi_' in str(self.transaction_type):
                 arbi = Arbi()
 
+                
+                arbi.token_one = arbi.usdc
+                arbi.token_two = arbi.dai
+
+
                 if self.transaction_type == arbi_balance:
                     arbi.get_balance()
+
+                elif self.transaction_type == arbi_wrap_eth:
+                    arbi.wrap_eth(self.token_amount_spent)
+
+                elif self.transaction_type == arbi_unwrap_weth:
+                    arbi.unwrap_weth(self.token_amount_spent)
+
 
                 elif self.transaction_type == arbi_allowance:
                     arbi.get_allowance()
@@ -312,7 +330,7 @@ class Transaction(models.Model):
 
 
                 elif self.transaction_type == arbi_action_2:
-                    ret = arbi.perform_flash_loan(arbi.usdc, self.fiat_loan_amount)
+                    ret = arbi.perform_flash_loan(token_one=arbi.usdc, token_two=arbi.dai, token_one_amount=self.fiat_loan_amount)
                     # ret = arbi.hello_action()
 
 
@@ -321,6 +339,11 @@ class Transaction(models.Model):
                         self.state = transaction_state_successful
                     else:
                         self.state = transaction_state_failed
+
+
+
+                elif self.transaction_type == arbi_single_swap:
+                    ret = arbi.perform_single_swap()
 
 
 

@@ -8,61 +8,6 @@
         "inputs": [
             {
                 "internalType": "address",
-                "name": "_token_two_address",
-                "type": "address"
-            }
-        ],
-        "name": "buyTokenTwo",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_token_one_address",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "depositTokenOne",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_token_two_address",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "depositTokenTwo",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
                 "name": "_tokenAddress",
                 "type": "address"
             }
@@ -92,6 +37,32 @@
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "poolFee",
+        "outputs": [
+            {
+                "internalType": "uint24",
+                "name": "",
+                "type": "uint24"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "routerAddress",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "address",
@@ -99,16 +70,26 @@
                 "type": "address"
             },
             {
+                "internalType": "address",
+                "name": "_token_two_address",
+                "type": "address"
+            },
+            {
                 "internalType": "uint256",
-                "name": "token_two_amount_to_sell",
+                "name": "amountIn",
                 "type": "uint256"
+            },
+            {
+                "internalType": "uint24",
+                "name": "_poolFee",
+                "type": "uint24"
             }
         ],
-        "name": "sellTokenTwo",
+        "name": "swapExactInputSingle",
         "outputs": [
             {
                 "internalType": "uint256",
-                "name": "",
+                "name": "amountOut",
                 "type": "uint256"
             }
         ],
@@ -117,25 +98,12 @@
     },
     {
         "inputs": [],
-        "name": "token_one_balances",
+        "name": "swapRouter",
         "outputs": [
             {
-                "internalType": "uint256",
+                "internalType": "contract ISwapRouter",
                 "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "token_two_balances",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
+                "type": "address"
             }
         ],
         "stateMutability": "view",

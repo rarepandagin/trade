@@ -21,6 +21,7 @@ from dashboard.views_pages import view_manual
 
 from dashboard.views_pages import view_pairs
 from dashboard.views_pages import view_pair
+from dashboard.views_pages import view_bot
 
 @never_cache
 @csrf_exempt
@@ -151,6 +152,13 @@ def global_view(request):
 @login_required(login_url='login', redirect_field_name=None)
 def depth_view(request):
     return view_depth.get_response(request)
+
+
+@never_cache
+@csrf_exempt
+@login_required(login_url='login', redirect_field_name=None)
+def bot_view(request):
+    return view_bot.get_response(request)
 
 
 @never_cache

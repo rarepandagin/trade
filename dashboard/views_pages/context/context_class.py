@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 import json
-from . import ajax_posts
+from dashboard.views_pages.context.ajax import ajax_posts
 from django.http import HttpResponse, HttpResponseRedirect
 from mysite import settings
 from dashboard.views_pages import toolkit as tk

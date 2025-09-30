@@ -8,8 +8,13 @@
             },
             {
                 "internalType": "address",
-                "name": "_dex_contract_address",
+                "name": "example_address",
                 "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "example_string",
+                "type": "string"
             }
         ],
         "stateMutability": "nonpayable",
@@ -67,14 +72,21 @@
         "type": "function"
     },
     {
-        "inputs": [
+        "inputs": [],
+        "name": "allowance_token_one",
+        "outputs": [
             {
-                "internalType": "address",
-                "name": "_token_address",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
-        "name": "allowanceToken",
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "allowance_token_two",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -88,17 +100,31 @@
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "_token_address",
-                "type": "address"
-            },
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "approve_token_one",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
             {
                 "internalType": "uint256",
                 "name": "_amount",
                 "type": "uint256"
             }
         ],
-        "name": "approveToken",
+        "name": "approve_token_two",
         "outputs": [
             {
                 "internalType": "bool",
@@ -111,12 +137,38 @@
     },
     {
         "inputs": [],
-        "name": "dex_contract_address",
+        "name": "dexContractAddress",
         "outputs": [
             {
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "example_address_",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "example_string_",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
             }
         ],
         "stateMutability": "view",
@@ -184,17 +236,12 @@
         "inputs": [
             {
                 "internalType": "address",
-                "name": "_token_one_address",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "_token_two_address",
+                "name": "_token",
                 "type": "address"
             },
             {
                 "internalType": "uint256",
-                "name": "_token_one_amount_to_borrow",
+                "name": "_amount",
                 "type": "uint256"
             }
         ],

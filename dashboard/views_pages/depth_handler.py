@@ -75,11 +75,18 @@ def handle_a_depth_pulse(request):
 
                 models_tick.Tick.objects.exclude(pk__in=tick_to_keep).delete()   
 
+                
+                
+                mean_price = (best_bid_volume * best_bid_price + best_ask_volume * best_ask_price) / (best_bid_volume + best_ask_volume)
+
+
 
                 payload =  {
                         
                         "bids": bids,
                         "asks": asks,
+
+                        "mean_price": mean_price,
 
                         "best_bid_price": best_bid_price,
                         "best_ask_price": best_ask_price,

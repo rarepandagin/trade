@@ -1,10 +1,11 @@
 from itertools import chain
 from django.db.models import Empty
 from web3 import Web3
-import time
+from datetime import datetime
 import json
 import os
-
+import human_readable
+import time
 from traceback import format_exc
 
 from dashboard.views_pages import toolkit as tk
@@ -56,8 +57,13 @@ class Dapp():
 
         if self.network == 'mainnet':
             pass
-            # self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
-            # self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
+            # Actual mainnet
+            self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
+            self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
+
+            # Mozilla dev mainnet
+            # self.default_account_address = f"0xf2D13A89B2D63448A95A7c12A01c33CB12b1e141"
+            # self.account_private_key = f"795b8f995bd5212e58d7bdac0513996084e82cbd86df93e631d68e771b954ff3"
             
         else:
             self.default_account_address = f"0x51DAc1f4A5a7439444D8c1ac49ba42c21Aee13B2"
@@ -264,3 +270,8 @@ class Dapp():
                 'tx_fee_in_eth': tx_fee_in_eth,
                 'logs_results': logs_results,
             }
+
+    def process_solidity_log(self, event):
+        datetime_obj = datetime.fromtimestamp(event.args.timestamp)
+        delta_time = human_readable.date_time(datetime.now() - datetime_obj)
+        return {'delta_time': delta_time, 'content': event.args.content}

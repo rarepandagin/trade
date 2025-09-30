@@ -1,17 +1,17 @@
 from django.db import models
-from dashboard.views_pages import toolkit as tk
+
+
+
 
 class Tick(models.Model):
     id = models.BigAutoField(primary_key=True)
 
-    epoch = models.BigIntegerField(default=0)
+    epoch = models.BigIntegerField(default=0, unique=True)
 
-    data = models.JSONField(default=dict)
+    price = models.FloatField(default=0)
+
+    indicator_ema_minutely  = models.FloatField(default=0)
+    indicator_ema_hourly    = models.FloatField(default=0)
 
 
 
-    def save(self, *args, **kwargs):
-
-        self.epoch = tk.get_epoch_now()
-
-        super(Tick, self).save(*args, **kwargs)

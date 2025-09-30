@@ -1,5 +1,7 @@
 
 function ajax_call(command, tx_payload) {
+    
+    activate_busy_mode()
 
     $.ajax({
         type: "POST",
@@ -34,7 +36,10 @@ function handle_ajax_returns(ret){
 
         if (ret.success){
 
-
+            if (ret.req == 'bot_draw_data')
+            {
+                bot_draw_data_on_return(ret.returned_payload)
+            }
             // location.reload();
 
         } else {

@@ -7,10 +7,6 @@
 {% load custom_tags %}
 
  
-<head>
-        <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
-
-</head>
     
 
 
@@ -49,7 +45,7 @@
                 <div>
                     <div class="d-flex justify-content-start">
                         <p class="me-2 mt-2">Entry price:</p>
-                        <input type="number" class="form-control form-control-sm"  step="any" min="0" value="4600" name="entry_price_long" id="entry_price_long" style="width: 90px;"/>
+                        <input type="number" class="form-control form-control-sm"  step="any" min="0" value="{{new_position_entry_price}}" name="entry_price_long" id="entry_price_long" style="width: 90px;"/>
                     </div>
                         <select class="form-select ms-1" name="entry_condition_long" style="width: 290px;">
                             {% for order_entry_condition in entry_conditions %}
@@ -66,12 +62,12 @@
 
                 <div class="d-flex justify-content-start" > 
                     <p class="me-2 mt-2">Long stop loss:</p>
-                    <input type="number" class="form-control form-control-sm" name="stop_loss_price_long"  id="stop_loss_price_long" step="any"  value="4580" style="width: 90px;" required/>
+                    <input type="number" class="form-control form-control-sm" name="stop_loss_price_long"  id="stop_loss_price_long" step="any"  value="{{new_position_long_stop_loss}}" style="width: 90px;" required/>
                 </div>
 
                 <div class="d-flex justify-content-start">
                     <p class="me-2 mt-2">Long profit take:</p>
-                    <input type="number" class="form-control form-control-sm" name="profit_take_price_long"  id="profit_take_price_long" step="any"  value="4700" style="width: 90px;" required/>
+                    <input type="number" class="form-control form-control-sm" name="profit_take_price_long"  id="profit_take_price_long" step="any"  value="{{new_position_long_profit_take}}" style="width: 90px;" required/>
                 </div>
 
             </div>
@@ -91,7 +87,7 @@
                 <div>
                     <div class="d-flex justify-content-start">
                         <p class="me-2 mt-2">Entry price:</p>
-                        <input type="number" class="form-control form-control-sm"  step="any" min="0" value="4600" name="entry_price_short" id="entry_price_short" style="width: 90px;"/>
+                        <input type="number" class="form-control form-control-sm"  step="any" min="0" value="{{new_position_entry_price}}" name="entry_price_short" id="entry_price_short" style="width: 90px;"/>
                     </div>
                         <select class="form-select ms-1" name="entry_condition_short" style="width: 290px;">
                             {% for order_entry_condition in entry_conditions %}
@@ -102,17 +98,17 @@
                     
                 <div class="d-flex justify-content-start" > 
                     <p class="me-2 mt-2">Short capital:</p>
-                    <input type="number" class="form-control form-control-sm" name="entry_capital_short" id="entry_capital_short" step="any" value="1000" style="width: 100px;"  required/>
+                    <input type="number" class="form-control form-control-sm" name="entry_capital_short" id="entry_capital_short" step="any" value="2000" style="width: 100px;"  required/>
                 </div>
 
                 <div class="d-flex justify-content-start" > 
                     <p class="me-2 mt-2">Short stop loss:</p>
-                    <input type="number" class="form-control form-control-sm" name="stop_loss_price_short"  id="stop_loss_price_short" step="any"  value="4700" style="width: 90px;" required/>
+                    <input type="number" class="form-control form-control-sm" name="stop_loss_price_short"  id="stop_loss_price_short" step="any"  value="{{new_position_short_stop_loss}}" style="width: 90px;" required/>
                 </div>
 
                 <div class="d-flex justify-content-start">
                     <p class="me-2 mt-2">Short profit take:</p>
-                    <input type="number" class="form-control form-control-sm" name="profit_take_price_short"  id="profit_take_price_short" step="any"  value="4555" style="width: 90px;" required/>
+                    <input type="number" class="form-control form-control-sm" name="profit_take_price_short"  id="profit_take_price_short" step="any"  value="{{new_position_short_profit_take}}" style="width: 90px;" required/>
                 </div>
 
             </div>

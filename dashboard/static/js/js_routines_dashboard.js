@@ -487,8 +487,7 @@ function display_position_on_chart(position_uuid){
 
 
 function execute_order(order_uuid){
-    activate_busy_mode();
-    console.log(`executing order uuid: ${order_uuid}`);
+
     ajax_call('execute_order', {'order_uuid': order_uuid})
 
 }
@@ -496,8 +495,8 @@ function execute_order(order_uuid){
 
 
 function exit_position(position_uuid){
-    activate_busy_mode();
-    console.log(`exiting position position uuid: ${position_uuid}`);
+
+    
     ajax_call('exit_position', {'position_uuid': position_uuid})
 }
 

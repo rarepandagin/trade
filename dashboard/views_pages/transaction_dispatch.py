@@ -214,3 +214,39 @@ def create_and_actualize_arbi_withdraw_transaction():
 
     return perform_transaction_actualization(transaction)
 
+
+def create_and_actualize_arbi_wrap_eth(eth_amount_to_wrap):
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_wrap_eth,
+        token_amount_spent=eth_amount_to_wrap,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+
+def create_and_actualize_arbi_unwrap_weth(eth_amount_to_wrap):
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_unwrap_weth,
+        token_amount_spent=eth_amount_to_wrap,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+def create_and_actualize_arbi_single_swap():
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=models_transaction.weth,
+        transaction_type=models_transaction.arbi_single_swap,
+    )
+
+    return perform_transaction_actualization(transaction)
+
