@@ -1,15 +1,9 @@
 
 import os
-from dashboard import models
 import dashboard.views_pages.toolkit as tk
-import csv
 from dashboard.models import models_tick
-from tqdm import tqdm
 import pandas as pd
 
-from django.db.models import Count, Sum
-from django.db.models.functions import TruncHour
-from datetime import datetime
 
 import numpy as np
 
