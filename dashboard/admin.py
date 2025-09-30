@@ -10,7 +10,7 @@ admin.site.register(AdminSettings)
 # admin.site.register(Tick)
 admin.site.register(Pair)
 admin.site.register(Alert)
-admin.site.register(Price)
+# admin.site.register(Price)
 
 
 
