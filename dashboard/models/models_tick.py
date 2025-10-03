@@ -10,8 +10,13 @@ class Tick(models.Model):
 
     price = models.FloatField(default=0)
 
-    indicator_ema_minutely  = models.FloatField(default=0)
-    indicator_ema_hourly    = models.FloatField(default=0)
+    indicator_ema_minutely_20   = models.FloatField(default=0)
+    indicator_ema_minutely_50   = models.FloatField(default=0)
+    indicator_ema_minutely_200  = models.FloatField(default=0)
+
+    indicator_ema_hourly_20     = models.FloatField(default=0)
+    indicator_ema_hourly_50     = models.FloatField(default=0)
+    indicator_ema_hourly_200    = models.FloatField(default=0)
 
 
 

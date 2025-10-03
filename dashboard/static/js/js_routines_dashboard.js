@@ -304,6 +304,10 @@ function update_positions_table(payload){
     $("#gas_update_epoch").html(delta_time_gas_update_html);
 
 
+    $("#fiat_to_coin_slippage").html(payload.admin_settings.added_slippage_multiplier_fiat_to_coin);
+    $("#coin_to_fiat_slippage").html(payload.admin_settings.added_slippage_multiplier_coin_to_fiat);
+
+
 
 
 

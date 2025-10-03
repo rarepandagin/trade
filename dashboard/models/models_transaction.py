@@ -168,7 +168,7 @@ class Transaction(models.Model):
                     admin_settings.save()
 
 
-                    uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
+                    # uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
 
                     got_token, token_bought, tx_hash, token_price, tx_fee, version = uniswap.fiat_to_token(
                             fiat_amount=self.fiat_amount_spent,
@@ -200,7 +200,7 @@ class Transaction(models.Model):
                     admin_settings.gas_speed = models_adminsettings.FastGasPrice
                     admin_settings.save()
 
-                    uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=self.token_amount_spent)
+                    # uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=self.token_amount_spent)
 
                     got_fiat, fiat_bought, tx_hash, token_price, tx_fee, version = uniswap.token_to_fiat(
                         token_amount=self.token_amount_spent,

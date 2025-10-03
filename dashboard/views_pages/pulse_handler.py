@@ -17,8 +17,21 @@ def handle_a_pulse(request):
         payload = json.loads(request.body.decode('utf-8'))
 
         assert payload.get('key', '') == 'XiKd2uXZuT5vBU5mr2Qi'
+        # tk.logger.info(payload)
 
         admin_settings = tk.get_admin_settings()
+        
+        admin_settings.gas = json.loads(payload['gas']['price'])
+        admin_settings.gas_update_epoch = payload['gas']['epoch']
+
+        admin_settings.prices = json.loads(payload['price']['price'])
+        admin_settings.prices_update_epoch = payload['price']['epoch']
+
+
+        admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
+        admin_settings.added_slippage_multiplier_coin_to_fiat = json.loads(payload['quote']['quote'])['coin_to_fiat']
+
+        admin_settings.save()
 
         if admin_settings.pulses_are_being_blocked:
             tk.logger.info(f'--------> XXxXX pulses are being blocked.')

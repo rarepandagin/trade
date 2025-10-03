@@ -33,32 +33,109 @@
             
             const traceA = {
                     // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch_seconds,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
                     y: returned_payload.price,
+                    name:'Price',
                     type: 'scatter',
                     mode: 'lines',
                     line: {
                         color: 'rgba(4, 0, 255, 1)',
-                        width: 0.5,
+                        width: 0.4,
                     },
                 };
 
-            const traceB = {
+            // const traceB = {
+            //         // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         y: returned_payload.indicator_ema_60_200,
+            //         name:'EMA 60, 200',
+
+            //         type: 'scatter',
+            //         mode: 'lines',
+            //         line: {
+            //             width: 0.8,
+            //         },
+            //     };
+
+            // const traceC = {
+            //         // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         y: returned_payload.indicator_macd_60,
+            //         name:'MACD 60',
+
+            //         type: 'scatter',
+            //         mode: 'lines',
+            //         line: {
+            //             width: 0.8,
+            //             color: 'blue',
+            //         },
+            //         xaxis: 'x2', yaxis: 'y2' 
+            //     };
+
+            // const traceD = {
+            //         // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         y: returned_payload.indicator_macd_signal_60,
+            //         name:'MACD Signal 60',
+
+            //         type: 'scatter',
+            //         mode: 'lines',
+            //         line: {
+            //             width: 0.8,
+            //             color: 'red',
+            //         },
+            //         xaxis: 'x2', yaxis: 'y2' 
+            //     };
+
+            // const traceE = {
+            //         // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+            //         y: returned_payload.indicator_macd_histogram_60,
+            //         name:'MACD Histogram 60',
+
+            //         type: 'scatter',
+            //         mode: 'lines',
+            //         line: {
+            //             width: 0.8,
+            //         },
+            //         xaxis: 'x2', yaxis: 'y2' 
+            //     };
+
+            const traceF = {
                     // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch_minutes,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    y: returned_payload.minutely_ema,
+                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
+                    y: returned_payload.indicator_rsi_60,
+                    name:'RSI 60',
+
                     type: 'scatter',
                     mode: 'lines',
                     line: {
-                        width: 0.5,
+                        width: 0.8,
                     },
+                    xaxis: 'x2', yaxis: 'y2' 
                 };
 
-            const data = [traceA, traceB];
+            const data = [
+                traceA,
+                // traceB,
+                // traceC,
+                // traceD,
+                // traceE,
+                traceF,
+            ];
 
             const layout = {
                 height: 800,
-                width: 1500,
+                width: 1400,
+
+                grid: {
+                    rows: 2,
+                    columns: 1,
+                    pattern: 'independent',
+                    shared_xaxes: true
+                },
+                yaxis: { title: 'Top Subplot Y-Axis' },
+                yaxis2: { title: 'Bottom Subplot Y-Axis' }
             };
 
             Plotly.newPlot('bot_price_plot', data, layout);   

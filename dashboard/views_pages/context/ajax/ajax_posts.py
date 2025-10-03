@@ -63,17 +63,17 @@ def handle_ajax_posts(self, request):
 
 
 
-        elif  request.POST['req'] == 'update_both_way_quotes':
-            from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
+        # elif  request.POST['req'] == 'update_both_way_quotes':
+        #     from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
 
-            uniswap = Uniswap()
-            fiat_amount_in = payload['fiat_amount_in']
-            uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=fiat_amount_in)
+        #     uniswap = Uniswap()
+        #     fiat_amount_in = payload['fiat_amount_in']
+        #     uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=fiat_amount_in)
 
-            admin_settings = tk.get_admin_settings()
+        #     admin_settings = tk.get_admin_settings()
 
-            coin_amount_in = payload['fiat_amount_in'] / admin_settings.prices['weth']
-            uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=coin_amount_in)
+        #     coin_amount_in = payload['fiat_amount_in'] / admin_settings.prices['weth']
+        #     uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=coin_amount_in)
 
 
 

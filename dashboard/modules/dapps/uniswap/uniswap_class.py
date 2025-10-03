@@ -233,117 +233,117 @@ class Uniswap(Dapp):
 
 
 
-    def v3_quote(self, token_in_name, token_out_name, amount_in, fee):
-        """
-        quoteExactInputSingle
+    # def v3_quote(self, token_in_name, token_out_name, amount_in, fee):
+    #     """
+    #     quoteExactInputSingle
 
-        tokenIn	:	The token being swapped in
-        tokenOut	:	The token being swapped out
-        fee	:	The fee of the token pool to consider for the pair
-        amountIn	:	The desired input amount
-        sqrtPriceLimitX96	:	The price limit of the pool that cannot be exceeded by the swap
+    #     tokenIn	:	The token being swapped in
+    #     tokenOut	:	The token being swapped out
+    #     fee	:	The fee of the token pool to consider for the pair
+    #     amountIn	:	The desired input amount
+    #     sqrtPriceLimitX96	:	The price limit of the pool that cannot be exceeded by the swap
 
-        returns: amountOut:	The amount of tokenOut that would be received
-        """
-        tk.logger.info(f'performing V3 Quote')
+    #     returns: amountOut:	The amount of tokenOut that would be received
+    #     """
+    #     tk.logger.info(f'performing V3 Quote')
 
-        token_in = self.get_token_object(token_in_name)
-        token_out = self.get_token_object(token_out_name)
+    #     token_in = self.get_token_object(token_in_name)
+    #     token_out = self.get_token_object(token_out_name)
 
-        amountIn = int(amount_in * pow(10, token_in.decimals))
+    #     amountIn = int(amount_in * pow(10, token_in.decimals))
 
-        sqrtPriceLimitX96 = 0
+    #     sqrtPriceLimitX96 = 0
 
-        quote = self.uniswap_quoter.functions.quoteExactInputSingle(
-            token_in.address,
-            token_out.address,
-            fee,
-            amountIn,
-            sqrtPriceLimitX96
-        ).call()
+    #     quote = self.uniswap_quoter.functions.quoteExactInputSingle(
+    #         token_in.address,
+    #         token_out.address,
+    #         fee,
+    #         amountIn,
+    #         sqrtPriceLimitX96
+    #     ).call()
 
-        quote =  quote / pow(10, token_out.decimals)
-        tk.logger.info(f'quote: {quote}')
+    #     quote =  quote / pow(10, token_out.decimals)
+    #     tk.logger.info(f'quote: {quote}')
 
-        return quote
-
-
-
-    def create_new_quote_and_save_to_db(
-            self,
-            fiat_to_coin=True,
-            fiat_amount_in=0.0,
-            coin_amount_in=0.0,
-            calls=3,
-            fee=500
-        ):
-
-        admin_settings = tk.get_admin_settings()
-
-        def trim_slippage(slippage, safty_margin):
-
-
-            slippage_to_fee = int(slippage * 1_000_000) / fee
-            slippage_to_fee = max(slippage_to_fee, 1.0)
-            slippage_to_fee = min(slippage_to_fee, 5.0)
-
-            slippage_to_fee += safty_margin
-
-            return round(slippage_to_fee, 4)
+    #     return quote
 
 
 
-        if fiat_to_coin:
+    # def create_new_quote_and_save_to_db(
+    #         self,
+    #         fiat_to_coin=True,
+    #         fiat_amount_in=0.0,
+    #         coin_amount_in=0.0,
+    #         calls=3,
+    #         fee=500
+    #     ):
 
-            quoted_coin_amounts = []
+    #     admin_settings = tk.get_admin_settings()
+
+    #     def trim_slippage(slippage, safty_margin):
+
+
+    #         slippage_to_fee = int(slippage * 1_000_000) / fee
+    #         slippage_to_fee = max(slippage_to_fee, 1.0)
+    #         slippage_to_fee = min(slippage_to_fee, 5.0)
+
+    #         slippage_to_fee += safty_margin
+
+    #         return round(slippage_to_fee, 4)
+
+
+
+    #     if fiat_to_coin:
+
+    #         quoted_coin_amounts = []
             
-            for i in range(calls):
-                quoted_coin_amounts.append(
-                    self.v3_quote(
-                        token_in_name=admin_settings.fiat_coin,
-                        token_out_name='weth',
-                        amount_in=fiat_amount_in,
-                        fee=fee,
-                    )
-                )
+    #         for i in range(calls):
+    #             quoted_coin_amounts.append(
+    #                 self.v3_quote(
+    #                     token_in_name=admin_settings.fiat_coin,
+    #                     token_out_name='weth',
+    #                     amount_in=fiat_amount_in,
+    #                     fee=fee,
+    #                 )
+    #             )
 
-            quoted_coin_amount = min(quoted_coin_amounts)
+    #         quoted_coin_amount = min(quoted_coin_amounts)
 
-            expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
+    #         expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
 
-            slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
+    #         slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
-            slippage_to_fee = trim_slippage(slippage, 0.3)
-            admin_settings.added_slippage_multiplier_fiat_to_coin = slippage_to_fee
-            admin_settings.save()
-            tk.logger.info(f"slippage_to_fee: {slippage}")
-            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
+    #         slippage_to_fee = trim_slippage(slippage, 0.3)
+    #         admin_settings.added_slippage_multiplier_fiat_to_coin = slippage_to_fee
+    #         admin_settings.save()
+    #         tk.logger.info(f"slippage_to_fee: {slippage}")
+    #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
 
-        else:
+    #     else:
 
 
-            quoted_fiat_amounts = []
+    #         quoted_fiat_amounts = []
             
-            for i in range(calls):
-                quoted_fiat_amounts.append(
-                    self.v3_quote(
-                        token_in_name='weth',
-                        token_out_name=admin_settings.fiat_coin,
-                        amount_in=coin_amount_in,
-                        fee=fee,
-                    )
-                )
+    #         for i in range(calls):
+    #             quoted_fiat_amounts.append(
+    #                 self.v3_quote(
+    #                     token_in_name='weth',
+    #                     token_out_name=admin_settings.fiat_coin,
+    #                     amount_in=coin_amount_in,
+    #                     fee=fee,
+    #                 )
+    #             )
 
-            quoted_fiat_amount = min(quoted_fiat_amounts)
-            expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
-            slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
+    #         quoted_fiat_amount = min(quoted_fiat_amounts)
+    #         expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
+    #         slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
-            slippage_to_fee = trim_slippage(slippage, 0.15)
-            admin_settings.added_slippage_multiplier_coin_to_fiat = slippage_to_fee
-            admin_settings.save()
+    #         slippage_to_fee = trim_slippage(slippage, 0.15)
+    #         admin_settings.added_slippage_multiplier_coin_to_fiat = slippage_to_fee
+    #         admin_settings.save()
 
-            tk.logger.info(f"slippage_to_fee: {slippage}")
-            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
+    #         tk.logger.info(f"slippage_to_fee: {slippage}")
+    #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
 
 
 
