@@ -1,0 +1,316 @@
+2025-10-03 07:40:16.276706 - initiating uniswap W3...
+2025-10-03 07:40:16.306708 - uniswap fully initiated
+2025-10-03 07:40:16.310708 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1.0     V3
+2025-10-03 07:40:16.313709 - <-> swapping 1.0 usdc for 0.00022083927759055513 weth -- fee_tier: 500
+2025-10-03 07:40:16.322707 - building tx for action: exactInputSingle
+2025-10-03 07:40:17.900228 - waiting for https://etherscan.io/tx/0x1305af9f18a9a92edca11a736d40ac0e9c6d785a46a8d42e352b9e5aa308efc6 
+
+2025-10-03 07:40:26.150873 - ---------------> successful
+2025-10-03 07:40:26.152881 - V3: got_weth: 0.000220725977055838
+2025-10-03 07:40:55.897316 - initiating uniswap W3...
+2025-10-03 07:40:55.924999 - uniswap fully initiated
+2025-10-03 07:40:55.927999 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1.0     V3
+2025-10-03 07:40:55.929999 - <-> swapping 1.0 usdc for 0.00022083391302235502 weth -- fee_tier: 500
+2025-10-03 07:40:55.931002 - building tx for action: exactInputSingle
+2025-10-03 07:40:57.046485 - waiting for https://etherscan.io/tx/0xb46ac39d8e40ae5f8de0a14730ccb943de3cbcc6ed9256276d3a4233b01c89f0 
+
+2025-10-03 07:41:14.951306 - ---------------> successful
+2025-10-03 07:41:14.955256 - V3: got_weth: 0.000220725973682492
+2025-10-03 07:41:22.955892 - initiating uniswap W3...
+2025-10-03 07:41:22.980606 - uniswap fully initiated
+2025-10-03 07:41:22.983607 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1.0     V3
+2025-10-03 07:41:22.985250 - <-> swapping 1.0 usdc for 0.00022085390955590696 weth -- fee_tier: 500
+2025-10-03 07:41:22.987256 - building tx for action: exactInputSingle
+2025-10-03 07:41:24.323079 - waiting for https://etherscan.io/tx/0x779b998153a6a5371d9833aca3f73864f7f1419f04163c6cbe1dc5bd91fc06c5 
+
+2025-10-03 07:41:37.297276 - ---------------> successful
+2025-10-03 07:41:37.298277 - V3: got_weth: 0.000220725970309146
+2025-10-03 07:42:13.821736 - initiating uniswap W3...
+2025-10-03 07:42:13.849814 - uniswap fully initiated
+2025-10-03 07:42:13.852813 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1.0     V3
+2025-10-03 07:42:13.853815 - <-> swapping 1.0 usdc for 0.0002208007560217886 weth -- fee_tier: 500
+2025-10-03 07:42:13.856811 - building tx for action: exactInputSingle
+2025-10-03 07:42:15.081346 - waiting for https://etherscan.io/tx/0xe33d7c07aeeef0d95ca5d47ddc9589e7e0a66e107fa4c7a55f662b70b389814e 
+
+2025-10-03 07:42:26.252797 - ---------------> successful
+2025-10-03 07:42:26.254795 - V3: got_weth: 0.0002207259669358
+2025-10-03 07:42:38.921675 - initiating uniswap W3...
+2025-10-03 07:42:38.953708 - uniswap fully initiated
+2025-10-03 07:42:38.956673 - performing token_to_fiat: 0.0002207259669358 of weth -> usdc
+2025-10-03 07:42:38.958675 - V3 got_weth: 0.0002207259669358
+2025-10-03 07:42:38.959690 - <-> swapping 0.0002207259669358 weth for 0.9993787532355521 usdc -- fee_tier: 500
+2025-10-03 07:42:38.963674 - building tx for action: exactInputSingle
+2025-10-03 07:42:40.236461 - waiting for https://etherscan.io/tx/0x1a88c32b318831d8c29d46f42b86359b8f132d491017a6437d5806414e14873a 
+
+2025-10-03 07:42:50.496134 - ---------------> successful
+2025-10-03 14:48:56.038768 - initiating sushiswap W3...
+2025-10-03 14:50:06.361294 - initiating sushiswap W3...
+2025-10-03 14:51:37.350336 - initiating sushiswap W3...
+2025-10-03 14:52:41.275652 - initiating sushiswap W3...
+2025-10-03 14:53:21.880574 - initiating sushiswap W3...
+2025-10-03 14:53:55.971719 - initiating sushiswap W3...
+2025-10-03 14:54:27.834170 - initiating sushiswap W3...
+2025-10-03 14:55:17.705379 - initiating sushiswap W3...
+2025-10-03 14:55:46.694904 - initiating sushiswap W3...
+2025-10-03 14:55:46.745966 - sushiswap fully initiated
+2025-10-03 14:58:17.764469 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 15:04:42.502657 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 31, in handle_a_pulse
+    admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
+                                                                       ~~~~~~~^^^^^^^^^
+KeyError: 'quote'
+
+2025-10-03 15:04:46.594870 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 31, in handle_a_pulse
+    admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
+                                                                       ~~~~~~~^^^^^^^^^
+KeyError: 'quote'
+
+2025-10-03 15:04:50.688684 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 31, in handle_a_pulse
+    admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
+                                                                       ~~~~~~~^^^^^^^^^
+KeyError: 'quote'
+
+2025-10-03 15:06:10.225992 - initiating sushiswap W3...
+2025-10-03 15:06:10.273632 - sushiswap fully initiated
+2025-10-03 15:06:18.203474 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 15:07:31.022416 - <-> swapping 1 usdc for 0.0002227791701475912 weth -- fee_tier: 500
+2025-10-03 15:07:31.081130 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 453, in swap
+    action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 507, in exactInputSingle
+    action = self.v3_swap_router_contract.functions.exactInputSingle((tokenIn,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Sushiswap' object has no attribute 'v3_swap_router_contract'
+
+2025-10-03 15:07:31.083323 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 15:07:31.084325 - <-> swapping 1 usdc for 0.0002227791701475912 weth -- fee_tier: 500
+2025-10-03 15:07:31.087830 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 453, in swap
+    action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 507, in exactInputSingle
+    action = self.v3_swap_router_contract.functions.exactInputSingle((tokenIn,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Sushiswap' object has no attribute 'v3_swap_router_contract'
+
+2025-10-03 15:13:02.398848 - initiating sushiswap W3...
+2025-10-03 15:13:02.450693 - sushiswap fully initiated
+2025-10-03 15:13:08.314598 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 15:13:29.030622 - <-> swapping 1 usdc for 0.00022315600613232706 weth -- fee_tier: 500
+2025-10-03 15:44:27.744119 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 450, in swap
+    action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 505, in snwap_action
+    action = self.red_snwapper.contract.functions.snwap(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\contract.py", line 260, in __call__
+    clone._set_function_info()
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\base_contract.py", line 476, in _set_function_info
+    self.abi = find_matching_fn_abi(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\_utils\contracts.py", line 208, in find_matching_fn_abi
+    raise Web3ValidationError(message)
+web3.exceptions.Web3ValidationError: 
+Could not identify the intended function with name `snwap`, positional arguments with type(s) `address,int,address,address,int,str,str` and keyword arguments with type(s) `{}`.
+Found 1 function(s) with the name `snwap`: ['snwap(address,uint256,address,address,uint256,address,bytes)']
+Function invocation failed due to no matching argument types.
+
+2025-10-03 15:44:27.750302 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 15:44:27.755335 - <-> swapping 1 usdc for 0.00022315600613232706 weth -- fee_tier: 500
+2025-10-03 15:44:27.769332 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 450, in swap
+    action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 505, in snwap_action
+    action = self.red_snwapper.contract.functions.snwap(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\contract.py", line 260, in __call__
+    clone._set_function_info()
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\base_contract.py", line 476, in _set_function_info
+    self.abi = find_matching_fn_abi(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\_utils\contracts.py", line 208, in find_matching_fn_abi
+    raise Web3ValidationError(message)
+web3.exceptions.Web3ValidationError: 
+Could not identify the intended function with name `snwap`, positional arguments with type(s) `address,int,address,address,int,str,str` and keyword arguments with type(s) `{}`.
+Found 1 function(s) with the name `snwap`: ['snwap(address,uint256,address,address,uint256,address,bytes)']
+Function invocation failed due to no matching argument types.
+
+2025-10-03 15:44:38.613592 - --------> XXxXX pulses are being blocked.
+2025-10-03 15:44:38.618395 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\views_pages\pulse_handler.py", line 38, in handle_a_pulse
+    raise
+RuntimeError: No active exception to reraise
+
+2025-10-03 15:44:56.789444 - initiating uniswap W3...
+2025-10-03 15:44:56.822076 - uniswap fully initiated
+2025-10-03 15:44:56.824076 - building tx for action: withdraw
+2025-10-03 15:44:58.109194 - waiting for https://etherscan.io/tx/0x2f70c8adebbbe5679f7dde366a2796ef1c093b0df3398b2cc42a0c294a513d9f 
+
+2025-10-03 15:45:14.771620 - ---------------> successful
+2025-10-03 15:45:53.845953 - initiating uniswap W3...
+2025-10-03 15:45:53.877570 - uniswap fully initiated
+2025-10-03 15:45:53.878575 - building tx for action: withdraw
+2025-10-03 15:45:55.025418 - waiting for https://etherscan.io/tx/0x99ecb9e4b1b9a47f8b46b3815a63f96b65122f43e72d522c079e6f47af061c87 
+
+2025-10-03 15:46:02.144247 - ---------------> successful
+2025-10-03 15:50:14.380228 - initiating uniswap W3...
+2025-10-03 15:50:14.410520 - uniswap fully initiated
+2025-10-03 15:50:14.411520 - check_balance...
+2025-10-03 15:50:14.412951 - eth_balance...
+2025-10-03 15:50:15.336316 - weth_balance...
+2025-10-03 15:50:15.682653 - usdc_balance...
+2025-10-03 15:56:37.161817 - initiating uniswap W3...
+2025-10-03 15:56:37.198551 - uniswap fully initiated
+2025-10-03 15:56:37.199514 - check_balance...
+2025-10-03 15:56:37.201549 - eth_balance...
+2025-10-03 15:56:38.282592 - weth_balance...
+2025-10-03 15:56:38.610869 - usdc_balance...
+2025-10-03 16:12:31.714678 - initiating sushiswap W3...
+2025-10-03 16:12:31.758169 - sushiswap fully initiated
+2025-10-03 16:12:31.760529 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:12:39.220303 - <-> swapping 1 usdc for 0.0002229962670424897 weth -- fee_tier: 500
+2025-10-03 16:12:52.287175 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 450, in swap
+    action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 505, in snwap_action
+    action = self.red_snwapper.contract.functions.snwap(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\contract.py", line 260, in __call__
+    clone._set_function_info()
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\base_contract.py", line 476, in _set_function_info
+    self.abi = find_matching_fn_abi(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\_utils\contracts.py", line 208, in find_matching_fn_abi
+    raise Web3ValidationError(message)
+web3.exceptions.Web3ValidationError: 
+Could not identify the intended function with name `snwap`, positional arguments with type(s) `address,int,address,address,int,str,str` and keyword arguments with type(s) `{}`.
+Found 1 function(s) with the name `snwap`: ['snwap(address,uint256,address,address,uint256,address,bytes)']
+Function invocation failed due to no matching argument types.
+
+2025-10-03 16:12:52.290230 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:12:53.308440 - <-> swapping 1 usdc for 0.0002229962670424897 weth -- fee_tier: 500
+2025-10-03 16:13:57.690115 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 450, in swap
+    action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 505, in snwap_action
+    action = self.red_snwapper.contract.functions.snwap(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\contract.py", line 260, in __call__
+    clone._set_function_info()
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\base_contract.py", line 476, in _set_function_info
+    self.abi = find_matching_fn_abi(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\_utils\contracts.py", line 208, in find_matching_fn_abi
+    raise Web3ValidationError(message)
+web3.exceptions.Web3ValidationError: 
+Could not identify the intended function with name `snwap`, positional arguments with type(s) `address,int,address,address,int,str,str` and keyword arguments with type(s) `{}`.
+Found 1 function(s) with the name `snwap`: ['snwap(address,uint256,address,address,uint256,address,bytes)']
+Function invocation failed due to no matching argument types.
+
+2025-10-03 16:14:30.811809 - initiating sushiswap W3...
+2025-10-03 16:14:30.854948 - sushiswap fully initiated
+2025-10-03 16:14:30.857945 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:14:33.524113 - <-> swapping 1 usdc for 0.00022293561619404314 weth -- fee_tier: 500
+2025-10-03 16:14:38.292550 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 450, in swap
+    action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 505, in snwap_action
+    action = self.red_snwapper.contract.functions.snwap(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\contract.py", line 260, in __call__
+    clone._set_function_info()
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\base_contract.py", line 476, in _set_function_info
+    self.abi = find_matching_fn_abi(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\_utils\contracts.py", line 208, in find_matching_fn_abi
+    raise Web3ValidationError(message)
+web3.exceptions.Web3ValidationError: 
+Could not identify the intended function with name `snwap`, positional arguments with type(s) `address,int,address,address,int,str,bytes` and keyword arguments with type(s) `{}`.
+Found 1 function(s) with the name `snwap`: ['snwap(address,uint256,address,address,uint256,address,bytes)']
+Function invocation failed due to no matching argument types.
+
+2025-10-03 16:14:38.295550 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:14:41.098046 - <-> swapping 1 usdc for 0.00022293561619404314 weth -- fee_tier: 500
+2025-10-03 16:15:35.807324 - Traceback (most recent call last):
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 450, in swap
+    action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\trade\dashboard\modules\dapps\sushiswap\sushiswap_class.py", line 505, in snwap_action
+    action = self.red_snwapper.contract.functions.snwap(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\contract.py", line 260, in __call__
+    clone._set_function_info()
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\contract\base_contract.py", line 476, in _set_function_info
+    self.abi = find_matching_fn_abi(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\user\Desktop\p312\Lib\site-packages\web3\_utils\contracts.py", line 208, in find_matching_fn_abi
+    raise Web3ValidationError(message)
+web3.exceptions.Web3ValidationError: 
+Could not identify the intended function with name `snwap`, positional arguments with type(s) `address,int,address,address,int,str,bytes` and keyword arguments with type(s) `{}`.
+Found 1 function(s) with the name `snwap`: ['snwap(address,uint256,address,address,uint256,address,bytes)']
+Function invocation failed due to no matching argument types.
+
+2025-10-03 16:15:52.463147 - initiating sushiswap W3...
+2025-10-03 16:15:52.505374 - sushiswap fully initiated
+2025-10-03 16:15:52.508374 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:15:55.762176 - <-> swapping 1 usdc for 0.0002229689203621907 weth -- fee_tier: 500
+2025-10-03 16:16:08.874876 - building tx for action: snwap
+2025-10-03 16:16:10.526534 - waiting for https://etherscan.io/tx/0x165025e0e8d4c8b490b778fd4672158f4a8450fe91c2c48b941c86f349519f04 
+
+2025-10-03 16:16:49.589873 - -------------> failed
+2025-10-03 16:19:56.970334 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:19:57.042814 - <-> swapping 1 usdc for 0.0002229689203621907 weth -- fee_tier: 500
+2025-10-03 16:19:57.054512 - building tx for action: snwap
+2025-10-03 16:19:58.852602 - waiting for https://etherscan.io/tx/0xbba281c9d961af6bf82f0b00699eb7d6c687a8b27265eeec13b86f57bce314db 
+
+2025-10-03 16:21:29.466403 - initiating sushiswap W3...
+2025-10-03 16:21:29.507188 - sushiswap fully initiated
+2025-10-03 16:21:36.316314 - building tx for action: approve
+2025-10-03 16:21:38.053805 - waiting for https://etherscan.io/tx/0xdf7b044f4553f494490dccfa141def15fb3dbcc7c1a95333b39e1069e99107fe 
+
+2025-10-03 16:21:48.983484 - ---------------> successful
+2025-10-03 16:21:51.283385 - building tx for action: approve
+2025-10-03 16:21:52.131243 - waiting for https://etherscan.io/tx/0x4611a1913de9d6512b02f21b53c23f36efb92f603ebfab4de07de200aecdad7e 
+
+2025-10-03 16:22:13.519545 - ---------------> successful
+2025-10-03 16:22:19.832761 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:22:29.053178 - <-> swapping 1 usdc for 0.00022328555766684457 weth -- fee_tier: 500
+2025-10-03 16:22:35.475920 - building tx for action: snwap
+2025-10-03 16:22:36.390477 - waiting for https://etherscan.io/tx/0xe5340e792529c1454d02119df984a0b1fbfe8b1458af61f710c875a743915e58 
+
+2025-10-03 16:23:13.349331 - -------------> failed
+2025-10-03 16:23:13.352850 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:23:13.354847 - <-> swapping 1 usdc for 0.00022328555766684457 weth -- fee_tier: 500
+2025-10-03 16:29:44.963650 - initiating sushiswap W3...
+2025-10-03 16:29:44.996133 - sushiswap fully initiated
+2025-10-03 16:29:44.998135 - building tx for action: approve
+2025-10-03 16:29:46.465792 - waiting for https://etherscan.io/tx/0xe3436d61b2912bd87da6db859528f461ac7d595547ed5efdb8961c57e3c807b4 
+
+2025-10-03 16:30:33.942123 - initiating sushiswap W3...
+2025-10-03 16:30:33.974184 - sushiswap fully initiated
+2025-10-03 16:30:33.976186 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:30:33.977198 - <-> swapping 1 usdc for 0.00022310721417177027 weth -- fee_tier: 500
+2025-10-03 16:30:33.979188 - building tx for action: snwap
+2025-10-03 16:30:35.169378 - waiting for https://etherscan.io/tx/0xb9169ff4e163bb27ac20a8ef3503e58445f5fab9a93d66ceae1f5160d90fe61b 
+
+2025-10-03 16:30:49.187292 - -------------> failed
+2025-10-03 16:31:53.176519 - initiating sushiswap W3...
+2025-10-03 16:31:53.290229 - sushiswap fully initiated
+2025-10-03 16:32:06.586783 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:32:06.590296 - <-> swapping 1 usdc for 0.00022257834757834758 weth -- fee_tier: 500
+2025-10-03 16:48:42.732292 - initiating sushiswap W3...
+2025-10-03 16:48:42.763697 - sushiswap fully initiated
+2025-10-03 16:48:42.765685 - performing fiat_to_token (usdc -> weth)     fiat_amount: 1     V3
+2025-10-03 16:48:42.767190 - <-> swapping 1 usdc for 0.00022300621295309286 weth -- fee_tier: 500
+2025-10-03 16:48:42.768714 - building tx for action: snwap
+2025-10-03 16:48:44.185165 - waiting for https://etherscan.io/tx/0x5fb5867893598c73b92bde99973d517504f7eeec6963f0d77cea7e317ef049fd 
+
+2025-10-03 16:49:25.132761 - -------------> failed

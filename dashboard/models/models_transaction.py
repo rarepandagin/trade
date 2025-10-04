@@ -4,6 +4,7 @@ from dashboard.views_pages import toolkit as tk
 
 from dashboard.models import models_adminsettings, models_order
 from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
+from dashboard.modules.dapps.sushiswap.sushiswap_class import Sushiswap
 from dashboard.modules.dapps.aave.aave_class import Aave
 from dashboard.modules.dapps.arbi.arbi_class import Arbi
 
@@ -26,6 +27,11 @@ uniswap_token_to_fiat = "uniswap_token_to_fiat"
 uniswap_fiat_to_token = "uniswap_fiat_to_token"
 uniswap_wrap_eth = "uniswap_wrap_eth"
 uniswap_unwrap_weth = "uniswap_unwrap_weth"
+
+# Sushiswap
+sushiswap_token_to_fiat = "sushiswap_token_to_fiat"
+sushiswap_fiat_to_token = "sushiswap_fiat_to_token"
+
 
 # Aave
 aave_approve = "aave_approve"
@@ -53,6 +59,9 @@ transaction_types = {
     uniswap_wrap_eth : "uniswap_wrap_eth",
     uniswap_unwrap_weth : "uniswap_unwrap_weth",
 
+    sushiswap_token_to_fiat : "sushiswap_token_to_fiat",
+    sushiswap_fiat_to_token : "sushiswap_fiat_to_token",
+
     aave_approve : "aave_approve",
     aave_supply : "aave_supply",
     aave_withdraw : "aave_withdraw",
@@ -79,7 +88,6 @@ class Transaction(models.Model):
 
     transaction_type    = models.CharField(choices=transaction_types,   default=uniswap_token_to_fiat)
     state               = models.CharField(choices=transaction_states,  default=transaction_state_ongoing)
-    uniswap_version     = models.TextField(default="", blank=True, null=True)
     
     order = models.ForeignKey(models_order.Order, on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -142,7 +150,8 @@ class Transaction(models.Model):
         gas_price_is_acceptable = admin_settings.gas['gas_basic_price'] < admin_settings.max_sane_gas_price
         gas_price_is_recent = tk.get_epoch_now() - admin_settings.gas_update_epoch < admin_settings.gas_update_epoch_max_allowed_delay_seconds
 
-        if not (gas_price_is_acceptable and gas_price_is_recent):
+        # if not (gas_price_is_acceptable and gas_price_is_recent):
+        if False:
             self.state = transaction_state_failed
             tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'gas price is too expensive or outdated. aborting the tx.', 'color': 'red'})
 
@@ -170,7 +179,7 @@ class Transaction(models.Model):
 
                     # uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
 
-                    got_token, token_bought, tx_hash, token_price, tx_fee, version = uniswap.fiat_to_token(
+                    got_token, token_bought, tx_hash, token_price, tx_fee = uniswap.fiat_to_token(
                             fiat_amount=self.fiat_amount_spent,
                             token=self.coin,
                             tries=admin_settings.tx_tries,
@@ -185,7 +194,6 @@ class Transaction(models.Model):
 
                         self.token_amount_received = token_bought
                         # self.hash = tx_hash
-                        self.uniswap_version = version
                         self.token_nominal_price = token_price
                         self.token_effective_price = self.fiat_amount_spent / self.token_amount_received
                         self.slippage = slippage
@@ -202,7 +210,7 @@ class Transaction(models.Model):
 
                     # uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=self.token_amount_spent)
 
-                    got_fiat, fiat_bought, tx_hash, token_price, tx_fee, version = uniswap.token_to_fiat(
+                    got_fiat, fiat_bought, tx_hash, token_price, tx_fee = uniswap.token_to_fiat(
                         token_amount=self.token_amount_spent,
                         token=self.coin,
                         tries=admin_settings.tx_tries,
@@ -217,7 +225,6 @@ class Transaction(models.Model):
 
                         self.fiat_amount_received = fiat_bought
                         # self.hash = tx_hash
-                        self.uniswap_version = version
                         self.token_nominal_price = token_price
                         self.token_effective_price = self.fiat_amount_received / self.token_amount_spent
                         self.slippage = slippage
@@ -240,6 +247,23 @@ class Transaction(models.Model):
                         self.state = transaction_state_successful
                     else:
                         self.state = transaction_state_failed
+
+
+            elif 'sushiswap_' in str(self.transaction_type):
+                sushiswap = Sushiswap()
+
+                if self.transaction_type == sushiswap_fiat_to_token:
+                    got_token, token_bought, tx_hash, token_price, tx_fee = sushiswap.fiat_to_token(
+                            fiat_amount=self.fiat_amount_spent,
+                            token=self.coin,
+                            tries=admin_settings.tx_tries,
+                            transaction_object=self,
+                        )
+
+
+                if self.transaction_type == sushiswap_token_to_fiat:
+                    pass
+
 
 
             elif 'aave_' in str(self.transaction_type):

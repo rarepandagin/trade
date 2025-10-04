@@ -9,24 +9,16 @@
  
 
     <h3 class="">Arbi</h3>
-
-    <div class="d-flex justify-content-start gap-5 border rounded mb-5">
+    <div class="d-flex justify-content-start gap-5 border rounded mb-5"   hidden>
 
         <div>
-
-            
-
             <button type="button" onclick="arbi_balance();" class="btn btn-primary btn-sm m-1">Balance</button>
             <button type="button" onclick="arbi_deposit();" class="btn btn-primary btn-sm m-1">Deposit</button>
             <button type="button" onclick="arbi_withdraw();" class="btn btn-primary btn-sm m-1">Withdraw</button>
-
-
         </div>
 
 
         <div>
-            
-
 
                 <div class="d-flex justify-content-start">
                     
@@ -35,20 +27,12 @@
                     <button type="button" class="btn btn-primary btn-sm m-1" onclick="arbi_wrap_eth();">Wrap eth</button>
                 </div>
 
-
-
-
-
-
                 <div class="d-flex justify-content-start">
                     
                     <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" id="arbi_unwrap_weth_amount" value="0.001" required />
                     
                     <button type="button" class="btn btn-primary btn-sm m-1" onclick="arbi_unwrap_weth();">Unwrap weth</button>
                 </div>
-
-
-
 
         </div>
 
@@ -75,8 +59,9 @@
     </div>
     
 
+
     <h3>Uniswap</h3>
-    <div class="border rounded p-2" >
+    <div class="border rounded p-2" hidden>
 
 
         <form method="POST">
@@ -98,7 +83,7 @@
 
             <div class="d-flex justify-content-start">
 
-                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="fiat_to_token_amount" value="1" required />
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="uniswap_fiat_to_token_amount" value="1" required />
 
                 <p class="mx-1 mt-1">Fiat to</p>
 
@@ -106,7 +91,7 @@
                 {% include "dashboard/subtempelates/coins_template.html" %}
 
                     
-                <button type="submit" name="fiat_to_token" class="btn btn-primary btn-sm m-1">Fiat to Token</button>
+                <button type="submit" class="btn btn-primary btn-sm m-1">Fiat to Token</button>
 
             </div>
 
@@ -122,14 +107,14 @@
 
             <div class="d-flex justify-content-start">
                 
-                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="token_to_fiat_amount" value="0.000231957530" required />
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="uniswap_token_to_fiat_amount" value="0.000231957530" required />
                 
                 {% include "dashboard/subtempelates/coins_template.html" %}
 
 
                 <p class="mx-1 mt-1">Token to fiat</p>
 
-                <button type="submit" name="fiat_to_token" class="btn btn-primary btn-sm m-1">Token to fiat</button>
+                <button type="submit" class="btn btn-primary btn-sm m-1">Token to fiat</button>
             </div>
 
         </form>
@@ -141,7 +126,7 @@
 
             <div class="d-flex justify-content-start">
                 
-                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="eth_amount_to_wrap" value="0.001" required />
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="uniswap_eth_amount_to_wrap" value="0.001" required />
                 
                 <button type="submit" class="btn btn-primary btn-sm m-1">Wrap eth</button>
             </div>
@@ -156,7 +141,7 @@
 
             <div class="d-flex justify-content-start">
                 
-                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="weth_amount_to_unwrap" value="0.001" required />
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="uniswap_weth_amount_to_unwrap" value="0.001" required />
                 
                 <button type="submit" class="btn btn-primary btn-sm m-1">Unwrap weth</button>
             </div>
@@ -167,10 +152,69 @@
 
     </div>
 
+    
+
+
+    <h3>Sushiswap</h3>
+    <div class="border rounded p-2" >
+
+
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            <div class="d-flex justify-content-start">
+
+                <input  class="form-control form-control-sm"  style="width: 120px;" type="number" step="any" name="sushiswap_fiat_to_token_amount" value="1" required />
+
+                <p class="mx-1 mt-1">Fiat to</p>
+
+
+                {% include "dashboard/subtempelates/coins_template.html" %}
+
+                    
+                <button type="submit" class="btn btn-primary btn-sm m-1">Fiat to Token</button>
+
+            </div>
+
+            
+            
+
+
+        </form>
+
+        <form method="POST">
+            {% csrf_token %}
+
+
+            <div class="d-flex justify-content-start">
+                
+                <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" name="sushiswap_token_to_fiat_amount" value="0.000231957530" required />
+                
+                {% include "dashboard/subtempelates/coins_template.html" %}
+
+
+                <p class="mx-1 mt-1">Token to fiat</p>
+
+                <button type="submit" class="btn btn-primary btn-sm m-1">Token to fiat</button>
+            </div>
+
+        </form>
+
+
+
+
+
+
+    </div>
+
+
+    
 
     
     <h3 class="mt-5">Aave</h3>
-    <div class="border rounded p-2 "  style="display: none;">
+    <div class="border rounded p-2 "  hidden>
 
 
         <form method="POST" class="mb-2">

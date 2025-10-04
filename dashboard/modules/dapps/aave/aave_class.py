@@ -61,7 +61,6 @@ class Aave(Dapp):
         self.token_addresses = aave_token_addresses
 
         self.max_gas_fee_multiplier = 1.5
-        self.gas_limit = 22_0000
         self.gas_custom_token_limit = 300_000
 
 

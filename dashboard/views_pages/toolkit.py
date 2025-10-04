@@ -35,6 +35,7 @@ bot_folder_path = os.path.join(modules_folder_path, 'bots')
 bot_tmp_folder_path = os.path.join(bot_folder_path, 'tmp')
 
 uniswap_dapp_folder_path = os.path.join(dapp_folder_path, 'uniswap')
+sushiswap_dapp_folder_path = os.path.join(dapp_folder_path, 'sushiswap')
 aave_dapp_folder_path = os.path.join(dapp_folder_path, 'aave')
 arbi_dapp_folder_path = os.path.join(dapp_folder_path, 'arbi')
 

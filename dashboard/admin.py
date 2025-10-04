@@ -22,7 +22,6 @@ class adminViewTransaction(admin.ModelAdmin):
         'name',
         'state',
         'transaction_type',
-        'uniswap_version',
         'order',
         'fiat_amount_spent',
         'token_amount_received',

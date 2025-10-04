@@ -250,3 +250,35 @@ def create_and_actualize_arbi_single_swap():
 
     return perform_transaction_actualization(transaction)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def create_and_actualize_sushiswap_fiat_to_token_transaction(fiat_to_token_amount, coin):
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=coin,
+        transaction_type=models_transaction.sushiswap_fiat_to_token,
+        fiat_amount_spent=fiat_to_token_amount,
+    )
+
+    return perform_transaction_actualization(transaction)
+

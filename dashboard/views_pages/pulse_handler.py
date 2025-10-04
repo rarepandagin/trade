@@ -28,8 +28,8 @@ def handle_a_pulse(request):
         admin_settings.prices_update_epoch = payload['price']['epoch']
 
 
-        admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
-        admin_settings.added_slippage_multiplier_coin_to_fiat = json.loads(payload['quote']['quote'])['coin_to_fiat']
+        # admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
+        # admin_settings.added_slippage_multiplier_coin_to_fiat = json.loads(payload['quote']['quote'])['coin_to_fiat']
 
         admin_settings.save()
 

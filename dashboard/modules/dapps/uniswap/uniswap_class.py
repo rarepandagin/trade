@@ -87,7 +87,6 @@ class Uniswap(Dapp):
         self.token_addresses = uniswap_token_addresses
         
         self.max_gas_fee_multiplier = 1.5
-        self.gas_limit = 22_000
         self.gas_custom_token_limit = 160_000
 
 
@@ -377,67 +376,68 @@ class Uniswap(Dapp):
         V3:
             fiat -> weth -> token
         """
-        # V3
-
-        eth_price = self.get_coin_price('eth')
-
-        weth_to_buy = fiat_amount / eth_price
-
-        tx_fee = 0
-
 
         admin_settings = tk.get_admin_settings()
-
         fiat_coin = self.get_token_object(admin_settings.fiat_coin)
 
-        tk.logger.info(f'performing fiat_to_token ({fiat_coin.name} -> {token})     fiat_amount: {fiat_amount}     V3')
 
-        got_weth, weth_bought, tx_hash, tx_fee_in_eth, version = self.swap(
-                                        token_in=fiat_coin,
-                                        token_out=self.weth,
-                                        amount_in=fiat_amount,
-                                        amount_out=weth_to_buy,
-                                        transaction_object=transaction_object,
-                                        tries=tries,
-                                    )
+        for i in range(tries):
 
+            tk.logger.info(f'performing fiat_to_token ({fiat_coin.name} -> {token})     fiat_amount: {fiat_amount}     V3')
 
-        if got_weth:
+            tx_fee = 0
 
-            tk.logger.info(f'V3: got_weth: {weth_bought}')
-            
-            tx_fee += tx_fee_in_eth * eth_price
+            weth_price = self.get_coin_price('eth')
 
-            if token.lower() == 'weth':
-                # we are done
-                return got_weth, weth_bought, tx_hash, eth_price, tx_fee, version
-            
-            else:
-
-                token_price = self.get_coin_price(token)
-                eth_price = self.get_coin_price('eth')
-
-                token_to_buy = weth_bought * eth_price / token_price
-
-                got_token, token_bought, tx_hash, tx_fee_in_eth, version = self.swap(
-                                                token_in=self.weth,
-                                                token_out=self.get_token_object(token),
-                                                amount_in=weth_bought,
-                                                amount_out=token_to_buy,
-                                                transaction_object=transaction_object,
-                                                tries=tries,
-                                            )
+            weth_to_buy = fiat_amount / weth_price
 
 
-                if got_token:
-                    tk.logger.info(f'got_token: {token_bought} of {token}')
-
-                    tx_fee += tx_fee_in_eth * eth_price
-
-                    return got_token, token_bought, tx_hash, token_price, tx_fee, version
 
 
-        return False, None, None, None, None, None
+            got_weth, weth_bought, tx_hash, tx_fee_in_eth = self.swap(
+                                            token_in=fiat_coin,
+                                            token_out=self.weth,
+                                            amount_in=fiat_amount,
+                                            amount_out=weth_to_buy,
+                                            transaction_object=transaction_object,
+                                        )
+
+
+            if got_weth:
+
+                tk.logger.info(f'V3: got_weth: {weth_bought}')
+                
+                tx_fee += tx_fee_in_eth * weth_price
+
+                if token.lower() == 'weth':
+                    # we are done
+                    return got_weth, weth_bought, tx_hash, weth_price, tx_fee
+                
+                else:
+
+                    token_price = self.get_coin_price(token)
+                    weth_price = self.get_coin_price('eth')
+
+                    token_to_buy = weth_bought * weth_price / token_price
+
+                    got_token, token_bought, tx_hash, tx_fee_in_eth = self.swap(
+                                                    token_in=self.weth,
+                                                    token_out=self.get_token_object(token),
+                                                    amount_in=weth_bought,
+                                                    amount_out=token_to_buy,
+                                                    transaction_object=transaction_object,
+                                                )
+
+
+                    if got_token:
+                        tk.logger.info(f'got_token: {token_bought} of {token}')
+
+                        tx_fee += tx_fee_in_eth * weth_price
+
+                        return got_token, token_bought, tx_hash, token_price, tx_fee
+
+
+        return False, None, None, None, None
 
 
 
@@ -460,71 +460,69 @@ class Uniswap(Dapp):
         admin_settings = tk.get_admin_settings()
         fiat_coin = self.get_token_object(admin_settings.fiat_coin)
 
+        for i in range(tries):
 
-        tk.logger.info(f'performing token_to_fiat: {token_amount} of {token} -> {fiat_coin.name}')
+            tk.logger.info(f'performing token_to_fiat: {token_amount} of {token} -> {fiat_coin.name}')
 
-        tx_fee = 0
+            tx_fee = 0
 
-        eth_price = self.get_coin_price('eth')
+            weth_price = self.get_coin_price('eth')
 
-        if token.lower() == 'weth':
-            token_price = eth_price
+            if token.lower() == 'weth':
+                token_price = weth_price
 
-        else:
-            token_price = self.get_coin_price(token)
-
-
-        # V3
-        if token.lower() == 'weth':
-            # no need to get weth
-            got_weth = True
-            weth_return = token_amount
-
-        else:
-            # firs we neet to swap token for weth
-            weth_amount = token_amount * token_price / eth_price
-
-            got_weth, weth_return, tx_hash, tx_fee_in_eth, version  = self.swap(
-                                                token_in=self.get_token_object(token),
-                                                token_out=self.weth,
-                                                amount_in=token_amount,
-                                                amount_out=weth_amount,
-                                                transaction_object=transaction_object,
-                                                tries=tries,
-                                            )
-
-            tx_fee += tx_fee_in_eth * eth_price
-
-            # update the eth price
-            eth_price = self.get_coin_price('eth')
+            else:
+                token_price = self.get_coin_price(token)
 
 
-        if got_weth:
-            
-            # weth -> fiat
+            # V3
+            if token.lower() == 'weth':
+                # no need to get weth
+                got_weth = True
+                weth_return = token_amount
 
-            fiat_return = weth_return * eth_price
+            else:
+                # firs we neet to swap token for weth
+                weth_amount = token_amount * token_price / weth_price
 
-            tk.logger.info(f'V3 got_weth: {weth_return}')
+                got_weth, weth_return, tx_hash, tx_fee_in_eth  = self.swap(
+                                                    token_in=self.get_token_object(token),
+                                                    token_out=self.weth,
+                                                    amount_in=token_amount,
+                                                    amount_out=weth_amount,
+                                                    transaction_object=transaction_object,
+                                                )
 
-            got_fiat, fiat_return, tx_hash, tx_fee_in_eth, version  = self.swap(
-                                                token_in=self.weth,
-                                                token_out=fiat_coin,
-                                                amount_in=weth_return,
-                                                amount_out=fiat_return,
-                                                transaction_object=transaction_object,
-                                                tries=tries,
-                                            )
+                tx_fee += tx_fee_in_eth * weth_price
 
-
-
-            if got_fiat:
-                tx_fee += tx_fee_in_eth * eth_price
-                return got_fiat, fiat_return, tx_hash, token_price, tx_fee, version
+                # update the eth price
+                weth_price = self.get_coin_price('eth')
 
 
-        return False, None, None, None, None, None
+            if got_weth:
+                
+                # weth -> fiat
 
+                fiat_return = weth_return * weth_price
+
+                tk.logger.info(f'V3 got_weth: {weth_return}')
+
+                got_fiat, fiat_return, tx_hash, tx_fee_in_eth  = self.swap(
+                                                    token_in=self.weth,
+                                                    token_out=fiat_coin,
+                                                    amount_in=weth_return,
+                                                    amount_out=fiat_return,
+                                                    transaction_object=transaction_object,
+                                                )
+
+
+
+                if got_fiat:
+                    tx_fee += tx_fee_in_eth * weth_price
+                    return got_fiat, fiat_return, tx_hash, token_price, tx_fee
+
+
+        return False, None, None, None, None
 
 
 
@@ -562,11 +560,9 @@ class Uniswap(Dapp):
 
 
 
-    ########################################
-    # V3
 
 
-    def swap(self, token_in, token_out, amount_in, amount_out, transaction_object, tries):
+    def swap(self, token_in, token_out, amount_in, amount_out, transaction_object):
         try:
 
             """
@@ -574,36 +570,31 @@ class Uniswap(Dapp):
             the other side of the swap defines, which fee tiers are to be used
             """
             if token_in.name == 'weth':
-                fee_tiers = token_out.fee_tiers
+                fee_tier = token_out.fee_tiers
                 fiat_to_coin = False
             else:
-                fee_tiers = token_in.fee_tiers
+                fee_tier = token_in.fee_tiers
                 fiat_to_coin = True
 
-            fee_tiers = tries * [fee_tiers]
+            action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
 
+            tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
 
-            for fee_tier in fee_tiers:
+            successful = tx_return['successful']
+            tx_hash = tx_return['tx_hash']
+            tx_fee_in_eth = tx_return['tx_fee_in_eth']
 
-                action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+            if successful:
+                token_out_bought = tx_return['logs_results'][token_out.name]['amount']
 
-                tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
+                return successful, token_out_bought, tx_hash, tx_fee_in_eth
 
-                successful = tx_return['successful']
-                tx_hash = tx_return['tx_hash']
-                tx_fee_in_eth = tx_return['tx_fee_in_eth']
-
-                if successful:
-                    token_out_bought = tx_return['logs_results'][token_out.name]['amount']
-
-                    return successful, token_out_bought, tx_hash, tx_fee_in_eth, f"V3({fee_tier})"
-
-            return False, None, None, None, None
+            return False, None, None, None
 
         except:
             tk.logger.info(format_exc())
 
-            return False, None, None, None, None
+            return False, None, None, None
 
 
 
@@ -619,14 +610,16 @@ class Uniswap(Dapp):
         amount_in = int(amount_in * pow(10, token_in.decimals))
         amount_out = int(amount_out * pow(10, token_out.decimals))
 
-        deadline = int(time.time() + 300)  # 5 minutes
+        deadline = int(time.time() + 3 * 60)  # 3 minutes
 
-        admin_settings = tk.get_admin_settings()
+        # admin_settings = tk.get_admin_settings()
 
-        if fiat_to_coin:
-            max_allowed_slippage = (admin_settings.added_slippage_multiplier_fiat_to_coin * fee_tier) / 1_000_000
-        else:
-            max_allowed_slippage = (admin_settings.added_slippage_multiplier_coin_to_fiat * fee_tier) / 1_000_000
+        # if fiat_to_coin:
+        #     max_allowed_slippage = (admin_settings.added_slippage_multiplier_fiat_to_coin * fee_tier) / 1_000_000
+        # else:
+        #     max_allowed_slippage = (admin_settings.added_slippage_multiplier_coin_to_fiat * fee_tier) / 1_000_000
+        
+        max_allowed_slippage = (1.1 * fee_tier) / 1_000_000
 
         tokenIn = token_in.address
         tokenOut = token_out.address

@@ -82,7 +82,6 @@ class Dapp():
         self.token_addresses = {}
 
         self.max_gas_fee_multiplier = 0
-        self.gas_limit = 0
         self.gas_custom_token_limit = 0
 
 
@@ -191,13 +190,15 @@ class Dapp():
                 tk.logger.info('the signed tx contains neither a rawTransaction nor a raw_transaction')
                 raise
 
+            tx_hash = self.w3.to_hex(tx_hash)
+
             if transaction_object is not None:
                 transaction_object.hash = tx_hash
                 transaction_object.save()
 
 
             tk.logger.info(
-                f'waiting for https://{"" if self.network == "mainnet" else self.network + "."}etherscan.io/tx/{self.w3.to_hex(tx_hash)} \n')
+                f'waiting for https://{"" if self.network == "mainnet" else self.network + "."}etherscan.io/tx/{tx_hash} \n')
 
             receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash)
             # while True:

@@ -92,8 +92,8 @@ class Arbi(Dapp):
 
 
 
-        self.max_gas_fee_multiplier = 2.5
-        self.gas_custom_token_limit = 1_500_000
+        self.max_gas_fee_multiplier = 1.5
+        self.gas_custom_token_limit = 500_000
 
 
         
