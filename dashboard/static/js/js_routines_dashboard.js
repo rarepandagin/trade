@@ -160,10 +160,10 @@ function update_positions_table(payload){
 
 
     $("#admin_settings_balances_eth").html(         `balance: ${(payload.admin_settings.balances.eth).toFixed(8)} ETH`)
-    $("#admin_settings_balances_eth_value").html(   `value: ${(payload.admin_settings.balances.eth * payload.admin_settings.prices.eth).toFixed(2)} USD`)
+    $("#admin_settings_balances_eth_value").html(   `value: ${(payload.admin_settings.balances.eth * payload.admin_settings.prices.weth).toFixed(2)} USD`)
 
     $("#admin_settings_balances_weth").html(         `balance: ${(payload.admin_settings.balances.weth).toFixed(8)} WETH`)
-    $("#admin_settings_balances_weth_value").html(   `value: ${(payload.admin_settings.balances.weth * payload.admin_settings.prices.eth).toFixed(2)} USD`)
+    $("#admin_settings_balances_weth_value").html(   `value: ${(payload.admin_settings.balances.weth * payload.admin_settings.prices.weth).toFixed(2)} USD`)
 
     // $("#admin_settings_balances_wbtc").html(         `${(payload.admin_settings.balances.wbtc).toFixed(8)} WBTC`)
     // $("#admin_settings_balances_wbtc_value").html(   `${(payload.admin_settings.balances.wbtc * payload.admin_settings.prices.btc).toFixed(2)} USD`)
@@ -304,8 +304,11 @@ function update_positions_table(payload){
     $("#gas_update_epoch").html(delta_time_gas_update_html);
 
 
-    $("#fiat_to_coin_slippage").html(payload.admin_settings.added_slippage_multiplier_fiat_to_coin);
-    $("#coin_to_fiat_slippage").html(payload.admin_settings.added_slippage_multiplier_coin_to_fiat);
+    $("#uniswap_fiat_to_coin_slippage").html(payload.admin_settings.uniswap_asm_fiat_to_token);
+    $("#uniswap_coin_to_fiat_slippage").html(payload.admin_settings.uniswap_asm_token_to_fiat);
+
+    $("#sushiswap_fiat_to_coin_slippage").html(payload.admin_settings.sushiswap_asm_fiat_to_token);
+    $("#sushiswap_coin_to_fiat_slippage").html(payload.admin_settings.sushiswap_asm_token_to_fiat);
 
 
 
@@ -317,8 +320,8 @@ function update_positions_table(payload){
     
                 <div class="d-flex justify-content-start gap-5">
                     <div>
-                        fiat to coin: ${payload.admin_settings.added_slippage_multiplier_fiat_to_coin} <br>
-                        coin to fiat: ${payload.admin_settings.added_slippage_multiplier_coin_to_fiat}
+                        fiat to coin: ${payload.admin_settings.uniswap_asm_fiat_to_token} <br>
+                        coin to fiat: ${payload.admin_settings.uniswap_asm_token_to_fiat}
                     </div>
                 </div>
 
@@ -433,13 +436,13 @@ $(".heart-container").addClass("beat");
     }, 1000);
 
 
-
+try{
 $('#healthFactor').html(`Health factor: ${payload.admin_settings.aave_user_account_data.healthFactor.toFixed(2)}`)
 $('#totalDebtBase').html(`Debt: ${payload.admin_settings.aave_user_account_data.totalDebtBase.toFixed(2)} USD`)
 $('#totalCollateralBase').html(`Collateral: ${payload.admin_settings.aave_user_account_data.totalCollateralBase.toFixed(2)} USD`)
 $('#availableBorrowsBase').html(`Available to borrow: ${payload.admin_settings.aave_user_account_data.availableBorrowsBase.toFixed(2)} USD`)
 $('#currentLiquidationThreshold').html(`Liquidation Threshold: ${payload.admin_settings.aave_user_account_data.currentLiquidationThreshold.toFixed(2)}`)
-
+} catch{}
 
 }
 

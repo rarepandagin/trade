@@ -167,6 +167,6 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 if DEBUG:
     import os
     from dotenv import load_dotenv
-    env_filepath = "C:\\Users\\user\\Desktop\\.env"
+    env_filepath = "/home/user/Desktop/.env"
 
     load_dotenv(env_filepath)

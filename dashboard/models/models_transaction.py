@@ -150,8 +150,8 @@ class Transaction(models.Model):
         gas_price_is_acceptable = admin_settings.gas['gas_basic_price'] < admin_settings.max_sane_gas_price
         gas_price_is_recent = tk.get_epoch_now() - admin_settings.gas_update_epoch < admin_settings.gas_update_epoch_max_allowed_delay_seconds
 
-        # if not (gas_price_is_acceptable and gas_price_is_recent):
-        if False:
+        if not (gas_price_is_acceptable and gas_price_is_recent):
+        # if False:
             self.state = transaction_state_failed
             tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'gas price is too expensive or outdated. aborting the tx.', 'color': 'red'})
 

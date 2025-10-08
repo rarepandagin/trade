@@ -23,7 +23,7 @@ from django.core.wsgi import get_wsgi_application
 if PRODUCTION:
     env_filepath = "/home/sammy/.env"
 else:
-    env_filepath = "C:\\Users\\user\\Desktop\\.env"
+    env_filepath = "/home/user/Desktop/.env"
 
 load_dotenv(env_filepath)
 

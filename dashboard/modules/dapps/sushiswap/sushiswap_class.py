@@ -28,7 +28,7 @@ class Sushiswap(Dapp):
         }
         self.contract_addresses = {
             'mainnet': {
-                'router':           '0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506',
+                'router':           '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F',
                 'quoter':           '0xC35DADB65012eC5796536bD9864eD8773aBc74C4',
                 'factory':          '0x1F98431c8aD98523631AE4a59f267346ea31F984',
                 'red_snwapper':     '0xAC4c6e212A361c968F1725b4d055b47E63F80b75',
@@ -49,8 +49,11 @@ class Sushiswap(Dapp):
         with open(os.path.join(self.abis_folder, 'usdc_abi.json')) as f:
             self.abis['usdc'] = json.load(f)
 
-        with open(os.path.join(self.abis_folder, 'erc20Abi.json')) as f:
+        with open(os.path.join(self.abis_folder, 'erc20ABI.json')) as f:
             self.abis['erc20'] = json.load(f)
+
+        with open(os.path.join(self.abis_folder, 'sushiswap_router_abi.json')) as f:
+            self.abis['router'] = json.load(f)
 
         with open(os.path.join(self.abis_folder, 'sushiswap_quoter_abi.json')) as f:
             self.abis['quoter'] = json.load(f)
@@ -89,6 +92,7 @@ class Sushiswap(Dapp):
                           abi=self.abis['erc20'], w3=self.w3)
 
 
+        self.router                 = Contract(name='router',               dapp=self)
         self.red_snwapper           = Contract(name='red_snwapper',         dapp=self)
         self.blade                  = Contract(name='blade',                dapp=self)
 
@@ -106,124 +110,6 @@ class Sushiswap(Dapp):
 
 
 
-    # def v3_quote(self, token_in_name, token_out_name, amount_in, fee):
-    #     """
-    #     quoteExactInputSingle
-
-    #     tokenIn	:	The token being swapped in
-    #     tokenOut	:	The token being swapped out
-    #     fee	:	The fee of the token pool to consider for the pair
-    #     amountIn	:	The desired input amount
-    #     sqrtPriceLimitX96	:	The price limit of the pool that cannot be exceeded by the swap
-
-    #     returns: amountOut:	The amount of tokenOut that would be received
-    #     """
-    #     tk.logger.info(f'performing V3 Quote')
-
-    #     token_in = self.get_token_object(token_in_name)
-    #     token_out = self.get_token_object(token_out_name)
-
-    #     amountIn = int(amount_in * pow(10, token_in.decimals))
-
-    #     sqrtPriceLimitX96 = 0
-
-    #     quote = self.sushiswap_quoter.functions.quoteExactInputSingle(
-    #         token_in.address,
-    #         token_out.address,
-    #         fee,
-    #         amountIn,
-    #         sqrtPriceLimitX96
-    #     ).call()
-
-    #     quote =  quote / pow(10, token_out.decimals)
-    #     tk.logger.info(f'quote: {quote}')
-
-    #     return quote
-
-
-
-    # def create_new_quote_and_save_to_db(
-    #         self,
-    #         fiat_to_coin=True,
-    #         fiat_amount_in=0.0,
-    #         coin_amount_in=0.0,
-    #         calls=3,
-    #         fee=500
-    #     ):
-
-    #     admin_settings = tk.get_admin_settings()
-
-    #     def trim_slippage(slippage, safty_margin):
-
-
-    #         slippage_to_fee = int(slippage * 1_000_000) / fee
-    #         slippage_to_fee = max(slippage_to_fee, 1.0)
-    #         slippage_to_fee = min(slippage_to_fee, 5.0)
-
-    #         slippage_to_fee += safty_margin
-
-    #         return round(slippage_to_fee, 4)
-
-
-
-    #     if fiat_to_coin:
-
-    #         quoted_coin_amounts = []
-            
-    #         for i in range(calls):
-    #             quoted_coin_amounts.append(
-    #                 self.v3_quote(
-    #                     token_in_name=admin_settings.fiat_coin,
-    #                     token_out_name='weth',
-    #                     amount_in=fiat_amount_in,
-    #                     fee=fee,
-    #                 )
-    #             )
-
-    #         quoted_coin_amount = min(quoted_coin_amounts)
-
-    #         expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
-
-    #         slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
-
-    #         slippage_to_fee = trim_slippage(slippage, 0.3)
-    #         admin_settings.added_slippage_multiplier_fiat_to_coin = slippage_to_fee
-    #         admin_settings.save()
-    #         tk.logger.info(f"slippage_to_fee: {slippage}")
-    #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
-
-    #     else:
-
-
-    #         quoted_fiat_amounts = []
-            
-    #         for i in range(calls):
-    #             quoted_fiat_amounts.append(
-    #                 self.v3_quote(
-    #                     token_in_name='weth',
-    #                     token_out_name=admin_settings.fiat_coin,
-    #                     amount_in=coin_amount_in,
-    #                     fee=fee,
-    #                 )
-    #             )
-
-    #         quoted_fiat_amount = min(quoted_fiat_amounts)
-    #         expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
-    #         slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
-
-    #         slippage_to_fee = trim_slippage(slippage, 0.15)
-    #         admin_settings.added_slippage_multiplier_coin_to_fiat = slippage_to_fee
-    #         admin_settings.save()
-
-    #         tk.logger.info(f"slippage_to_fee: {slippage}")
-    #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
-
-
-
-
-
-
-
 
 
 
@@ -234,25 +120,9 @@ class Sushiswap(Dapp):
 
 
     def approve_spenders(self):
-        # dai
 
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
-
-        # weth DONE
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
-
-        # wbtc
-        # self.approve(spender=uniswap.wbtc_exchange_address, token=uniswap.wbtc)
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
-        
-        # wsol
-        # self.approve(spender=self.wsol_exchange_address, token=self.wsol)
-        
-        # usdt
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdt)
-
-        self.approve(spender=self.red_snwapper.address, token=self.usdc)
-        self.approve(spender=self.red_snwapper.address, token=self.weth)
+        self.approve(spender=self.router.address, token=self.usdc)
+        self.approve(spender=self.router.address, token=self.weth)
         pass
 
 
@@ -469,7 +339,7 @@ class Sushiswap(Dapp):
                 fee_tier = token_in.fee_tiers
                 fiat_to_coin = True
 
-            action = self.snwap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
+            action = self.swap_action(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
 
             tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
 
@@ -496,7 +366,7 @@ class Sushiswap(Dapp):
 
 
 
-    def snwap_action(self, fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier):
+    def swap_action(self, fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier):
 
         tk.logger.info(f"<-> swapping {amount_in} {token_in.name} for {amount_out} {token_out.name} -- fee_tier: {fee_tier}")
 
@@ -505,14 +375,7 @@ class Sushiswap(Dapp):
 
         deadline = int(time.time() + 3 * 60)  # 3 minutes
 
-        # admin_settings = tk.get_admin_settings()
-
-        # if fiat_to_coin:
-        #     max_allowed_slippage = (admin_settings.added_slippage_multiplier_fiat_to_coin * fee_tier) / 1_000_000
-        # else:
-        #     max_allowed_slippage = (admin_settings.added_slippage_multiplier_coin_to_fiat * fee_tier) / 1_000_000
-        
-        max_allowed_slippage = (1.1 * fee_tier) / 1_000_000
+        max_allowed_slippage = (20.0 * fee_tier) / 1_000_000
 
         tokenIn = token_in.address
         tokenOut = token_out.address
@@ -524,16 +387,19 @@ class Sushiswap(Dapp):
         sqrtPriceLimitX96 = int(0)
 
 
-        action = self.red_snwapper.contract.functions.snwap(
-                tokenIn,
+
+        swap_path = [self.w3.to_checksum_address(tokenIn), self.w3.to_checksum_address(tokenOut)]
+ 
+        action = self.router.contract.functions.swapExactTokensForTokens(
                 amountIn,
-                recipient,
-                tokenOut,
                 amountOutMinimum,
-                self.w3.to_checksum_address("0x3B0AA7d38Bf3C103bf02d1De2E37568cBED3D6e8"),
-                b''
+
+                swap_path,
+
+                recipient,
+                deadline
             ) 
-            
+
 
         return action
 

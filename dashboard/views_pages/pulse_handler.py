@@ -24,12 +24,15 @@ def handle_a_pulse(request):
         admin_settings.gas = json.loads(payload['gas']['price'])
         admin_settings.gas_update_epoch = payload['gas']['epoch']
 
-        admin_settings.prices = json.loads(payload['price']['price'])
+        admin_settings.prices = {'weth': payload['price']['weth']}
         admin_settings.prices_update_epoch = payload['price']['epoch']
 
 
-        # admin_settings.added_slippage_multiplier_fiat_to_coin = json.loads(payload['quote']['quote'])['fiat_to_coin']
-        # admin_settings.added_slippage_multiplier_coin_to_fiat = json.loads(payload['quote']['quote'])['coin_to_fiat']
+        admin_settings.uniswap_asm_fiat_to_token = payload['quote']['uniswap']['asm_fiat_to_token']
+        admin_settings.uniswap_asm_token_to_fiat = payload['quote']['uniswap']['asm_token_to_fiat']
+
+        admin_settings.sushiswap_asm_fiat_to_token = payload['quote']['sushiswap']['asm_fiat_to_token']
+        admin_settings.sushiswap_asm_token_to_fiat = payload['quote']['sushiswap']['asm_token_to_fiat']
 
         admin_settings.save()
 

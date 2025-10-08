@@ -49,8 +49,11 @@ class AdminSettings(models.Model):
     # calculated on demand
     balances = models.JSONField(default=dict, blank=True, null=True)
 
-    added_slippage_multiplier_fiat_to_coin = models.FloatField(default=3)
-    added_slippage_multiplier_coin_to_fiat = models.FloatField(default=3)
+    uniswap_asm_fiat_to_token = models.FloatField(default=3)
+    uniswap_asm_token_to_fiat = models.FloatField(default=3)
+
+    sushiswap_asm_fiat_to_token = models.FloatField(default=3)
+    sushiswap_asm_token_to_fiat = models.FloatField(default=3)
 
     # auto fill remotely
     prices = models.JSONField(default=dict, blank=True, null=True)

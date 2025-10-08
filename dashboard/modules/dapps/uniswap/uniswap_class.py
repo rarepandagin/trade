@@ -313,7 +313,7 @@ class Uniswap(Dapp):
     #         slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
     #         slippage_to_fee = trim_slippage(slippage, 0.3)
-    #         admin_settings.added_slippage_multiplier_fiat_to_coin = slippage_to_fee
+    #         admin_settings.uniswap_asm_fiat_to_token = slippage_to_fee
     #         admin_settings.save()
     #         tk.logger.info(f"slippage_to_fee: {slippage}")
     #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
@@ -338,7 +338,7 @@ class Uniswap(Dapp):
     #         slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
     #         slippage_to_fee = trim_slippage(slippage, 0.15)
-    #         admin_settings.added_slippage_multiplier_coin_to_fiat = slippage_to_fee
+    #         admin_settings.uniswap_asm_token_to_fiat = slippage_to_fee
     #         admin_settings.save()
 
     #         tk.logger.info(f"slippage_to_fee: {slippage}")
@@ -615,9 +615,9 @@ class Uniswap(Dapp):
         # admin_settings = tk.get_admin_settings()
 
         # if fiat_to_coin:
-        #     max_allowed_slippage = (admin_settings.added_slippage_multiplier_fiat_to_coin * fee_tier) / 1_000_000
+        #     max_allowed_slippage = (admin_settings.uniswap_asm_fiat_to_token * fee_tier) / 1_000_000
         # else:
-        #     max_allowed_slippage = (admin_settings.added_slippage_multiplier_coin_to_fiat * fee_tier) / 1_000_000
+        #     max_allowed_slippage = (admin_settings.uniswap_asm_token_to_fiat * fee_tier) / 1_000_000
         
         max_allowed_slippage = (1.1 * fee_tier) / 1_000_000
 

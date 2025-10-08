@@ -19,27 +19,48 @@ def handle_ajax_posts_bot(req, payload):
 
     elif req == 'bot_draw_data':
 
+
+
+        """
+        source from DB
+        """
+        # from dashboard.modules.beats_db.beats_db_class import BeatsDbClass
+        # print('loading db...')
+
+        # beats_db_class = BeatsDbClass()
+        # records = beats_db_class.obtain_db_record('price')
+
+        # records = [x for x in records if x['indicators'] is not None]
+
+        # records = sorted(records, key=lambda x: x['epoch'])
+
+        # print('serializing data...')
+
+        # ret =  {
+        #     'price':            [x['price'] for x in records],
+        #     'epoch':            [x['epoch'] for x in records],
+        # }
+
+
+        # for key in records[0]['indicators']:
+        #     print(key)
+        #     ret[key] = [x['indicators'][key] for x in records]
+
+
+
+
+        """
+        source from DF
+        """
         print('loading df...')
 
         df = pd.read_pickle('./df.pickle')
-
-
-        # data = [{
-        #     'epoch': x.epoch,
-        #     'price': x.price,
-        #     'indicator_ema_minutely_200': x.indicator_ema_minutely_200,
-        #     'indicator_ema_hourly_200': x.indicator_ema_hourly_200,
-            
-        #     } for x in models_tick.Tick.objects.all().order_by('epoch')]
-
 
 
         print('serializing data...')
 
         df.reset_index(drop=True)
         result = df.to_dict()
-
-        sdf=3
 
         ret =  {
             'price':            [value  for key, value in result['price'].items()],
@@ -50,6 +71,11 @@ def handle_ajax_posts_bot(req, payload):
             if 'indicator_' in key:
                 print(key)
                 ret[key] = [value  for _, value in result[key].items()]
+
+
+
+
+
 
         print('plotting data...')
 
@@ -68,7 +94,7 @@ def handle_ajax_posts_bot(req, payload):
                 print('loading csv')
 
                 df = pd.read_csv(file_path, usecols=[0, 4], delimiter=',', header=None, index_col=0, names=['index', 'price']
-                , nrows=2_000_000
+                # , nrows=2_000_000
                 )
                 
                 print('proccesing..')
@@ -78,9 +104,10 @@ def handle_ajax_posts_bot(req, payload):
                 processed_df = indicators_handler.calculate_indicators()
 
 
-                print('starting to bulk_create ')
+                print('starting to to_pickle ')
                 processed_df.to_pickle('./df.pickle')
 
+                print('DONE')
 
                 # model_instances = [models_tick.Tick(
                 #         epoch                       =row.name,
