@@ -24,7 +24,7 @@ def handle_a_pulse(request):
         admin_settings.gas = json.loads(payload['gas']['price'])
         admin_settings.gas_update_epoch = payload['gas']['epoch']
 
-        admin_settings.prices = {'weth': payload['price']['weth']}
+        admin_settings.prices = {'weth': payload['price']['price']}
         admin_settings.prices_update_epoch = payload['price']['epoch']
 
 

@@ -18,7 +18,7 @@ function setup_ws_dashboard(){
         ws_msg_handler_dashboard(message_event)
     };
 
-    console.info(`ws service activated on ${conn_string}`);
+    console.info(`v11 ws service activated on ${conn_string}`);
 
 }
 
@@ -40,7 +40,7 @@ function setup_ws_depth(){
         ws_msg_handler_depth(message_event)
     };
 
-    console.info(`ws service activated on ${conn_string}`);
+    console.info(`v11 ws service activated on ${conn_string}`);
 
 }
 
