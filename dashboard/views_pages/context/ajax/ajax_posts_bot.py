@@ -24,27 +24,27 @@ def handle_ajax_posts_bot(req, payload):
         """
         source from DB
         """
-        # from dashboard.modules.beats_db.beats_db_class import BeatsDbClass
-        # print('loading db...')
+        from dashboard.modules.beats_db.beats_db_class import BeatsDbClass
+        print('loading db...')
 
-        # beats_db_class = BeatsDbClass()
-        # records = beats_db_class.obtain_db_record('price')
+        beats_db_class = BeatsDbClass()
+        records = beats_db_class.obtain_db_record('price')
 
-        # records = [x for x in records if x['indicators'] is not None]
+        records = [x for x in records if x['indicators'] is not None]
 
-        # records = sorted(records, key=lambda x: x['epoch'])
+        records = sorted(records, key=lambda x: x['epoch'])
 
-        # print('serializing data...')
+        print('serializing data...')
 
-        # ret =  {
-        #     'price':            [x['price'] for x in records],
-        #     'epoch':            [x['epoch'] for x in records],
-        # }
+        ret =  {
+            'price':            [x['price'] for x in records],
+            'epoch':            [x['epoch'] for x in records],
+        }
 
 
-        # for key in records[0]['indicators']:
-        #     print(key)
-        #     ret[key] = [x['indicators'][key] for x in records]
+        for key in records[0]['indicators']:
+            print(key)
+            ret[key] = [x['indicators'][key] for x in records]
 
 
 
@@ -52,25 +52,25 @@ def handle_ajax_posts_bot(req, payload):
         """
         source from DF
         """
-        print('loading df...')
+        # print('loading df...')
 
-        df = pd.read_pickle('./df.pickle')
+        # df = pd.read_pickle('./df.pickle')
 
 
-        print('serializing data...')
+        # print('serializing data...')
 
-        df.reset_index(drop=True)
-        result = df.to_dict()
+        # df.reset_index(drop=True)
+        # result = df.to_dict()
 
-        ret =  {
-            'price':            [value  for key, value in result['price'].items()],
-            'epoch':            [key    for key, value in result['price'].items()],
-        }
+        # ret =  {
+        #     'price':            [value  for key, value in result['price'].items()],
+        #     'epoch':            [key    for key, value in result['price'].items()],
+        # }
 
-        for key in result:
-            if 'indicator_' in key:
-                print(key)
-                ret[key] = [value  for _, value in result[key].items()]
+        # for key in result:
+        #     if 'indicator_' in key:
+        #         print(key)
+        #         ret[key] = [value  for _, value in result[key].items()]
 
 
 

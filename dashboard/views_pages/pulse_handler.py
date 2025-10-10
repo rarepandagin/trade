@@ -28,11 +28,11 @@ def handle_a_pulse(request):
         admin_settings.prices_update_epoch = payload['price']['epoch']
 
 
-        admin_settings.uniswap_asm_fiat_to_token = payload['quote']['uniswap']['asm_fiat_to_token']
-        admin_settings.uniswap_asm_token_to_fiat = payload['quote']['uniswap']['asm_token_to_fiat']
+        # admin_settings.uniswap_asm_fiat_to_token = payload['quote']['uniswap']['asm_fiat_to_token']
+        # admin_settings.uniswap_asm_token_to_fiat = payload['quote']['uniswap']['asm_token_to_fiat']
 
-        admin_settings.sushiswap_asm_fiat_to_token = payload['quote']['sushiswap']['asm_fiat_to_token']
-        admin_settings.sushiswap_asm_token_to_fiat = payload['quote']['sushiswap']['asm_token_to_fiat']
+        # admin_settings.sushiswap_asm_fiat_to_token = payload['quote']['sushiswap']['asm_fiat_to_token']
+        # admin_settings.sushiswap_asm_token_to_fiat = payload['quote']['sushiswap']['asm_token_to_fiat']
 
         admin_settings.save()
 

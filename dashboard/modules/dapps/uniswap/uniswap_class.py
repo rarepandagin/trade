@@ -103,13 +103,13 @@ class Uniswap(Dapp):
         # self.wsol = Token(name='wsol', network=self.network, address=uniswap_token_addresses[self.network]['wsol'], decimals=9, fee_tiers = 3000,
         #                   abi=erc20_abi, w3=self.w3)
 
-        # self.wbtc = Token(name='wbtc', network=self.network, address=uniswap_token_addresses[self.network]['wbtc'], decimals=8, fee_tiers = 500,
-        #                   abi=wbtc_abi, w3=self.w3)
+        self.wbtc = Token(name='wbtc', network=self.network, address=uniswap_token_addresses[self.network]['wbtc'], decimals=8, fee_tiers = 500,
+                          abi=wbtc_abi, w3=self.w3)
 
 
 
-        # self.dai = Token(name='dai', network=self.network, address=uniswap_token_addresses[self.network]['dai'], decimals=18, fee_tiers = 500,
-        #                  abi=erc20_abi, w3=self.w3)
+        self.dai = Token(name='dai', network=self.network, address=uniswap_token_addresses[self.network]['dai'], decimals=18, fee_tiers = 500,
+                         abi=erc20_abi, w3=self.w3)
 
         self.usdc = Token(name='usdc', network=self.network, address=uniswap_token_addresses[self.network]['usdc'], decimals=6, fee_tiers = 500,
                           abi=erc20_abi, w3=self.w3)
@@ -206,7 +206,10 @@ class Uniswap(Dapp):
         # usdt
         # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdt)
 
-        self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdc)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdc)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
+        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
         pass
 
 
@@ -232,117 +235,117 @@ class Uniswap(Dapp):
 
 
 
-    # def v3_quote(self, token_in_name, token_out_name, amount_in, fee):
-    #     """
-    #     quoteExactInputSingle
+    def v3_quote(self, token_in_name, token_out_name, amount_in, fee):
+        """
+        quoteExactInputSingle
 
-    #     tokenIn	:	The token being swapped in
-    #     tokenOut	:	The token being swapped out
-    #     fee	:	The fee of the token pool to consider for the pair
-    #     amountIn	:	The desired input amount
-    #     sqrtPriceLimitX96	:	The price limit of the pool that cannot be exceeded by the swap
+        tokenIn	:	The token being swapped in
+        tokenOut	:	The token being swapped out
+        fee	:	The fee of the token pool to consider for the pair
+        amountIn	:	The desired input amount
+        sqrtPriceLimitX96	:	The price limit of the pool that cannot be exceeded by the swap
 
-    #     returns: amountOut:	The amount of tokenOut that would be received
-    #     """
-    #     tk.logger.info(f'performing V3 Quote')
+        returns: amountOut:	The amount of tokenOut that would be received
+        """
+        tk.logger.info(f'performing V3 Quote')
 
-    #     token_in = self.get_token_object(token_in_name)
-    #     token_out = self.get_token_object(token_out_name)
+        token_in = self.get_token_object(token_in_name)
+        token_out = self.get_token_object(token_out_name)
 
-    #     amountIn = int(amount_in * pow(10, token_in.decimals))
+        amountIn = int(amount_in * pow(10, token_in.decimals))
 
-    #     sqrtPriceLimitX96 = 0
+        sqrtPriceLimitX96 = 0
 
-    #     quote = self.uniswap_quoter.functions.quoteExactInputSingle(
-    #         token_in.address,
-    #         token_out.address,
-    #         fee,
-    #         amountIn,
-    #         sqrtPriceLimitX96
-    #     ).call()
+        quote = self.uniswap_quoter.functions.quoteExactInputSingle(
+            token_in.address,
+            token_out.address,
+            fee,
+            amountIn,
+            sqrtPriceLimitX96
+        ).call()
 
-    #     quote =  quote / pow(10, token_out.decimals)
-    #     tk.logger.info(f'quote: {quote}')
+        quote =  quote / pow(10, token_out.decimals)
+        tk.logger.info(f'quote: {quote}')
 
-    #     return quote
-
-
-
-    # def create_new_quote_and_save_to_db(
-    #         self,
-    #         fiat_to_coin=True,
-    #         fiat_amount_in=0.0,
-    #         coin_amount_in=0.0,
-    #         calls=3,
-    #         fee=500
-    #     ):
-
-    #     admin_settings = tk.get_admin_settings()
-
-    #     def trim_slippage(slippage, safty_margin):
-
-
-    #         slippage_to_fee = int(slippage * 1_000_000) / fee
-    #         slippage_to_fee = max(slippage_to_fee, 1.0)
-    #         slippage_to_fee = min(slippage_to_fee, 5.0)
-
-    #         slippage_to_fee += safty_margin
-
-    #         return round(slippage_to_fee, 4)
+        return quote
 
 
 
-    #     if fiat_to_coin:
+    def create_new_quote_and_save_to_db(
+            self,
+            fiat_to_coin=True,
+            fiat_amount_in=0.0,
+            coin_amount_in=0.0,
+            calls=2,
+            fee=500
+        ):
 
-    #         quoted_coin_amounts = []
+        admin_settings = tk.get_admin_settings()
+
+        def trim_slippage(slippage, safety_margin):
+
+
+            slippage_to_fee = int(slippage * 1_000_000) / fee
+            slippage_to_fee = max(slippage_to_fee, 1.0)
+            slippage_to_fee = min(slippage_to_fee, 5.0)
+
+            slippage_to_fee += safety_margin
+
+            return round(slippage_to_fee, 4)
+
+
+
+        if fiat_to_coin:
+
+            quoted_coin_amounts = []
             
-    #         for i in range(calls):
-    #             quoted_coin_amounts.append(
-    #                 self.v3_quote(
-    #                     token_in_name=admin_settings.fiat_coin,
-    #                     token_out_name='weth',
-    #                     amount_in=fiat_amount_in,
-    #                     fee=fee,
-    #                 )
-    #             )
+            for i in range(calls):
+                quoted_coin_amounts.append(
+                    self.v3_quote(
+                        token_in_name=admin_settings.fiat_coin,
+                        token_out_name='weth',
+                        amount_in=fiat_amount_in,
+                        fee=fee,
+                    )
+                )
 
-    #         quoted_coin_amount = min(quoted_coin_amounts)
+            quoted_coin_amount = min(quoted_coin_amounts)
 
-    #         expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
+            expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
 
-    #         slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
+            slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
-    #         slippage_to_fee = trim_slippage(slippage, 0.3)
-    #         admin_settings.uniswap_asm_fiat_to_token = slippage_to_fee
-    #         admin_settings.save()
-    #         tk.logger.info(f"slippage_to_fee: {slippage}")
-    #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
+            slippage_to_fee = trim_slippage(slippage, 0.3)
+            admin_settings.uniswap_asm_fiat_to_token = slippage_to_fee
+            admin_settings.save()
+            tk.logger.info(f"slippage_to_fee: {admin_settings.uniswap_asm_fiat_to_token}")
+            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
 
-    #     else:
+        else:
 
 
-    #         quoted_fiat_amounts = []
+            quoted_fiat_amounts = []
             
-    #         for i in range(calls):
-    #             quoted_fiat_amounts.append(
-    #                 self.v3_quote(
-    #                     token_in_name='weth',
-    #                     token_out_name=admin_settings.fiat_coin,
-    #                     amount_in=coin_amount_in,
-    #                     fee=fee,
-    #                 )
-    #             )
+            for i in range(calls):
+                quoted_fiat_amounts.append(
+                    self.v3_quote(
+                        token_in_name='weth',
+                        token_out_name=admin_settings.fiat_coin,
+                        amount_in=coin_amount_in,
+                        fee=fee,
+                    )
+                )
 
-    #         quoted_fiat_amount = min(quoted_fiat_amounts)
-    #         expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
-    #         slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
+            quoted_fiat_amount = min(quoted_fiat_amounts)
+            expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
+            slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
-    #         slippage_to_fee = trim_slippage(slippage, 0.15)
-    #         admin_settings.uniswap_asm_token_to_fiat = slippage_to_fee
-    #         admin_settings.save()
+            slippage_to_fee = trim_slippage(slippage, 0.15)
+            admin_settings.uniswap_asm_token_to_fiat = slippage_to_fee
+            admin_settings.save()
 
-    #         tk.logger.info(f"slippage_to_fee: {slippage}")
-    #         tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
+            tk.logger.info(f"slippage_to_fee: {admin_settings.uniswap_asm_token_to_fiat}")
+            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
 
 
 
@@ -387,7 +390,7 @@ class Uniswap(Dapp):
 
             tx_fee = 0
 
-            weth_price = self.get_coin_price('eth')
+            weth_price = self.get_coin_price('weth')
 
             weth_to_buy = fiat_amount / weth_price
 
@@ -416,7 +419,7 @@ class Uniswap(Dapp):
                 else:
 
                     token_price = self.get_coin_price(token)
-                    weth_price = self.get_coin_price('eth')
+                    weth_price = self.get_coin_price('weth')
 
                     token_to_buy = weth_bought * weth_price / token_price
 
@@ -466,7 +469,7 @@ class Uniswap(Dapp):
 
             tx_fee = 0
 
-            weth_price = self.get_coin_price('eth')
+            weth_price = self.get_coin_price('weth')
 
             if token.lower() == 'weth':
                 token_price = weth_price
@@ -496,7 +499,7 @@ class Uniswap(Dapp):
                 tx_fee += tx_fee_in_eth * weth_price
 
                 # update the eth price
-                weth_price = self.get_coin_price('eth')
+                weth_price = self.get_coin_price('weth')
 
 
             if got_weth:
@@ -612,14 +615,14 @@ class Uniswap(Dapp):
 
         deadline = int(time.time() + 3 * 60)  # 3 minutes
 
-        # admin_settings = tk.get_admin_settings()
+        admin_settings = tk.get_admin_settings()
 
-        # if fiat_to_coin:
-        #     max_allowed_slippage = (admin_settings.uniswap_asm_fiat_to_token * fee_tier) / 1_000_000
-        # else:
-        #     max_allowed_slippage = (admin_settings.uniswap_asm_token_to_fiat * fee_tier) / 1_000_000
+        if fiat_to_coin:
+            max_allowed_slippage = (admin_settings.uniswap_asm_fiat_to_token * fee_tier) / 1_000_000
+        else:
+            max_allowed_slippage = (admin_settings.uniswap_asm_token_to_fiat * fee_tier) / 1_000_000
         
-        max_allowed_slippage = (1.1 * fee_tier) / 1_000_000
+        # max_allowed_slippage = (1.1 * fee_tier) / 1_000_000
 
         tokenIn = token_in.address
         tokenOut = token_out.address
@@ -665,6 +668,77 @@ class Uniswap(Dapp):
 
 
 
+    def send_token(self, token, amount, receiver_address, transaction_object):
+
+        if token == 'eth':
+
+            gas_info = self.get_network_gas_price()
+            maxFeePerGas = self.w3.to_wei(gas_info['maxFeePerGas_gwei'], 'gwei')
+            maxPriorityFeePerGas = self.w3.to_wei(gas_info['maxPriorityFeePerGas_gwei'], 'gwei')
+            
+            one_gwei = self.w3.to_wei(1, 'gwei')
+            maxPriorityFeePerGas = max(maxPriorityFeePerGas, one_gwei)
+            maxFeePerGas = max(maxFeePerGas, maxPriorityFeePerGas)
+            
+            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account) 
+
+            tx = {
+                'chainId': 1,
+                'from': self.default_account_address,
+
+                'to': receiver_address,
+                'value': self.w3.to_wei(amount, 'ether'),
+                
+                
+                'gas': self.gas_custom_token_limit,
+                'maxFeePerGas': maxFeePerGas,
+                'maxPriorityFeePerGas': maxPriorityFeePerGas,
+                'nonce': nonce,
+            }
+
+
+            signed_tx = self.w3.eth.account.sign_transaction(tx, self.account_private_key)
+
+
+            tx_hash = self.w3.eth.send_raw_transaction(signed_tx.raw_transaction)
+
+            tx_hash_hex = self.w3.to_hex(tx_hash)
+
+            tk.logger.info(f"waiting to confirm tx hash: {tx_hash_hex}")
+
+            
+            
+
+            self.w3.eth.wait_for_transaction_receipt(tx_hash)
+
+            receipt = self.w3.eth.get_transaction_receipt(tx_hash)
+
+            tx_return = self.process_receipt(receipt)
+
+
+
+        else:
+            token_object = self.get_token_object(token)
+
+            amount_to_wei = int(amount * pow(10, token_object.decimals))
+
+            token_object = self.get_token_object(token)
+
+            action = token_object.contract.functions.transfer(self.w3.to_checksum_address(receiver_address), amount_to_wei)
+
+
+            tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
+
+
+        successful = tx_return['successful']
+        tx_hash = tx_return['tx_hash']
+        tx_fee_in_eth = tx_return['tx_fee_in_eth']
+
+        if successful:
+
+            return successful, 0, tx_hash, tx_fee_in_eth
+
+        return False, None, None, None
 
 
 

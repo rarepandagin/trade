@@ -72,6 +72,18 @@ def create_and_actualize_uniswap_unwrap_weth(eth_amount_to_wrap):
     return perform_transaction_actualization(transaction)
 
 
+def create_and_actualize_uniswap_transfer_token(amount_to_transfer, address_to_transfer_to, token_name):
+    from dashboard.models import models_transaction
+
+    transaction = models_transaction.Transaction(
+        coin=token_name,
+        transaction_type=models_transaction.uniswap_transfer_token,
+        token_amount_spent=amount_to_transfer,
+        address_to_transfer_to=address_to_transfer_to,
+    )
+
+    return perform_transaction_actualization(transaction)
+
 
 
 

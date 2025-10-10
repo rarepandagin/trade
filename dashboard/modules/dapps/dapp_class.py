@@ -56,15 +56,16 @@ class Dapp():
         
 
         if self.network == 'mainnet':
-            pass
-            # Actual mainnet
-            self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
-            self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
+            # old
+            # self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
+            # self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
 
-            # Mozilla dev mainnet
-            # self.default_account_address = f"0xf2D13A89B2D63448A95A7c12A01c33CB12b1e141"
-            # self.account_private_key = f"795b8f995bd5212e58d7bdac0513996084e82cbd86df93e631d68e771b954ff3"
-            
+            # new
+            self.default_account_address = f"0x30127b1414483aE43{os.getenv('trader_default_account_address')}"
+            self.account_private_key = f"0xfb1b5d613421ad0aab3ab93b6dd141966ba{os.getenv('trader_account_private_key')}"
+
+
+
         else:
             self.default_account_address = f"0x51DAc1f4A5a7439444D8c1ac49ba42c21Aee13B2"
             self.account_private_key = f"9108f9ba583eb7d1a8b745a259935a65684e82c8b643cbfd9c866ecfa85a35b6"
@@ -97,8 +98,8 @@ class Dapp():
         # elif token_string.lower() == 'dai':
         #     return self.dai
         
-        # elif token_string.lower() == 'wbtc':
-        #     return self.wbtc
+        elif token_string.lower() == 'wbtc':
+            return self.wbtc
 
         # elif token_string.lower() == 'wsol':
         #     return self.wsol

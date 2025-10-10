@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.base import transaction
 
 from dashboard.views_pages import toolkit as tk
 
@@ -27,6 +28,8 @@ uniswap_token_to_fiat = "uniswap_token_to_fiat"
 uniswap_fiat_to_token = "uniswap_fiat_to_token"
 uniswap_wrap_eth = "uniswap_wrap_eth"
 uniswap_unwrap_weth = "uniswap_unwrap_weth"
+uniswap_transfer_token = "uniswap_transfer_token"
+
 
 # Sushiswap
 sushiswap_token_to_fiat = "sushiswap_token_to_fiat"
@@ -58,6 +61,7 @@ transaction_types = {
     uniswap_fiat_to_token : "uniswap_fiat_to_token",
     uniswap_wrap_eth : "uniswap_wrap_eth",
     uniswap_unwrap_weth : "uniswap_unwrap_weth",
+    uniswap_transfer_token: "uniswap_transfer_token",
 
     sushiswap_token_to_fiat : "sushiswap_token_to_fiat",
     sushiswap_fiat_to_token : "sushiswap_fiat_to_token",
@@ -108,7 +112,8 @@ class Transaction(models.Model):
     hash                    = models.TextField(default="", null=True, blank=True)
     fee                     = models.FloatField(default=0)
 
-
+    address_to_transfer_to  = models.TextField(default="", null=True, blank=True)
+    
     # case specific fields
     fiat_loan_amount        = models.FloatField(default=0)
 
@@ -177,7 +182,7 @@ class Transaction(models.Model):
                     admin_settings.save()
 
 
-                    # uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
+                    uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
 
                     got_token, token_bought, tx_hash, token_price, tx_fee = uniswap.fiat_to_token(
                             fiat_amount=self.fiat_amount_spent,
@@ -247,6 +252,17 @@ class Transaction(models.Model):
                         self.state = transaction_state_successful
                     else:
                         self.state = transaction_state_failed
+
+                elif self.transaction_type == uniswap_transfer_token:
+                    successful, _, tx_hash, tx_fee_in_eth = uniswap.send_token(
+                        token=self.coin,
+                        amount=self.token_amount_spent,
+                        receiver_address=self.address_to_transfer_to,
+                        transaction_object=self,
+                    )
+
+                    self.state = transaction_state_successful if successful else transaction_state_failed
+
 
 
             elif 'sushiswap_' in str(self.transaction_type):
