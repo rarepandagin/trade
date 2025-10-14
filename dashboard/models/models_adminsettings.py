@@ -40,9 +40,9 @@ class AdminSettings(models.Model):
 
     ## AAVE settings
     aave_borrow_to_collateral_added_safety_ratio = models.FloatField(default=0.9, help_text="a safety margin to make sure we won't borrow all of the borrow amount")
-    aave_info_update_pulse_steps = models.IntegerField(default=10, help_text="this is how many pulses to skip until the next update of aave user account data")
-    pulse_counter = models.BigIntegerField(default=0, help_text="this is used to keep track of updating the aave user data")
-    aave_user_account_data = models.JSONField(default=dict, help_text="results from aave contract method for user data is stored here")
+    aave_info_update_pulse_steps    = models.IntegerField(      default=10, help_text="this is how many pulses to skip until the next update of aave user account data")
+    pulse_counter                   = models.BigIntegerField(   default=0, help_text="this is used to keep track of updating the aave user data")
+    aave_user_account_data          = models.JSONField(         default=dict, blank=True, null=True, help_text="results from aave contract method for user data is stored here")
 
 
 
@@ -73,3 +73,17 @@ class AdminSettings(models.Model):
     depth_lowest_price          = models.FloatField(default=4200)
     depth_highest_price         = models.FloatField(default=4400)
     depth_cluster_width_usd     = models.FloatField(default=1)
+
+
+    # COMMAND
+    command_function    = models.TextField(default='', blank=True, null=True)
+    command_arguments   = models.JSONField(default=dict, blank=True, null=True)
+
+    # INDICATORS
+    INDICATORS                      = models.JSONField(default=list)
+    MINUTES                         = models.JSONField(default=list)
+    live_indicators                 = models.JSONField(default=dict)
+    live_indicators_update_epoch    = models.BigIntegerField(default=0)
+    
+    active_time_frame_minutes       = models.IntegerField(default=1)
+    active_time_frame_length        = models.IntegerField(default=1440)

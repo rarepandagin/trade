@@ -29,6 +29,12 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 
+    <link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.anychart.com/releases/8.11.0/fonts/css/anychart-font.min.css" rel="stylesheet" type="text/css">  
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js"></script>
 
 
 	{% if DEBUG %}
@@ -38,6 +44,7 @@
 			<script src="{% static '/js/js_routines_depth.js' %}"></script>
 			<script src="{% static '/js/ajax_handler.js' %}"></script>
 			<script src="{% static '/js/pairs.js' %}"></script>
+			<script src="{% static '/js/bot.js' %}"></script>
 			<script src="{% static '/js/websocket_manager.js' %}"></script>
 
 	{% else %}
@@ -48,6 +55,7 @@
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/js_routines_depth.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ajax_handler.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/pairs.js"></script>
+			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/bot.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/websocket_manager.js"></script>
 
 	{% endif %}
@@ -156,6 +164,7 @@ optgroup{
 			<a href="/depth/" class="menu-item">Depth</a>
 			<a href="/manual/" class="menu-item">Manual</a>
 			<a href="/bot/" class="menu-item">Bot</a>
+			<a href="https://etherscan.io/address/0x30127b1414483aE437427d6f107F13fC54a2B62b" target="_blank" class="menu-item">Account</a>
 			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="menu-item">Admin</a>
 			<a href="/logout/" class="menu-item ">Logout</a>
 

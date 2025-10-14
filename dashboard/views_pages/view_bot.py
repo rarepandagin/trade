@@ -13,12 +13,12 @@ def get_response(request):
         if 'req' in request.POST:
             ret = context.handle_ajax_post(request)
 
-            return HttpResponse(json.dumps(ret), content_type='application/json')
+            json_ret = json.dumps(ret)
+
+            return HttpResponse(json_ret, content_type='application/json')
 
         else:
             pass
-
-
-
+    
     return context.response()
 

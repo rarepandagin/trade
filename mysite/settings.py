@@ -89,7 +89,8 @@ DATABASES = {
         'NAME': 'trade',
         'USER': 'postgres',
         'PASSWORD': 'f4I8H2C0U40X104jwVUSKW38F4X23894j2938429jz',
-        'HOST': 'localhost',
+        'HOST': '185.225.226.52',
+        # 'HOST': 'localhost',
         'PORT': '',
     }
 

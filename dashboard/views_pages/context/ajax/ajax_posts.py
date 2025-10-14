@@ -4,6 +4,7 @@ from dashboard.models import models_position
 from dashboard.models import models_order
 from dashboard.views_pages.context.ajax.ajax_posts_arbi import handle_ajax_posts_arbi
 from dashboard.views_pages.context.ajax.ajax_posts_bot import handle_ajax_posts_bot
+from dashboard.views_pages.context.ajax.ajax_posts_db import handle_ajax_posts_db
 from traceback import format_exc
 
 def handle_ajax_posts(self, request):
@@ -21,6 +22,9 @@ def handle_ajax_posts(self, request):
 
     elif 'bot_' in req[:5]:
         returned_payload = handle_ajax_posts_bot(req, payload)
+
+    elif 'db_' in req[:5]:
+        returned_payload = handle_ajax_posts_db(req, payload)
 
     else:
 

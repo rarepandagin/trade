@@ -45,12 +45,12 @@ def get_response(request):
                 weth_amount_to_unwrap = eval(request.POST['uniswap_weth_amount_to_unwrap'])
                 transaction = transaction_dispatch.create_and_actualize_uniswap_unwrap_weth(weth_amount_to_unwrap)
 
-            elif 'uniswap_transfer_token_amount' in request.POST:
-                amount_to_transfer = eval(request.POST['uniswap_transfer_token_amount'])
-                address_to_transfer_to = request.POST['uniswap_transfer_token_address']
-                coin = request.POST['coin']
+            # elif 'uniswap_transfer_token_amount' in request.POST:
+            #     amount_to_transfer = eval(request.POST['uniswap_transfer_token_amount'])
+            #     address_to_transfer_to = request.POST['uniswap_transfer_token_address']
+            #     coin = request.POST['coin']
 
-                transaction = transaction_dispatch.create_and_actualize_uniswap_transfer_token(amount_to_transfer, address_to_transfer_to, coin)
+            #     transaction = transaction_dispatch.create_and_actualize_uniswap_transfer_token(amount_to_transfer, address_to_transfer_to, coin)
 
 
 

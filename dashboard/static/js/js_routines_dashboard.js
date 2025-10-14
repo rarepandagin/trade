@@ -10,6 +10,13 @@ function* range(start, end, step = 1) {
 
 function update_positions_table(payload){
 
+    const element = document.getElementById("anychart_chart_container");
+    if (element) {
+        bot_draw_on_return_anychart(payload);
+    }  
+    
+
+
     const position_state_color = {
         'in_loss':'danger',
         'reaching_profit_take_price':'success',
@@ -421,7 +428,6 @@ function update_positions_table(payload){
     //   chart.container('chart_container');
     //   // initiate the chart drawing
     //   chart.draw();
-
 
 
 

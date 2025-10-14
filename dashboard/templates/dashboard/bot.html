@@ -6,164 +6,74 @@
 
 {% block basebody %}
 
-
-<button class="btn btn-primary" onclick="bot_download_data();">download</button>
-<button class="btn btn-primary" onclick="bot_import_data();">import</button>
-
-<button class="btn btn-primary" onclick="bot_draw_data();">draw</button>
+<head>
 
 
 
+
+</head>
+ 
+
+<div>
+    <!-- <button class="btn btn-primary" onclick="bot_download_data();">download</button> -->
+    <!-- <button class="btn btn-primary" onclick="bot_import_data();">import</button> -->
+
+    <button class="btn btn-primary" onclick="bot_draw_data();">draw local pandas</button>
+</div>
+
+
+<div class="d-flex justify-content-start gap-3 mt-5">
+    <p>Time frame:</p>
+    <select id="time_frame_minutes__select" class="form-select form-select-sm" style="width: 70px;">
+        {% for minute in admin_settings.MINUTES %}
+            <option value="{{minute}}" {% if admin_settings.active_time_frame_minutes == minute %} selected {% endif %}>{{minute}}</option>
+        {% endfor %}
+    </select>
+
+    <p>Show last minutes:</p>
+    <input type="number"  class="form-control form-control-sm" min="1" step="1" id="steps__input" value="{{admin_settings.active_time_frame_length}}"   style="width: 120px;"/>
+
+    <button class="btn btn-success" onclick="bot_save_settings();">Save chart settings</button>
+
+</div>
+
+<div class="mt-5 border rounded p-2">
+    <button class="btn btn-primary"     onclick="db_check();"           >DB check</button>
+    <button class="btn btn-warning"     onclick="db_import_csv();"      >DB import CSV</button>
+</div>
+
+<!-- <div class="mt-5 border rounded p-2 " > -->
+    <!-- <button class="btn btn-primary"     onclick="db_backup();"          >DB back up</button> -->
+    <!-- <button class="btn btn-warning"     onclick="db_restore();"         >DB restore</button> -->
+    <!-- <button class="btn btn-danger"      onclick="db_nullify_indicators();">DB nullify indicators</button> -->
+    <!-- <button class="btn btn-danger"      onclick="db_truncate();"         >DB truncate</button> -->
+<!-- </div> -->
+
+<div id="anychart_chart_container" style="width: 1800px; height: 1800px;"></div>
 
 <div id="bot_price_plot"></div>
 
 
+<script>
 
-    <script>
+    function bot_download_data(){   ajax_call('bot_download',       {})};
+    function bot_import_data(){     ajax_call('bot_import_data',    {})};
+    function bot_draw_data(){       ajax_call('bot_draw_data',      {"time_frame_minutes": $('#time_frame_minutes__select').val(), "steps": $('#steps__input').val()})};
+    
+    function bot_save_settings(){   ajax_call('bot_save_settings',  {"time_frame_minutes": $('#time_frame_minutes__select').val(), "steps": $('#steps__input').val()})};
 
-        function bot_download_data(){ajax_call('bot_download', {})};
-        function bot_import_data(){ajax_call('bot_import_data', {})};
-        function bot_draw_data(){ajax_call('bot_draw_data', {})};
+    function db_import_csv(){           ajax_call('db_import_csv',          {'time_frame_minutes': $('#time_frame_minutes__select').val()})};
+    function db_backup(){               ajax_call('db_backup',              {'time_frame_minutes': $('#time_frame_minutes__select').val()})};
+    function db_restore(){              ajax_call('db_restore',             {'time_frame_minutes': $('#time_frame_minutes__select').val()})};
+    function db_nullify_indicators(){   ajax_call('db_nullify_indicators',  {'time_frame_minutes': $('#time_frame_minutes__select').val()})};
+    function db_truncate(){             ajax_call('db_truncate',            {'time_frame_minutes': $('#time_frame_minutes__select').val()})};
+    function db_check(){                ajax_call('db_check',               {'time_frame_minutes': $('#time_frame_minutes__select').val()})};
 
+    $(document).ready(function () {
+        setup_ws_dashboard();
+    })
 
-        function bot_draw_data_on_return(returned_payload){
-
-            var format = {year: '2-digit',month: '2-digit', day: '2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit'};
-
-            
-            const traceA = {
-                    // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    y: returned_payload.price,
-                    name:'Price',
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {
-                        color: 'rgba(4, 0, 255, 1)',
-                        width: 0.4,
-                    },
-                };
-
-            const traceB = {
-                    // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    y: returned_payload.indicator_ema_60_200,
-                    name:'EMA 60, 200',
-
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {
-                        width: 0.8,
-                    },
-                };
-
-            const traceC = {
-                    // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    y: returned_payload.indicator_ema_60_20,
-                    name:'EMA 60, 20',
-
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {
-                        width: 0.8,
-                        color: 'blue',
-                    },
-                    // xaxis: 'x2', yaxis: 'y2' 
-                };
-
-            const traceD = {
-                    // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    y: returned_payload.indicator_macd_60,
-                    name:'MACD 60',
-
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {
-                        width: 0.8,
-                        color: 'blue',
-                    },
-                    xaxis: 'x2', yaxis: 'y2' 
-                };
-
-            const traceE = {
-                    // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-                    y: returned_payload.indicator_macd_signal_60,
-                    name:'MACD Signal 60',
-
-                    type: 'scatter',
-                    mode: 'lines',
-                    line: {
-                        width: 0.8,
-                        color: 'red',
-                    },
-                    xaxis: 'x2', yaxis: 'y2' 
-                };
-
-            // const traceE = {
-            //         // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-            //         x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-            //         y: returned_payload.indicator_macd_histogram_60,
-            //         name:'MACD Histogram 60',
-
-            //         type: 'scatter',
-            //         mode: 'lines',
-            //         line: {
-            //             width: 0.8,
-            //         },
-            //         xaxis: 'x2', yaxis: 'y2' 
-            //     };
-
-            // const traceF = {
-            //         // x: returned_payload.epoch.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-            //         x: returned_payload.epoch,//.map(unix => Intl.DateTimeFormat('en-US', format).format(unix * 1000)) ,
-            //         y: returned_payload.indicator_rsi_60,
-            //         name:'RSI 60',
-
-            //         type: 'scatter',
-            //         mode: 'lines',
-            //         line: {
-            //             width: 0.8,
-            //         },
-            //         xaxis: 'x2', yaxis: 'y2' 
-            //     };
-
-            const data = [
-                traceA,
-                traceB,
-                traceC,
-                traceD,
-                traceE,
-                // traceF,
-            ];
-
-            const layout = {
-                height: 800,
-                width: 1400,
-
-                grid: {
-                    rows: 2,
-                    columns: 1,
-                    pattern: 'independent',
-                    shared_xaxes: true
-                },
-                yaxis: { title: 'Top Subplot Y-Axis' },
-                yaxis2: { title: 'Bottom Subplot Y-Axis' }
-            };
-
-            Plotly.newPlot('bot_price_plot', data, layout);   
-        }
-
-
-
-
-        $(document).ready(function () {
-            setup_ws_dashboard();
-        })
-
-    </script>
+</script>
 
 
     

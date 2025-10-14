@@ -5,8 +5,7 @@ from dashboard.models.models_position import models_order
 from dashboard.models import models_alert
 import json
 from dashboard.modules.dapps.aave.aave_class import Aave
-
-
+import copy
 
 
 def handle_a_pulse(request):
@@ -17,16 +16,24 @@ def handle_a_pulse(request):
         payload = json.loads(request.body.decode('utf-8'))
 
         assert payload.get('key', '') == 'XiKd2uXZuT5vBU5mr2Qi'
-        # tk.logger.info(payload)
+        payload = tk.decompress_pickle_object(payload['payload'])
 
         admin_settings = tk.get_admin_settings()
+
+        if 'live_indicators' in payload:
+            admin_settings.live_indicators = payload['live_indicators']['indicators']
+            admin_settings.live_indicators_update_epoch = payload['live_indicators']['epoch']
         
+        admin_settings.INDICATORS = payload['INDICATORS']
+        admin_settings.MINUTES = payload['MINUTES']
+
         admin_settings.gas = json.loads(payload['gas']['price'])
         admin_settings.gas_update_epoch = payload['gas']['epoch']
 
         admin_settings.prices = {'weth': payload['price']['price']}
         admin_settings.prices_update_epoch = payload['price']['epoch']
 
+        # tk.logger.info(admin_settings.live_indicators)
 
         # admin_settings.uniswap_asm_fiat_to_token = payload['quote']['uniswap']['asm_fiat_to_token']
         # admin_settings.uniswap_asm_token_to_fiat = payload['quote']['uniswap']['asm_token_to_fiat']
@@ -51,12 +58,8 @@ def handle_a_pulse(request):
         positions = models_position.Position.objects.filter(active=True)
 
         for position in positions:
-
             position.price = admin_settings.prices[position.order.coin.lower()]
-
             position.evaluate()
-
-
             position.save()
 
         
@@ -83,6 +86,7 @@ def handle_a_pulse(request):
                 "positions_dict": positions_dict,
                 "alarm": "",
                 "admin_settings": tk.serialize_object(admin_settings),
+                "chart_df": payload['chart_df'],
             }
 
         tk.send_message_to_frontend_dashboard(topic='update_positions_table', payload=payload)
@@ -94,8 +98,23 @@ def handle_a_pulse(request):
             alert.evaluate()
             alert.save()
 
+        # indicators
+        
 
 
+
+        to_return = copy.deepcopy(
+            {
+                'interval': admin_settings.interval,
+                'command_function': admin_settings.command_function,
+                'command_arguments': admin_settings.command_arguments,
+                'active_time_frame_minutes': admin_settings.active_time_frame_minutes,
+                'active_time_frame_length': admin_settings.active_time_frame_length,
+            }
+        )
+
+        admin_settings.command_function = ''
+        admin_settings.command_arguments = {}
 
         admin_settings.pulse_counter += 1
 
@@ -103,8 +122,7 @@ def handle_a_pulse(request):
         admin_settings.save()
 
 
-        return {'interval': admin_settings.interval}
-
+        return to_return
         
 
     except:

@@ -18,6 +18,10 @@ function ajax_call(command, tx_payload) {
 
             handle_ajax_returns(ret_val);
 
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("AJAX error: " + textStatus + ", " + errorThrown);
+            
         }
     })
 }
@@ -38,7 +42,8 @@ function handle_ajax_returns(ret){
 
             if (ret.req == 'bot_draw_data')
             {
-                bot_draw_data_on_return(ret.returned_payload)
+                // bot_draw_data_on_return(ret.returned_payload)
+                bot_draw_on_return_anychart(ret.returned_payload)
             }
             // location.reload();
 
