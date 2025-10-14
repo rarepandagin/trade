@@ -1,74 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Order Book Visualization</title>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>AnyChart: Candlestick, Bar, and Line Series</title>
+    <link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.anychart.com/releases/8.11.0/fonts/css/anychart-font.min.css" rel="stylesheet" type="text/css">  
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js"></script>
+
+  <style>
+    html, body, #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
-
-    
-  <div id="orderBookPlot" style="width: 600px; height: 400px;"></div>
+  <div id="container"></div>
   <script>
-    // Sample data: price levels and volumes for bids and asks
-    // Bids are represented with negative x-values (left side)
-    const bids = [
-      { price: 100.0, volume: 50 },
-      { price: 99.5, volume: 75 },
-      { price: 99.0, volume: 100 }
-    ];
-    // Asks are represented with positive x-values (right side)
-    const asks = [
-      { price: 100.5, volume: 60 },
-      { price: 101.0, volume: 40 },
-      { price: 101.5, volume: 25 }
-    ];
+anychart.onDocumentReady(function () {
+  // Sample data: [date, open, high, low, close, volume, ma]
+  const data = [
+    ['2023-01-01', 100, 110, 95, 105, 1000, 102],
+    ['2023-01-02', 105, 115, 100, 110, 1200, 104],
+    ['2023-01-03', 110, 118, 108, 112, 900, 106],
+    ['2023-01-04', 112, 120, 110, 118, 1500, 108],
+    ['2023-01-05', 118, 125, 115, 122, 1300, 110]
+  ];
 
-    // Prepare data for Plotly
-    const data = [
-      // Bids (left side, green bars)
-      {
-        x: bids.map(bid => -bid.price), // Negative prices for left side
-        y: bids.map(bid => bid.volume),
-        type: 'bar',
-        name: 'Bids',
-        marker: { color: 'green' },
-        orientation: 'v' // Vertical bars
-      },
-      // Asks (right side, red bars)
-      {
-        x: asks.map(ask => ask.price), // Positive prices for right side
-        y: asks.map(ask => ask.volume),
-        type: 'bar',
-        name: 'Asks',
-        marker: { color: 'red' },
-        orientation: 'v' // Vertical bars
-      }
-    ];
+  // Create data table
+  const dataTable = anychart.data.table('x');
+  dataTable.addData(data);
 
-    // Layout configuration
-    const layout = {
-      title: 'Order Book',
-      xaxis: {
-        title: 'Price',
-        // The order of categories on the x-axis can be controlled
-        // For a clean order, you might want to sort the data
-        // The default is "trace", which uses the order in the data array
-        // You can also use "category ascending" or "category descending"
-        // to sort by the x-values
-        categoryorder: 'category ascending' // Sorts from lowest to highest price
-      },
-      yaxis: {
-        title: 'Volume'
-      },
-      // The drawing order of traces is determined by their order in the data array
-      // The last trace in the array is drawn on top
-      // To ensure asks are on top of bids, place the asks trace last
-      // This is already the case in the data array above
-      barmode: 'overlay' // Overlap the bars to show the order book structure
-    };
+  // Map data fields
+  const mapping = dataTable.mapAs({
+    'open': 1,
+    'high': 2,
+    'low': 3,
+    'close': 4
+  });
 
-    // Create the plot
-    Plotly.newPlot('orderBookPlot', data, layout);
-  </script>
+  const volumeMapping = dataTable.mapAs({
+    'value': 5  // volume
+  });
+
+  const maMapping = dataTable.mapAs({
+    'value': 6  // moving average
+  });
+
+  // Create stock chart
+  const chart = anychart.stock();
+
+  // Get plot
+  const plot = chart.plot(0);
+
+  // Add candlestick series
+  const candlestick = plot.candlestick(mapping);
+  candlestick.name('Price');
+
+  // Add bar series for volume (on the same plot or separate yAxis)
+  const volume = plot.column(volumeMapping);
+  volume.name('Volume');
+  // volume.yAxis().scale().minimum(0);
+  volume.fill('gray 0.5');
+  volume.legendItem().iconType('square');
+
+  // Optional: Use a separate Y-axis for volume
+  // const volumeAxis = chart.yAxis(1);
+  // volume.yAxis(volumeAxis);
+  // volumeAxis.height('30%');
+  // volumeAxis.orientation('right');
+
+  // Add line series for moving average
+  const maLine = plot.line(maMapping);
+  maLine.name('Moving Average');
+  maLine.stroke('blue', 2);
+
+  // Set chart title
+  chart.title('Candlestick with Volume Bar and Moving Average Line');
+
+  // Set container id
+  chart.container('container');
+
+  // Draw chart
+  chart.draw();
+});     </script>
 </body>
 </html>   

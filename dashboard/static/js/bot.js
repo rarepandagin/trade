@@ -128,31 +128,49 @@ function bot_draw_on_return_anychart(payload){
         
     $("#anychart_chart_container").html("")
 
-    candle_chart_data = "'Date,Open,High,Low,Close,y,x"
+    candle_chart_data = "'Date,Open,High,Low,Close,Volume,ema_20"
 
     payload.chart_df.forEach(x=>{
         candle_chart_data += `\n${x.epoch_open}000,${x.open},${x.high},${x.low},${x.close},${x.volume},${x.ema_20}`
     })
+	const x = payload.chart_df.slice(-1);
+	candle_chart_data += `\n${x.epoch_open}000,${x.open},${x.high},${x.low},${x.close},${x.volume},${x.ema_20}`
+
     candle_chart_data += "'"
 
-      var dataTable = anychart.data.table();
+	// console.log(candle_chart_data)
 
-      dataTable.addData(candle_chart_data);
 
-      var mapping_candlestick = dataTable.mapAs({
-        open: 1,
-        high: 2,
-        low: 3,
-        close: 4
-      });
+	var dataTable = anychart.data.table();
 
-      var chart = anychart.stock();
+	dataTable.addData(candle_chart_data);
 
-      var plot = chart.plot(0);
+	var mapping_candlestick = dataTable.mapAs({
+	open: 1,
+	high: 2,
+	low: 3,
+	close: 4
+	});
 
-      var series_candlestick = plot.candlestick(mapping_candlestick);
-      series_candlestick.name('ETHUSDC');
+	var chart = anychart.stock();
 
+	var plot = chart.plot(0);
+
+	var series_candlestick = plot.candlestick(mapping_candlestick);
+	series_candlestick.name('ETHUSDC');
+
+
+
+
+
+
+
+	var mapping_ema_20 = dataTable.mapAs({x:0, value: 6});
+	var firstSeries = plot.line(mapping_ema_20);
+	firstSeries.name('EMA 20');
+
+	
+	
 
       // Annotations
       var controller = plot.annotations();
@@ -186,29 +204,6 @@ function bot_draw_on_return_anychart(payload){
         //         }
         //     }
         // })
-
-
-
-      // set the grid settings
-    //   plot
-    //     .yGrid(true)
-    //     .xGrid(true)
-    //     .yMinorGrid(true)
-    //     .xMinorGrid(true);
-
-      // create the candlestick series
-
-    //   series_candlestick.legendItem().iconType('rising-falling');
-      
-	// map the data for all series
-	var mapping_ema_20 = dataTable.mapAs({x: 0, value: 6});
-	var firstSeries = plot.line(mapping_ema_20);
-	firstSeries.name('EMA 20');
-	firstSeries.legendItem().iconType('DDD-falling');
-
-
-	// var mapping_ema_20 = dataSet.mapAs({x: 0, value: 1})
-	// var series_ema_20 = chart.plot(0).line(mapping_ema_20);
 
 
     chart.background().fill("#1e1e1e"); // Dark background
