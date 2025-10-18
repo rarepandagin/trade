@@ -143,6 +143,25 @@ optgroup{
 	border-width: 2px;
 }
 
+
+.triangle_up {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgb(0, 255, 0);
+  display: inline-block;
+}   
+.triangle_down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgb(255, 0, 0);
+  display: inline-block;
+}   
+
+
 </style>
 
 
@@ -381,17 +400,20 @@ optgroup{
 
         </div>
 
+
+      </div>
+      <div class="col-2">
+        	<textarea class="form-control" id="logger_textarea" rows="20"></textarea>
+	  </div>
+
+
+	  
         <div class="border rounded p-3 mt-3 highborder" >
 
 				{% block basebody %}
 
 				{% endblock %}
 		</div>
-
-      </div>
-      <div class="col-2">
-        	<textarea class="form-control" id="logger_textarea" rows="90"></textarea>
-	  </div>
   </div>
 
 

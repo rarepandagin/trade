@@ -83,7 +83,8 @@ class AdminSettings(models.Model):
     INDICATORS                      = models.JSONField(default=list)
     MINUTES                         = models.JSONField(default=list)
     live_indicators                 = models.JSONField(default=dict)
-    live_indicators_update_epoch    = models.BigIntegerField(default=0)
     
     active_time_frame_minutes       = models.IntegerField(default=1)
     active_time_frame_length        = models.IntegerField(default=1440)
+
+    vision                          = models.JSONField(default=dict)

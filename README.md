@@ -85,3 +85,4 @@ adjust the SL of the main asset to a price at which you can confirm a market shi
 because at that price, we can only make profit if the market has shifted and goes toward our hedge.
 otherwise, also the hedge will start generating losses. this is the worst case scenario.
 
+

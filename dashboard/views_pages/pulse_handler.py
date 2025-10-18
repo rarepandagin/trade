@@ -6,7 +6,7 @@ from dashboard.models import models_alert
 import json
 from dashboard.modules.dapps.aave.aave_class import Aave
 import copy
-
+from dashboard.views_pages.vision import Vision
 
 def handle_a_pulse(request):
 
@@ -20,12 +20,19 @@ def handle_a_pulse(request):
 
         admin_settings = tk.get_admin_settings()
 
-        if 'live_indicators' in payload:
-            admin_settings.live_indicators = payload['live_indicators']['indicators']
-            admin_settings.live_indicators_update_epoch = payload['live_indicators']['epoch']
-        
         admin_settings.INDICATORS = payload['INDICATORS']
         admin_settings.MINUTES = payload['MINUTES']
+
+        if 'live_indicators' in payload:
+            admin_settings.live_indicators = payload['live_indicators']
+            vision = Vision()
+            vision.look_around()
+            vision.generate_reasons()
+            
+
+            admin_settings.vision = vision.serialize()
+            tk.logger.info(admin_settings.vision)
+
 
         admin_settings.gas = json.loads(payload['gas']['price'])
         admin_settings.gas_update_epoch = payload['gas']['epoch']
@@ -33,7 +40,6 @@ def handle_a_pulse(request):
         admin_settings.prices = {'weth': payload['price']['price']}
         admin_settings.prices_update_epoch = payload['price']['epoch']
 
-        # tk.logger.info(admin_settings.live_indicators)
 
         # admin_settings.uniswap_asm_fiat_to_token = payload['quote']['uniswap']['asm_fiat_to_token']
         # admin_settings.uniswap_asm_token_to_fiat = payload['quote']['uniswap']['asm_token_to_fiat']
@@ -45,7 +51,8 @@ def handle_a_pulse(request):
 
         if admin_settings.pulses_are_being_blocked:
             tk.logger.info(f'--------> XXxXX pulses are being blocked.')
-            raise
+            # raise
+            return {}
 
         else:
             # tk.logger.info(f'--------> effective pulse: {payload}')
