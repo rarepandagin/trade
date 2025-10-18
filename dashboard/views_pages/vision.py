@@ -55,6 +55,12 @@ def find_longest_ascending_sequence(arr):
     return arr[longest_start:longest_end + 1]   
 
 
+unclear_ema_lineup = "unclear_ema_lineup"
+ema_lineup_shows_full_bullish_alignment = "ema_lineup_shows_full_bullish_alignment"
+ema_lineup_shows_some_bullish_alignment = "ema_lineup_shows_some_bullish_alignment"
+ema_lineup_shows_full_bearish_alignment = "ema_lineup_shows_full_bearish_alignment"
+ema_lineup_shows_some_bearish_alignment = "ema_lineup_shows_some_bearish_alignment"
+
 
 def count_and_describe_lineup(items):
     longest_ascending_sequence  = find_longest_ascending_sequence(items)
@@ -65,63 +71,65 @@ def count_and_describe_lineup(items):
     n_asc = len(longest_ascending_sequence)
     n_des = len(longest_descending_sequence)
 
-    ret = 'not aligned'
+    ret = unclear_ema_lineup
     if n == n_asc:
-        ret = 'full bearish alignment'
+        ret = ema_lineup_shows_full_bearish_alignment
     elif n_asc > (n / 2):
-        ret = 'some bearish alignment'
+        ret = ema_lineup_shows_some_bearish_alignment
     
     elif n == n_des:
-        ret = 'full bullish alignment'
+        ret = ema_lineup_shows_full_bullish_alignment
     elif n_des > (n / 2):
-        ret = 'some bullish alignment'
+        ret = ema_lineup_shows_some_bullish_alignment
     
     return ret
 
 
 
-reason_strength_weak = 'reason_strength_weak'
-reason_strength_strong = 'reason_strength_strong'
+weak = 'weak'
+strong = 'strong'
 
-reason_side_pro     = "reason_side_pro"
-reason_side_against = "reason_side_against"
+pro     = "pro"
+against = "against"
 
-reason_trade_long   = "reason_trade_long" 
-reason_trade_short  = "reason_trade_short" 
+long   = "long" 
+short  = "short" 
 
 
 
-class Reason:
+class Observation:
     def __init__(self, indicator, description, strength) -> None:
         self.indicator = indicator
         self.strength = strength
         self.description = description
-        self.minutes = []
-        self.side = None
-        self.declared = False
 
-    def declare(self, minute, side, trade):
-        self.minutes.append(minute)
-        self.side = side
-        self.trade = trade
+    def declare(self, minute, bias, trade):
+        self.table[trade][bias].append(minute)
         self.declared = True
 
     def reset(self):
-        self.minutes = []
+        self.table = {
+                long:  {pro:[], against:[]},
+                short: {pro:[], against:[]},
+            }
         self.declared = False
 
 
 
-reason_emas_direction_agrees           = Reason(indicator="ema",               description="EMAs direction agrees with a trend",            strength=reason_strength_weak)
-reason_emas_direction_disagrees        = Reason(indicator="ema",               description="EMAs direction disagrees with a trend",         strength=reason_strength_strong)
+observation_ema_current_direction_strong    = Observation(indicator="ema",               description="EMA current direction",                         strength=strong)
+observation_ema_current_direction_weak      = Observation(indicator="ema",               description="EMA current direction",                         strength=weak)
 
 
-reason_macd_hist_fully_agrees          = Reason(indicator="macd_histogram",    description="MACD hist fully agrees",                        strength=reason_strength_strong)
-reason_macd_hist_fully_disagrees       = Reason(indicator="macd_histogram",    description="MACD hist fully disagrees",                     strength=reason_strength_strong)
+# observation_emas_lineup_strong                     = Observation(indicator="ema",               description="EMA line up indicates a strong trend",          strength=strong)
 
 
-reason_macd_hist_is_ok                 = Reason(indicator="macd_histogram",    description="MACD hist is ok",                               strength=reason_strength_weak)
-reason_macd_hist_is_not_ok             = Reason(indicator="macd_histogram",    description="MACD hist is not ok",                           strength=reason_strength_weak)
+
+observation_macd_hist_fully_agrees          = Observation(indicator="macd_histogram",    description="MACD hist fully agrees",                        strength=strong)
+observation_macd_hist_fully_disagrees       = Observation(indicator="macd_histogram",    description="MACD hist fully disagrees",                     strength=strong)
+
+
+observation_macd_hist_is_ok                 = Observation(indicator="macd_histogram",    description="MACD hist is ok",                               strength=weak)
+observation_macd_hist_is_not_ok             = Observation(indicator="macd_histogram",    description="MACD hist is not ok",                           strength=weak)
 
 
 class Vision:
@@ -136,22 +144,25 @@ class Vision:
         self.ema_lineup = {}
         self.ema_200_comparison = {}
 
-        self.reasons = [
-            reason_emas_direction_agrees,
-            reason_emas_direction_disagrees,
-            reason_macd_hist_fully_agrees,
-            reason_macd_hist_fully_disagrees,
-            reason_macd_hist_is_ok,
-            reason_macd_hist_is_not_ok,
+        self.observations = [
+            observation_ema_current_direction_strong,
+            observation_ema_current_direction_weak,
+            
+            # observation_emas_lineup,
+
+            observation_macd_hist_fully_agrees,
+            observation_macd_hist_fully_disagrees,
+            observation_macd_hist_is_ok,
+            observation_macd_hist_is_not_ok,
         ]
 
 
 
-        self.reasons_pro_long = []
-        self.reasons_pro_short = []
+        self.observations_pro_long = []
+        self.observations_pro_short = []
 
-        self.reasons_against_long = []
-        self.reasons_against_short = []
+        self.observations_against_long = []
+        self.observations_against_short = []
 
 
 
@@ -161,10 +172,10 @@ class Vision:
             'ema_lineup': self.ema_lineup,
             'ema_200_comparison': self.ema_200_comparison,
 
-            'reasons_pro_long': [x.__dict__ for x in self.reasons_pro_long],
-            'reasons_pro_short': [x.__dict__ for x in self.reasons_pro_short],
-            'reasons_against_long': [x.__dict__ for x in self.reasons_against_long],
-            'reasons_against_short': [x.__dict__ for x in self.reasons_against_short],
+            'observations_pro_long': [x.__dict__ for x in self.observations_pro_long],
+            'observations_pro_short': [x.__dict__ for x in self.observations_pro_short],
+            'observations_against_long': [x.__dict__ for x in self.observations_against_long],
+            'observations_against_short': [x.__dict__ for x in self.observations_against_short],
         }
 
     def look_around(self):
@@ -173,8 +184,8 @@ class Vision:
 
         live_indicators = admin_settings.live_indicators
 
-        for reason in self.reasons:
-            reason.reset()
+        for observation in self.observations:
+            observation.reset()
 
 
         """
@@ -212,26 +223,26 @@ class Vision:
             }
 
 
-            # REASONING
+            # observationING
             if (
                 slow_lags_directions_description in [ema_group_shows_absolutely_bullish_direction, ema_group_shows_mostly_bullish_direction]
                 ) and (
                 fast_lags_directions_description in [ema_group_shows_absolutely_bullish_direction, ema_group_shows_mostly_bullish_direction]
                 ) :
 
-                reason_emas_direction_agrees.declare(minute=minute, side=reason_side_pro, trade=reason_trade_long)
+                observation_ema_current_direction_weak.declare(minute=minute, bias=pro, trade=long)
 
             else:
-                reason_emas_direction_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_long)
+                observation_ema_current_direction_strong.declare(minute=minute, bias=against, trade=long)
 
             if (
                 slow_lags_directions_description in [ema_group_shows_absolutely_bearish_direction, ema_group_shows_mostly_bearish_direction]
                 ) and (
                 fast_lags_directions_description in [ema_group_shows_absolutely_bearish_direction, ema_group_shows_mostly_bearish_direction]
                 ) :
-                reason_emas_direction_agrees.declare(minute=minute, side=reason_side_pro, trade=reason_trade_short)
+                observation_ema_current_direction_weak.declare(minute=minute, bias=pro, trade=short)
             else:
-                reason_emas_direction_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_short)
+                observation_ema_current_direction_strong.declare(minute=minute, bias=against, trade=short)
 
 
 
@@ -239,7 +250,16 @@ class Vision:
 
             lag_values = [live_indicators[f'minutes_{minute}'][f'ema_{lag}']['v'] for lag in self.ema_lags]
 
-            self.ema_lineup[minute] = count_and_describe_lineup(lag_values)
+            ema_lineup_description = count_and_describe_lineup(lag_values)
+            self.ema_lineup[minute] = ema_lineup_description
+            # if ema_lineup_description == ema_lineup_shows_full_bearish_alignment:
+            #     observation_emas_lineup.declare(minute=minute, bias=pro, trade=short)
+            #     observation_emas_lineup.declare(minute=minute, bias=against, trade=long)
+
+            # elif ema_lineup_description == ema_lineup_shows_full_bullish_alignment:
+            #     observation_emas_lineup.declare(minute=minute, bias=pro, trade=long)
+            #     observation_emas_lineup.declare(minute=minute, bias=against, trade=short)
+ 
 
 
             self.ema_200_comparison[minute] = 'above' if admin_settings.prices['weth'] > live_indicators[f'minutes_{minute}'][f'ema_200']['v'] else 'below'
@@ -274,40 +294,47 @@ class Vision:
 
             if (macd_histogram_value > 0) and (macd_histogram_direction == '+'):
 
-                reason_macd_hist_fully_agrees.declare(   minute=minute, side=reason_side_pro,     trade=reason_trade_long)
-                reason_macd_hist_fully_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_short)
+                observation_macd_hist_fully_agrees.declare(   minute=minute, bias=pro,     trade=long)
+                observation_macd_hist_fully_disagrees.declare(minute=minute, bias=against, trade=short)
 
 
             elif (macd_histogram_value < 0) and (macd_histogram_direction == '-'):
-                reason_macd_hist_fully_agrees.declare(   minute=minute, side=reason_side_pro,     trade=reason_trade_short)
-                reason_macd_hist_fully_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_long)
+                observation_macd_hist_fully_agrees.declare(   minute=minute, bias=pro,     trade=short)
+                observation_macd_hist_fully_disagrees.declare(minute=minute, bias=against, trade=long)
 
             else:
 
                 if macd_histogram_value > 0:
-                    reason_macd_hist_is_ok.declare(     minute=minute, side=reason_side_pro,     trade=reason_trade_long)
-                    reason_macd_hist_is_not_ok.declare( minute=minute, side=reason_side_against, trade=reason_trade_short)
+                    observation_macd_hist_is_ok.declare(     minute=minute, bias=pro,     trade=long)
+                    observation_macd_hist_is_not_ok.declare( minute=minute, bias=against, trade=short)
 
 
                 else:
-                    reason_macd_hist_is_not_ok.declare( minute=minute, side=reason_side_against, trade=reason_trade_long)
-                    reason_macd_hist_is_ok.declare(     minute=minute, side=reason_side_pro,     trade=reason_trade_short)
+                    observation_macd_hist_is_not_ok.declare( minute=minute, bias=against, trade=long)
+                    observation_macd_hist_is_ok.declare(     minute=minute, bias=pro,     trade=short)
 
 
 
-        for reason in self.reasons:
-            if reason.trade == reason_trade_long:
-                if reason.side == reason_side_pro:
-                    self.reasons_pro_long.append(reason)
-                elif reason.side == reason_side_against:
-                    self.reasons_against_long.append(reason)
-            elif reason.trade == reason_trade_short:
-                if reason.side == reason_side_pro:
-                    self.reasons_pro_short.append(reason)
-                elif reason.side == reason_side_against:
-                    self.reasons_against_short.append(reason)
+        for observation in self.observations:
+            
+            if observation.declared:
+            
+                for trade in [long, short]:
+            
+                    for bias in [pro, against]:
+
+                        if len(observation.table[trade][bias]) > 0:
+
+                            if trade == long:
+                                if bias == pro:
+                                    self.observations_pro_long.append(observation)
+                                elif bias == against:
+                                    self.observations_against_long.append(observation)
+                            
+                            elif trade == short:
+                                if bias == pro:
+                                    self.observations_pro_short.append(observation)
+                                elif bias == against:
+                                    self.observations_against_short.append(observation)
         d=3
 
-
-    def generate_reasons(self):
-        pass

@@ -483,44 +483,51 @@ function populate_indicators_table(payload){
 }
 
 
-function get_reason_html(reason){
+function get_observation_html(observation, bias, trade){
 	let ret = ` `
 
-	if (reason.strength == 'reason_strength_strong') {
+	const minutes = observation.table[trade][bias];
+
+	if (minutes.length > 1){
+		ret += `<span class="text-warning">X${minutes.length} </strong></span>`
+	}
+
+	if (observation.strength == 'strong') {
 		ret += `<span class="text-warning"><strong> (Strong) </strong></span>`
 	}	
+
 	
-	ret += ` - ${reason.description} on tf: [${reason.minutes.toString()}]`;
+	ret += ` - ${observation.description} on [${minutes.toString()}]`;
 
 	ret += `<br>`
 	return ret
 }
-function populate_reasoning_divs(payload){
+function populate_observation_divs(payload){
 
 	let pro_long_html = ``
-	payload.admin_settings.vision.reasons_pro_long.forEach(reason=>{
-		pro_long_html += get_reason_html(reason)
+	payload.admin_settings.vision.observations_pro_long.forEach(observation=>{
+		pro_long_html += get_observation_html(observation, 'pro', 'long')
 	})
 
 	let pro_short_html = ``
-	payload.admin_settings.vision.reasons_pro_short.forEach(reason=>{
-		pro_short_html += get_reason_html(reason)
+	payload.admin_settings.vision.observations_pro_short.forEach(observation=>{
+		pro_short_html += get_observation_html(observation, 'pro', 'short')
 	})
 
 	let against_long_html = ``
-	payload.admin_settings.vision.reasons_against_long.forEach(reason=>{
-		against_long_html += get_reason_html(reason)
+	payload.admin_settings.vision.observations_against_long.forEach(observation=>{
+		against_long_html += get_observation_html(observation, 'against', 'long')
 	})
 
 	let against_short_html = ``
-	payload.admin_settings.vision.reasons_against_short.forEach(reason=>{
-		against_short_html += get_reason_html(reason)
+	payload.admin_settings.vision.observations_against_short.forEach(observation=>{
+		against_short_html += get_observation_html(observation, 'against', 'short')
 	})
 
-	$("#pro_long_reasons__div").html(pro_long_html);
-	$("#against_long_reasons__div").html(against_long_html);
+	$("#pro_long_observations__div").html(pro_long_html);
+	$("#against_long_observations__div").html(against_long_html);
 
-	$("#pro_short_reasons__div").html(pro_short_html);
-	$("#against_short_reasons__div").html(against_short_html);
+	$("#pro_short_observations__div").html(pro_short_html);
+	$("#against_short_observations__div").html(against_short_html);
 
 }

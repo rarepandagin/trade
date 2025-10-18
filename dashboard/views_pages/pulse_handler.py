@@ -27,7 +27,6 @@ def handle_a_pulse(request):
             admin_settings.live_indicators = payload['live_indicators']
             vision = Vision()
             vision.look_around()
-            vision.generate_reasons()
             
 
             admin_settings.vision = vision.serialize()

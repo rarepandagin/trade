@@ -17,7 +17,7 @@ function update_positions_table(payload){
     if (anychart_chart_container) {
         bot_draw_on_return_anychart(payload);
         populate_indicators_table(payload);
-        populate_reasoning_divs(payload);
+        populate_observation_divs(payload);
     }  
     
 
