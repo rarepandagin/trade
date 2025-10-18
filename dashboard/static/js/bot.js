@@ -484,13 +484,13 @@ function populate_indicators_table(payload){
 
 
 function get_reason_html(reason){
-	let ret = `(${reason.minute})m `
+	let ret = ` `
 
 	if (reason.strength == 'reason_strength_strong') {
 		ret += `<span class="text-warning"><strong> (Strong) </strong></span>`
 	}	
 	
-	ret += ` - ${reason.description}`;
+	ret += ` - ${reason.description} on tf: [${reason.minutes.toString()}]`;
 
 	ret += `<br>`
 	return ret

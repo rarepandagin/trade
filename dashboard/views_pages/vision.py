@@ -83,12 +83,45 @@ def count_and_describe_lineup(items):
 reason_strength_weak = 'reason_strength_weak'
 reason_strength_strong = 'reason_strength_strong'
 
+reason_side_pro     = "reason_side_pro"
+reason_side_against = "reason_side_against"
+
+reason_trade_long   = "reason_trade_long" 
+reason_trade_short  = "reason_trade_short" 
+
+
 
 class Reason:
-    def __init__(self, strength, description, minute) -> None:
+    def __init__(self, indicator, description, strength) -> None:
+        self.indicator = indicator
         self.strength = strength
         self.description = description
-        self.minute = minute
+        self.minutes = []
+        self.side = None
+        self.declared = False
+
+    def declare(self, minute, side, trade):
+        self.minutes.append(minute)
+        self.side = side
+        self.trade = trade
+        self.declared = True
+
+    def reset(self):
+        self.minutes = []
+        self.declared = False
+
+
+
+reason_emas_direction_agrees           = Reason(indicator="ema",               description="EMAs direction agrees with a trend",            strength=reason_strength_weak)
+reason_emas_direction_disagrees        = Reason(indicator="ema",               description="EMAs direction disagrees with a trend",         strength=reason_strength_strong)
+
+
+reason_macd_hist_fully_agrees          = Reason(indicator="macd_histogram",    description="MACD hist fully agrees",                        strength=reason_strength_strong)
+reason_macd_hist_fully_disagrees       = Reason(indicator="macd_histogram",    description="MACD hist fully disagrees",                     strength=reason_strength_strong)
+
+
+reason_macd_hist_is_ok                 = Reason(indicator="macd_histogram",    description="MACD hist is ok",                               strength=reason_strength_weak)
+reason_macd_hist_is_not_ok             = Reason(indicator="macd_histogram",    description="MACD hist is not ok",                           strength=reason_strength_weak)
 
 
 class Vision:
@@ -102,6 +135,17 @@ class Vision:
         self.ema_lag_direction = {}
         self.ema_lineup = {}
         self.ema_200_comparison = {}
+
+        self.reasons = [
+            reason_emas_direction_agrees,
+            reason_emas_direction_disagrees,
+            reason_macd_hist_fully_agrees,
+            reason_macd_hist_fully_disagrees,
+            reason_macd_hist_is_ok,
+            reason_macd_hist_is_not_ok,
+        ]
+
+
 
         self.reasons_pro_long = []
         self.reasons_pro_short = []
@@ -128,6 +172,10 @@ class Vision:
         admin_settings = tk.get_admin_settings()
 
         live_indicators = admin_settings.live_indicators
+
+        for reason in self.reasons:
+            reason.reset()
+
 
         """
         EMA
@@ -170,18 +218,20 @@ class Vision:
                 ) and (
                 fast_lags_directions_description in [ema_group_shows_absolutely_bullish_direction, ema_group_shows_mostly_bullish_direction]
                 ) :
-                self.reasons_pro_long.append(    Reason(strength=reason_strength_weak,   description="EMAs indicate bullish trend", minute=minute))
+
+                reason_emas_direction_agrees.declare(minute=minute, side=reason_side_pro, trade=reason_trade_long)
+
             else:
-                self.reasons_against_long.append(Reason(strength=reason_strength_strong, description="EMAs do not indicate bullish trend", minute=minute))
+                reason_emas_direction_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_long)
 
             if (
                 slow_lags_directions_description in [ema_group_shows_absolutely_bearish_direction, ema_group_shows_mostly_bearish_direction]
                 ) and (
                 fast_lags_directions_description in [ema_group_shows_absolutely_bearish_direction, ema_group_shows_mostly_bearish_direction]
                 ) :
-                self.reasons_pro_short.append(    Reason(strength=reason_strength_weak,   description="EMAs indicate bearish trend", minute=minute))
+                reason_emas_direction_agrees.declare(minute=minute, side=reason_side_pro, trade=reason_trade_short)
             else:
-                self.reasons_against_short.append(Reason(strength=reason_strength_strong, description="EMAs do not indicate bearish trend", minute=minute))
+                reason_emas_direction_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_short)
 
 
 
@@ -223,23 +273,40 @@ class Vision:
             macd_histogram_direction = live_indicators[f'minutes_{minute}']['macd_histogram']['d']
 
             if (macd_histogram_value > 0) and (macd_histogram_direction == '+'):
-                self.reasons_pro_long.append(Reason(strength=reason_strength_strong,   description="MACD hist fully agrees with long", minute=minute))
-                self.reasons_against_short.append(Reason(strength=reason_strength_strong,   description="MACD hist fully disagrees with shorting", minute=minute))
+
+                reason_macd_hist_fully_agrees.declare(   minute=minute, side=reason_side_pro,     trade=reason_trade_long)
+                reason_macd_hist_fully_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_short)
+
 
             elif (macd_histogram_value < 0) and (macd_histogram_direction == '-'):
-                self.reasons_against_long.append(Reason(strength=reason_strength_strong,   description="MACD hist fully disagrees with long", minute=minute))
-                self.reasons_pro_short.append(Reason(strength=reason_strength_strong,   description="MACD hist fully agrees with shorting", minute=minute))
+                reason_macd_hist_fully_agrees.declare(   minute=minute, side=reason_side_pro,     trade=reason_trade_short)
+                reason_macd_hist_fully_disagrees.declare(minute=minute, side=reason_side_against, trade=reason_trade_long)
 
             else:
 
                 if macd_histogram_value > 0:
-                    self.reasons_pro_long.append(Reason(strength=reason_strength_weak,   description="MACD hist is ok with long", minute=minute))
-                    self.reasons_against_short.append(Reason(strength=reason_strength_weak,   description="MACD hist is not ok with shorting", minute=minute))
+                    reason_macd_hist_is_ok.declare(     minute=minute, side=reason_side_pro,     trade=reason_trade_long)
+                    reason_macd_hist_is_not_ok.declare( minute=minute, side=reason_side_against, trade=reason_trade_short)
+
 
                 else:
-                    self.reasons_against_long.append(Reason(strength=reason_strength_weak,   description="MACD hist is not ok with long", minute=minute))
-                    self.reasons_pro_short.append(Reason(strength=reason_strength_weak,   description="MACD hist is ok with shorting", minute=minute))
+                    reason_macd_hist_is_not_ok.declare( minute=minute, side=reason_side_against, trade=reason_trade_long)
+                    reason_macd_hist_is_ok.declare(     minute=minute, side=reason_side_pro,     trade=reason_trade_short)
 
+
+
+        for reason in self.reasons:
+            if reason.trade == reason_trade_long:
+                if reason.side == reason_side_pro:
+                    self.reasons_pro_long.append(reason)
+                elif reason.side == reason_side_against:
+                    self.reasons_against_long.append(reason)
+            elif reason.trade == reason_trade_short:
+                if reason.side == reason_side_pro:
+                    self.reasons_pro_short.append(reason)
+                elif reason.side == reason_side_against:
+                    self.reasons_against_short.append(reason)
+        d=3
 
 
     def generate_reasons(self):
