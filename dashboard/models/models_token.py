@@ -58,3 +58,4 @@ class Token(models.Model):
     approved                = models.BooleanField(default=False)
 
     auto_purchased          = models.BooleanField(default=False)
+    already_alerted          = models.BooleanField(default=False)
