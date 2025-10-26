@@ -7,4 +7,5 @@ from .models_order import Order
 from .models_tick import Tick
 from .models_pair import Pair
 from .models_alert import Alert
+from .models_token import Token
 

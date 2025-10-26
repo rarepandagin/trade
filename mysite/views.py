@@ -22,6 +22,7 @@ from dashboard.views_pages import view_manual
 from dashboard.views_pages import view_pairs
 from dashboard.views_pages import view_pair
 from dashboard.views_pages import view_bot
+from dashboard.views_pages import view_dex
 
 @never_cache
 @csrf_exempt
@@ -143,6 +144,14 @@ def global_view(request):
             admin_settings.gas_speed = request.POST['admin_settings_gas_speed']
             admin_settings.save()
 
+        elif 'active_account__select' in request.POST:
+            admin_settings = tk.get_admin_settings()
+            admin_settings.active_account = request.POST['active_account__select']
+            admin_settings.save()
+
+            from dashboard.views_pages.context.ajax.ajax_posts import update_balances
+            update_balances()
+
         return redirect(originating_path)
 
 
@@ -159,6 +168,12 @@ def depth_view(request):
 @login_required(login_url='login', redirect_field_name=None)
 def bot_view(request):
     return view_bot.get_response(request)
+
+@never_cache
+@csrf_exempt
+@login_required(login_url='login', redirect_field_name=None)
+def dex_view(request):
+    return view_dex.get_response(request)
 
 
 @never_cache

@@ -7,7 +7,7 @@ import os
 import human_readable
 import time
 from traceback import format_exc
-
+from dashboard.models.models_adminsettings import *
 from dashboard.views_pages import toolkit as tk
 import os
 
@@ -56,18 +56,49 @@ class Dapp():
         
 
         if self.network == 'mainnet':
-            # old
-            # self.default_account_address = f"0x0CF89B3E8B6BdF43e{os.getenv('trader_default_account_address')}"
-            # self.account_private_key = f"c01be2ee6b174632ad3c0e16a10{os.getenv('trader_account_private_key')}"
 
-            # new
-            self.default_account_address = f"0x30127b1414483aE43{os.getenv('trader_default_account_address')}"
-            self.account_private_key = f"0xfb1b5d613421ad0aab3ab93b6dd141966ba{os.getenv('trader_account_private_key')}"
+            admin_settings = tk.get_admin_settings()
+
+            if admin_settings.active_account == account_hedge:
+
+                self.account_public_address = f"0x30127b1414483aE437427d6f107F13fC54a2B62b"
+                self.account_private_key = f"0xfb1b5d613421ad0aab3ab93b6dd141966ba"
+
+            elif admin_settings.active_account == account_dex:
+                self.account_public_address = "0xD9f4A6615eD03883809D4d8434C33023A174c03d"
+                self.account_private_key = f"0x8787186b8e4bbd398970b16a3ae7c"
+
+            elif admin_settings.active_account == account_ajax:
+                self.account_public_address = "0xE7cc257fd6e46ca88985d997682F8BD4d1FEB0E0"
+                self.account_private_key = f"0xe1b88033f1e622979c2374a1ba7edff"
+
+
+            elif admin_settings.active_account == account_eagle:
+                self.account_public_address = "0xf62D1c3fF13863307a8f31c222830b36826B8945"
+                self.account_private_key = f"0x778778d62fc906d9ac59c27944a58e4"
+
+
+            elif admin_settings.active_account == account_ranger:
+                self.account_public_address = "0x9498eeFb63b412B84FAD21cB8D03C9Becd46F188"
+                self.account_private_key = f"0xc47529e2653ac21b1ef4c6b441aee28dc"
+
+
+            elif admin_settings.active_account == account_lion:
+                self.account_public_address = "0xF15ebFce063630b39d9C9D307dFf377aC7082aEE"
+                self.account_private_key = f"0xdc706d1b0499168b8a43f45e21642aa"
+
+
+            elif admin_settings.active_account == account_tiger:
+                self.account_public_address = "0x7be962ca2efD77Aa3Fe259A6Bd5fe4C9CaD9F69b"
+                self.account_private_key = f"0x4ecddfbc1d8d8c29a444c497d8c5332d"
+
+
+            self.account_private_key = f'{self.account_private_key}{os.getenv(f'{admin_settings.active_account}_private_key')}'
 
 
 
         else:
-            self.default_account_address = f"0x51DAc1f4A5a7439444D8c1ac49ba42c21Aee13B2"
+            self.account_public_address = f"0x51DAc1f4A5a7439444D8c1ac49ba42c21Aee13B2"
             self.account_private_key = f"9108f9ba583eb7d1a8b745a259935a65684e82c8b643cbfd9c866ecfa85a35b6"
         
 
@@ -75,7 +106,10 @@ class Dapp():
 
 
         self.w3 = Web3(Web3.HTTPProvider(self.mainnet_infura_url))
-        self.w3.eth.default_account = self.w3.to_checksum_address(self.default_account_address)
+        
+
+        self.account_public_checksum_address = self.w3.to_checksum_address(self.account_public_address)
+        self.w3.eth.default_account = self.account_public_checksum_address
 
 
         # below properties are set by the dapp itself at its own init
@@ -148,7 +182,7 @@ class Dapp():
         try:
 
             tk.logger.info(f'building tx for action: {action.fn_name}')
-
+    
             gas_info = self.get_network_gas_price()
 
             assert not gas_info is None
@@ -179,9 +213,7 @@ class Dapp():
 
             tx = action.build_transaction(tx_settings)
 
-
             signed_tx = self.w3.eth.account.sign_transaction(tx, private_key=self.account_private_key)
-
 
             if hasattr(signed_tx, 'rawTransaction'):
                 tx_hash = self.w3.eth.send_raw_transaction(signed_tx.rawTransaction)

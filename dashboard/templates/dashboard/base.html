@@ -45,6 +45,7 @@
 			<script src="{% static '/js/ajax_handler.js' %}"></script>
 			<script src="{% static '/js/pairs.js' %}"></script>
 			<script src="{% static '/js/bot.js' %}"></script>
+			<script src="{% static '/js/dex.js' %}"></script>
 			<script src="{% static '/js/websocket_manager.js' %}"></script>
 
 	{% else %}
@@ -56,6 +57,7 @@
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/ajax_handler.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/pairs.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/bot.js"></script>
+			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/dex.js"></script>
 			<script src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/websocket_manager.js"></script>
 
 	{% endif %}
@@ -162,6 +164,19 @@ optgroup{
 }   
 
 
+.green_circle {
+	width: 10px;
+	height: 10px;
+	background-color: green;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+}
+
+
 </style>
 
 
@@ -183,6 +198,7 @@ optgroup{
 			<a href="/depth/" class="menu-item">Depth</a>
 			<a href="/manual/" class="menu-item">Manual</a>
 			<a href="/bot/" class="menu-item">Bot</a>
+			<a href="/dex/" class="menu-item">Dex</a>
 			<a href="https://etherscan.io/address/0x30127b1414483aE437427d6f107F13fC54a2B62b" target="_blank" class="menu-item">Account</a>
 			<a href="/admin34k5jh34KJSHDF345kjh2234sdf/" class="menu-item">Admin</a>
 			<a href="/logout/" class="menu-item ">Logout</a>
@@ -235,6 +251,25 @@ optgroup{
 						<p class="m-0">Total Profit: {{stats.total_profit}} USD</p>
 
 					</div>
+
+				</div>
+
+				<div class="d-flex justify-content-between gap-5">
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						<select class="form-select form-select-sm" name="active_account__select" style="width: 180px;">
+							{% for account in accounts %}
+							<option value="{{account}}" {% if account == admin_settings.active_account %} selected {% endif %}  >{{account}}</option>
+							{% endfor %}
+						</select>
+						
+						<button type="submit" class="btn btn-primary btn-sm ms-2 disable_while_busy" style="height: 30px;" >Set active account</button>
+					
+					</form>
 
 				</div>
 	

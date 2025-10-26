@@ -19,10 +19,15 @@ def handle_ajax_posts_bot(req, payload):
         active_time_frame_minutes = int(payload['time_frame_minutes'])
         active_time_frame_length = int(payload['steps'])
 
-        admin_settings = tk.get_admin_settings()
-        admin_settings.active_time_frame_minutes = active_time_frame_minutes
-        admin_settings.active_time_frame_length = active_time_frame_length
-        admin_settings.save()
+        # admin_settings = tk.get_admin_settings()
+        # admin_settings.
+        # admin_settings.
+        tk.update_admin_settings("active_time_frame_minutes", active_time_frame_minutes)
+        tk.update_admin_settings("active_time_frame_length", active_time_frame_length)
+        # admin_settings.update(
+        #     active_time_frame_minutes = active_time_frame_minutes,
+        #     active_time_frame_length = active_time_frame_length
+        #     )
 
 
     elif req == 'bot_draw_data':

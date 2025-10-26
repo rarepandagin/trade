@@ -2,6 +2,7 @@ from traceback import format_exc
 from dashboard.views_pages import toolkit as tk
 from dashboard.models.models_position import models_position
 from dashboard.models.models_position import models_order
+from dashboard.models import models_token
 from dashboard.models import models_alert
 import json
 from dashboard.modules.dapps.aave.aave_class import Aave
@@ -9,7 +10,6 @@ import copy
 from dashboard.views_pages.vision import Vision
 
 def handle_a_pulse(request):
-
 
     try:
 
@@ -30,8 +30,81 @@ def handle_a_pulse(request):
             
 
             admin_settings.vision = vision.serialize()
-            tk.logger.info(admin_settings.vision)
+            # tk.logger.info(admin_settings.vision)
 
+        if 'tokens' in payload:
+            # tk.logger.info(payload['tokens'])
+            incoming_token_dict_list = [json.loads(x['fields']) for x in payload['tokens']]
+
+            existing_token_contracts = [x.contract for x in models_token.Token.objects.all()]
+
+            tokens_to_be_added = []
+
+            contracts_to_update = []
+
+            for incoming_token_dict in incoming_token_dict_list:
+
+                if incoming_token_dict['contract'] in existing_token_contracts:
+                    contracts_to_update.append(incoming_token_dict['contract'])
+
+                else:
+                    tokens_to_be_added.append(models_token.Token(**incoming_token_dict))
+
+            if len(tokens_to_be_added) > 0:
+                models_token.Token.objects.bulk_create(tokens_to_be_added, ignore_conflicts=True)
+
+            if len(contracts_to_update) > 0:
+                existing_token_to_be_updated = {obj.contract: obj for obj in models_token.Token.objects.filter(contract__in=contracts_to_update)}
+
+                for item in incoming_token_dict_list:
+                    obj = existing_token_to_be_updated.get(item['contract'])
+                    if obj:
+                        obj.price = item['price']
+                        obj.volume = item['volume']
+                        obj.makers = item['makers']
+                        obj.liquidity = item['liquidity']
+                        obj.cap = item['cap']
+                        obj.locked_liquidity = item['locked_liquidity']
+                        obj.has_website = item['has_website']
+                        obj.has_twitter = item['has_twitter']
+                        obj.has_telegram = item['has_telegram']
+                        obj.go_security = item['go_security']
+                        obj.quick_intel = item['quick_intel']
+                        obj.token_sniffer = item['token_sniffer']
+                        obj.honeypot_is = item['honeypot_is']
+
+                # Bulk update by primary key
+                models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=[
+                    'price',
+                    'volume',
+                    'makers',
+                    'liquidity',
+                    'cap',
+                    'locked_liquidity',
+                    'has_website',
+                    'has_twitter',
+                    'has_telegram',
+                    'go_security',
+                    'quick_intel',
+                    'token_sniffer',
+                    'honeypot_is',
+
+                    ], batch_size=100)
+
+            # send alerts for interesting tokens:
+            for token in models_token.Token.objects.all():
+                if not token.imported:
+                    criteria_liquidity = token.locked_liquidity and token.liquidity > 4000
+                    criteria_age = (tk.get_epoch_now() - token.epoch_created) < 30 * 60
+                    if criteria_liquidity and criteria_age:
+                        tk.create_new_notification(title="New Token", message=f"{token.name} with locked liquidity of {token.liquidity} detected.")
+
+                    token.imported = True
+                    token.save()
+
+
+
+            admin_settings.tokens = [tk.serialize_object(x) for x in models_token.Token.objects.all() if x.show]
 
         admin_settings.gas = json.loads(payload['gas']['price'])
         admin_settings.gas_update_epoch = payload['gas']['epoch']

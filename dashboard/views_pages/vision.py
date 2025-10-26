@@ -22,8 +22,8 @@ def populate_list_by_index(items):
 def count_and_describe_direction_of_ema_group(items):
 
     n = len(items)
-    plus_counts = items.count('+')
-    minus_counts = items.count('-')
+    plus_counts = len([x for x in items if x >= 0])
+    minus_counts = len([x for x in items if x < 0])
 
     ret = unclear_direction
 
@@ -98,13 +98,12 @@ short  = "short"
 
 
 class Observation:
-    def __init__(self, indicator, description, strength) -> None:
+    def __init__(self, indicator, description) -> None:
         self.indicator = indicator
-        self.strength = strength
         self.description = description
 
-    def declare(self, minute, bias, trade):
-        self.table[trade][bias].append(minute)
+    def declare(self, trade, bias, minute, strength):
+        self.table[trade][bias].append([minute, strength])
         self.declared = True
 
     def reset(self):
@@ -116,26 +115,23 @@ class Observation:
 
 
 
-observation_ema_current_direction_strong    = Observation(indicator="ema",               description="EMA current direction",                         strength=strong)
-observation_ema_current_direction_weak      = Observation(indicator="ema",               description="EMA current direction",                         strength=weak)
+observation_ema_current_direction    = Observation(indicator="ema",               description="EMA current direction")
+
+observation_emas_lineup              = Observation(indicator="ema",               description="EMA line up")
+
+observation_macd_hist                = Observation(indicator="macd_histogram",    description="MACD histogram")
+observation_macd                     = Observation(indicator="macd",              description="MACD line")
 
 
-# observation_emas_lineup_strong                     = Observation(indicator="ema",               description="EMA line up indicates a strong trend",          strength=strong)
-
-
-
-observation_macd_hist_fully_agrees          = Observation(indicator="macd_histogram",    description="MACD hist fully agrees",                        strength=strong)
-observation_macd_hist_fully_disagrees       = Observation(indicator="macd_histogram",    description="MACD hist fully disagrees",                     strength=strong)
-
-
-observation_macd_hist_is_ok                 = Observation(indicator="macd_histogram",    description="MACD hist is ok",                               strength=weak)
-observation_macd_hist_is_not_ok             = Observation(indicator="macd_histogram",    description="MACD hist is not ok",                           strength=weak)
+# observation_macd_hist_is_ok                 = Observation(indicator="macd_histogram",    description="MACD hist is ok")
+# observation_macd_hist_is_not_ok             = Observation(indicator="macd_histogram",    description="MACD hist is not ok")
 
 
 class Vision:
     def __init__(self):
         
         self.ema_lags = [12, 20, 26, 50, 200]
+        self.ema_lags_for_lineup = [20, 50, 200]
 
         self.slow_lags = [50, 200]
         self.fast_lags = [12, 20, 26]
@@ -145,15 +141,10 @@ class Vision:
         self.ema_200_comparison = {}
 
         self.observations = [
-            observation_ema_current_direction_strong,
-            observation_ema_current_direction_weak,
-            
-            # observation_emas_lineup,
-
-            observation_macd_hist_fully_agrees,
-            observation_macd_hist_fully_disagrees,
-            observation_macd_hist_is_ok,
-            observation_macd_hist_is_not_ok,
+            observation_ema_current_direction,
+            observation_emas_lineup,
+            observation_macd_hist,
+            observation_macd,
         ]
 
 
@@ -230,40 +221,50 @@ class Vision:
                 fast_lags_directions_description in [ema_group_shows_absolutely_bullish_direction, ema_group_shows_mostly_bullish_direction]
                 ) :
 
-                observation_ema_current_direction_weak.declare(minute=minute, bias=pro, trade=long)
+                observation_ema_current_direction.declare(trade=long, bias=pro, minute=minute, strength=weak)
 
             else:
-                observation_ema_current_direction_strong.declare(minute=minute, bias=against, trade=long)
+                observation_ema_current_direction.declare(trade=long, bias=against, minute=minute, strength=strong)
 
             if (
                 slow_lags_directions_description in [ema_group_shows_absolutely_bearish_direction, ema_group_shows_mostly_bearish_direction]
                 ) and (
                 fast_lags_directions_description in [ema_group_shows_absolutely_bearish_direction, ema_group_shows_mostly_bearish_direction]
                 ) :
-                observation_ema_current_direction_weak.declare(minute=minute, bias=pro, trade=short)
+                observation_ema_current_direction.declare(trade=short, bias=pro, minute=minute, strength=weak)
             else:
-                observation_ema_current_direction_strong.declare(minute=minute, bias=against, trade=short)
+                observation_ema_current_direction.declare(trade=short, bias=against, minute=minute, strength=strong)
 
 
 
 
 
-            lag_values = [live_indicators[f'minutes_{minute}'][f'ema_{lag}']['v'] for lag in self.ema_lags]
+            lag_values = [live_indicators[f'minutes_{minute}'][f'ema_{lag}']['v'] for lag in self.ema_lags_for_lineup]
 
             ema_lineup_description = count_and_describe_lineup(lag_values)
             self.ema_lineup[minute] = ema_lineup_description
-            # if ema_lineup_description == ema_lineup_shows_full_bearish_alignment:
-            #     observation_emas_lineup.declare(minute=minute, bias=pro, trade=short)
-            #     observation_emas_lineup.declare(minute=minute, bias=against, trade=long)
+            if ema_lineup_description == ema_lineup_shows_full_bearish_alignment:
+                observation_emas_lineup.declare(bias=pro,   trade=short,    strength=strong,    minute=minute)
+                observation_emas_lineup.declare(bias=against,   trade=long, strength=strong,    minute=minute)
 
-            # elif ema_lineup_description == ema_lineup_shows_full_bullish_alignment:
-            #     observation_emas_lineup.declare(minute=minute, bias=pro, trade=long)
-            #     observation_emas_lineup.declare(minute=minute, bias=against, trade=short)
- 
+            elif ema_lineup_description == ema_lineup_shows_full_bullish_alignment:
+                observation_emas_lineup.declare(bias=pro,   trade=long,      strength=strong,    minute=minute)
+                observation_emas_lineup.declare(bias=against,   trade=short, strength=strong,    minute=minute)
+
+
+            if live_indicators[f'minutes_{minute}']['macd']['v'] > 0 and live_indicators[f'minutes_{minute}']['macd']['d'] > 0:
+                observation_macd.declare(bias=pro,   trade=long,      strength=strong,    minute=minute)
+                observation_macd.declare(bias=against,   trade=short, strength=strong,    minute=minute)
+
+            elif live_indicators[f'minutes_{minute}']['macd']['v'] < 0 and live_indicators[f'minutes_{minute}']['macd']['d'] < 0:
+                observation_macd.declare(bias=against,   trade=long,      strength=strong,    minute=minute)
+                observation_macd.declare(bias=pro,       trade=short,     strength=strong,    minute=minute)
+
+
 
 
             self.ema_200_comparison[minute] = 'above' if admin_settings.prices['weth'] > live_indicators[f'minutes_{minute}'][f'ema_200']['v'] else 'below'
-            
+
 
         """
         # support/resistance
@@ -294,24 +295,28 @@ class Vision:
 
             if (macd_histogram_value > 0) and (macd_histogram_direction == '+'):
 
-                observation_macd_hist_fully_agrees.declare(   minute=minute, bias=pro,     trade=long)
-                observation_macd_hist_fully_disagrees.declare(minute=minute, bias=against, trade=short)
+                observation_macd_hist.declare(bias=pro,     trade=long,  strength=strong,   minute=minute)
+                observation_macd_hist.declare(bias=against, trade=short, strength=strong,   minute=minute)
+
 
 
             elif (macd_histogram_value < 0) and (macd_histogram_direction == '-'):
-                observation_macd_hist_fully_agrees.declare(   minute=minute, bias=pro,     trade=short)
-                observation_macd_hist_fully_disagrees.declare(minute=minute, bias=against, trade=long)
+                
+                observation_macd_hist.declare(bias=pro,     trade=short,    strength=strong,   minute=minute)
+                observation_macd_hist.declare(bias=against, trade=long,     strength=strong,   minute=minute)
+
 
             else:
 
                 if macd_histogram_value > 0:
-                    observation_macd_hist_is_ok.declare(     minute=minute, bias=pro,     trade=long)
-                    observation_macd_hist_is_not_ok.declare( minute=minute, bias=against, trade=short)
+                    observation_macd_hist.declare(bias=pro,     trade=long,     strength=weak, minute=minute)
+                    observation_macd_hist.declare(bias=against, trade=short,    strength=weak, minute=minute)
 
 
                 else:
-                    observation_macd_hist_is_not_ok.declare( minute=minute, bias=against, trade=long)
-                    observation_macd_hist_is_ok.declare(     minute=minute, bias=pro,     trade=short)
+                    observation_macd_hist.declare(bias=against,     trade=long,     strength=weak, minute=minute)
+                    observation_macd_hist.declare(bias=pro,         trade=short,    strength=weak, minute=minute)
+
 
 
 

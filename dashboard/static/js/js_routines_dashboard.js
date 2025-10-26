@@ -21,6 +21,15 @@ function update_positions_table(payload){
     }  
     
 
+    // DEX 
+    const dex_tokens_arena__plot = document.getElementById("dex_tokens_arena__plot");
+    if (dex_tokens_arena__plot) {
+        dex_draw_token_arena(payload);
+        populate_dex_new_tokens_table(payload);
+        populate_dex_imported_tokens_table(payload);
+    }  
+    
+
 
     // POSITIONS
     const positions__div = document.getElementById("positions__div");

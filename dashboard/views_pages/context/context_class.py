@@ -74,6 +74,8 @@ class context_class():
             'total_fiat_from_shorts' : total_fiat_from_shorts,
         }
 
+        self.dict['accounts'] = models_adminsettings.accounts
+
 
 
         if self.request.method == "POST":

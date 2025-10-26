@@ -73,56 +73,79 @@ uniswap_factory_abi = '[{"name":"NewExchange","inputs":[{"type":"address","name"
 uniswap_exchange_abi = '[{"name":"TokenPurchase","inputs":[{"type":"address","name":"buyer","indexed":true},{"type":"uint256","name":"eth_sold","indexed":true},{"type":"uint256","name":"tokens_bought","indexed":true}],"anonymous":false,"type":"event"},{"name":"EthPurchase","inputs":[{"type":"address","name":"buyer","indexed":true},{"type":"uint256","name":"tokens_sold","indexed":true},{"type":"uint256","name":"eth_bought","indexed":true}],"anonymous":false,"type":"event"},{"name":"AddLiquidity","inputs":[{"type":"address","name":"provider","indexed":true},{"type":"uint256","name":"eth_amount","indexed":true},{"type":"uint256","name":"token_amount","indexed":true}],"anonymous":false,"type":"event"},{"name":"RemoveLiquidity","inputs":[{"type":"address","name":"provider","indexed":true},{"type":"uint256","name":"eth_amount","indexed":true},{"type":"uint256","name":"token_amount","indexed":true}],"anonymous":false,"type":"event"},{"name":"Transfer","inputs":[{"type":"address","name":"_from","indexed":true},{"type":"address","name":"_to","indexed":true},{"type":"uint256","name":"_value","indexed":false}],"anonymous":false,"type":"event"},{"name":"Approval","inputs":[{"type":"address","name":"_owner","indexed":true},{"type":"address","name":"_spender","indexed":true},{"type":"uint256","name":"_value","indexed":false}],"anonymous":false,"type":"event"},{"name":"setup","outputs":[],"inputs":[{"type":"address","name":"token_addr"}],"constant":false,"payable":false,"type":"function","gas":175875},{"name":"addLiquidity","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"min_liquidity"},{"type":"uint256","name":"max_tokens"},{"type":"uint256","name":"deadline"}],"constant":false,"payable":true,"type":"function","gas":82605},{"name":"removeLiquidity","outputs":[{"type":"uint256","name":"out"},{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"amount"},{"type":"uint256","name":"min_eth"},{"type":"uint256","name":"min_tokens"},{"type":"uint256","name":"deadline"}],"constant":false,"payable":false,"type":"function","gas":116814},{"name":"__default__","outputs":[],"inputs":[],"constant":false,"payable":true,"type":"function"},{"name":"ethToTokenSwapInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"min_tokens"},{"type":"uint256","name":"deadline"}],"constant":false,"payable":true,"type":"function","gas":12757},{"name":"ethToTokenTransferInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"min_tokens"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"}],"constant":false,"payable":true,"type":"function","gas":12965},{"name":"ethToTokenSwapOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"},{"type":"uint256","name":"deadline"}],"constant":false,"payable":true,"type":"function","gas":50455},{"name":"ethToTokenTransferOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"}],"constant":false,"payable":true,"type":"function","gas":50663},{"name":"tokenToEthSwapInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"},{"type":"uint256","name":"min_eth"},{"type":"uint256","name":"deadline"}],"constant":false,"payable":false,"type":"function","gas":47503},{"name":"tokenToEthTransferInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"},{"type":"uint256","name":"min_eth"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"}],"constant":false,"payable":false,"type":"function","gas":47712},{"name":"tokenToEthSwapOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"eth_bought"},{"type":"uint256","name":"max_tokens"},{"type":"uint256","name":"deadline"}],"constant":false,"payable":false,"type":"function","gas":50175},{"name":"tokenToEthTransferOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"eth_bought"},{"type":"uint256","name":"max_tokens"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"}],"constant":false,"payable":false,"type":"function","gas":50384},{"name":"tokenToTokenSwapInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"},{"type":"uint256","name":"min_tokens_bought"},{"type":"uint256","name":"min_eth_bought"},{"type":"uint256","name":"deadline"},{"type":"address","name":"token_addr"}],"constant":false,"payable":false,"type":"function","gas":51007},{"name":"tokenToTokenTransferInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"},{"type":"uint256","name":"min_tokens_bought"},{"type":"uint256","name":"min_eth_bought"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"},{"type":"address","name":"token_addr"}],"constant":false,"payable":false,"type":"function","gas":51098},{"name":"tokenToTokenSwapOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"},{"type":"uint256","name":"max_tokens_sold"},{"type":"uint256","name":"max_eth_sold"},{"type":"uint256","name":"deadline"},{"type":"address","name":"token_addr"}],"constant":false,"payable":false,"type":"function","gas":54928},{"name":"tokenToTokenTransferOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"},{"type":"uint256","name":"max_tokens_sold"},{"type":"uint256","name":"max_eth_sold"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"},{"type":"address","name":"token_addr"}],"constant":false,"payable":false,"type":"function","gas":55019},{"name":"tokenToExchangeSwapInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"},{"type":"uint256","name":"min_tokens_bought"},{"type":"uint256","name":"min_eth_bought"},{"type":"uint256","name":"deadline"},{"type":"address","name":"exchange_addr"}],"constant":false,"payable":false,"type":"function","gas":49342},{"name":"tokenToExchangeTransferInput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"},{"type":"uint256","name":"min_tokens_bought"},{"type":"uint256","name":"min_eth_bought"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"},{"type":"address","name":"exchange_addr"}],"constant":false,"payable":false,"type":"function","gas":49532},{"name":"tokenToExchangeSwapOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"},{"type":"uint256","name":"max_tokens_sold"},{"type":"uint256","name":"max_eth_sold"},{"type":"uint256","name":"deadline"},{"type":"address","name":"exchange_addr"}],"constant":false,"payable":false,"type":"function","gas":53233},{"name":"tokenToExchangeTransferOutput","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"},{"type":"uint256","name":"max_tokens_sold"},{"type":"uint256","name":"max_eth_sold"},{"type":"uint256","name":"deadline"},{"type":"address","name":"recipient"},{"type":"address","name":"exchange_addr"}],"constant":false,"payable":false,"type":"function","gas":53423},{"name":"getEthToTokenInputPrice","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"eth_sold"}],"constant":true,"payable":false,"type":"function","gas":5542},{"name":"getEthToTokenOutputPrice","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_bought"}],"constant":true,"payable":false,"type":"function","gas":6872},{"name":"getTokenToEthInputPrice","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"tokens_sold"}],"constant":true,"payable":false,"type":"function","gas":5637},{"name":"getTokenToEthOutputPrice","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"uint256","name":"eth_bought"}],"constant":true,"payable":false,"type":"function","gas":6897},{"name":"tokenAddress","outputs":[{"type":"address","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":1413},{"name":"factoryAddress","outputs":[{"type":"address","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":1443},{"name":"balanceOf","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"address","name":"_owner"}],"constant":true,"payable":false,"type":"function","gas":1645},{"name":"transfer","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"address","name":"_to"},{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":75034},{"name":"transferFrom","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"address","name":"_from"},{"type":"address","name":"_to"},{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":110907},{"name":"approve","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"address","name":"_spender"},{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":38769},{"name":"allowance","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"address","name":"_owner"},{"type":"address","name":"_spender"}],"constant":true,"payable":false,"type":"function","gas":1925},{"name":"name","outputs":[{"type":"bytes32","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":1623},{"name":"symbol","outputs":[{"type":"bytes32","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":1653},{"name":"decimals","outputs":[{"type":"uint256","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":1683},{"name":"totalSupply","outputs":[{"type":"uint256","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":1713}]'
 uniswap_token_abi = '[{"name":"Transfer","inputs":[{"type":"address","name":"_from","indexed":true},{"type":"address","name":"_to","indexed":true},{"type":"uint256","name":"_value","indexed":false}],"anonymous":false,"type":"event"},{"name":"Approval","inputs":[{"type":"address","name":"_owner","indexed":true},{"type":"address","name":"_spender","indexed":true},{"type":"uint256","name":"_value","indexed":false}],"anonymous":false,"type":"event"},{"name":"__init__","outputs":[],"inputs":[{"type":"bytes32","name":"_name"},{"type":"bytes32","name":"_symbol"},{"type":"uint256","name":"_decimals"},{"type":"uint256","name":"_supply"}],"constant":false,"payable":false,"type":"constructor"},{"name":"deposit","outputs":[],"inputs":[],"constant":false,"payable":true,"type":"function","gas":74279},{"name":"withdraw","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":108706},{"name":"totalSupply","outputs":[{"type":"uint256","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":543},{"name":"balanceOf","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"address","name":"_owner"}],"constant":true,"payable":false,"type":"function","gas":745},{"name":"transfer","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"address","name":"_to"},{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":74698},{"name":"transferFrom","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"address","name":"_from"},{"type":"address","name":"_to"},{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":110600},{"name":"approve","outputs":[{"type":"bool","name":"out"}],"inputs":[{"type":"address","name":"_spender"},{"type":"uint256","name":"_value"}],"constant":false,"payable":false,"type":"function","gas":37888},{"name":"allowance","outputs":[{"type":"uint256","name":"out"}],"inputs":[{"type":"address","name":"_owner"},{"type":"address","name":"_spender"}],"constant":true,"payable":false,"type":"function","gas":1025},{"name":"name","outputs":[{"type":"bytes32","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":723},{"name":"symbol","outputs":[{"type":"bytes32","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":753},{"name":"decimals","outputs":[{"type":"uint256","name":"out"}],"inputs":[],"constant":true,"payable":false,"type":"function","gas":783}]'
 
+# Uniswap V2 Router address (Mainnet)
+V2_ROUTER_ADDRESS = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+
+# ABI for Uniswap V2 Router (minimal for getAmountsOut)
+V2_ROUTER_ABI = [
+    {
+        "inputs": [
+            {"name": "amountIn", "type": "uint256"},
+            {"name": "path", "type": "address[]"}
+        ],
+        "name": "getAmountsOut",
+        "outputs": [{"name": "amounts", "type": "uint256[]"}],
+        "stateMutability": "view",
+        "type": "function"
+    },
+
+    {
+        "inputs": [
+            {"internalType": "uint256", "name": "amountOutMin", "type": "uint256"},
+            {"internalType": "address[]", "name": "path", "type": "address[]"},
+            {"internalType": "address", "name": "to", "type": "address"},
+            {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+        ],
+        "name": "swapExactETHForTokens",
+        "outputs": [{"internalType": "uint256[]", "name": "amounts", "type": "uint256[]"}],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+
+    {
+        "inputs": [
+            {"internalType": "uint256", "name": "amountIn", "type": "uint256"},
+            {"internalType": "uint256","name": "amountOutMin","type": "uint256"},
+            {"internalType": "address[]","name": "path","type": "address[]"},
+            {"internalType": "address","name": "to","type": "address"},
+            {"internalType": "uint256","name": "deadline","type": "uint256"}
+        ],
+        "name": "swapExactTokensForETH","outputs": [{"internalType": "uint256[]","name": "amounts","type": "uint256[]"}],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+]
+
+# Initialize contract
 
 
 
-class Uniswap(Dapp):
+class Dex(Dapp):
     def __init__(self):
 
         super().__init__('mainnet')
 
-        self.dapp_name = 'uniswap'
+        self.dapp_name = 'dex'
         tk.logger.info(f"initiating {self.dapp_name} W3...")
 
         self.token_addresses = uniswap_token_addresses
         
         self.max_gas_fee_multiplier = 1.5
-        self.gas_custom_token_limit = 160_000
+        self.gas_custom_token_limit = 400_000
 
 
-        """
-        0.01% : 0.0001 : 100   / 1_000_000
-        0.05% : 0.0005 : 500   / 1_000_000
-        0.30% : 0.0030 : 3000  / 1_000_000
-        1.00% : 0.0100 : 10000 / 1_000_000
-        """
 
         self.weth = Token(name='weth', network=self.network, address=uniswap_token_addresses[self.network]['weth'], decimals=18, fee_tiers = 500,
                           abi=weth_abi, w3=self.w3)
         
-        # self.wsol = Token(name='wsol', network=self.network, address=uniswap_token_addresses[self.network]['wsol'], decimals=9, fee_tiers = 3000,
-        #                   abi=erc20_abi, w3=self.w3)
-
-        self.wbtc = Token(name='wbtc', network=self.network, address=uniswap_token_addresses[self.network]['wbtc'], decimals=8, fee_tiers = 500,
-                          abi=wbtc_abi, w3=self.w3)
-
-
-
-        self.dai = Token(name='dai', network=self.network, address=uniswap_token_addresses[self.network]['dai'], decimals=18, fee_tiers = 500,
-                         abi=erc20_abi, w3=self.w3)
 
         self.usdc = Token(name='usdc', network=self.network, address=uniswap_token_addresses[self.network]['usdc'], decimals=6, fee_tiers = 500,
                           abi=erc20_abi, w3=self.w3)
 
-        # self.usdt = Token(name='usdt', network=self.network, address=uniswap_token_addresses[self.network]['usdt'], decimals=6, fee_tiers = 500,
-        #                   abi=erc20_abi, w3=self.w3)
 
-
-
-        # V3
-        self.v3_swap_router_contract = self.w3.eth.contract(abi=v3_swap_router_abi,
-                                                            address=self.w3.to_checksum_address(
-                                                                uniswap_contract_addresses['SwapRouter']))
+        # V2
+        self.v2_factory_contract = self.w3.eth.contract(abi=json.loads(uniswap_factory_abi), address=self.w3.to_checksum_address(uniswap_mainnet_factory_address))
+        self.v2_router_contract  = self.w3.eth.contract(abi=V2_ROUTER_ABI, address=V2_ROUTER_ADDRESS)
 
         
         # Quoter
@@ -131,7 +154,7 @@ class Uniswap(Dapp):
                 address=self.w3.to_checksum_address(uniswap_contract_addresses['Quoter'])
             )
 
-        tk.logger.info("uniswap fully initiated")
+        tk.logger.info("DEX V2 fully initiated")
 
 
 
@@ -140,18 +163,15 @@ class Uniswap(Dapp):
         return admin_settings.prices[coin.lower()]
 
 
-    def check_balance(self):
-        tk.logger.info("check_balance...")
+    def check_balance_of_token_by_contract_address(self, token_contract_address):
+        tk.logger.info("checking balance of token by the contract address...")
 
-        return {
-            'eth': self.eth_balance(),
-            'weth': self.weth_balance(),
-            'usdc': self.usdc_balance(),
-            # 'dai': self.dai_balance(),
-            # 'wbtc': self.wbtc_balance(),
-            # 'wsol': self.wsol_balance(),
-            # 'usdt': self.usdt_balance(),
-        }
+        token_contract = self.get_token_contract_object(token_contract_address)
+        token_decimals = token_contract.functions.decimals.call()
+
+        balance = token_contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, token_decimals)
+        tk.logger.info(f'balance: {balance}')
+        return balance
 
 
 
@@ -169,582 +189,224 @@ class Uniswap(Dapp):
         return self.usdc.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.usdc.decimals)
 
 
-    # def dai_balance(self):
-    #     tk.logger.info("dai_balance...")
-    #     return self.dai.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.dai.decimals)
 
-    # def usdt_balance(self):
-    #     tk.logger.info("usdt_balance...")
-    #     return self.usdt.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.usdt.decimals)
+    def approve_spenders(self, token_contract_address):
 
+        """
+        To sell a token, it is needed to have approved the V2 Router contract to spend the token
+        this approval is not needed for buying the token
+        """
+        token_contract = self.get_token_contract_object(token_contract_address)
 
-    # def wbtc_balance(self):
-    #     tk.logger.info("wbtc_balance...")
-    #     return self.wbtc.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wbtc.decimals)
+        action = token_contract.functions.approve(self.v2_router_contract.address, 2**256 - 1)
 
-    # def wsol_balance(self):
-    #     tk.logger.info("wsol_balance...")
-    #     return self.wsol.contract.functions.balanceOf(self.w3.eth.default_account).call() / pow(10, self.wsol.decimals)
-
-
-
-    def approve_spenders(self):
-        # dai
-
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
-
-        # weth DONE
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
-
-        # wbtc
-        # self.approve(spender=uniswap.wbtc_exchange_address, token=uniswap.wbtc)
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
-        
-        # wsol
-        # self.approve(spender=self.wsol_exchange_address, token=self.wsol)
-        
-        # usdt
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdt)
-
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.usdc)
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.weth)
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.wbtc)
-        # self.approve(spender=uniswap_contract_addresses['SwapRouter'], token=self.dai)
-        pass
-
-
-
-
-
-
-    def wrap_eth(self, eth_amount):
-
-        value = int(self.w3.to_wei(eth_amount, "ether"))
-        action = self.weth.contract.functions.deposit()
-        tx_return = self.build_and_execute_tx(action=action, value=value)
-        return tx_return['successful']
-
-    def unwrap_weth(self, eth_amount):
-
-        value = int(self.w3.to_wei(eth_amount, "ether"))
-        action = self.weth.contract.functions.withdraw(value)
         tx_return = self.build_and_execute_tx(action=action)
+
+        tk.logger.info(tx_return)
+
         return tx_return['successful']
 
 
 
-
-
-    def v3_quote(self, token_in_name, token_out_name, amount_in, fee):
-        """
-        quoteExactInputSingle
-
-        tokenIn	:	The token being swapped in
-        tokenOut	:	The token being swapped out
-        fee	:	The fee of the token pool to consider for the pair
-        amountIn	:	The desired input amount
-        sqrtPriceLimitX96	:	The price limit of the pool that cannot be exceeded by the swap
-
-        returns: amountOut:	The amount of tokenOut that would be received
-        """
-        tk.logger.info(f'performing V3 Quote')
-
-        token_in = self.get_token_object(token_in_name)
-        token_out = self.get_token_object(token_out_name)
-
-        amountIn = int(amount_in * pow(10, token_in.decimals))
-
-        sqrtPriceLimitX96 = 0
-
-        quote = self.uniswap_quoter.functions.quoteExactInputSingle(
-            token_in.address,
-            token_out.address,
-            fee,
-            amountIn,
-            sqrtPriceLimitX96
-        ).call()
-
-        quote =  quote / pow(10, token_out.decimals)
-        tk.logger.info(f'quote: {quote}')
-
-        return quote
-
-
-
-    def create_new_quote_and_save_to_db(
-            self,
-            fiat_to_coin=True,
-            fiat_amount_in=0.0,
-            coin_amount_in=0.0,
-            calls=2,
-            fee=500
-        ):
-
-        admin_settings = tk.get_admin_settings()
-
-        def trim_slippage(slippage, safety_margin):
-
-
-            slippage_to_fee = int(slippage * 1_000_000) / fee
-            slippage_to_fee = max(slippage_to_fee, 1.0)
-            slippage_to_fee = min(slippage_to_fee, 5.0)
-
-            slippage_to_fee += safety_margin
-
-            return round(slippage_to_fee, 4)
-
-
-
-        if fiat_to_coin:
-
-            quoted_coin_amounts = []
-            
-            for i in range(calls):
-                quoted_coin_amounts.append(
-                    self.v3_quote(
-                        token_in_name=admin_settings.fiat_coin,
-                        token_out_name='weth',
-                        amount_in=fiat_amount_in,
-                        fee=fee,
-                    )
-                )
-
-            quoted_coin_amount = min(quoted_coin_amounts)
-
-            expected_coin_amount = fiat_amount_in / admin_settings.prices['weth']
-
-            slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
-
-            slippage_to_fee = trim_slippage(slippage, 0.3)
-            admin_settings.uniswap_asm_fiat_to_token = slippage_to_fee
-            admin_settings.save()
-            tk.logger.info(f"slippage_to_fee: {admin_settings.uniswap_asm_fiat_to_token}")
-            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
-
-        else:
-
-
-            quoted_fiat_amounts = []
-            
-            for i in range(calls):
-                quoted_fiat_amounts.append(
-                    self.v3_quote(
-                        token_in_name='weth',
-                        token_out_name=admin_settings.fiat_coin,
-                        amount_in=coin_amount_in,
-                        fee=fee,
-                    )
-                )
-
-            quoted_fiat_amount = min(quoted_fiat_amounts)
-            expected_fiat_amount = coin_amount_in * admin_settings.prices['weth']
-            slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
-
-            slippage_to_fee = trim_slippage(slippage, 0.15)
-            admin_settings.uniswap_asm_token_to_fiat = slippage_to_fee
-            admin_settings.save()
-
-            tk.logger.info(f"slippage_to_fee: {admin_settings.uniswap_asm_token_to_fiat}")
-            tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # COMPLETE
-    def fiat_to_token(self, fiat_amount, token, tries, transaction_object):
-
-
-        """
-        V3:
-            fiat -> weth -> token
-        """
-
-        admin_settings = tk.get_admin_settings()
-        fiat_coin = self.get_token_object(admin_settings.fiat_coin)
-
-
-        for i in range(tries):
-
-            tk.logger.info(f'performing fiat_to_token ({fiat_coin.name} -> {token})     fiat_amount: {fiat_amount}     V3')
-
-            tx_fee = 0
-
-            weth_price = self.get_coin_price('weth')
-
-            weth_to_buy = fiat_amount / weth_price
-
-
-
-
-            got_weth, weth_bought, tx_hash, tx_fee_in_eth = self.swap(
-                                            token_in=fiat_coin,
-                                            token_out=self.weth,
-                                            amount_in=fiat_amount,
-                                            amount_out=weth_to_buy,
-                                            transaction_object=transaction_object,
-                                        )
-
-
-            if got_weth:
-
-                tk.logger.info(f'V3: got_weth: {weth_bought}')
+    def get_token_contract_object(self, token_contract_address):
+        return self.w3.eth.contract(
+                abi=erc20_abi, 
+                address=self.w3.to_checksum_address(token_contract_address)
+            )
+
+
+    def v2_quote(self, token_contract_address,
+    
+                #buying token:
+                buying_token=True,  fiat_amount=None,
                 
-                tx_fee += tx_fee_in_eth * weth_price
+                # selling token:
+                                    token_amount_to_sell=None):
 
-                if token.lower() == 'weth':
-                    # we are done
-                    return got_weth, weth_bought, tx_hash, weth_price, tx_fee
-                
-                else:
+        token_price_usd = None
 
-                    token_price = self.get_coin_price(token)
-                    weth_price = self.get_coin_price('weth')
-
-                    token_to_buy = weth_bought * weth_price / token_price
-
-                    got_token, token_bought, tx_hash, tx_fee_in_eth = self.swap(
-                                                    token_in=self.weth,
-                                                    token_out=self.get_token_object(token),
-                                                    amount_in=weth_bought,
-                                                    amount_out=token_to_buy,
-                                                    transaction_object=transaction_object,
-                                                )
-
-
-                    if got_token:
-                        tk.logger.info(f'got_token: {token_bought} of {token}')
-
-                        tx_fee += tx_fee_in_eth * weth_price
-
-                        return got_token, token_bought, tx_hash, token_price, tx_fee
-
-
-        return False, None, None, None, None
-
-
-
-
-
-
-
-
-
-
-
-
-    # COMPLETE
-    def token_to_fiat(self, token_amount, token, tries, transaction_object):
-
-        """
-        V3:
-            token -> weth -> fiat
-        """
-        admin_settings = tk.get_admin_settings()
-        fiat_coin = self.get_token_object(admin_settings.fiat_coin)
-
-        for i in range(tries):
-
-            tk.logger.info(f'performing token_to_fiat: {token_amount} of {token} -> {fiat_coin.name}')
-
-            tx_fee = 0
-
-            weth_price = self.get_coin_price('weth')
-
-            if token.lower() == 'weth':
-                token_price = weth_price
-
-            else:
-                token_price = self.get_coin_price(token)
-
-
-            # V3
-            if token.lower() == 'weth':
-                # no need to get weth
-                got_weth = True
-                weth_return = token_amount
-
-            else:
-                # firs we neet to swap token for weth
-                weth_amount = token_amount * token_price / weth_price
-
-                got_weth, weth_return, tx_hash, tx_fee_in_eth  = self.swap(
-                                                    token_in=self.get_token_object(token),
-                                                    token_out=self.weth,
-                                                    amount_in=token_amount,
-                                                    amount_out=weth_amount,
-                                                    transaction_object=transaction_object,
-                                                )
-
-                tx_fee += tx_fee_in_eth * weth_price
-
-                # update the eth price
-                weth_price = self.get_coin_price('weth')
-
-
-            if got_weth:
-                
-                # weth -> fiat
-
-                fiat_return = weth_return * weth_price
-
-                tk.logger.info(f'V3 got_weth: {weth_return}')
-
-                got_fiat, fiat_return, tx_hash, tx_fee_in_eth  = self.swap(
-                                                    token_in=self.weth,
-                                                    token_out=fiat_coin,
-                                                    amount_in=weth_return,
-                                                    amount_out=fiat_return,
-                                                    transaction_object=transaction_object,
-                                                )
-
-
-
-                if got_fiat:
-                    tx_fee += tx_fee_in_eth * weth_price
-                    return got_fiat, fiat_return, tx_hash, token_price, tx_fee
-
-
-        return False, None, None, None, None
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def swap(self, token_in, token_out, amount_in, amount_out, transaction_object):
         try:
 
-            """
-            on side of the swap is always weth
-            the other side of the swap defines, which fee tiers are to be used
-            """
-            if token_in.name == 'weth':
-                fee_tier = token_out.fee_tiers
-                fiat_to_coin = False
+            token_contract = self.get_token_contract_object(token_contract_address)
+            token_decimals = token_contract.functions.decimals.call()
+
+            if buying_token:
+                # pay weth, receive token
+                if fiat_amount:
+                    weth_amount_in = fiat_amount / self.get_coin_price('weth')
+                    amount_in = self.w3.to_wei(weth_amount_in, 'ether')
+
+                else:
+                    amount_in = self.w3.to_wei(1, 'ether')
+
+
+
+                swap_path = [self.w3.to_checksum_address(self.weth.address), self.w3.to_checksum_address(token_contract_address)]
+                token_out_decimals = token_decimals
             else:
-                fee_tier = token_in.fee_tiers
-                fiat_to_coin = True
+                # pay token, receive weth
+                amount_in = int(token_amount_to_sell * pow(10, token_decimals))
+                swap_path = [self.w3.to_checksum_address(token_contract_address), self.w3.to_checksum_address(self.weth.address)]
+                token_out_decimals = self.weth.decimals
 
-            action = self.exactInputSingle(fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier)
 
-            tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
+            quote = self.v2_router_contract.functions.getAmountsOut(
+                amount_in, 
+                swap_path
+                ).call()
+
+            if buying_token:
+
+                token_price_usd = self.get_coin_price('weth') / (quote[-1] / quote[0])
+
+            else:
+                token_price_usd = self.get_coin_price('weth') / (quote[0] / quote[-1])
+
+            tk.logger.info(f'quoted token price: {token_price_usd}')
+
+        
+        except:
+            tk.logger.info(format_exc())
+
+        finally:
+            return token_price_usd
+
+
+
+
+
+    def fiat_to_token(self, token_contract_address, fiat_amount, tries):
+
+
+        """
+        V2:
+            weth -> token
+        """
+
+        token_contract = self.get_token_contract_object(token_contract_address)
+        token_decimals = token_contract.functions.decimals.call()
+
+
+
+        for i in range(tries):
+
+            token_price_usd = self.v2_quote(token_contract_address, fiat_amount=fiat_amount)
+
+            tk.logger.info(f'performing fiat_to_token (weth -> token)     fiat_amount: {fiat_amount}     V2')
+
+            tx_fee = 0
+
+            weth_price = self.get_coin_price('weth')
+
+            weth_amount_in = fiat_amount / weth_price
+            amount_in = self.w3.to_wei(weth_amount_in, 'ether')
+
+            amount_out_expected = fiat_amount / token_price_usd
+
+            amountOutMin = int(0.98 * amount_out_expected * pow(10, token_decimals))
+
+            deadline = int(time.time() + 300)  # 5 minutes
+            # path = [WETH_ADDRESS, TOKEN_ADDRESS]
+            path = [
+                        self.w3.to_checksum_address(self.weth.address), 
+                        self.w3.to_checksum_address(token_contract_address)
+                    ]
+
+            action = self.v2_router_contract.functions.swapExactETHForTokens(
+                amountOutMin,
+                path,
+                self.w3.eth.default_account,
+                deadline
+            )
+
+            tx_return = self.build_and_execute_tx(action=action, value=amount_in)
+
+            tk.logger.info(tx_return)
 
             successful = tx_return['successful']
             tx_hash = tx_return['tx_hash']
             tx_fee_in_eth = tx_return['tx_fee_in_eth']
 
             if successful:
-                token_out_bought = tx_return['logs_results'][token_out.name]['amount']
+                token_out_bought = 0
+                # token_out_bought = tx_return['logs_results'][token_out.name]['amount']
 
                 return successful, token_out_bought, tx_hash, tx_fee_in_eth
 
-            return False, None, None, None
 
-        except:
-            tk.logger.info(format_exc())
+        return False, None, None, None, None
 
-            return False, None, None, None
 
 
 
 
 
 
+    def token_to_weth(self, token_contract_address, token_amount_to_sell, tries):
 
 
-    def exactInputSingle(self, fiat_to_coin, token_in, token_out, amount_in, amount_out, fee_tier):
+        """
+        V2:
+            token -> weth
+        """
 
-        tk.logger.info(f"<-> swapping {amount_in} {token_in.name} for {amount_out} {token_out.name} -- fee_tier: {fee_tier}")
+        token_contract = self.get_token_contract_object(token_contract_address)
+        token_decimals = token_contract.functions.decimals.call()
 
-        amount_in = int(amount_in * pow(10, token_in.decimals))
-        amount_out = int(amount_out * pow(10, token_out.decimals))
 
-        deadline = int(time.time() + 3 * 60)  # 3 minutes
 
-        admin_settings = tk.get_admin_settings()
+        for i in range(tries):
 
-        if fiat_to_coin:
-            max_allowed_slippage = (admin_settings.uniswap_asm_fiat_to_token * fee_tier) / 1_000_000
-        else:
-            max_allowed_slippage = (admin_settings.uniswap_asm_token_to_fiat * fee_tier) / 1_000_000
-        
-        # max_allowed_slippage = (1.1 * fee_tier) / 1_000_000
+            token_price_usd = self.v2_quote(token_contract_address, buying_token=False, token_amount_to_sell=token_amount_to_sell)
 
-        tokenIn = token_in.address
-        tokenOut = token_out.address
-        fee = int(fee_tier)
-        recipient = self.w3.eth.default_account
-        deadline = int(deadline)
-        amountIn = int(amount_in)
-        amountOutMinimum = int((1. - max_allowed_slippage) * amount_out)
-        sqrtPriceLimitX96 = int(0)
+            tk.logger.info(f'performing token_to_weth (token -> weth)     token_amount: {token_amount_to_sell}     V2')
 
-        action = self.v3_swap_router_contract.functions.exactInputSingle((tokenIn,
-                                                                          tokenOut,
-                                                                          fee,
-                                                                          recipient,
-                                                                          deadline,
-                                                                          amountIn,
-                                                                          amountOutMinimum,
-                                                                          sqrtPriceLimitX96))
+            tx_fee = 0
 
-        return action
+            weth_price = self.get_coin_price('weth')
 
+            weth_amount_expected = token_price_usd * token_amount_to_sell / weth_price
 
 
+            weth_amount_out_min = int(0.8 * weth_amount_expected * pow(10, self.weth.decimals))
+            # weth_amount_out_min=0
 
+            token_amount_in = int(token_amount_to_sell * pow(10, token_decimals))
+            # token_amount_in = int(token_amount_to_sell )
 
+            deadline = int(time.time() + 300)  # 5 minutes
 
+            path = [
+                        self.w3.to_checksum_address(token_contract_address),
+                        self.w3.to_checksum_address(self.weth.address)
+                    ]
 
+            action = self.v2_router_contract.functions.swapExactTokensForETH(
 
+                amountIn=token_amount_in,
+                amountOutMin=weth_amount_out_min,
+                path=path,
+                to=self.w3.eth.default_account,
+                deadline=deadline,
 
 
+            )
 
+            tx_return = self.build_and_execute_tx(action=action)
 
+            tk.logger.info(tx_return)
 
+            successful = tx_return['successful']
+            tx_hash = tx_return['tx_hash']
+            tx_fee_in_eth = tx_return['tx_fee_in_eth']
 
+            if successful:
+                token_out_bought = 0
+                # token_out_bought = tx_return['logs_results'][token_out.name]['amount']
 
+                return successful, token_out_bought, tx_hash, tx_fee_in_eth
 
 
-
-
-
-
-
-
-
-
-    def send_token(self, token, amount, receiver_address, transaction_object):
-
-        if token == 'eth':
-
-            gas_info = self.get_network_gas_price()
-            maxFeePerGas = self.w3.to_wei(gas_info['maxFeePerGas_gwei'], 'gwei')
-            maxPriorityFeePerGas = self.w3.to_wei(gas_info['maxPriorityFeePerGas_gwei'], 'gwei')
-            
-            one_gwei = self.w3.to_wei(1, 'gwei')
-            maxPriorityFeePerGas = max(maxPriorityFeePerGas, one_gwei)
-            maxFeePerGas = max(maxFeePerGas, maxPriorityFeePerGas)
-            
-            nonce = self.w3.eth.get_transaction_count(self.w3.eth.default_account) 
-
-            tx = {
-                'chainId': 1,
-                'from': self.account_public_address,
-
-                'to': receiver_address,
-                'value': self.w3.to_wei(amount, 'ether'),
-                
-                
-                'gas': self.gas_custom_token_limit,
-                'maxFeePerGas': maxFeePerGas,
-                'maxPriorityFeePerGas': maxPriorityFeePerGas,
-                'nonce': nonce,
-            }
-
-
-            signed_tx = self.w3.eth.account.sign_transaction(tx, self.account_private_key)
-
-
-            tx_hash = self.w3.eth.send_raw_transaction(signed_tx.raw_transaction)
-
-            tx_hash_hex = self.w3.to_hex(tx_hash)
-
-            tk.logger.info(f"waiting to confirm tx hash: {tx_hash_hex}")
-
-            
-            
-
-            self.w3.eth.wait_for_transaction_receipt(tx_hash)
-
-            receipt = self.w3.eth.get_transaction_receipt(tx_hash)
-
-            tx_return = self.process_receipt(receipt)
-
-
-
-        else:
-            token_object = self.get_token_object(token)
-
-            amount_to_wei = int(amount * pow(10, token_object.decimals))
-
-            token_object = self.get_token_object(token)
-
-            action = token_object.contract.functions.transfer(self.w3.to_checksum_address(receiver_address), amount_to_wei)
-
-
-            tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
-
-
-        successful = tx_return['successful']
-        tx_hash = tx_return['tx_hash']
-        tx_fee_in_eth = tx_return['tx_fee_in_eth']
-
-        if successful:
-
-            return successful, 0, tx_hash, tx_fee_in_eth
-
-        return False, None, None, None
-
-
-
-
-
-
-
+        return False, None, None, None, None
 
 

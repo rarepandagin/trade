@@ -1,0 +1,75 @@
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+
+
+{% block basebody %}
+{% load custom_tags %}
+
+ 
+    <div class="border rounded p-2 mt-2">
+        <h4 class="">Settings:</h4>
+
+        <div class="d-flex justify-content-start gap-2">
+            <p>Quote fiat amount:</p>
+            <input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" id="quote_fiat_amount__input"  value="100" />
+        </div>
+    </div>
+
+
+
+    <div class="border rounded p-4 mt-5">
+
+        <h4 class="">Imported tokens:</h4>
+        <div id="dex_imported_tokens__table"></div>
+
+    </div>
+
+
+
+
+    <div class="border rounded p-4 mt-5">
+
+        <h4>Explore new tokens:</h4>
+
+        <div class="d-flex justify-content-start gap-5 border rounded mb-5"   hidden>
+
+            <div>
+                <button type="button" onclick="dex_scan_for_new_tokens();" class="btn btn-primary btn-sm m-1">Scan for new tokens</button>
+                <button type="button" onclick="dex_delete_all_tokens();" class="btn btn-danger btn-sm m-1">Delete all tokens</button>
+            </div>
+
+        </div>
+        
+        <div class="border rounded p-2  mt-5 mb-5 ">
+            <h4>Add token manually:</h4>
+            <div class="d-flex justify-content-start gap-3">
+                <p>name:</p>
+                <input class="form-control form-control-sm" type="text" style="width: 200px;" id="new_token_name__input" />
+                <p>address:</p>
+                <input class="form-control form-control-sm" type="text" style="width: 200px;" id="new_token_address__input" />
+                <p>contract:</p>
+                <input class="form-control form-control-sm" type="text" style="width: 200px;" id="new_token_contract__input" />
+                <button type="button" onclick="dex_add_token_manually();" class="btn btn-primary btn-sm m-1">Add new token manually</button>
+            </div>
+        </div>
+
+        <div id="dex_trending_tokens__table"></div>
+
+
+
+        <div id="dex_tokens_arena__plot"></div>
+    </div>
+<script>
+
+
+
+    $(document).ready(function () {
+
+        setup_ws_dashboard();
+
+    })
+
+</script>
+
+{% endblock %}

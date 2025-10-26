@@ -115,7 +115,7 @@ class Aave(Dapp):
         action = self.pool_contract.functions.supply(
             token.address,
             amount_by_token_decimal,
-            self.w3.to_checksum_address(self.default_account_address),
+            self.account_public_checksum_address,
             0
         )
         tx_return = self.build_and_execute_tx(action=action)
@@ -129,7 +129,7 @@ class Aave(Dapp):
         action = self.pool_contract.functions.withdraw(
             token.address,
             amount_by_token_decimal,
-            self.w3.to_checksum_address(self.default_account_address)
+            self.account_public_checksum_address
         )
         tx_return = self.build_and_execute_tx(action=action)
         return tx_return
@@ -144,7 +144,7 @@ class Aave(Dapp):
             amount_by_token_decimal,
             2,
             0,
-            self.w3.to_checksum_address(self.default_account_address)
+            self.account_public_checksum_address
         )
         tx_return = self.build_and_execute_tx(action=action)
         return tx_return
@@ -158,7 +158,7 @@ class Aave(Dapp):
             token.address,
             amount_by_token_decimal,
             2,
-            self.w3.to_checksum_address(self.default_account_address)
+            self.account_public_checksum_address
         )
         tx_return = self.build_and_execute_tx(action=action)
         return tx_return
@@ -167,7 +167,7 @@ class Aave(Dapp):
 
     def getUserAccountData(self):
         results = self.pool_contract.functions.getUserAccountData(
-            self.w3.to_checksum_address(self.default_account_address)
+            self.account_public_checksum_address
         ).call()
 
         results = { 
@@ -201,27 +201,27 @@ if __name__ == "__main__":
     # aave.supply(
     #     token=aave.weth,
     #     amount=0.0001,
-    #     onBehalfOf=aave.w3.to_checksum_address(aave.default_account_address),
+    #     onBehalfOf=aave.w3.to_checksum_address(aave.account_public_address),
     #     referralCode=0
     # )
 
     # aave.withdraw(
     #     token=aave.wbtc,
     #     amount=0.0001,
-    #     address=aave.w3.to_checksum_address(aave.default_account_address)
+    #     address=aave.w3.to_checksum_address(aave.account_public_address)
     # )
 
     # aave.borrow(
     #     token=aave.wbtc,
     #     amount=0.003,
-    #     address=aave.w3.to_checksum_address(aave.default_account_address)
+    #     address=aave.w3.to_checksum_address(aave.account_public_address)
     # )
 
 
     # aave.repay(
     #     token=aave.usdc,
     #     amount=1,
-    #     address=aave.w3.to_checksum_address(aave.default_account_address)
+    #     address=aave.w3.to_checksum_address(aave.account_public_address)
     # )
 
     # tk.logger.info(aave.getUserAccountData())

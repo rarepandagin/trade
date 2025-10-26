@@ -458,8 +458,8 @@ function populate_indicators_table(payload){
 				const d = payload.admin_settings.live_indicators[`minutes_${MINUTE}`][INDICATOR]['d'];
 				indicator_row_html +=  `<td>${v}`
 
-				if ((INDICATOR.includes('ema')) || (INDICATOR == 'macd_histogram')){
-					if (d=='+') {
+				if ((INDICATOR.includes('ema')) || (INDICATOR.includes('macd'))){
+					if (d>=0) {
 						indicator_row_html +=  `<span class="ms-1 triangle_up"></span>`
 					}
 					else {
@@ -492,12 +492,13 @@ function get_observation_html(observation, bias, trade){
 		ret += `<span class="text-warning">X${minutes.length} </strong></span>`
 	}
 
-	if (observation.strength == 'strong') {
+	if (minutes.some(item => item.includes('strong'))) {
 		ret += `<span class="text-warning"><strong> (Strong) </strong></span>`
 	}	
 
 	
-	ret += ` - ${observation.description} on [${minutes.toString()}]`;
+	// ret += ` - ${observation.description}`;
+	ret += ` - ${observation.description} <span class="small">(${minutes.toString()})</span>`;
 
 	ret += `<br>`
 	return ret

@@ -135,6 +135,13 @@ def get_admin_settings():
     from dashboard.models import AdminSettings
     return AdminSettings.objects.all()[0]
 
+def update_admin_settings(field1_name, field1_value):
+    from dashboard.models import AdminSettings
+
+    AdminSettings.objects.all().update(**{
+        field1_name: field1_value,
+    })
+
 def get_new_random_name():
     return generate_username(1)[0]
 

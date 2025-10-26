@@ -5,7 +5,33 @@ from dashboard.models import models_order
 from dashboard.views_pages.context.ajax.ajax_posts_arbi import handle_ajax_posts_arbi
 from dashboard.views_pages.context.ajax.ajax_posts_bot import handle_ajax_posts_bot
 from dashboard.views_pages.context.ajax.ajax_posts_db import handle_ajax_posts_db
+from dashboard.views_pages.context.ajax.ajax_posts_dex import handle_ajax_posts_dex
 from traceback import format_exc
+
+from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
+
+def update_balances():
+
+    try:
+        tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'starting update_balances', 'color': 'green'})
+
+        uniswap = Uniswap()
+
+
+        balances = uniswap.check_balance()
+        admin_settings = tk.get_admin_settings()
+        admin_settings.balances = balances
+        admin_settings.save()
+
+        tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'finished update_balances', 'color': 'green'})
+
+    except:
+        tk.logger.info(format_exc())
+
+
+
+
+
 
 def handle_ajax_posts(self, request):
 
@@ -23,8 +49,11 @@ def handle_ajax_posts(self, request):
     elif 'bot_' in req[:5]:
         returned_payload = handle_ajax_posts_bot(req, payload)
 
-    elif 'db_' in req[:5]:
+    elif 'db_' in req[:4]:
         returned_payload = handle_ajax_posts_db(req, payload)
+    
+    elif 'dex_' in req[:5]:
+        returned_payload = handle_ajax_posts_dex(req, payload)
 
     else:
 
@@ -46,24 +75,7 @@ def handle_ajax_posts(self, request):
 
 
         elif request.POST['req'] == 'update_balances':
-            from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
-
-            try:
-                tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'starting update_balances', 'color': 'green'})
-
-                uniswap = Uniswap()
-
-
-                balances = uniswap.check_balance()
-                admin_settings = tk.get_admin_settings()
-                admin_settings.balances = balances
-                admin_settings.save()
-
-                tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'finished update_balances', 'color': 'green'})
-
-            except:
-                tk.logger.info(format_exc())
-
+            update_balances()
 
 
 

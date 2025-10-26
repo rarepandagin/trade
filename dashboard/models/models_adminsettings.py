@@ -1,4 +1,6 @@
+from botocore import tokens
 from django.db import models
+from django.utils import choices
 from ens.ens import default
 from dashboard.models.coins import *
 
@@ -14,11 +16,35 @@ gas_speeds = {
 }
 
 
+account_hedge = "account_hedge"
+account_dex = "account_dex"
+account_ajax = "account_ajax"
+account_eagle = "account_eagle"
+account_ranger = "account_ranger"
+account_lion = "account_lion"
+account_tiger = "account_tiger"
+
+accounts = {
+    
+    account_hedge : "account_hedge",
+    account_dex : "account_dex",
+    account_ajax : "account_ajax",
+    account_eagle : "account_eagle",
+    account_ranger : "account_ranger",
+    account_lion : "account_lion",
+    account_tiger : "account_tiger",
+
+}
+
+
+
 class AdminSettings(models.Model):
 
     id = models.BigAutoField(primary_key=True)
     
     pulses_are_being_blocked = models.BooleanField(default=False)
+
+    active_account = models.CharField(choices=accounts, default=account_hedge)
 
     # settings
     borrow_from_aave = models.BooleanField(default=False)
@@ -88,3 +114,6 @@ class AdminSettings(models.Model):
     active_time_frame_length        = models.IntegerField(default=1440)
 
     vision                          = models.JSONField(default=dict)
+
+    # DEX
+    tokens                          = models.JSONField(default=list)

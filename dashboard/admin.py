@@ -10,7 +10,6 @@ admin.site.register(AdminSettings)
 # admin.site.register(Tick)
 admin.site.register(Pair)
 admin.site.register(Alert)
-# admin.site.register(Price)
 
 
 
@@ -65,6 +64,20 @@ class adminViewPosition(admin.ModelAdmin):
         'final_profit_usd',
         )
 admin.site.register(Position, adminViewPosition)
+
+
+
+
+
+
+class adminViewToken(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'volume',
+        'liquidity',
+        )
+admin.site.register(Token, adminViewToken)
 
 
 
