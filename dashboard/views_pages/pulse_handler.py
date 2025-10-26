@@ -92,15 +92,15 @@ def handle_a_pulse(request):
                     ], batch_size=100)
 
             # send alerts for interesting tokens:
-            for token in models_token.Token.objects.all():
-                if not token.already_alerted:
-                    criteria_liquidity = token.locked_liquidity and token.liquidity > 4000
-                    criteria_age = (tk.get_epoch_now() - token.epoch_created) < 30 * 60
-                    if criteria_liquidity and criteria_age:
-                        tk.create_new_notification(title="New Token", message=f"{token.name} with locked liquidity of {token.liquidity} detected.")
+            # for token in models_token.Token.objects.all():
+            #     if not token.already_alerted:
+            #         criteria_liquidity = token.locked_liquidity and token.liquidity > 4000
+            #         criteria_age = (tk.get_epoch_now() - token.epoch_created) < 30 * 60
+            #         if criteria_liquidity and criteria_age:
+            #             tk.create_new_notification(title="New Token", message=f"{token.name} with locked liquidity of {token.liquidity} detected.")
 
-                    token.already_alerted = True
-                    token.save()
+            #         token.already_alerted = True
+            #         token.save()
 
 
 
