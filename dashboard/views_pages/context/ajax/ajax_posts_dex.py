@@ -1,22 +1,14 @@
 
 from eth_utils import address
 import dashboard.views_pages.toolkit as tk
-from dashboard.models import models_token
+from dashboard.models import models_token, models_adminsettings
 from dashboard.modules.dapps.dex.dex_class import Dex
 
 def handle_ajax_posts_dex(req, payload):
 
     admin_settings = tk.get_admin_settings()
 
-    if req == "dex_delete_all_tokens":
-        admin_settings.command_function = 'dex_delete_all_tokens'
-        
-        admin_settings.tokens=[]
-        admin_settings.save()
-
-        models_token.Token.objects.all().delete()
-
-    elif req == "dex_hide_token":
+    if req == "dex_hide_token":
         
         token = models_token.Token.objects.get(contract=payload['token_contract'])
         token.show = False
@@ -71,17 +63,22 @@ def handle_ajax_posts_dex(req, payload):
 
 
     elif req == 'dex_buy_token':
-        token_contract = payload['token_contract']
-        fiat_amount = float(payload['fiat_amount'])
-        dex = Dex()
 
-        admin_settings = tk.get_admin_settings()
+        if admin_settings.active_account == models_adminsettings.account_dex:
 
-        dex.fiat_to_token(
-                token_contract_address=token_contract,
-                fiat_amount=fiat_amount,
-                tries=admin_settings.tx_tries
-            )
+            token_contract = payload['token_contract']
+            fiat_amount = float(payload['fiat_amount'])
+            dex = Dex()
+
+            admin_settings = tk.get_admin_settings()
+
+            dex.fiat_to_token(
+                    token_contract_address=token_contract,
+                    fiat_amount=fiat_amount,
+                    tries=admin_settings.tx_tries
+                )
+        else:
+            tk.send_message_to_frontend_dashboard(topic='error', payload={'message': f'you need to switch to DEX account', 'color': 'red'})
 
 
     elif req == 'dex_approve_token':
@@ -142,6 +139,7 @@ def handle_ajax_posts_dex(req, payload):
 
     else:
 
-        admin_settings.command_function = req
-        admin_settings.command_arguments = payload
-        admin_settings.save()
+
+        tk.update_admin_settings("command_function", req)
+        tk.update_admin_settings("command_arguments", payload)
+

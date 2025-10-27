@@ -103,51 +103,29 @@ def global_view(request):
         originating_path = request.POST['originating_path']
 
 
-        if 'unblock_pulses' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.pulses_are_being_blocked = False
-            admin_settings.save()
+        # if 'unblock_pulses' in request.POST:
+        #     tk.update_admin_settings("pulses_are_being_blocked", False)
 
-        
-        elif 'block_pulses' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.pulses_are_being_blocked = True
-            admin_settings.save()
+        # elif 'block_pulses' in request.POST:
+        #     tk.update_admin_settings("pulses_are_being_blocked", True)
 
-        elif 'admin_settings_alarms' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.alarms = not admin_settings.alarms
-            admin_settings.save()
-
-        elif 'admin_settings_interval' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.interval = int(request.POST['admin_settings_interval'])
-            admin_settings.save()
+        if 'admin_settings_interval' in request.POST:
+            tk.update_admin_settings("interval", int(request.POST['admin_settings_interval']))
 
         elif 'admin_settings_tx_tries' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.tx_tries = int(request.POST['admin_settings_tx_tries'])
-            admin_settings.save()
+            tk.update_admin_settings("tx_tries", int(request.POST['admin_settings_tx_tries']))
 
         elif 'admin_settings_fiat_coin' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.fiat_coin = request.POST['admin_settings_fiat_coin']
-            admin_settings.save()
+            tk.update_admin_settings("fiat_coin", request.POST['admin_settings_fiat_coin'])
 
         elif 'admin_settings_secure_profit_ratio' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.secure_profit_ratio = eval(request.POST['admin_settings_secure_profit_ratio'])
-            admin_settings.save()
+            tk.update_admin_settings("secure_profit_ratio", eval(request.POST['admin_settings_secure_profit_ratio']))
 
         elif 'admin_settings_gas_speed' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.gas_speed = request.POST['admin_settings_gas_speed']
-            admin_settings.save()
+            tk.update_admin_settings("gas_speed", request.POST['admin_settings_gas_speed'])
 
         elif 'active_account__select' in request.POST:
-            admin_settings = tk.get_admin_settings()
-            admin_settings.active_account = request.POST['active_account__select']
-            admin_settings.save()
+            tk.update_admin_settings("active_account", request.POST['active_account__select'])
 
             from dashboard.views_pages.context.ajax.ajax_posts import update_balances
             update_balances()

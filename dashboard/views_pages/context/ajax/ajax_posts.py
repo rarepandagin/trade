@@ -17,11 +17,9 @@ def update_balances():
 
         uniswap = Uniswap()
 
-
         balances = uniswap.check_balance()
-        admin_settings = tk.get_admin_settings()
-        admin_settings.balances = balances
-        admin_settings.save()
+
+        tk.update_admin_settings("balances", balances)
 
         tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'finished update_balances', 'color': 'green'})
 

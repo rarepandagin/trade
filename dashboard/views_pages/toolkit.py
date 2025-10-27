@@ -138,7 +138,7 @@ def get_admin_settings():
 def update_admin_settings(field1_name, field1_value):
     from dashboard.models import AdminSettings
 
-    AdminSettings.objects.all().update(**{
+    AdminSettings.objects.filter().update(**{
         field1_name: field1_value,
     })
 

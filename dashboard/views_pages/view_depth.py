@@ -17,15 +17,13 @@ def get_response(request):
         else:
 
             if 'update_depth_plot_settings' in request.POST:
-                admin_settings = tk.get_admin_settings()
 
-                admin_settings.depth_lowest_price = float(request.POST['depth_lowest_price'])
-                admin_settings.depth_highest_price = float(request.POST['depth_highest_price'])
-                admin_settings.depth_cluster_width_usd = float(request.POST['depth_cluster_width_usd'])
-                admin_settings.depth_filtering_active = 'depth_filtering_active' in request.POST
+                tk.update_admin_settings("depth_lowest_price", float(request.POST['depth_lowest_price']))
+                tk.update_admin_settings("depth_highest_price", float(request.POST['depth_highest_price']))
+                tk.update_admin_settings("depth_cluster_width_usd", float(request.POST['depth_cluster_width_usd']))
+                tk.update_admin_settings("depth_filtering_active", 'depth_filtering_active' in request.POST)
 
 
-                admin_settings.save()
 
 
     context.dict['admin_settings'] =  tk.get_admin_settings()

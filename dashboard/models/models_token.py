@@ -17,34 +17,34 @@ class Token(models.Model):
 
     # intrinsic properties
     # these fields are collected only once when the token is collected from DEXScreener
-    chain_id      = models.TextField(default='', blank=True, null=True)
-    address       = models.TextField(default='', blank=True, null=True)
-    contract      = models.TextField(default='', blank=True, null=True, unique=True)
-    url           = models.TextField(default='', blank=True, null=True)
-    image_url     = models.TextField(default='', blank=True, null=True)
+    chain_id                = models.TextField(         default='',     blank=True, null=True)
+    address                 = models.TextField(         default='',     blank=True, null=True)
+    contract                = models.TextField(         default='',     blank=True, null=True,  unique=True)
+    url                     = models.TextField(         default='',     blank=True, null=True)
+    image_url               = models.TextField(         default='',     blank=True, null=True)
 
-    name          = models.TextField(default='', blank=True, null=True)
-    pair          = models.TextField(default='', blank=True, null=True)
-    version       = models.TextField(default='', blank=True, null=True)
-    epoch_created = models.BigIntegerField(default=0, blank=True, null=True)
+    name                    = models.TextField(         default='',     blank=True, null=True)
+    pair                    = models.TextField(         default='',     blank=True, null=True)
+    version                 = models.TextField(         default='',     blank=True, null=True)
+    epoch_created           = models.BigIntegerField(   default=0,      blank=True, null=True)
 
 
     # ongoing evaluation
     # there fields are continuously monitored
 
-    price                   = models.FloatField(default=0, blank=True, null=True)
-    volume                  = models.FloatField(default=0, blank=True, null=True)
-    makers                  = models.BigIntegerField(default=0, blank=True, null=True)
-    liquidity               = models.FloatField(default=0, blank=True, null=True)
-    cap                     = models.FloatField(default=0, blank=True, null=True)
-    locked_liquidity        = models.BooleanField(default=False)
-    has_website             = models.BooleanField(default=False)
-    has_twitter             = models.BooleanField(default=False)
-    has_telegram            = models.BooleanField(default=False)
-    go_security             = models.BooleanField(default=False)
-    quick_intel             = models.BooleanField(default=False)
-    token_sniffer           = models.BooleanField(default=False)
-    honeypot_is             = models.BooleanField(default=False)
+    price                   = models.FloatField(        default=0,      blank=True, null=True)
+    volume                  = models.FloatField(        default=0,      blank=True, null=True)
+    makers                  = models.BigIntegerField(   default=0,      blank=True, null=True)
+    liquidity               = models.FloatField(        default=0,      blank=True, null=True)
+    cap                     = models.FloatField(        default=0,      blank=True, null=True)
+    locked_liquidity        = models.BooleanField(      default=False,  blank=True, null=True)
+    has_website             = models.BooleanField(      default=False,  blank=True, null=True)
+    has_twitter             = models.BooleanField(      default=False,  blank=True, null=True)
+    has_telegram            = models.BooleanField(      default=False,  blank=True, null=True)
+    go_security             = models.BooleanField(      default=False,  blank=True, null=True)
+    quick_intel             = models.BooleanField(      default=False,  blank=True, null=True)
+    token_sniffer           = models.BooleanField(      default=False,  blank=True, null=True)
+    honeypot_is             = models.BooleanField(      default=False,  blank=True, null=True)
 
 
 

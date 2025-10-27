@@ -211,28 +211,6 @@ optgroup{
         <div class="border rounded p-2 highborder">
     
 			<div class="d-flex justify-content-between  flex-sm-row flex-column " >
-				{% if admin_settings.pulses_are_being_blocked %}
-
-					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
-						{% csrf_token %}
-						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
-
-						<button type="submit" name="unblock_pulses" class="btn btn-warning  btn-sm m-2 disable_while_busy" >Pulses are blocked - Click to unblock</button>
-
-					</form>
-
-				{% else %}
-
-
-					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
-						{% csrf_token %}
-						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
-
-						<button type="submit" name="block_pulses" class="btn btn-success btn-sm m-2 disable_while_busy">Pulses are taken in - Click to block</button>
-
-					</form>
-
-				{% endif %}   
 
 				<div class="d-flex justify-content-between gap-5">
 					<div>
@@ -341,20 +319,6 @@ optgroup{
 					</form>
 
 
-					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
-						{% csrf_token %}
-						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
-
-
-						<button type="submit" name="admin_settings_alarms disable_while_busy" class="btn btn-primary btn-sm ">
-							{% if admin_settings.alarms %}
-								Disable alarms
-							{% else %}
-								Enable alarms
-							{% endif %}
-						</button>
-
-					</form>
 
 
 

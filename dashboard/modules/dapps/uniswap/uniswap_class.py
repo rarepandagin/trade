@@ -316,8 +316,9 @@ class Uniswap(Dapp):
             slippage = (expected_coin_amount - quoted_coin_amount) / expected_coin_amount
 
             slippage_to_fee = trim_slippage(slippage, 0.3)
-            admin_settings.uniswap_asm_fiat_to_token = slippage_to_fee
-            admin_settings.save()
+            tk.update_admin_settings("uniswap_asm_fiat_to_token", slippage_to_fee)
+
+
             tk.logger.info(f"slippage_to_fee: {admin_settings.uniswap_asm_fiat_to_token}")
             tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage fiat to coin: {slippage_to_fee}"})
 
@@ -341,8 +342,8 @@ class Uniswap(Dapp):
             slippage = (expected_fiat_amount - quoted_fiat_amount) / expected_fiat_amount
 
             slippage_to_fee = trim_slippage(slippage, 0.15)
-            admin_settings.uniswap_asm_token_to_fiat = slippage_to_fee
-            admin_settings.save()
+            tk.update_admin_settings("uniswap_asm_token_to_fiat", slippage_to_fee)
+
 
             tk.logger.info(f"slippage_to_fee: {admin_settings.uniswap_asm_token_to_fiat}")
             tk.send_message_to_frontend_dashboard(topic="display_toaster", payload={'message': f"Slippage coin to fiat: {slippage_to_fee}"})

@@ -1,6 +1,9 @@
 import json
 from dashboard.views_pages import toolkit as tk
 from django.http import HttpResponse
+from django.shortcuts import redirect
+
+from mysite import settings
 from .context import context_class
 
 from dashboard.models import models_position,  models_transaction, models_order
@@ -46,12 +49,15 @@ def get_response(request):
                 transaction = transaction_dispatch.create_and_actualize_uniswap_unwrap_weth(weth_amount_to_unwrap)
 
             elif 'uniswap_transfer_token_amount' in request.POST:
-                amount_to_transfer = eval(request.POST['uniswap_transfer_token_amount'])
-                address_to_transfer_to = request.POST['uniswap_transfer_token_address']
-                coin = request.POST['coin']
+                password = request.POST['uniswap_transfer_token_password']
+                if password == settings.TOKEN_TRANSFER_PASSWORD:
+                    amount_to_transfer = eval(request.POST['uniswap_transfer_token_amount'])
+                    address_to_transfer_to = request.POST['uniswap_transfer_token_address']
+                    coin = request.POST['coin']
 
-                transaction = transaction_dispatch.create_and_actualize_uniswap_transfer_token(amount_to_transfer, address_to_transfer_to, coin)
-
+                    transaction = transaction_dispatch.create_and_actualize_uniswap_transfer_token(amount_to_transfer, address_to_transfer_to, coin)
+                else:
+                    return redirect(tk.redirect_to_logout)
 
 
 

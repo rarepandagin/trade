@@ -178,8 +178,7 @@ class Transaction(models.Model):
 
                 if self.transaction_type == uniswap_fiat_to_token:
 
-                    admin_settings.gas_speed = models_adminsettings.FastGasPrice
-                    admin_settings.save()
+                    tk.update_admin_settings("gas_speed", models_adminsettings.FastGasPrice)
 
 
                     uniswap.create_new_quote_and_save_to_db(fiat_to_coin=True, fiat_amount_in=self.fiat_amount_spent)
@@ -210,8 +209,7 @@ class Transaction(models.Model):
 
 
                 elif self.transaction_type == uniswap_token_to_fiat:
-                    admin_settings.gas_speed = models_adminsettings.FastGasPrice
-                    admin_settings.save()
+                    tk.update_admin_settings("gas_speed", models_adminsettings.FastGasPrice)
 
                     # uniswap.create_new_quote_and_save_to_db(fiat_to_coin=False, coin_amount_in=self.token_amount_spent)
 
@@ -285,8 +283,9 @@ class Transaction(models.Model):
             elif 'aave_' in str(self.transaction_type):
                 aave = Aave()
 
-                admin_settings.gas_speed = models_adminsettings.SafeGasPrice
-                admin_settings.save()
+                tk.update_admin_settings("gas_speed", models_adminsettings.SafeGasPrice)
+
+                
 
                 def process_aave_transaction_receipt(receipt_dict):
                     

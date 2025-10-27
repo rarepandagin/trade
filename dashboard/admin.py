@@ -74,8 +74,13 @@ class adminViewToken(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
-        'volume',
+        'contract',
+        'epoch_created',
+        'makers',
         'liquidity',
+        'cap',
+        'locked_liquidity',
+        'has_website',
         )
 admin.site.register(Token, adminViewToken)
 
