@@ -1,4 +1,19 @@
 
+function readable_elapsed_delta_epochs(delta_epochs){
+	const day = 24 * 60 * 60
+	const hour = 60 * 60
+	const minute = 60
+
+	if (delta_epochs > day){
+		return `${Math.floor(delta_epochs / day)} days`
+	} else if (delta_epochs > hour) {
+		return `${Math.floor(delta_epochs / hour)} hours`
+	} else if (delta_epochs > minute) {
+		return `${Math.floor(delta_epochs / minute)} minutes`
+	}
+}
+
+
 function dex_draw_token_arena(payload){
 	// Extract x and y values into arrays
 	const tokens = payload.admin_settings.tokens.filter(x => x.show_on_chart) 
@@ -133,9 +148,9 @@ function populate_dex_new_tokens_table(payload){
 		let locked_liquidity_html = '';
 
 		if (token.locked_liquidity){
-			locked_liquidity_html += `<p class="text-success">Locked liquidity</p>`
+			locked_liquidity_html += `<p>Locked liquidity</p>`
 		} else {
-			locked_liquidity_html += `<p class="text-danger">No locked liquidity</p>`
+			locked_liquidity_html += `<p class="text-danger fs-5">No locked liquidity</p>`
 		}
 
 
@@ -199,7 +214,7 @@ function populate_dex_new_tokens_table(payload){
 				<td>${token.liquidity.toLocaleString()}</td>
 				<td>${(token.volume / token.makers).toFixed(2)}</td>
 				<td>${token.makers}</td>
-				<td>${(token_age_seconds / 3600).toFixed(1) } hr</td>
+				<td>${readable_elapsed_delta_epochs(token_age_seconds)} hr</td>
 				<td>${social_html}<br>
 				<td>${security_html}</td>
 				
@@ -271,8 +286,8 @@ function populate_dex_imported_tokens_table(payload){
 
 							<p>Price: ${token.price}<br>
 							Value: ${(token.price * token.balance).toFixed(2)}</p><br>
-							<button type="button" onclick="dex_quote_token('${token.contract}');" class="btn btn-primary btn-sm m-1">quote</button>
-						</div>
+
+							</div>
 					</td>
 
 					<td>
@@ -287,8 +302,8 @@ function populate_dex_imported_tokens_table(payload){
 					
 					<td>
 						<div class="d-flex justify-content-start  gap-2">
-							<input  class="form-control form-control-sm" type="number" style="width: 100px;" step="any" id="dex_buy_token_fiat_amount_${token.contract}_input"  value="2" />
-							<button type="button" onclick="dex_buy_token('${token.contract}');" class="btn btn-danger btn-sm m-1">buy token</button>
+
+						<button type="button" onclick="dex_buy_token('${token.contract}');" class="btn btn-danger btn-sm m-1">buy token</button>
 						</div>
 					</td>
 
@@ -326,10 +341,8 @@ function populate_dex_imported_tokens_table(payload){
     function dex_remove_import_token(token_contract){ ajax_call('dex_remove_import_token', {'token_contract': token_contract}) };
     
     function dex_buy_token(token_contract){ 
-		const fiat_amount = $(`#dex_buy_token_fiat_amount_${token_contract}_input`).val();
-
+		const fiat_amount = $(`quote_buy_fiat_amount__input`).val();
         ajax_call('dex_buy_token', {'token_contract': token_contract, 'fiat_amount': fiat_amount})
-		 
     };
 
     function dex_sell_token(token_contract, sell_percentage){ 
@@ -337,12 +350,8 @@ function populate_dex_imported_tokens_table(payload){
     };
 
     function dex_check_balance_token(token_contract){ 
-        ajax_call('dex_check_balance_token', {'token_contract': token_contract})
-    };
-
-    function dex_quote_token(token_contract){
-		const quote_fiat_amount =  $(`#quote_fiat_amount__input`).val();
-        ajax_call('dex_quote_token', {'token_contract': token_contract, 'quote_fiat_amount': quote_fiat_amount})
+		const quote_fiat_amount =  $(`#quote_buy_fiat_amount__input`).val();
+        ajax_call('dex_check_balance_token', {'token_contract': token_contract, 'quote_fiat_amount': quote_fiat_amount})
     };
 
     function dex_approve_token(token_contract){

@@ -12,6 +12,7 @@ import time
 
 
 def handle_tokens(payload):
+    # tk.logger.info(f'handling tokens')
 
     # filter incoming tokens with unknown contract
     incoming_token_dict_list = [json.loads(x['fields']) for x in payload['tokens']]
@@ -59,7 +60,7 @@ def handle_tokens(payload):
                 obj.token_sniffer       = item['token_sniffer']
                 obj.honeypot_is         = item['honeypot_is']
 
-        # Bulk update by primary key
+
         models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=[
             'price',
             'volume',
@@ -77,13 +78,14 @@ def handle_tokens(payload):
 
             ], batch_size=100)
 
-    # send alerts for interesting tokens:
+
     for token in models_token.Token.objects.all():
         if not token.already_alerted:
             criteria_liquidity = token.locked_liquidity and token.liquidity > 4000
+            # criteria_liquidity = token.liquidity > 4000
             criteria_age = (tk.get_epoch_now() - token.epoch_created) < 30 * 60
             if criteria_liquidity and criteria_age:
-                tk.create_new_notification(title="New Token", message=f"{token.name} with locked liquidity of {token.liquidity} detected.")
+                tk.create_new_notification(title="New Token", message=f"{token.name} with locked liquidity of {token.liquidity} detected. \n {token.url}")
 
             token.already_alerted = True
             token.save()
@@ -91,7 +93,6 @@ def handle_tokens(payload):
 
 
     tk.update_admin_settings('tokens', [tk.serialize_object(x) for x in models_token.Token.objects.all() if x.show])
-
 
 
 def handle_a_pulse(request):

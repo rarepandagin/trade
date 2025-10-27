@@ -68,17 +68,22 @@ def handle_ajax_posts_dex(req, payload):
 
             token_contract = payload['token_contract']
             fiat_amount = float(payload['fiat_amount'])
-            dex = Dex()
 
-            admin_settings = tk.get_admin_settings()
+            if not 0 < fiat_amount < 50:
+                dex = Dex()
 
-            dex.fiat_to_token(
-                    token_contract_address=token_contract,
-                    fiat_amount=fiat_amount,
-                    tries=admin_settings.tx_tries
-                )
+                admin_settings = tk.get_admin_settings()
+
+                # dex.fiat_to_token(
+                #         token_contract_address=token_contract,
+                #         fiat_amount=fiat_amount,
+                #         tries=admin_settings.tx_tries
+                #     )
+            else:
+                tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'invalid fiat amount', 'color': 'red'})
+
         else:
-            tk.send_message_to_frontend_dashboard(topic='error', payload={'message': f'you need to switch to DEX account', 'color': 'red'})
+            tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'you need to switch to DEX account', 'color': 'red'})
 
 
     elif req == 'dex_approve_token':
@@ -105,17 +110,14 @@ def handle_ajax_posts_dex(req, payload):
 
     elif req == 'dex_check_balance_token':
         token_contract = payload['token_contract']
-        dex = Dex()
-
-        balance = dex.check_balance_of_token_by_contract_address(token_contract)
         token = models_token.Token.objects.get(contract=payload['token_contract'])
-        token.balance = balance
-        token.save()
-
-    elif req == 'dex_quote_token':
-        token_contract = payload['token_contract']
-        quote_fiat_amount = float(payload['quote_fiat_amount'])
+        
         dex = Dex()
+
+        token.balance = dex.check_balance_of_token_by_contract_address(token_contract)
+
+
+        quote_fiat_amount = float(payload['quote_fiat_amount'])
 
         quote = dex.v2_quote(
             token_contract_address=token_contract,
@@ -125,11 +127,10 @@ def handle_ajax_posts_dex(req, payload):
 
 
         if quote is not None:
-            token = models_token.Token.objects.get(contract=payload['token_contract'])
 
             token.price = quote
 
-            token.save()
+        token.save()
 
 
 
