@@ -280,7 +280,7 @@ def create_and_actualize_arbi_single_swap():
 
 
 
-
+# SUSHISWAP
 
 
 def create_and_actualize_sushiswap_fiat_to_token_transaction(fiat_to_token_amount, coin):
@@ -290,6 +290,71 @@ def create_and_actualize_sushiswap_fiat_to_token_transaction(fiat_to_token_amoun
         coin=coin,
         transaction_type=models_transaction.sushiswap_fiat_to_token,
         fiat_amount_spent=fiat_to_token_amount,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# DEX
+
+def create_and_actualize_dex_quote_token_transaction(fiat_to_token_amount, token_contract):
+    from dashboard.models import models_transaction
+
+    
+    transaction = models_transaction.Transaction(
+        transaction_type=models_transaction.dex_quote_token,
+        fiat_amount_spent=fiat_to_token_amount,
+        dex_token_contract=token_contract,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+def create_and_actualize_dex_approve_token_transaction(token_contract):
+    from dashboard.models import models_transaction
+
+    
+    transaction = models_transaction.Transaction(
+        transaction_type=models_transaction.dex_approve_token,
+        dex_token_contract=token_contract,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+def create_and_actualize_dex_fiat_to_token_transaction(fiat_to_token_amount, token_contract):
+    from dashboard.models import models_transaction
+
+    
+    transaction = models_transaction.Transaction(
+        transaction_type=models_transaction.dex_fiat_to_token,
+        fiat_amount_spent=fiat_to_token_amount,
+        dex_token_contract=token_contract,
+    )
+
+    return perform_transaction_actualization(transaction)
+
+
+
+def create_and_actualize_dex_token_to_fiat_transaction(token_to_fiat_amount, token_contract):
+    from dashboard.models import models_transaction
+
+    
+    transaction = models_transaction.Transaction(
+        transaction_type=models_transaction.dex_token_to_fiat,
+        token_amount_spent=token_to_fiat_amount,
+        dex_token_contract=token_contract,
     )
 
     return perform_transaction_actualization(transaction)

@@ -4,19 +4,20 @@ from dashboard.models.models_position import models_position
 from dashboard.models.models_position import models_order
 from dashboard.models import models_token
 from dashboard.models import models_alert
+from dashboard.models import models_adminsettings
 import json
 from dashboard.modules.dapps.aave.aave_class import Aave
 import copy
 from dashboard.views_pages.vision import Vision
 import time
+from dashboard.modules.dapps.dex.dex_class import Dex
 
 
 def handle_tokens(payload):
     # tk.logger.info(f'handling tokens')
 
     # filter incoming tokens with unknown contract
-    incoming_token_dict_list = [json.loads(x['fields']) for x in payload['tokens']]
-    incoming_token_dict_list = [x for x in incoming_token_dict_list if x['contract'] != ""]
+    incoming_token_dict_list = payload['tokens']
 
     locally_existing_token_contracts = [x.contract for x in models_token.Token.objects.all()]
 
@@ -46,49 +47,83 @@ def handle_tokens(payload):
         for item in incoming_token_dict_list:
             obj = existing_token_to_be_updated.get(item['contract'])
             if obj:
-                obj.price               = item['price']
-                obj.volume              = item['volume']
-                obj.makers              = item['makers']
-                obj.liquidity           = item['liquidity']
-                obj.cap                 = item['cap']
-                obj.locked_liquidity    = item['locked_liquidity']
-                obj.has_website         = item['has_website']
-                obj.has_twitter         = item['has_twitter']
-                obj.has_telegram        = item['has_telegram']
-                obj.go_security         = item['go_security']
-                obj.quick_intel         = item['quick_intel']
-                obj.token_sniffer       = item['token_sniffer']
-                obj.honeypot_is         = item['honeypot_is']
+
+                obj.weth_pair_reserves          = item['weth_pair_reserves']
+                obj.token_pair_reserves         = item['token_pair_reserves']
+                obj.price_per_weth              = item['price_per_weth']
+                obj.volume                      = item['volume']
+
+                obj.uncx_user                   = item['uncx_user']
+                obj.uncx_token_amount           = item['uncx_token_amount']
+                obj.uncx_pool_lock_ratio        = item['uncx_pool_lock_ratio']
+                obj.uncx_epoch_start_lock       = item['uncx_epoch_start_lock']
+                obj.uncx_epoch_end_lock         = item['uncx_epoch_end_lock']
+                
+                obj.go_plus_lp_total_supply     = item['go_plus_lp_total_supply']
+                obj.go_plus_locked_lp_ratio     = item['go_plus_locked_lp_ratio']
+                obj.go_plus_dex_liquidity       = item['go_plus_dex_liquidity']
+                obj.go_plus_security_issues     = item['go_plus_security_issues']
+                
+                obj.keep_investigating          = item['keep_investigating']
+                obj.epoch_investigated          = item['epoch_investigated']
+                obj.investigation_pass          = item['investigation_pass']
+                obj.investigation_red_flag      = item['investigation_red_flag']
+                obj.investigated                = item['investigated']
 
 
         models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=[
-            'price',
-            'volume',
-            'makers',
-            'liquidity',
-            'cap',
-            'locked_liquidity',
-            'has_website',
-            'has_twitter',
-            'has_telegram',
-            'go_security',
-            'quick_intel',
-            'token_sniffer',
-            'honeypot_is',
+
+                'weth_pair_reserves',
+                'token_pair_reserves',
+                'price_per_weth',
+                'volume',
+                'uncx_user',
+                'uncx_token_amount',
+                'uncx_pool_lock_ratio',
+                'uncx_epoch_start_lock',
+                'uncx_epoch_end_lock',
+                'go_plus_lp_total_supply',
+                'go_plus_locked_lp_ratio',
+                'go_plus_dex_liquidity',
+                'go_plus_security_issues',
+                'keep_investigating',
+                'epoch_investigated',
+                'investigation_pass',
+                'investigation_red_flag',
+                'investigated',
 
             ], batch_size=100)
 
 
     for token in models_token.Token.objects.all():
-        if not token.already_alerted:
-            criteria_liquidity = token.locked_liquidity and token.liquidity > 4000
-            # criteria_liquidity = token.liquidity > 4000
-            criteria_age = (tk.get_epoch_now() - token.epoch_created) < 30 * 60
-            if criteria_liquidity and criteria_age:
-                tk.create_new_notification(title="New Token", message=f"{token.name} with locked liquidity of {token.liquidity} detected. \n {token.url}")
+        if (token.investigated) and(token.investigation_pass) and (not token.already_alerted) :
+            tk.create_new_notification(title="New Token", message=f"{token.name} passed investigation")
 
+            token.imported = True
             token.already_alerted = True
             token.save()
+
+
+            admin_settings = tk.get_admin_settings()
+
+            # attempting to auto-buy
+            if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+                tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+                fiat_amount = 10.0
+                dex = Dex()
+
+                try:
+                    dex.fiat_to_token(
+                            token_contract_address=token.contract,
+                            token_decimals=token.decimals,
+                            fiat_amount=fiat_amount,
+                            tries=admin_settings.tx_tries,
+                            transaction_object=None,
+                        )
+                except:
+                    pass
+                token.auto_purchased = True
+                token.save()
 
 
 

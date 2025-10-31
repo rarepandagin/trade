@@ -123,6 +123,10 @@ def global_view(request):
 
         elif 'admin_settings_gas_speed' in request.POST:
             tk.update_admin_settings("gas_speed", request.POST['admin_settings_gas_speed'])
+        
+        elif 'admin_settings_allow_auto_purchase' in request.POST:
+            admin_settings=tk.get_admin_settings()
+            tk.update_admin_settings("allow_auto_purchase", not admin_settings.allow_auto_purchase)
 
         elif 'active_account__select' in request.POST:
             tk.update_admin_settings("active_account", request.POST['active_account__select'])

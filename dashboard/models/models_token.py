@@ -14,48 +14,69 @@ from dashboard.models.coins import *
 class Token(models.Model):
 
     id = models.BigAutoField(primary_key=True)
+    
+    
+    # DISCOVERY / INTRINSIC
+    contract                = models.TextField(null=True, blank=True ,           unique=True)
+    event_block_number      = models.BigIntegerField(null=True, blank=True)
+    pair_creation_epoch     = models.BigIntegerField(null=True, blank=True)
 
-    # intrinsic properties
-    # these fields are collected only once when the token is collected from DEXScreener
-    chain_id                = models.TextField(         default='',     blank=True, null=True)
-    address                 = models.TextField(         default='',     blank=True, null=True)
-    contract                = models.TextField(         default='',     blank=True, null=True,  unique=True)
-    url                     = models.TextField(         default='',     blank=True, null=True)
-    image_url               = models.TextField(         default='',     blank=True, null=True)
+    pair_address            = models.TextField(null=True, blank=True)
 
-    name                    = models.TextField(         default='',     blank=True, null=True)
-    pair                    = models.TextField(         default='',     blank=True, null=True)
-    version                 = models.TextField(         default='',     blank=True, null=True)
-    epoch_created           = models.BigIntegerField(   default=0,      blank=True, null=True)
+    name                    = models.TextField(null=True, blank=True)
+    decimals                = models.IntegerField(null=True, blank=True)
+    symbol                  = models.TextField(null=True, blank=True)
+    total_supply            = models.FloatField(null=True, blank=True)
+    weth_idx_in_pair        = models.IntegerField(null=True, blank=True)
+    epoch_created           = models.BigIntegerField(null=True, blank=True)
 
 
-    # ongoing evaluation
-    # there fields are continuously monitored
+    # PAIR DYNAMICS
 
-    price                   = models.FloatField(        default=0,      blank=True, null=True)
-    volume                  = models.FloatField(        default=0,      blank=True, null=True)
-    makers                  = models.BigIntegerField(   default=0,      blank=True, null=True)
-    liquidity               = models.FloatField(        default=0,      blank=True, null=True)
-    cap                     = models.FloatField(        default=0,      blank=True, null=True)
-    locked_liquidity        = models.BooleanField(      default=False,  blank=True, null=True)
-    has_website             = models.BooleanField(      default=False,  blank=True, null=True)
-    has_twitter             = models.BooleanField(      default=False,  blank=True, null=True)
-    has_telegram            = models.BooleanField(      default=False,  blank=True, null=True)
-    go_security             = models.BooleanField(      default=False,  blank=True, null=True)
-    quick_intel             = models.BooleanField(      default=False,  blank=True, null=True)
-    token_sniffer           = models.BooleanField(      default=False,  blank=True, null=True)
-    honeypot_is             = models.BooleanField(      default=False,  blank=True, null=True)
+    weth_pair_reserves      = models.FloatField(null=True, blank=True)
+    token_pair_reserves     = models.FloatField(null=True, blank=True)
+    price_per_weth          = models.FloatField(null=True, blank=True)
+    volume                  = models.FloatField(default=0, null=True, blank=True)
+
+
+
+    # INVESTIGATING / DYNAMIC
+    # every token in investigated consistently unless keep_investigating is set to false
+    # keep_investigating is set to false where there is enough reason for dismissing the token
+    # we do not delete the token record so that its contract address is maintained
+    # we also stop investigating when investigation_pass is set to True
+
+
+    uncx_user               = models.TextField(null=True, blank=True)
+    uncx_token_amount       = models.FloatField(default=0, null=True, blank=True)
+    uncx_pool_lock_ratio    = models.FloatField(default=0, null=True, blank=True)
+    uncx_epoch_start_lock   = models.BigIntegerField(default=0, null=True, blank=True)
+    uncx_epoch_end_lock     = models.BigIntegerField(default=0, null=True, blank=True)
+
+
+    go_plus_lp_total_supply = models.FloatField(default=0, null=True, blank=True)
+    go_plus_locked_lp_ratio = models.FloatField(default=0, null=True, blank=True)
+    go_plus_dex_liquidity   = models.FloatField(default=0, null=True, blank=True)
+    go_plus_security_issues = models.JSONField(default=list, null=True, blank=True)
+
+    keep_investigating      = models.BooleanField(default=True, null=True, blank=True)
+    epoch_investigated      = models.BigIntegerField( default=0, null=True, blank=True)
+    investigation_pass      = models.BooleanField(default= False, null=True, blank=True)
+    investigation_red_flag  = models.BooleanField(default=False)
+    investigated            = models.BooleanField(default=False)
 
 
 
     # admin actions
     # these are field used in manual operations 
-    show        = models.BooleanField(default=True)
-    show_on_chart = models.BooleanField(default=True)
-    imported    = models.BooleanField(default=False)
+    price                = models.FloatField(default=0, null=True, blank=True)
+
+    show        = models.BooleanField(default=True, null=True, blank=True)
+    show_on_chart = models.BooleanField(default=True, null=True, blank=True)
+    imported    = models.BooleanField(default=False, null=True, blank=True)
     
     balance                 = models.FloatField(default=0, blank=True, null=True)
-    approved                = models.BooleanField(default=False)
+    approved                = models.BooleanField(default=False, null=True, blank=True)
 
-    auto_purchased          = models.BooleanField(default=False)
-    already_alerted          = models.BooleanField(default=False)
+    auto_purchased          = models.BooleanField(default=False, null=True, blank=True)
+    already_alerted          = models.BooleanField(default=False, null=True, blank=True)

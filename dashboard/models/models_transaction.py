@@ -8,6 +8,7 @@ from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
 from dashboard.modules.dapps.sushiswap.sushiswap_class import Sushiswap
 from dashboard.modules.dapps.aave.aave_class import Aave
 from dashboard.modules.dapps.arbi.arbi_class import Arbi
+from dashboard.modules.dapps.dex.dex_class import Dex
 
 from dashboard.models.coins import *
 
@@ -55,6 +56,12 @@ arbi_wrap_eth = "arbi_wrap_eth"
 arbi_unwrap_weth = "arbi_unwrap_weth"
 arbi_single_swap = "arbi_single_swap"
 
+# dex
+dex_quote_token = "dex_quote_token"
+dex_approve_token = "dex_approve_token"
+dex_fiat_to_token = "dex_fiat_to_token"
+dex_token_to_fiat = "dex_token_to_fiat"
+
 transaction_types = {
     uniswap_approve : "uniswap_approve",
     uniswap_token_to_fiat : "uniswap_token_to_fiat",
@@ -81,6 +88,11 @@ transaction_types = {
     arbi_wrap_eth: "arbi_wrap_eth",
     arbi_unwrap_weth: "arbi_unwrap_weth",
     arbi_single_swap: "arbi_single_swap",
+
+    dex_quote_token: "dex_quote_token",
+    dex_approve_token: "dex_approve_token",
+    dex_fiat_to_token: "dex_fiat_to_token",
+    dex_token_to_fiat: "dex_token_to_fiat",
 }
 
 
@@ -116,7 +128,7 @@ class Transaction(models.Model):
     
     # case specific fields
     fiat_loan_amount        = models.FloatField(default=0)
-
+    dex_token_contract      = models.TextField(default="", null=True, blank=True)
 
     # auto
     uuid = models.TextField(default="", blank=True, null=True)
@@ -383,6 +395,88 @@ class Transaction(models.Model):
 
                 elif self.transaction_type == arbi_single_swap:
                     ret = arbi.perform_single_swap()
+
+            elif 'dex_' in str(self.transaction_type):
+
+                dex = Dex()
+
+                tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+
+
+                if self.transaction_type == dex_quote_token:
+                    from dashboard.models import models_token
+                    token = models_token.Token.objects.get(contract=self.dex_token_contract)
+
+                    quote = dex.v2_quote(
+                            token_contract_address=self.dex_token_contract,
+                            token_decimals=token.decimals,
+                            buying_token=True,
+                            fiat_amount=self.fiat_amount_spent,
+                        )
+
+                    if quote is None:
+                        self.state = transaction_state_failed
+                    else:
+
+                        token.price = quote
+                        self.state = transaction_state_successful
+                        token.save()
+
+                elif self.transaction_type == dex_approve_token:
+
+                    successful = dex.approve_spenders(token_contract_address=self.dex_token_contract)
+
+                    from dashboard.models import models_token
+                    token = models_token.Token.objects.get(contract=self.dex_token_contract)
+                    token.approved = successful
+                    token.save()
+
+
+                elif self.transaction_type == dex_token_to_fiat:
+
+                    from dashboard.models import models_token
+                    
+                    token = models_token.Token.objects.get(contract=self.dex_token_contract)
+
+                    successful, weth_received, tx_fee = dex.token_to_weth(
+                        token_contract_address=self.dex_token_contract,
+                        token_decimals=token.decimals,
+                        token_amount_to_sell=self.token_amount_spent,
+                        tries=admin_settings.tx_tries,
+                        transaction_object=self,
+                    )
+                    if successful:
+                        self.fiat_amount_received = weth_received
+                        self.state = transaction_state_successful
+                        self.fee = round(tx_fee, 2)
+
+                    else:
+                        self.state = transaction_state_failed
+
+
+                elif self.transaction_type == dex_fiat_to_token:
+                    
+                    if 0 < self.fiat_amount_spent < 50:
+
+                        from dashboard.models import models_token
+                        token = models_token.Token.objects.get(contract=self.dex_token_contract)
+
+                        successful, token_bought, tx_hash, tx_fee = dex.fiat_to_token(
+                            token_contract_address=self.dex_token_contract,
+                            token_decimals=token.decimals,
+                            fiat_amount=self.fiat_amount_spent,
+                            tries=admin_settings.tx_tries,
+                            transaction_object=self,
+                        )
+
+                        if successful:
+                            self.token_amount_received = token_bought
+                            self.hash = tx_hash
+                            self.state = transaction_state_successful
+                            self.fee = round(tx_fee, 2)
+
+                        else:
+                            self.state = transaction_state_failed
 
 
 

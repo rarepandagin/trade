@@ -215,7 +215,7 @@ class Dex(Dapp):
             )
 
 
-    def v2_quote(self, token_contract_address,
+    def v2_quote(self, token_contract_address, token_decimals,
     
                 #buying token:
                 buying_token=True,  fiat_amount=None,
@@ -227,8 +227,8 @@ class Dex(Dapp):
 
         try:
 
-            token_contract = self.get_token_contract_object(token_contract_address)
-            token_decimals = token_contract.functions.decimals.call()
+            # token_contract = self.get_token_contract_object(token_contract_address)
+            # token_decimals = token_contract.functions.decimals.call()
 
             if buying_token:
                 # pay weth, receive token
@@ -257,10 +257,10 @@ class Dex(Dapp):
 
             if buying_token:
 
-                token_price_usd = self.get_coin_price('weth') / (quote[-1] / quote[0])
+                token_price_usd = (self.get_coin_price('weth') / (quote[-1] / quote[0])) / pow(10, token_decimals)
 
             else:
-                token_price_usd = self.get_coin_price('weth') / (quote[0] / quote[-1])
+                token_price_usd = (self.get_coin_price('weth') / (quote[0] / quote[-1])) / pow(10, token_decimals)
 
             tk.logger.info(f'quoted token price: {token_price_usd}')
 
@@ -275,12 +275,12 @@ class Dex(Dapp):
 
 
 
-    def fiat_to_token(self, token_contract_address, fiat_amount, tries):
+    def fiat_to_token(self, token_contract_address, token_decimals, fiat_amount, tries, transaction_object):
 
 
         """
         V2:
-            weth -> token
+            eth -> token
         """
 
         token_contract = self.get_token_contract_object(token_contract_address)
@@ -290,7 +290,12 @@ class Dex(Dapp):
 
         for i in range(tries):
 
-            token_price_usd = self.v2_quote(token_contract_address, fiat_amount=fiat_amount)
+            token_price_usd = self.v2_quote(
+                    token_contract_address, 
+                    token_decimals=token_decimals,
+                    buying_token=True,
+                    fiat_amount=fiat_amount
+                )
 
             tk.logger.info(f'performing fiat_to_token (weth -> token)     fiat_amount: {fiat_amount}     V2')
 
@@ -319,7 +324,7 @@ class Dex(Dapp):
                 deadline
             )
 
-            tx_return = self.build_and_execute_tx(action=action, value=amount_in)
+            tx_return = self.build_and_execute_tx(action=action, value=amount_in, transaction_object=transaction_object)
 
             tk.logger.info(tx_return)
 
@@ -334,30 +339,32 @@ class Dex(Dapp):
                 return successful, token_out_bought, tx_hash, tx_fee_in_eth
 
 
-        return False, None, None, None, None
+        return False, None, None, None
 
 
 
 
 
 
-
-    def token_to_weth(self, token_contract_address, token_amount_to_sell, tries):
+    # selling the token
+    def token_to_weth(self, token_contract_address, token_decimals, token_amount_to_sell, tries, transaction_object):
 
 
         """
         V2:
-            token -> weth
+            token -> eth
         """
 
-        token_contract = self.get_token_contract_object(token_contract_address)
-        token_decimals = token_contract.functions.decimals.call()
-
+        token_amount_to_sell = 1
 
 
         for i in range(tries):
 
-            token_price_usd = self.v2_quote(token_contract_address, buying_token=False, token_amount_to_sell=token_amount_to_sell)
+            token_price_usd = self.v2_quote(
+                token_contract_address, 
+                token_decimals=token_decimals,
+                buying_token=False, 
+                token_amount_to_sell=token_amount_to_sell)
 
             tk.logger.info(f'performing token_to_weth (token -> weth)     token_amount: {token_amount_to_sell}     V2')
 
@@ -392,21 +399,18 @@ class Dex(Dapp):
 
             )
 
-            tx_return = self.build_and_execute_tx(action=action)
+            tx_return = self.build_and_execute_tx(action=action, transaction_object=transaction_object)
 
             tk.logger.info(tx_return)
 
             successful = tx_return['successful']
-            tx_hash = tx_return['tx_hash']
             tx_fee_in_eth = tx_return['tx_fee_in_eth']
 
             if successful:
-                token_out_bought = 0
+                weth_received = 0
                 # token_out_bought = tx_return['logs_results'][token_out.name]['amount']
 
-                return successful, token_out_bought, tx_hash, tx_fee_in_eth
+                return successful, weth_received, tx_fee_in_eth
 
 
-        return False, None, None, None, None
-
-
+        return False, None, None

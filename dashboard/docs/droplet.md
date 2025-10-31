@@ -455,3 +455,20 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAusH8DTCH4f4KpqzKI/BNlmRXZOzhYeq92OHSqKSZNr
 /home/sammy/myprojectdir/myprojectenv/lib/python3.12/site-packages/django/contrib/auth/
 
 
+
+
+# PROXY
+
+sudo apt install shadowsocks-libev
+sudo nano /etc/shadowsocks-libev/config.json
+{
+    "server":["0.0.0.0"],   <--------
+    "mode":"tcp_and_udp",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"7vmbPOHhFxHW",
+    "timeout":86400,
+    "method":"chacha20-ietf-poly1305"
+}
+
+sudo ufw allow 8388

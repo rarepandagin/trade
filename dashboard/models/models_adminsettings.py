@@ -106,14 +106,15 @@ class AdminSettings(models.Model):
     command_arguments   = models.JSONField(default=dict, blank=True, null=True)
 
     # INDICATORS
-    INDICATORS                      = models.JSONField(default=list)
-    MINUTES                         = models.JSONField(default=list)
-    live_indicators                 = models.JSONField(default=dict)
+    INDICATORS                      = models.JSONField(default=list, blank=True, null=True)
+    MINUTES                         = models.JSONField(default=list, blank=True, null=True)
+    live_indicators                 = models.JSONField(default=dict, blank=True, null=True)
     
     active_time_frame_minutes       = models.IntegerField(default=1)
     active_time_frame_length        = models.IntegerField(default=1440)
 
-    vision                          = models.JSONField(default=dict)
+    vision                          = models.JSONField(default=dict, blank=True, null=True)
 
     # DEX
-    tokens                          = models.JSONField(default=list)
+    tokens                          = models.JSONField(default=list, blank=True, null=True)
+    allow_auto_purchase             = models.BooleanField(default=False)

@@ -176,7 +176,12 @@ optgroup{
 	font-weight: bold;
 }
 
-
+svg {
+  max-width: 20px;
+  max-height: 20px;
+  height: auto;
+  width: 100%;
+}   
 </style>
 
 
@@ -316,6 +321,19 @@ optgroup{
 
 						<input type="number" min="1" step="1" class="form-control form-control-sm" name="admin_settings_tx_tries" value="{{admin_settings.tx_tries}}" style="width: 50px;"/>
 						<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" >Set tx tries</button>
+					</form>
+
+
+
+					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
+						{% csrf_token %}
+						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
+
+						{% if admin_settings.allow_auto_purchase %}
+							<button type="submit" class="btn btn-warning btn-sm disable_while_busy" style="height: 30px;" name="admin_settings_allow_auto_purchase">Allowing auto purchase</button>
+						{% else %}
+							<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" name="admin_settings_allow_auto_purchase">Not allowing auto purchase</button>
+						{% endif %}
 					</form>
 
 
