@@ -201,6 +201,7 @@ def handle_a_pulse(request):
         #     aave = Aave()
         #     tk.update_admin_settings('aave_user_account_data', aave.getUserAccountData())
 
+        tk.logger.info(tk.serialize_object(admin_settings))
 
         payload =  {
                 "positions_dict": [],#positions_dict,
@@ -208,6 +209,7 @@ def handle_a_pulse(request):
                 "admin_settings": tk.serialize_object(admin_settings),
                 "chart_df": [],#payload['chart_df'],
             }
+
 
         tk.send_message_to_frontend_dashboard(topic='update_positions_table', payload=payload)
 
