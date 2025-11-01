@@ -18,7 +18,7 @@ def handle_tokens(payload):
 
     # filter incoming tokens with unknown contract
     models_token.Token.objects.filter(imported=False).delete()
-    
+
     incoming_token_dict_list = payload['tokens']
 
     locally_existing_token_contracts = [x.contract for x in models_token.Token.objects.all()]
@@ -206,7 +206,7 @@ def handle_a_pulse(request):
                 "positions_dict": positions_dict,
                 "alarm": "",
                 "admin_settings": tk.serialize_object(admin_settings),
-                "chart_df": payload['chart_df'],
+                "chart_df": [],#payload['chart_df'],
             }
 
         tk.send_message_to_frontend_dashboard(topic='update_positions_table', payload=payload)
