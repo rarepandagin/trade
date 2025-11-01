@@ -205,7 +205,7 @@ def handle_a_pulse(request):
         payload =  {
                 "positions_dict": positions_dict,
                 "alarm": "",
-                "admin_settings": tk.serialize_object(admin_settings),
+                "admin_settings": [],#tk.serialize_object(admin_settings),
                 "chart_df": [],#payload['chart_df'],
             }
 
