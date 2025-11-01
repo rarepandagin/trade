@@ -283,11 +283,6 @@ class Dex(Dapp):
             eth -> token
         """
 
-        token_contract = self.get_token_contract_object(token_contract_address)
-        token_decimals = token_contract.functions.decimals.call()
-
-
-
         for i in range(tries):
 
             token_price_usd = self.v2_quote(
@@ -354,9 +349,6 @@ class Dex(Dapp):
         V2:
             token -> eth
         """
-
-        token_amount_to_sell = 1
-
 
         for i in range(tries):
 

@@ -309,17 +309,6 @@ def create_and_actualize_sushiswap_fiat_to_token_transaction(fiat_to_token_amoun
 
 # DEX
 
-def create_and_actualize_dex_quote_token_transaction(fiat_to_token_amount, token_contract):
-    from dashboard.models import models_transaction
-
-    
-    transaction = models_transaction.Transaction(
-        transaction_type=models_transaction.dex_quote_token,
-        fiat_amount_spent=fiat_to_token_amount,
-        dex_token_contract=token_contract,
-    )
-
-    return perform_transaction_actualization(transaction)
 
 def create_and_actualize_dex_approve_token_transaction(token_contract):
     from dashboard.models import models_transaction

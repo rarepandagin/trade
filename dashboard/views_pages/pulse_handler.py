@@ -9,14 +9,16 @@ import json
 from dashboard.modules.dapps.aave.aave_class import Aave
 import copy
 from dashboard.views_pages.vision import Vision
-import time
-from dashboard.modules.dapps.dex.dex_class import Dex
-
+# import time
+# from dashboard.modules.dapps.dex.dex_class import Dex
+from dashboard.views_pages import transaction_dispatch
 
 def handle_tokens(payload):
     # tk.logger.info(f'handling tokens')
 
     # filter incoming tokens with unknown contract
+    models_token.Token.objects.filter(imported=False).delete()
+    
     incoming_token_dict_list = payload['tokens']
 
     locally_existing_token_contracts = [x.contract for x in models_token.Token.objects.all()]
@@ -97,7 +99,11 @@ def handle_tokens(payload):
 
     for token in models_token.Token.objects.all():
         if (token.investigated) and(token.investigation_pass) and (not token.already_alerted) :
-            tk.create_new_notification(title="New Token", message=f"{token.name} passed investigation")
+
+            message = f"{token.name} passed investigation\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}\nuncx locked: {tk.epoch_to_datetime(token.uncx_epoch_start_lock)}"
+
+            
+            tk.create_new_notification(title="New Token", message=message)
 
             token.imported = True
             token.already_alerted = True
@@ -108,20 +114,22 @@ def handle_tokens(payload):
 
             # attempting to auto-buy
             if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
-                tk.update_admin_settings('active_account', models_adminsettings.account_dex)
-                fiat_amount = 10.0
-                dex = Dex()
+
+                fiat_amount = admin_settings.auto_purchase_fiat_amount
+                
+                tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
 
                 try:
-                    dex.fiat_to_token(
-                            token_contract_address=token.contract,
-                            token_decimals=token.decimals,
-                            fiat_amount=fiat_amount,
-                            tries=admin_settings.tx_tries,
-                            transaction_object=None,
+                    tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+            
+                    transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
+                            fiat_to_token_amount=fiat_amount,
+                            token_contract=token.contract
                         )
+
                 except:
-                    pass
+                    tk.logger.info(f"auto buy order ERROR:\n {format_exc()}")
+
                 token.auto_purchased = True
                 token.save()
 

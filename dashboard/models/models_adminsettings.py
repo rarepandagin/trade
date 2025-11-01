@@ -118,3 +118,4 @@ class AdminSettings(models.Model):
     # DEX
     tokens                          = models.JSONField(default=list, blank=True, null=True)
     allow_auto_purchase             = models.BooleanField(default=False)
+    auto_purchase_fiat_amount       = models.FloatField(default=1)

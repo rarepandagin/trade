@@ -57,7 +57,6 @@ arbi_unwrap_weth = "arbi_unwrap_weth"
 arbi_single_swap = "arbi_single_swap"
 
 # dex
-dex_quote_token = "dex_quote_token"
 dex_approve_token = "dex_approve_token"
 dex_fiat_to_token = "dex_fiat_to_token"
 dex_token_to_fiat = "dex_token_to_fiat"
@@ -89,7 +88,6 @@ transaction_types = {
     arbi_unwrap_weth: "arbi_unwrap_weth",
     arbi_single_swap: "arbi_single_swap",
 
-    dex_quote_token: "dex_quote_token",
     dex_approve_token: "dex_approve_token",
     dex_fiat_to_token: "dex_fiat_to_token",
     dex_token_to_fiat: "dex_token_to_fiat",
@@ -403,26 +401,8 @@ class Transaction(models.Model):
                 tk.update_admin_settings('active_account', models_adminsettings.account_dex)
 
 
-                if self.transaction_type == dex_quote_token:
-                    from dashboard.models import models_token
-                    token = models_token.Token.objects.get(contract=self.dex_token_contract)
 
-                    quote = dex.v2_quote(
-                            token_contract_address=self.dex_token_contract,
-                            token_decimals=token.decimals,
-                            buying_token=True,
-                            fiat_amount=self.fiat_amount_spent,
-                        )
-
-                    if quote is None:
-                        self.state = transaction_state_failed
-                    else:
-
-                        token.price = quote
-                        self.state = transaction_state_successful
-                        token.save()
-
-                elif self.transaction_type == dex_approve_token:
+                if self.transaction_type == dex_approve_token:
 
                     successful = dex.approve_spenders(token_contract_address=self.dex_token_contract)
 

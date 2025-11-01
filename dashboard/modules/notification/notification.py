@@ -6,27 +6,27 @@ from dashboard.views_pages import toolkit as tk
 
 class NotificationClass:
     def __init__(self):
-        self.toekn = f"84528{os.getenv('trader_telegram_token')}"
+        self.token = f"84528{os.getenv('trader_telegram_token')}"
         self.chat_id = f"52149{os.getenv('trader_telegram_chat_id')}"
 
 
     def send(self, title, message):
         try:
 
-            payload = f"<b>{title}</b>\n\n{message}"
+            payload = f"<b>{title}</b>\n\n{tk.epoch_to_datetime(tk.get_epoch_now())}\n\n{message}"
 
             print(payload)
 
-            url = f"https://api.telegram.org/bot{self.toekn}/sendMessage?chat_id={self.chat_id}&text={payload}&parse_mode=HTML"
-            requests.get(url)
-
+            url = f"https://api.telegram.org/bot{self.token}/sendMessage?chat_id={self.chat_id}&text={payload}&parse_mode=HTML"
+            ret=requests.get(url)
+            d=3
 
         except:
-            try:
-                print(format_exc())
-                tk.logger.info(format_exc())    
-            except:
-                pass
+            # try:
+
+            tk.logger.info(format_exc())    
+            # except:
+            #     pass
 
 if __name__ == "__main__":
     nt = NotificationClass()

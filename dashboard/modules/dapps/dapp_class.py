@@ -51,8 +51,8 @@ class Dapp():
 
 
         self.mainnet_infura_url = f"https://{self.network}.infura.io/v3/3f440b85f4ab47{os.getenv('trader_mainnet_infura_url')}" 
+        self.mainnet_alchemy_url = f"https://eth-mainnet.g.alchemy.com/v2/wpl-XtnQ3DA{os.getenv('trader_mainnet_alchemy_key')}"
         
-
         
 
         if self.network == 'mainnet':
@@ -105,7 +105,7 @@ class Dapp():
 
 
 
-        self.w3 = Web3(Web3.HTTPProvider(self.mainnet_infura_url))
+        self.w3 = Web3(Web3.HTTPProvider(self.mainnet_alchemy_url))
         
 
         self.account_public_checksum_address = self.w3.to_checksum_address(self.account_public_address)

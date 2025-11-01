@@ -32,8 +32,10 @@ class Token {
 		}
 
 		let html = `
-		
-			<a href ="https://dexscreener.com/ethereum/${this.contract}" target="_blank" >${this.name}</a>
+			<span class="text-info">${this.name}</span><br>
+			<a href ="https://dexscreener.com/ethereum/${this.contract}" target="_blank" >					<img width="20" src="https://imgs.search.brave.com/X2FR-rkSBkwMZFSrVMoz9VWmE-HMF9FS3I5JSqPCZ7M/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmFlNGRlNGI2/ZjJjMjFmMWZlY2Ux/ZDA0NWQ3OGUyMjNi/MDM3NmE3ZmQyYzFl/YzUwODE5MzA0MzU1/NTM3MTQ3ZC9kZXhz/Y3JlZW5lci5jb20v" /></a>
+			<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" ><img width="20" src="https://imgs.search.brave.com/z1-B0wYNTgZ57OcyXh6qPMKNA0MIEgciLhw3R1jJ3u0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ5YWRjZDMx/MTQ2Nzk4NTY4ZjJm/ZWZmZDI4NTExY2Nj/MmM3MGQzYWU0ZjEw/ZDZjNjUyYzMyNDIz/OTY0YzUwOS9kZXh0/b29scy5pby8" /></a>
+			<a href ="https://tokensniffer.com/bubble/v2/eth/${this.contract}" target="_blank" >			<img width="20" src="https://cdn.prod.website-files.com/5dc2e688a258f6237d614aa3/65788d7aa6d10a3395a17f62_Sniffer%20Pack%20Pro.svg" /></a>
 			${locked_liquidity_html}
 		
 		`
@@ -41,6 +43,14 @@ class Token {
 
 		return html
 
+	}
+
+	get_age_html(){
+		const token_age_seconds = Math.floor(Date.now() / 1000) - this.pair_creation_epoch
+
+		let html = `${readable_elapsed_delta_epochs(token_age_seconds)}`
+
+		return html
 	}
 
 
@@ -51,7 +61,7 @@ class Token {
 				pool weth: ${(this.weth_pair_reserves/Math.pow(10, 18)).toFixed(2)}
 			</a>
 			<br>
-			price / weth: <span class="text-info">${this.price_per_weth}</span>
+			price / weth: <span class="text-info">${this.price_per_weth.toFixed(12)}</span>
 		`
 
 		return html;
@@ -65,7 +75,7 @@ class Token {
 		if (this.investigated){
 
 			if (this.investigation_pass){
-				status_html += `<p class="text-success">PASS</p>`
+				status_html += `<p class="text-success elementToFade fs-4">PASS</p>`
 			}
 			if (this.keep_investigating){
 				status_html += `<p>Being re-investigated...</p>`
@@ -114,6 +124,31 @@ class Token {
 		security_html = `<span class="text-${security_html}">${createListFromStrings(this.go_plus_security_issues)}</span>`
 
 		return security_html
+	}
+
+	get_volume_html(){
+		let html = ``
+		html += `${this.volume.toLocaleString()}`
+		return html
+	}
+
+	get_social_html(){
+
+				const social_cases_true_count = [token.has_website, token.has_twitter, token.has_telegram].filter(value => value === true).length
+		let social_html = ''
+		if (social_cases_true_count == 0){
+			social_html = 'danger'
+		} else if (social_cases_true_count == 1){
+			social_html = 'warning'
+		} else if (social_cases_true_count == 2){
+			social_html = 'warning'
+		} else if (social_cases_true_count == 3){
+			social_html = 'success'
+		} 
+		social_html = `<span class="text-${social_html}">has_website: ${token.has_website}<br>has_twitter: ${token.has_twitter}<br>has_telegram: ${token.has_telegram}</span>`
+
+		return social_html
+
 	}
 }
 
@@ -285,37 +320,12 @@ function populate_dex_new_tokens_table(payload){
 		if(token.imported){return;}
 
 
-
-		// locked liquidity html
-
-
-
-		// social
-		const social_cases_true_count = [token.has_website, token.has_twitter, token.has_telegram].filter(value => value === true).length
-		let social_html = ''
-		if (social_cases_true_count == 0){
-			social_html = 'danger'
-		} else if (social_cases_true_count == 1){
-			social_html = 'warning'
-		} else if (social_cases_true_count == 2){
-			social_html = 'warning'
-		} else if (social_cases_true_count == 3){
-			social_html = 'success'
-		} 
-		social_html = `<span class="text-${social_html}">has_website: ${token.has_website}<br>has_twitter: ${token.has_twitter}<br>has_telegram: ${token.has_telegram}</span>`
-
-
-
-		// show_on_chart html
-
 		let show_on_chart_html = ``;
-		if (token.show_on_chart) {
-			// show_on_chart_html = `<button type="button" onclick="dex_toggle_token_on_chart('${token.contract}');" class="btn btn-warning btn-sm m-1">Hide on chart</button>`
-		} else {
-			show_on_chart_html = `<button type="button" onclick="dex_toggle_token_on_chart('${token.contract}');" class="btn btn-success btn-sm m-1">Show on chart</button>`
-		}
-
-		const token_age_seconds = Math.floor(Date.now() / 1000) - token.pair_creation_epoch
+		// if (token.show_on_chart) {
+		// 	show_on_chart_html = `<button type="button" onclick="dex_toggle_token_on_chart('${token.contract}');" class="btn btn-warning btn-sm m-1">Hide on chart</button>`
+		// } else {
+		// 	show_on_chart_html = `<button type="button" onclick="dex_toggle_token_on_chart('${token.contract}');" class="btn btn-success btn-sm m-1">Show on chart</button>`
+		// }
 
 		html_ += `
 		
@@ -327,9 +337,9 @@ function populate_dex_new_tokens_table(payload){
 				<td>${token.get_investigation_html()}</td>
 				<td>${token.get_pair_html()}</td>
 
-				<td>${token.volume.toLocaleString()}</td>
+				<td>${token.get_volume_html()}</td>
 				<td>${token.get_lp_html()}</td>
-				<td>${readable_elapsed_delta_epochs(token_age_seconds)}</td>
+				<td>${token.get_age_html()}</td>
 				<td>${token.get_security_html()}</td>
 				
 				<td>
@@ -364,7 +374,7 @@ function populate_dex_imported_tokens_table(payload){
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Price</th>
+			<th>Info</th>
 			<th>Balance</th>
 			<th>Buy</th>
 			<th>Sell</th>
@@ -381,10 +391,12 @@ function populate_dex_imported_tokens_table(payload){
 			let sell_html = ``
 			if (token.approved){
 				sell_html = `
+				<div class="vstack">
 						<button type="button" onclick="dex_sell_token('${token.contract}', 25);" class="btn btn-success btn-sm m-1">sell 25%</button>
 						<button type="button" onclick="dex_sell_token('${token.contract}', 50);" class="btn btn-success btn-sm m-1">sell 50%</button>
 						<button type="button" onclick="dex_sell_token('${token.contract}', 100);" class="btn btn-success btn-sm m-1">sell 100%</button>
-				`
+				</div>
+						`
 			} else {
 				sell_html = `
 						<button type="button" onclick="dex_approve_token('${token.contract}');" class="btn btn-primary btn-sm m-1">approve to sell</button>
@@ -397,25 +409,26 @@ function populate_dex_imported_tokens_table(payload){
 					<td>
 						${token.get_basic_html()}
 					</td>
+					<td>
+						${token.get_age_html()}<br>
+						${token.get_pair_html()}<br>
+						${token.get_lp_html()}<br>
+						${token.get_investigation_html()}<br>
+						${token.get_security_html()}<br>
+
+					</td>
 
 					<td>
-						<div class="d-flex justify-content-start  gap-2">
+						<div class="vstack  gap-2">
+							<p>Balance: ${token.balance}</p>
 
-							<p>Price: ${token.price}<br>
-							Value: ${(token.price * token.balance).toFixed(2)}</p><br>
+							<p>Price: ${token.price.toFixed(12)} usd<br>
+							Value: ${(token.price * token.balance).toFixed(2)} usd</p><br>
+							<button type="button" onclick="dex_check_balance_token('${token.contract}');" class="btn btn-primary btn-sm m-1">check balance</button>
 
 							</div>
 					</td>
 
-					<td>
-						<div class="d-flex justify-content-start  gap-2">
-
-							<p>Balance: ${token.balance}</p>
-
-							<button type="button" onclick="dex_check_balance_token('${token.contract}');" class="btn btn-primary btn-sm m-1">check balance</button>
-						</div>
-					
-					</td>
 					
 					<td>
 						<div class="d-flex justify-content-start  gap-2">
@@ -458,7 +471,7 @@ function populate_dex_imported_tokens_table(payload){
     function dex_remove_import_token(token_contract){ ajax_call('dex_remove_import_token', {'token_contract': token_contract}) };
     
     function dex_buy_token(token_contract){ 
-		const fiat_amount = $(`#quote_buy_fiat_amount__input`).val();
+		const fiat_amount = $(`#dex_fiat_amount_buy__input`).val();
         ajax_call('dex_buy_token', {'token_contract': token_contract, 'fiat_amount': fiat_amount})
     };
 
@@ -467,7 +480,7 @@ function populate_dex_imported_tokens_table(payload){
     };
 
     function dex_check_balance_token(token_contract){ 
-		const quote_fiat_amount =  $(`#quote_buy_fiat_amount__input`).val();
+		const quote_fiat_amount =  $(`#dex_fiat_amount_buy__input`).val();
         ajax_call('dex_check_balance_token', {'token_contract': token_contract, 'quote_fiat_amount': quote_fiat_amount})
     };
 
