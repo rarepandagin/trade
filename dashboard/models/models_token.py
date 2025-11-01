@@ -34,7 +34,6 @@ class Token(models.Model):
     # PAIR DYNAMICS
 
     weth_pair_reserves      = models.FloatField(null=True, blank=True)
-    token_pair_reserves     = models.FloatField(null=True, blank=True)
     price_per_weth          = models.FloatField(null=True, blank=True)
     volume                  = models.FloatField(default=0, null=True, blank=True)
 

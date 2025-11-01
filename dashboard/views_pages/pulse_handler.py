@@ -51,7 +51,6 @@ def handle_tokens(payload):
             if obj:
 
                 obj.weth_pair_reserves          = item['weth_pair_reserves']
-                obj.token_pair_reserves         = item['token_pair_reserves']
                 obj.price_per_weth              = item['price_per_weth']
                 obj.volume                      = item['volume']
 
@@ -76,7 +75,6 @@ def handle_tokens(payload):
         models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=[
 
                 'weth_pair_reserves',
-                'token_pair_reserves',
                 'price_per_weth',
                 'volume',
                 'uncx_user',
@@ -201,13 +199,13 @@ def handle_a_pulse(request):
         #     aave = Aave()
         #     tk.update_admin_settings('aave_user_account_data', aave.getUserAccountData())
 
-        tk.logger.info(tk.serialize_object(admin_settings))
+        # tk.logger.info(tk.serialize_object(admin_settings))
 
         payload =  {
-                "positions_dict": [],#positions_dict,
+                "positions_dict": positions_dict,
                 "alarm": "",
                 "admin_settings": tk.serialize_object(admin_settings),
-                "chart_df": [],#payload['chart_df'],
+                "chart_df": payload['chart_df'],
             }
 
 
