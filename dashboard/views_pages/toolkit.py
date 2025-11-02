@@ -31,6 +31,7 @@ modules_folder = os.path.join(dashboard_app_folder, 'modules')
 
 modules_folder_path = os.path.join(dashboard_app_folder, 'modules')
 dapp_folder_path = os.path.join(modules_folder_path, 'dapps')
+
 bot_folder_path = os.path.join(modules_folder_path, 'bots')
 bot_tmp_folder_path = os.path.join(bot_folder_path, 'tmp')
 
@@ -38,6 +39,7 @@ uniswap_dapp_folder_path = os.path.join(dapp_folder_path, 'uniswap')
 sushiswap_dapp_folder_path = os.path.join(dapp_folder_path, 'sushiswap')
 aave_dapp_folder_path = os.path.join(dapp_folder_path, 'aave')
 arbi_dapp_folder_path = os.path.join(dapp_folder_path, 'arbi')
+dex_dapp_folder_path = os.path.join(dapp_folder_path, 'dex')
 
 redirect_to_login = '/login/'
 redirect_to_dashboard = '/dashboard/'

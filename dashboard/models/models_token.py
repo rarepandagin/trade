@@ -61,6 +61,7 @@ class Token(models.Model):
     keep_investigating      = models.BooleanField(default=True, null=True, blank=True)
     epoch_investigated      = models.BigIntegerField( default=0, null=True, blank=True)
     investigation_pass      = models.BooleanField(default= False, null=True, blank=True)
+    investigation_safe      = models.BooleanField(default= False, null=True, blank=True)
     investigation_red_flag  = models.BooleanField(default=False)
     investigated            = models.BooleanField(default=False)
 

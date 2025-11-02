@@ -1,3 +1,15 @@
+async function copy_to_clipboard(text) {
+  // Try using the modern async Clipboard API
+  if (navigator.clipboard) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  } else {
+  }
+}
+
 
 class Token {
 
@@ -7,8 +19,9 @@ class Token {
 
 	get_basic_html(){
 
+		let locked_liquidity_html = ``
 
-		let locked_liquidity_html = '';
+		locked_liquidity_html += `<button type="button" class="btn btn-primary btn-sm disable_while_busy m-1" style="height: 30px;" onclick="copy_to_clipboard('${this.contract}')">copy contract</button>`
 
 
 		if (this.go_plus_locked_lp_ratio>0){
@@ -32,7 +45,7 @@ class Token {
 		}
 
 		let html = `
-			<span class="text-info">${this.name}</span><br>
+			<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" >${this.name}</a>
 			<a href ="https://dexscreener.com/ethereum/${this.contract}" target="_blank" >					<img width="20" src="https://imgs.search.brave.com/X2FR-rkSBkwMZFSrVMoz9VWmE-HMF9FS3I5JSqPCZ7M/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmFlNGRlNGI2/ZjJjMjFmMWZlY2Ux/ZDA0NWQ3OGUyMjNi/MDM3NmE3ZmQyYzFl/YzUwODE5MzA0MzU1/NTM3MTQ3ZC9kZXhz/Y3JlZW5lci5jb20v" /></a>
 			<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" ><img width="20" src="https://imgs.search.brave.com/z1-B0wYNTgZ57OcyXh6qPMKNA0MIEgciLhw3R1jJ3u0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ5YWRjZDMx/MTQ2Nzk4NTY4ZjJm/ZWZmZDI4NTExY2Nj/MmM3MGQzYWU0ZjEw/ZDZjNjUyYzMyNDIz/OTY0YzUwOS9kZXh0/b29scy5pby8" /></a>
 			<a href ="https://tokensniffer.com/bubble/v2/eth/${this.contract}" target="_blank" >			<img width="20" src="https://cdn.prod.website-files.com/5dc2e688a258f6237d614aa3/65788d7aa6d10a3395a17f62_Sniffer%20Pack%20Pro.svg" /></a>
@@ -61,7 +74,7 @@ class Token {
 				pool weth: ${(this.weth_pair_reserves/Math.pow(10, 18)).toFixed(2)}
 			</a>
 			<br>
-			price / weth: <span class="text-info">${this.price_per_weth.toFixed(12)}</span>
+			price / weth: <span class="text-info">${this.price_per_weth}</span>
 		`
 
 		return html;
@@ -74,12 +87,18 @@ class Token {
 
 		if (this.investigated){
 
-			if (this.investigation_pass){
-				status_html += `<p class="text-success elementToFade fs-4">PASS</p>`
-			}
 			if (this.keep_investigating){
 				status_html += `<p>Being re-investigated...</p>`
 			}
+			
+			if (this.investigation_pass){
+				status_html += `<p class="text-success elementToFade fs-4">PASS</p>`
+			}
+
+			if (this.investigation_safe){
+				status_html += `<p class="text-warning elementToFade fs-4">SAFE</p>`
+			}
+
 			if (this.investigation_red_flag){
 				status_html += `<p class="text-danger">Red flag</p>`
 			}
@@ -116,8 +135,6 @@ class Token {
 		let security_html = ''
 		if (security_cases_true_count == 0){
 			security_html = 'success'
-		} else if (security_cases_true_count == 1){
-			security_html = 'warning'
 		} else {
 			security_html = 'danger'
 		}
@@ -422,8 +439,8 @@ function populate_dex_imported_tokens_table(payload){
 						<div class="vstack  gap-2">
 							<p>Balance: ${token.balance}</p>
 
-							<p>Price: ${token.price.toFixed(12)} usd<br>
-							Value: ${(token.price * token.balance).toFixed(2)} usd</p><br>
+							<p>Price: ${token.price} $<br>
+							Value: ${(token.price * token.balance).toFixed(2)} $</p><br>
 							<button type="button" onclick="dex_check_balance_token('${token.contract}');" class="btn btn-primary btn-sm m-1">check balance</button>
 
 							</div>
@@ -480,8 +497,7 @@ function populate_dex_imported_tokens_table(payload){
     };
 
     function dex_check_balance_token(token_contract){ 
-		const quote_fiat_amount =  $(`#dex_fiat_amount_buy__input`).val();
-        ajax_call('dex_check_balance_token', {'token_contract': token_contract, 'quote_fiat_amount': quote_fiat_amount})
+        ajax_call('dex_check_balance_token', {'token_contract': token_contract})
     };
 
     function dex_approve_token(token_contract){

@@ -16,7 +16,12 @@ from dashboard.views_pages import transaction_dispatch
 def handle_tokens(payload):
     # tk.logger.info(f'handling tokens')
 
-    # filter incoming tokens with unknown contract
+    """
+    remove all tokens that are not imported
+    update imported tokens, if they are mentioned in the payload
+    create new tokens, mentioned in the payload
+    """
+
     models_token.Token.objects.filter(imported=False).delete()
 
     incoming_token_dict_list = payload['tokens']
@@ -44,6 +49,39 @@ def handle_tokens(payload):
     if len(contracts_to_update) > 0:
         # tk.logger.info(f'-----------updating {len(contracts_to_update)} exiting tokens')
 
+        # fields=[
+
+        #         'weth_pair_reserves',
+        #         'price_per_weth',
+        #         'volume',
+        #         'uncx_user',
+        #         'uncx_token_amount',
+        #         'uncx_pool_lock_ratio',
+        #         'uncx_epoch_start_lock',
+        #         'uncx_epoch_end_lock',
+        #         'go_plus_lp_total_supply',
+        #         'go_plus_locked_lp_ratio',
+        #         'go_plus_dex_liquidity',
+        #         'go_plus_security_issues',
+        #         'keep_investigating',
+        #         'epoch_investigated',
+        #         'investigation_pass',
+        #         'investigation_red_flag',
+        #         'investigated',
+
+        #     ]
+
+        # existing_token_to_be_updated = {obj.contract: obj for obj in models_token.Token.objects.filter(contract__in=contracts_to_update)}
+
+        # for item in incoming_token_dict_list:
+        #     obj = existing_token_to_be_updated.get(item['contract'])
+        #     if obj:
+        #         for prop_name, value in zip(fields, item):
+        #             setattr(obj, prop_name, value)   
+
+
+        # models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=fields, batch_size=100)
+
         existing_token_to_be_updated = {obj.contract: obj for obj in models_token.Token.objects.filter(contract__in=contracts_to_update)}
 
         for item in incoming_token_dict_list:
@@ -68,6 +106,7 @@ def handle_tokens(payload):
                 obj.keep_investigating          = item['keep_investigating']
                 obj.epoch_investigated          = item['epoch_investigated']
                 obj.investigation_pass          = item['investigation_pass']
+                obj.investigation_safe          = item['investigation_safe']
                 obj.investigation_red_flag      = item['investigation_red_flag']
                 obj.investigated                = item['investigated']
 
@@ -89,51 +128,68 @@ def handle_tokens(payload):
                 'keep_investigating',
                 'epoch_investigated',
                 'investigation_pass',
+                'investigation_safe',
                 'investigation_red_flag',
                 'investigated',
 
             ], batch_size=100)
 
 
-    for token in models_token.Token.objects.all():
-        if (token.investigated) and(token.investigation_pass) and (not token.already_alerted) :
+    admin_settings = tk.get_admin_settings()
 
-            message = f"{token.name} passed investigation\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}\nuncx locked: {tk.epoch_to_datetime(token.uncx_epoch_start_lock)}"
+    for token in models_token.Token.objects.filter(show=True):
 
+        if (token.investigated) and (not token.already_alerted) :
+
+            if token.investigation_pass or token.investigation_safe:
             
-            tk.create_new_notification(title="New Token", message=message)
 
-            token.imported = True
-            token.already_alerted = True
-            token.save()
+                sub_message = "PASSED" if token.investigation_pass else "SAFE"
+                message = f"{token.name} {sub_message}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}\nuncx locked: {tk.epoch_to_datetime(token.uncx_epoch_start_lock)}"
 
-
-            admin_settings = tk.get_admin_settings()
-
-            # attempting to auto-buy
-            if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
-
-                fiat_amount = admin_settings.auto_purchase_fiat_amount
                 
-                tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
+                tk.create_new_notification(title="New Token", message=message)
 
-                try:
-                    tk.update_admin_settings('active_account', models_adminsettings.account_dex)
-            
-                    transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
-                            fiat_to_token_amount=fiat_amount,
+                token.imported = True
+                token.already_alerted = True
+                token.save()
+
+
+                
+
+                # attempting to auto-buy
+                if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+
+                    fiat_amount = admin_settings.auto_purchase_fiat_amount
+                    if token.investigation_pass:
+                        fiat_amount = 2 * fiat_amount
+
+                    tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
+
+                    try:
+                        tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+                
+                        transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
+                                fiat_to_token_amount=fiat_amount,
+                                token_contract=token.contract
+                            )
+
+                        transaction_dispatch.create_and_actualize_dex_approve_token_transaction(
                             token_contract=token.contract
                         )
 
-                except:
-                    tk.logger.info(f"auto buy order ERROR:\n {format_exc()}")
+                    except:
+                        tk.logger.info(f"auto buy order ERROR:\n {format_exc()}")
 
-                token.auto_purchased = True
-                token.save()
+                    token.auto_purchased = True
+                    token.save()
 
 
 
     tk.update_admin_settings('tokens', [tk.serialize_object(x) for x in models_token.Token.objects.all() if x.show])
+
+
+    return [x.contract for x in models_token.Token.objects.filter(imported=True)]
 
 
 def handle_a_pulse(request):
@@ -159,8 +215,8 @@ def handle_a_pulse(request):
             tk.update_admin_settings('vision', vision.serialize())
 
 
-        if 'tokens' in payload:
-            handle_tokens(payload)
+        # if 'tokens' in payload:
+        imported_token_contracts = handle_tokens(payload)
 
 
 
@@ -218,9 +274,6 @@ def handle_a_pulse(request):
             alert.evaluate()
             alert.save()
 
-        # indicators
-        
-
 
 
         to_return = copy.deepcopy(
@@ -230,13 +283,14 @@ def handle_a_pulse(request):
                 'command_arguments':            copy.deepcopy(admin_settings.command_arguments),
                 'active_time_frame_minutes':    copy.deepcopy(admin_settings.active_time_frame_minutes),
                 'active_time_frame_length':     copy.deepcopy(admin_settings.active_time_frame_length),
+                'imported_token_contracts':     copy.deepcopy(imported_token_contracts),
             }
         )
 
 
         tk.update_admin_settings('command_function', '')
         tk.update_admin_settings('command_arguments', {})
-        tk.update_admin_settings('pulse_counter', admin_settings.pulse_counter+1)
+        tk.update_admin_settings('pulse_counter', admin_settings.pulse_counter + 1)
 
 
         # tk.logger.info("FINISHED PULSE")

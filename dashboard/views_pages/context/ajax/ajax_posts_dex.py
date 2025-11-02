@@ -29,6 +29,7 @@ def handle_ajax_posts_dex(req, payload):
     elif req == "dex_remove_import_token":
         token = models_token.Token.objects.get(contract=payload['token_contract'])
         token.imported = False
+        token.show = False
         token.save()
 
     elif req == "dex_import_token":
@@ -80,7 +81,7 @@ def handle_ajax_posts_dex(req, payload):
         sell_percentage = float(payload['sell_percentage'])
         dex = Dex()
 
-        balance = dex.check_balance_of_token_by_contract_address(token_contract)
+        balance = dex.check_balance_of_token_by_contract_address(token_contract, token.decimals)
         token_amount_to_sell = int(((sell_percentage / 100) * balance))
 
         transaction_dispatch.create_and_actualize_dex_token_to_fiat_transaction(
@@ -96,21 +97,23 @@ def handle_ajax_posts_dex(req, payload):
         
         dex = Dex()
 
-        token.balance = dex.check_balance_of_token_by_contract_address(token_contract)
+        token.balance = dex.check_balance_of_token_by_contract_address(token_contract, token.decimals)
 
-        quote_fiat_amount = float(payload['quote_fiat_amount'])
+        # quote_fiat_amount = float(payload['quote_fiat_amount'])
 
-        quote = dex.v2_quote(
-                token_contract_address=token_contract,
-                token_decimals=token.decimals,
-                buying_token=True,
-                fiat_amount=quote_fiat_amount,
-            )
+        # quote = dex.v2_quote(
+        #         token_contract_address=token_contract,
+        #         token_decimals=token.decimals,
+        #         buying_token=True,
+        #         fiat_amount=quote_fiat_amount,
+        #     )
 
-        if quote is None:
-            tk.logger.info(f"quote for {token.name} failed.")
-        else:
-            token.price = quote
+        # if quote is None:
+        #     tk.logger.info(f"quote for {token.name} failed.")
+        # else:
+
+        admin_settings = tk.get_admin_settings()
+        token.price = (token.balance ) * token.price_per_weth / admin_settings.prices['weth']
 
         token.save()
 
