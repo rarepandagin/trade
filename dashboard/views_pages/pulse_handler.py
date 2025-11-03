@@ -158,11 +158,11 @@ def handle_tokens(payload):
                 
 
                 # attempting to auto-buy
-                if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+                if (token.investigation_pass) and (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
 
                     fiat_amount = admin_settings.auto_purchase_fiat_amount
-                    if token.investigation_pass:
-                        fiat_amount = 2 * fiat_amount
+                    # if token.investigation_pass:
+                    #     fiat_amount = 2 * fiat_amount
 
                     tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
 

@@ -87,7 +87,7 @@ class AdminSettings(models.Model):
     
     prices_update_epoch = models.BigIntegerField(default=0)
     gas_update_epoch = models.BigIntegerField(default=0)
-    gas_update_epoch_max_allowed_delay_seconds = models.IntegerField(default=10)
+    gas_update_epoch_max_allowed_delay_seconds = models.IntegerField(default=30)
 
 
 
