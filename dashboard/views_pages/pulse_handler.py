@@ -144,15 +144,17 @@ def handle_tokens(payload):
             if token.investigation_pass or token.investigation_safe:
             
 
+                token.imported = True
+                token.already_alerted = True
+                token.save()
+                
+            if token.investigation_pass:
+
                 sub_message = "PASSED" if token.investigation_pass else "SAFE"
                 message = f"{token.name} {sub_message}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}\nuncx locked: {tk.epoch_to_datetime(token.uncx_epoch_start_lock)}"
 
                 
                 tk.create_new_notification(title="New Token", message=message)
-
-                token.imported = True
-                token.already_alerted = True
-                token.save()
 
 
                 
