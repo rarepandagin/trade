@@ -57,7 +57,8 @@ class Token(models.Model):
     go_plus_locked_lp_ratio = models.FloatField(default=0, null=True, blank=True)
     go_plus_dex_liquidity   = models.FloatField(default=0, null=True, blank=True)
     go_plus_security_issues = models.JSONField(default=list, null=True, blank=True)
-
+    go_plus_holders         = models.JSONField(default=list, null=True, blank=True)
+    
     keep_investigating      = models.BooleanField(default=True, null=True, blank=True)
     epoch_investigated      = models.BigIntegerField( default=0, null=True, blank=True)
     investigation_pass      = models.BooleanField(default= False, null=True, blank=True)

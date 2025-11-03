@@ -6,8 +6,8 @@ from dashboard.views_pages import toolkit as tk
 
 class NotificationClass:
     def __init__(self):
-        self.token = f"84528{os.getenv('trader_telegram_token')}"
-        self.chat_id = f"52149{os.getenv('trader_telegram_chat_id')}"
+        self.token = f"{os.getenv('trader_telegram_token')}"
+        self.chat_id = f"{os.getenv('trader_telegram_chat_id')}"
 
 
     def send(self, title, message):

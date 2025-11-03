@@ -102,6 +102,7 @@ def handle_tokens(payload):
                 obj.go_plus_locked_lp_ratio     = item['go_plus_locked_lp_ratio']
                 obj.go_plus_dex_liquidity       = item['go_plus_dex_liquidity']
                 obj.go_plus_security_issues     = item['go_plus_security_issues']
+                obj.go_plus_holders             = item['go_plus_holders']
                 
                 obj.keep_investigating          = item['keep_investigating']
                 obj.epoch_investigated          = item['epoch_investigated']
@@ -125,6 +126,7 @@ def handle_tokens(payload):
                 'go_plus_locked_lp_ratio',
                 'go_plus_dex_liquidity',
                 'go_plus_security_issues',
+                'go_plus_holders',
                 'keep_investigating',
                 'epoch_investigated',
                 'investigation_pass',
@@ -147,7 +149,7 @@ def handle_tokens(payload):
                 token.imported = True
                 token.already_alerted = True
                 token.save()
-                
+
             if token.investigation_pass:
 
                 sub_message = "PASSED" if token.investigation_pass else "SAFE"
