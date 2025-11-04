@@ -21,7 +21,9 @@ class Token {
 
 		let locked_liquidity_html = ``
 
-		locked_liquidity_html += `<button type="button" class="btn btn-primary btn-sm disable_while_busy m-1" style="height: 30px;" onclick="copy_to_clipboard('${this.contract}')">copy contract</button>`
+		
+
+		locked_liquidity_html += `<button type="button" class="btn btn-secondary btn-sm disable_while_busy m-1" style="height: 30px;" onclick="copy_to_clipboard('${this.contract}')">copy contract</button>`
 
 
 		if (this.go_plus_locked_lp_ratio>0){
@@ -68,8 +70,22 @@ class Token {
 
 
 	get_pair_html(){
+
+		let html = ``
+
+
+		this.go_plus_holders.forEach(x=>{
+			let color;
+			if(x=='UniswapV2'){
+				color = 'primary'
+			} else {
+				color = 'success'
+			}
+			html+=`<span class="badge rounded-pill bg-${color} fs-6">${x}</span><br>`
+		})
+
 		
-		let html = `
+		html += `
 			<a href="https://etherscan.io/address/${this.pair_address}" target="_blank">
 				pool weth: ${(this.weth_pair_reserves/Math.pow(10, 18)).toFixed(2)}
 			</a>
@@ -380,7 +396,8 @@ function populate_dex_new_tokens_table(payload){
 
 
 function populate_dex_imported_tokens_table(payload){
-	payload.admin_settings.tokens.sort((a, b) => a.name.localeCompare(b.name));
+
+	payload.admin_settings.tokens.sort((a, b) => b.pair_creation_epoch - a.pair_creation_epoch);
 
 	let tokens = []
 

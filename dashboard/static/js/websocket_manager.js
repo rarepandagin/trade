@@ -68,7 +68,7 @@ function ws_msg_handler_dashboard(message_event) {
 
     
 
-
+    incoming_message.payload.admin_settings = JSON.parse(incoming_message.payload.admin_settings)
 
     
 
