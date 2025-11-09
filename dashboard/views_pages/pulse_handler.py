@@ -49,27 +49,7 @@ def handle_tokens(payload):
     if len(contracts_to_update) > 0:
         # tk.logger.info(f'-----------updating {len(contracts_to_update)} exiting tokens')
 
-        # fields=[
 
-        #         'weth_pair_reserves',
-        #         'price_per_weth',
-        #         'volume',
-        #         'uncx_user',
-        #         'uncx_token_amount',
-        #         'uncx_pool_lock_ratio',
-        #         'uncx_epoch_start_lock',
-        #         'uncx_epoch_end_lock',
-        #         'go_plus_lp_total_supply',
-        #         'go_plus_locked_lp_ratio',
-        #         'go_plus_dex_liquidity',
-        #         'go_plus_security_issues',
-        #         'keep_investigating',
-        #         'epoch_investigated',
-        #         'investigation_pass',
-        #         'investigation_red_flag',
-        #         'investigated',
-
-        #     ]
 
         # existing_token_to_be_updated = {obj.contract: obj for obj in models_token.Token.objects.filter(contract__in=contracts_to_update)}
 
@@ -92,11 +72,11 @@ def handle_tokens(payload):
                 obj.price_per_weth              = item['price_per_weth']
                 obj.volume                      = item['volume']
 
-                obj.uncx_user                   = item['uncx_user']
-                obj.uncx_token_amount           = item['uncx_token_amount']
-                obj.uncx_pool_lock_ratio        = item['uncx_pool_lock_ratio']
-                obj.uncx_epoch_start_lock       = item['uncx_epoch_start_lock']
-                obj.uncx_epoch_end_lock         = item['uncx_epoch_end_lock']
+                obj.locked                      = item['locked']
+                obj.lock_token_amount           = item['lock_token_amount']
+                obj.lock_pool_lock_ratio        = item['lock_pool_lock_ratio']
+                obj.lock_epoch_start_lock       = item['lock_epoch_start_lock']
+                obj.lock_epoch_end_lock         = item['lock_epoch_end_lock']
                 
                 obj.go_plus_lp_total_supply     = item['go_plus_lp_total_supply']
                 obj.go_plus_locked_lp_ratio     = item['go_plus_locked_lp_ratio']
@@ -117,16 +97,19 @@ def handle_tokens(payload):
                 'weth_pair_reserves',
                 'price_per_weth',
                 'volume',
-                'uncx_user',
-                'uncx_token_amount',
-                'uncx_pool_lock_ratio',
-                'uncx_epoch_start_lock',
-                'uncx_epoch_end_lock',
+
+                'locked',
+                'lock_token_amount',
+                'lock_pool_lock_ratio',
+                'lock_epoch_start_lock',
+                'lock_epoch_end_lock',
+
                 'go_plus_lp_total_supply',
                 'go_plus_locked_lp_ratio',
                 'go_plus_dex_liquidity',
                 'go_plus_security_issues',
                 'go_plus_holders',
+
                 'keep_investigating',
                 'epoch_investigated',
                 'investigation_pass',
@@ -150,19 +133,21 @@ def handle_tokens(payload):
                 token.already_alerted = True
                 token.save()
 
-            if token.investigation_pass:
-
                 sub_message = "PASSED" if token.investigation_pass else "SAFE"
-                message = f"{token.name} {sub_message}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}\nuncx locked: {tk.epoch_to_datetime(token.uncx_epoch_start_lock)}"
+                message = f"{token.name} {sub_message}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}"
+                
+                if token.locked:
+                    message += f"locked: {tk.epoch_to_datetime(token.lock_epoch_start_lock)}"
 
                 
                 tk.create_new_notification(title="New Token", message=message)
 
 
-                
+            if token.investigation_pass:
+
 
                 # attempting to auto-buy
-                if (token.investigation_pass) and (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+                if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
 
                     fiat_amount = admin_settings.auto_purchase_fiat_amount
                     # if token.investigation_pass:

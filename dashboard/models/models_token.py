@@ -46,11 +46,11 @@ class Token(models.Model):
     # we also stop investigating when investigation_pass is set to True
 
 
-    uncx_user               = models.TextField(null=True, blank=True)
-    uncx_token_amount       = models.FloatField(default=0, null=True, blank=True)
-    uncx_pool_lock_ratio    = models.FloatField(default=0, null=True, blank=True)
-    uncx_epoch_start_lock   = models.BigIntegerField(default=0, null=True, blank=True)
-    uncx_epoch_end_lock     = models.BigIntegerField(default=0, null=True, blank=True)
+    locked                  = models.BooleanField(null=True, blank=True)
+    lock_token_amount       = models.FloatField(default=0, null=True, blank=True)
+    lock_pool_lock_ratio    = models.FloatField(default=0, null=True, blank=True)
+    lock_epoch_start_lock   = models.BigIntegerField(default=0, null=True, blank=True)
+    lock_epoch_end_lock     = models.BigIntegerField(default=0, null=True, blank=True)
 
 
     go_plus_lp_total_supply = models.FloatField(default=0, null=True, blank=True)

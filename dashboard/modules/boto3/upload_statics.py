@@ -15,3 +15,6 @@ boto3_handler.upload_file_to_s3('/home/user/Desktop/trade/dashboard/static/js/bo
 boto3_handler.upload_file_to_s3('/home/user/Desktop/trade/dashboard/static/js/dex.js',                       'dex.js')
 boto3_handler.upload_file_to_s3('/home/user/Desktop/trade/dashboard/static/js/websocket_manager.js',         'websocket_manager.js')
 boto3_handler.upload_file_to_s3('/home/user/Desktop/trade/dashboard/static/css/style.css',                   'style.css')
+
+
+boto3_handler.upload_file_to_s3('/home/user/Desktop/trade/dashboard/static/image/lock.png',                   'lock.png')
