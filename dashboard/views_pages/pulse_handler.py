@@ -69,6 +69,7 @@ def handle_tokens(payload):
             if obj:
 
                 obj.weth_pair_reserves          = item['weth_pair_reserves']
+                obj.weth_ever_added             = item['weth_ever_added']
                 obj.price_per_weth              = item['price_per_weth']
                 obj.volume                      = item['volume']
 
@@ -89,12 +90,14 @@ def handle_tokens(payload):
                 obj.investigation_pass          = item['investigation_pass']
                 obj.investigation_safe          = item['investigation_safe']
                 obj.investigation_red_flag      = item['investigation_red_flag']
+                obj.red_flag_reason             = item['red_flag_reason']
                 obj.investigated                = item['investigated']
 
 
         models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=[
 
                 'weth_pair_reserves',
+                'weth_ever_added',
                 'price_per_weth',
                 'volume',
 
@@ -115,6 +118,7 @@ def handle_tokens(payload):
                 'investigation_pass',
                 'investigation_safe',
                 'investigation_red_flag',
+                'red_flag_reason',
                 'investigated',
 
             ], batch_size=100)
@@ -124,54 +128,70 @@ def handle_tokens(payload):
 
     for token in models_token.Token.objects.filter(show=True):
 
-        if (token.investigated) and (not token.already_alerted) :
+        if not token.investigated:
+            continue
 
-            if token.investigation_pass or token.investigation_safe:
-            
+        if token.investigation_pass and token.already_alerted_for_pass:
+            continue
 
-                token.imported = True
-                token.already_alerted = True
-                token.save()
+        if token.investigation_safe and token.already_alerted_for_safe:
+            continue
 
-                sub_message = "PASSED" if token.investigation_pass else "SAFE"
-                message = f"{token.name} {sub_message}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}"
-                
-                if token.locked:
-                    message += f"locked: {tk.epoch_to_datetime(token.lock_epoch_start_lock)}"
 
-                
-                tk.create_new_notification(title="New Token", message=message)
 
+        if token.investigation_pass or token.investigation_safe:
+        
+
+            token.imported = True
 
             if token.investigation_pass:
+                token.already_alerted_for_pass = True
+            
+            if token.investigation_safe:
+                token.already_alerted_for_safe = True
+            
+            token.save()
 
 
-                # attempting to auto-buy
-                if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+            sub_message = "PASSED" if token.investigation_pass else "SAFE"
+            message = f" {sub_message}\n{token.name}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}"
+            
+            if token.locked:
+                message += f"\nlocked: {tk.epoch_to_datetime(token.lock_epoch_start_lock)}"
 
-                    fiat_amount = admin_settings.auto_purchase_fiat_amount
-                    # if token.investigation_pass:
-                    #     fiat_amount = 2 * fiat_amount
+            
+            tk.create_new_notification(title="New Token", message=message)
 
-                    tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
 
-                    try:
-                        tk.update_admin_settings('active_account', models_adminsettings.account_dex)
-                
-                        transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
-                                fiat_to_token_amount=fiat_amount,
-                                token_contract=token.contract
-                            )
+        if token.investigation_pass:
 
-                        transaction_dispatch.create_and_actualize_dex_approve_token_transaction(
+
+            # attempting to auto-buy
+            if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+
+                fiat_amount = admin_settings.auto_purchase_fiat_amount
+                # if token.investigation_pass:
+                #     fiat_amount = 2 * fiat_amount
+
+                tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
+
+                try:
+                    tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+            
+                    transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
+                            fiat_to_token_amount=fiat_amount,
                             token_contract=token.contract
                         )
 
-                    except:
-                        tk.logger.info(f"auto buy order ERROR:\n {format_exc()}")
+                    transaction_dispatch.create_and_actualize_dex_approve_token_transaction(
+                        token_contract=token.contract
+                    )
 
-                    token.auto_purchased = True
-                    token.save()
+                except:
+                    tk.logger.info(f"auto buy order ERROR:\n {format_exc()}")
+
+                token.auto_purchased = True
+                token.save()
 
 
 

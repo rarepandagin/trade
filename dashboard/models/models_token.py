@@ -34,6 +34,7 @@ class Token(models.Model):
     # PAIR DYNAMICS
 
     weth_pair_reserves      = models.FloatField(null=True, blank=True)
+    weth_ever_added         = models.BooleanField(default=False, null=True, blank=True)
     price_per_weth          = models.FloatField(null=True, blank=True)
     volume                  = models.FloatField(default=0, null=True, blank=True)
 
@@ -63,8 +64,9 @@ class Token(models.Model):
     epoch_investigated      = models.BigIntegerField( default=0, null=True, blank=True)
     investigation_pass      = models.BooleanField(default= False, null=True, blank=True)
     investigation_safe      = models.BooleanField(default= False, null=True, blank=True)
-    investigation_red_flag  = models.BooleanField(default=False)
-    investigated            = models.BooleanField(default=False)
+    investigation_red_flag  = models.BooleanField(default=False, null=True, blank=True)
+    red_flag_reason         = models.TextField(default="", null=True, blank=True)
+    investigated            = models.BooleanField(default=False, null=True, blank=True)
 
 
 
@@ -80,4 +82,5 @@ class Token(models.Model):
     approved                = models.BooleanField(default=False, null=True, blank=True)
 
     auto_purchased          = models.BooleanField(default=False, null=True, blank=True)
-    already_alerted          = models.BooleanField(default=False, null=True, blank=True)
+    already_alerted_for_pass          = models.BooleanField(default=False, null=True, blank=True)
+    already_alerted_for_safe          = models.BooleanField(default=False, null=True, blank=True)

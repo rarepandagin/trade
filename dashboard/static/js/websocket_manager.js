@@ -59,7 +59,6 @@ function ws_msg_handler_dashboard(message_event) {
         console.log('.');
         
 
-
     } catch (error) {
         deactivate_busy_mode()
         console.error(error)
@@ -68,7 +67,9 @@ function ws_msg_handler_dashboard(message_event) {
 
     
 
-    incoming_message.payload.admin_settings = JSON.parse(incoming_message.payload.admin_settings)
+    if (incoming_message.payload.admin_settings){
+        incoming_message.payload.admin_settings = JSON.parse(incoming_message.payload.admin_settings)
+    }
 
     
 
