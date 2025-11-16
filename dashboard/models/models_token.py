@@ -1,14 +1,5 @@
 from django.db import models
-from ens.ens import default
-from dashboard.views_pages import toolkit as tk
-
-from dashboard.modules.dapps.uniswap.uniswap_class import Uniswap
-from dashboard.modules.dapps.sushiswap.sushiswap_class import Sushiswap
-from dashboard.modules.dapps.aave.aave_class import Aave
-from dashboard.modules.dapps.arbi.arbi_class import Arbi
-
 from dashboard.models.coins import *
-
 
 
 class Token(models.Model):
@@ -48,6 +39,7 @@ class Token(models.Model):
 
 
     locked                  = models.BooleanField(null=True, blank=True)
+    lock_platform           = models.TextField(default="", blank=True)
     lock_token_amount       = models.FloatField(default=0, null=True, blank=True)
     lock_pool_lock_ratio    = models.FloatField(default=0, null=True, blank=True)
     lock_epoch_start_lock   = models.BigIntegerField(default=0, null=True, blank=True)
@@ -67,16 +59,17 @@ class Token(models.Model):
     investigation_red_flag  = models.BooleanField(default=False, null=True, blank=True)
     red_flag_reason         = models.TextField(default="", null=True, blank=True)
     investigated            = models.BooleanField(default=False, null=True, blank=True)
+    investigated_count      = models.IntegerField(default=0, null=True, blank=True)
 
-
+    manual_tests            = models.JSONField(default=dict, null=True, blank=True)
 
     # admin actions
     # these are field used in manual operations 
-    price                = models.FloatField(default=0, null=True, blank=True)
+    price                   = models.FloatField(default=0, null=True, blank=True)
 
-    show        = models.BooleanField(default=True, null=True, blank=True)
-    show_on_chart = models.BooleanField(default=True, null=True, blank=True)
-    imported    = models.BooleanField(default=False, null=True, blank=True)
+    show                    = models.BooleanField(default=True, null=True, blank=True)
+    show_on_chart           = models.BooleanField(default=True, null=True, blank=True)
+    imported                = models.BooleanField(default=False, null=True, blank=True)
     
     balance                 = models.FloatField(default=0, blank=True, null=True)
     approved                = models.BooleanField(default=False, null=True, blank=True)

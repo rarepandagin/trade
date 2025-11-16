@@ -11,6 +11,8 @@ async function copy_to_clipboard(text) {
 }
 
 
+
+
 class Token {
 
 	constructor(token_dict){
@@ -28,22 +30,54 @@ class Token {
 
 		
 		if(this.locked > 0) {
+
 			let lock_lock_until = this.lock_epoch_end_lock - Math.floor(Date.now() / 1000)
+
 			if (lock_lock_until > 0){
+
+
+				let lock_platform_url = ``
+				switch(this.lock_platform) {
+					case 'uncx':
+						lock_platform_url=`https://beta.uncx.network/lockers/univ2/chain/1/address/${this.pair_address}/lock/0`
+						break;
+					case 'pink':
+						lock_platform_url=`https://legacy.pinksale.finance/pinklock/detail/${this.pair_address}?chain=ETH`
+						break;
+					case 'gempad':
+						lock_platform_url=`https://gempad.app/locks?tab=0&q=${this.contract}`
+						break;
+					default:
+						break;
+				}   
+
 				locked_liquidity_html += `
-				<br>
-				<img src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/lock.png"/>
-				until ${readable_elapsed_delta_epochs(lock_lock_until)}
-				</a>`
+					<br>
+					<span class="badge rounded-pill bg-success fs-7 m-1">
+						locked on ${this.lock_platform}
+					</span>
+					<br>
+					<a href="${lock_platform_url}" target="_blank" >
+					<img src="https://unrealizer-statics.s3.eu-central-1.amazonaws.com/lock.png"/>
+					until ${readable_elapsed_delta_epochs(lock_lock_until)}
+					</a>
+				`
 			}
 
 		}
 
 		let html = `
-			<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" >${this.name}</a>
-			<a href ="https://dexscreener.com/ethereum/${this.contract}" target="_blank" >					<img width="20" src="https://imgs.search.brave.com/X2FR-rkSBkwMZFSrVMoz9VWmE-HMF9FS3I5JSqPCZ7M/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYmFlNGRlNGI2/ZjJjMjFmMWZlY2Ux/ZDA0NWQ3OGUyMjNi/MDM3NmE3ZmQyYzFl/YzUwODE5MzA0MzU1/NTM3MTQ3ZC9kZXhz/Y3JlZW5lci5jb20v" /></a>
-			<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" ><img width="20" src="https://imgs.search.brave.com/z1-B0wYNTgZ57OcyXh6qPMKNA0MIEgciLhw3R1jJ3u0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDQ5YWRjZDMx/MTQ2Nzk4NTY4ZjJm/ZWZmZDI4NTExY2Nj/MmM3MGQzYWU0ZjEw/ZDZjNjUyYzMyNDIz/OTY0YzUwOS9kZXh0/b29scy5pby8" /></a>
-			<a href ="https://tokensniffer.com/bubble/v2/eth/${this.contract}" target="_blank" >			<img width="20" src="https://cdn.prod.website-files.com/5dc2e688a258f6237d614aa3/65788d7aa6d10a3395a17f62_Sniffer%20Pack%20Pro.svg" /></a>
+		
+			<a class="h5" href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" >${this.name}</a>
+			<div class="vstack  mt-1">
+				<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" 	target="_blank" >Dex Tools</a>
+				<a href ="https://dexscreener.com/ethereum/${this.contract}" 					target="_blank" >Dex Screener</a>
+				<a href ="https://tokensniffer.com/bubble/v2/eth/${this.contract}" 				target="_blank" >Token Sniffer</a>
+				<br>
+				<a href ="https://gopluslabs.io/token-security/1/${this.contract}" 				target="_blank" >Go plus</a>
+				<a href ="https://app.quickintel.io/scanner?type=token&chain=eth&contractAddress=${this.contract}" target="_blank" >Quick Intel</a>
+				<a href ="https://honeypot.is/ethereum?address=${this.contract}" target="_blank" >Honey Pot</a>
+			</div>
 			${locked_liquidity_html}
 		
 		`
@@ -52,6 +86,7 @@ class Token {
 		return html
 
 	}
+
 
 	get_age_html(){
 		const token_age_seconds = Math.floor(Date.now() / 1000) - this.pair_creation_epoch
@@ -74,16 +109,32 @@ class Token {
 			} else {
 				color = 'success'
 			}
-			html+=`<span class="badge rounded-pill bg-${color} fs-6">${x}</span><br>`
+			html+=`<span class="badge rounded-pill bg-${color} fs-7">${x}</span><br>`
 		})
 
 		
 		html += `
-			<a href="https://etherscan.io/address/${this.pair_address}" target="_blank">
-				pool weth: ${(this.weth_pair_reserves/Math.pow(10, 18)).toFixed(2)}
-			</a>
+			<a class="m-1" href="https://etherscan.io/address/${this.pair_address}" target="_blank">
+				 <span class="badge rounded-pill bg-primary fs-6 m-1">pooled ${(this.weth_pair_reserves).toFixed(2)} weth</span>
+			</a><br>`
+
+		let sub_html
+		if ((this.go_plus_locked_lp_ratio>0) && (this.lock_pool_lock_ratio > 0)){
+			sub_html = `success`
+		} else if ((this.go_plus_locked_lp_ratio>0) || (this.lock_pool_lock_ratio > 0)){
+			sub_html = `warning`
+		} else {
+			sub_html = `danger`
+		}
+		
+		html += `
+
+			<span class="badge rounded-pill bg-${sub_html} fs-6 m-1">g+ dex liquidity: ${(2 * this.go_plus_dex_liquidity / 1000).toFixed(0)} K</span>
+		`
+
+		html += `
 			<br>
-			price / weth: <span class="text-info">${this.price_per_weth}</span>
+			price / weth:<br><span class="text-info">${this.price_per_weth}</span>
 		`
 
 		return html;
@@ -95,48 +146,39 @@ class Token {
 		let status_html = ``
 
 		if (this.investigated){
-
-			if (this.keep_investigating){
-				status_html += `<p>Being re-investigated...</p>`
-			}
-			
-			if (this.investigation_pass){
-				status_html += `<p class="text-success elementToFade fs-4">PASS</p>`
-			}
-
-			if (this.investigation_safe){
-				status_html += `<p class="text-warning elementToFade fs-4">SAFE</p>`
-			}
-
-			if (this.investigation_red_flag){
-				status_html += `<p class="text-danger">Red flag</p>`
-			}
+			status_html += `<p><b>Fully investigated</b> (${this.investigated_count} times)</p>`
 
 		} else {
-			status_html += `<p class="text-warning">not investigated yet</p>`
+			status_html += `<p class="text-warning">investigated ${this.investigated_count} times</p>`
 		}
+
+
+
+		if (this.keep_investigating){
+			status_html += `<p class="small">Being re-investigated for weth reserves...</p>`
+		}
+		
+		if (this.investigation_pass){
+			status_html += `<p class="text-success elementToFade fs-4">PASS</p>`
+		}
+
+		if (this.investigation_safe){
+			status_html += `<p class="text-warning elementToFade fs-4">SAFE</p>`
+		}
+
+		if (this.investigation_red_flag){
+			status_html += `<p class="text-danger  elementToFade fs-4">Red flag ${this.red_flag_reason}</p>`
+		}
+
+
+
 
 		return status_html;
 		
 	}
 
-	get_lp_html(){
-		let sub_html
-		if ((this.go_plus_locked_lp_ratio>0) && (this.lock_pool_lock_ratio > 0)){
-			sub_html = `success`
-		} else if ((this.go_plus_locked_lp_ratio>0) || (this.lock_pool_lock_ratio > 0)){
-			sub_html = `warning`
-		} else {
-			sub_html = `danger`
-		}
-		
-		let html = `
-			<p class="text-${sub_html}">${this.go_plus_dex_liquidity}</p>
-		`
 
-		return html
-	}
-
+	
 	get_security_html(){
 
 		// security
@@ -160,7 +202,7 @@ class Token {
 
 	get_social_html(){
 
-				const social_cases_true_count = [token.has_website, token.has_twitter, token.has_telegram].filter(value => value === true).length
+				const social_cases_true_count = [this.has_website, this.has_twitter, this.has_telegram].filter(value => value === true).length
 		let social_html = ''
 		if (social_cases_true_count == 0){
 			social_html = 'danger'
@@ -171,10 +213,30 @@ class Token {
 		} else if (social_cases_true_count == 3){
 			social_html = 'success'
 		} 
-		social_html = `<span class="text-${social_html}">has_website: ${token.has_website}<br>has_twitter: ${token.has_twitter}<br>has_telegram: ${token.has_telegram}</span>`
+		social_html = `<span class="text-${social_html}">has_website: ${this.has_website}<br>has_twitter: ${this.has_twitter}<br>has_telegram: ${this.has_telegram}</span>`
 
 		return social_html
 
+	}
+
+	get_manual_test_html(){
+	
+		let html = ``
+		
+		html += `<button type="button" onclick="dex_token_manual_tests('${this.contract}');" class="btn btn-primary btn-sm m-1">manual tests</button>`
+	
+
+		if (this.manual_tests != '{}'){
+			const manual_tests = JSON.parse(this.manual_tests)
+			html += `
+				<br>
+				buyers_funding_addresses_entropy: ${manual_tests.buyers_funding_addresses_entropy}<br>
+				trade_timing_traffic: ${manual_tests.trade_timing_traffic}
+			
+			`
+		}
+
+		return html;
 	}
 }
 
@@ -310,9 +372,9 @@ function dex_draw_token_arena(payload){
 
 function populate_dex_new_tokens_table(payload){
 	
-	payload.admin_settings.tokens.sort((a, b) => b.pair_creation_epoch - a.pair_creation_epoch);
 	
-	// payload.admin_settings.tokens = payload.admin_settings.tokens.filter(x=>x.liquidity > 0)
+	payload.admin_settings.tokens = payload.admin_settings.tokens.filter(x=>x.show===true)
+	payload.admin_settings.tokens.sort((a, b) => b.pair_creation_epoch - a.pair_creation_epoch);
 
 	let tokens = []
 
@@ -329,11 +391,11 @@ function populate_dex_new_tokens_table(payload){
 			<th>Status</th>
 			<th>Pair</th>
 			<th>Volume</th>
-			<th>Dex Liquidity</th>
 			<th>Age</th>
 			<th>Security</th>
 			
 			
+			<th></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -364,16 +426,20 @@ function populate_dex_new_tokens_table(payload){
 				<td>${token.get_pair_html()}</td>
 
 				<td>${token.get_volume_html()}</td>
-				<td>${token.get_lp_html()}</td>
 				<td>${token.get_age_html()}</td>
 				<td>${token.get_security_html()}</td>
 				
 				<td>
 				${show_on_chart_html}
-						<button type="button" onclick="dex_hide_token('${token.contract}');" class="btn btn-warning btn-sm m-1">Hide</button>
+						<button type="button" onclick="dex_set_token_as_red_flag('${token.contract}');" class="btn btn-danger btn-sm m-1">Set as red flag</button>
 
 						<button type="button" onclick="dex_import_token('${token.contract}');" class="btn btn-success btn-sm m-1">Import</button>
 				</td>
+
+				<td>
+					${token.get_manual_test_html()}
+				</td>
+
 			</tr>
 		`
 	});
@@ -395,6 +461,9 @@ function populate_dex_imported_tokens_table(payload){
 	let tokens = []
 
 	payload.admin_settings.tokens.forEach(x=>tokens.push(new Token(x)))
+
+
+	const weth_price =payload.admin_settings.prices.weth
 	
 	let html_ = `
 	<table class="table">
@@ -438,8 +507,7 @@ function populate_dex_imported_tokens_table(payload){
 					</td>
 					<td>
 						${token.get_age_html()}<br>
-						${token.get_pair_html()}<br>
-						${token.get_lp_html()}<br>
+						${token.get_pair_html()}<br><br>
 						${token.get_investigation_html()}<br>
 						${token.get_security_html()}<br>
 
@@ -449,8 +517,9 @@ function populate_dex_imported_tokens_table(payload){
 						<div class="vstack  gap-2">
 							<p>Balance: ${token.balance}</p>
 
-							<p>Price: ${token.price} $<br>
-							Value: ${(token.price * token.balance).toFixed(2)} $</p><br>
+
+							<p>Value: ${(token.price_per_weth * token.balance).toFixed(15)} WETH</p>
+							<p>Value: ${(token.price_per_weth * token.balance * weth_price).toFixed(12)} $</p>
 							<button type="button" onclick="dex_check_balance_token('${token.contract}');" class="btn btn-primary btn-sm m-1">check balance</button>
 
 							</div>
@@ -458,9 +527,14 @@ function populate_dex_imported_tokens_table(payload){
 
 					
 					<td>
-						<div class="d-flex justify-content-start  gap-2">
+						<div>
+							<div class="d-flex justify-content-start  gap-2">
 
-						<button type="button" onclick="dex_buy_token('${token.contract}');" class="btn btn-danger btn-sm m-1">buy token</button>
+								<input class="form-control form-control-sm" type="number" style="width: 80px;" id="dex_buy_token_fiat_amount__input" value="5" />
+								<p class="mt-2">usd</p>
+							</div>
+
+							<button type="button" onclick="dex_buy_token_by_fiat_amount('${token.contract}')" class="btn btn-danger btn-sm m-1">buy token</button>
 						</div>
 					</td>
 
@@ -470,6 +544,13 @@ function populate_dex_imported_tokens_table(payload){
 
 					<td>
 						<button type="button" onclick="dex_remove_import_token('${token.contract}');" class="btn btn-warning btn-sm m-1">remove import</button>
+					</td>
+
+					<td>
+						${token.get_manual_test_html()}
+
+												<button type="button" onclick="dex_set_token_as_red_flag('${token.contract}');" class="btn btn-danger btn-sm m-1">Set as red flag</button>
+
 					</td>
 
 				</tr>
@@ -496,9 +577,11 @@ function populate_dex_imported_tokens_table(payload){
     function dex_toggle_token_on_chart(token_contract){ ajax_call('dex_toggle_token_on_chart', {'token_contract': token_contract}) };
     function dex_import_token(token_contract){ ajax_call('dex_import_token', {'token_contract': token_contract}) };
     function dex_remove_import_token(token_contract){ ajax_call('dex_remove_import_token', {'token_contract': token_contract}) };
+    function dex_token_manual_tests(token_contract){ ajax_call('dex_token_manual_tests', {'token_contract': token_contract}) };
+    function dex_set_token_as_red_flag(token_contract){ ajax_call('dex_set_token_as_red_flag', {'token_contract': token_contract}) };
     
-    function dex_buy_token(token_contract){ 
-		const fiat_amount = $(`#dex_fiat_amount_buy__input`).val();
+    function dex_buy_token_by_fiat_amount(token_contract){ 
+		const fiat_amount = $(`#dex_buy_token_fiat_amount__input`).val();
         ajax_call('dex_buy_token', {'token_contract': token_contract, 'fiat_amount': fiat_amount})
     };
 

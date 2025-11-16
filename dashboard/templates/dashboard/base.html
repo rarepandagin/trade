@@ -17,10 +17,17 @@
     <title>Unrealizer {% if DEBUG %} (LOCAL) {% endif %}</title>
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+	<!-- BOOTSTRAP -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
+	<link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+	<script src="{% static '/js/vendors/bootstrap.bundle.min.js' %}"></script>
+
+
+	<!-- jquery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>    -->
+	<script src="{% static '/js/vendors/jquery-3.7.1.min.js' %}"></script>
 
 	
 	<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
@@ -28,13 +35,6 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-
-    <link href="https://cdn.anychart.com/releases/8.11.0/css/anychart-ui.min.css" rel="stylesheet" type="text/css">
-    <link href="https://cdn.anychart.com/releases/8.11.0/fonts/css/anychart-font.min.css" rel="stylesheet" type="text/css">  
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-stock.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-data-adapter.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js"></script>
 
 
 	{% if DEBUG %}
@@ -62,7 +62,9 @@
 
 	{% endif %}
 
-      <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+	<!-- PLOTLY -->
+	<!-- <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script> -->
+	<script src="{% static '/js/vendors/plotly-3.2.0.min.js' %}"></script>
 
 
 <style>
@@ -337,17 +339,7 @@ svg {
 
 			<div class="d-flex justify-content-start  flex-sm-row flex-column gap-3 mb-2">
 				
-					<form method="POST"  action="/global/" class="d-flex justify-content-start gap-1">
-						{% csrf_token %}
-						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
-
-						{% if admin_settings.allow_auto_purchase %}
-							<button  type="submit" class="btn btn-success btn-sm disable_while_busy" style="height: 30px;" name="admin_settings_allow_auto_purchase">Allowing auto purchase</button>
-						{% else %}
-							<button type="submit" class="btn btn-warning btn-sm disable_while_busy" style="height: 30px;" name="admin_settings_allow_auto_purchase">Not allowing auto purchase</button>
-						{% endif %}
-					</form>
-
+				
 
 
 
@@ -355,12 +347,22 @@ svg {
 						{% csrf_token %}
 						<input type="text" value="{{request.path}}" name="originating_path" hidden/>
 
-						{% if admin_settings.allow_auto_purchase %}
-							<input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any" id="dex_fiat_amount_buy__input" name="dex_fiat_amount_buy__input"  value="{{admin_settings.auto_purchase_fiat_amount}}" />
 
-							<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;">set fiat worth of dex buy</button>
-						{% endif %}
+						<select class="form-select form-select-sm" name="auto_purchase_options__select" style="width: 280px;">
+							{% for allow_auto_purchase_option in allow_auto_purchase_options %}
+								<option value="{{allow_auto_purchase_option}}" {% if allow_auto_purchase_option == admin_settings.allow_auto_purchase %} selected {% endif %}  >{{allow_auto_purchase_option}}</option>
+							{% endfor %}
+						</select>
+						
+						<input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any"  name="auto_purchase_safe_token_fiat_amount_input"  value="{{admin_settings.auto_purchase_safe_token_fiat_amount}}" />
+						<input  class="form-control form-control-sm" type="number" style="width: 120px;" step="any"  name="auto_purchase_pass_token_fiat_amount_input"  value="{{admin_settings.auto_purchase_pass_token_fiat_amount}}" />
+
+						<button type="submit" class="btn btn-primary btn-sm disable_while_busy" style="height: 30px;" name="auto_purchase_options">set fiat worth of dex buy</button>
+
 					</form>
+
+
+
 			</div>
 			
 			
@@ -423,14 +425,8 @@ svg {
 						<p id="prices_update_epoch" class="small m-0"></p>
 						<p id="gas_update_epoch" class="small m-0"></p>
 				</div>
-				<div>
-					<p class="small m-0">Uniswap fiat to coin ASM (bear): <span id="uniswap_fiat_to_coin_slippage"></span></p>
-					<p class="small m-0">Uniswap coin to fiat ASM (bull): <span id="uniswap_coin_to_fiat_slippage"></span></p>
-				</div>			
-				<div>
-					<p class="small m-0">Sushiswap fiat to coin ASM (bear): <span id="sushiswap_fiat_to_coin_slippage"></span></p>
-					<p class="small m-0">Sushiswap coin to fiat ASM (bull): <span id="sushiswap_coin_to_fiat_slippage"></span></p>
-				</div>
+
+				
 			</div>
 
         </div>

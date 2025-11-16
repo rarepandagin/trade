@@ -2,7 +2,7 @@ from traceback import format_exc
 from dashboard.views_pages import toolkit as tk
 import json
 import copy
-from enum import StrEnum
+from dashboard.models.models_adminsettings import *
 
 
 unclear_direction               = "unclear_direction"
@@ -18,6 +18,7 @@ def populate_list_by_index(items):
     for i in range(len(items)):
         ret += (i + 1) * (i + 1) * [items[i]]
     return ret
+
 
 def count_and_describe_direction_of_ema_group(items):
 
@@ -149,11 +150,16 @@ class Vision:
 
 
 
-        self.observations_pro_long = []
-        self.observations_pro_short = []
-
-        self.observations_against_long = []
+        self.observations_pro_long      = []
+        self.observations_pro_short     = []
+        self.observations_against_long  = []
         self.observations_against_short = []
+
+
+        self.observations_pro_long_strong_count      = 0
+        self.observations_pro_short_strong_count     = 0
+        self.observations_against_long_strong_count  = 0
+        self.observations_against_short_strong_count = 0
 
 
 
@@ -333,13 +339,41 @@ class Vision:
                             if trade == long:
                                 if bias == pro:
                                     self.observations_pro_long.append(observation)
+                                    self.observations_pro_long_strong_count += len([x for x in observation.table[trade][bias] if x[1]==strong])
+
                                 elif bias == against:
                                     self.observations_against_long.append(observation)
+                                    self.observations_against_long_strong_count += len([x for x in observation.table[trade][bias] if x[1]==strong])
                             
                             elif trade == short:
                                 if bias == pro:
                                     self.observations_pro_short.append(observation)
+                                    self.observations_pro_short_strong_count += len([x for x in observation.table[trade][bias] if x[1]==strong])
+
                                 elif bias == against:
                                     self.observations_against_short.append(observation)
-        d=3
+                                    self.observations_against_short_strong_count += len([x for x in observation.table[trade][bias] if x[1]==strong])
 
+        
+
+        old_vision_consensus = copy.deepcopy(admin_settings.vision_consensus)
+
+        new_vision_consensus = vision_consensus_unsure
+
+
+
+
+
+        if self.observations_pro_long_strong_count > 0 and self.observations_against_long_strong_count == 0:
+            new_vision_consensus = vision_consensus_pro_long
+
+        elif self.observations_pro_short_strong_count > 0 and self.observations_against_short_strong_count == 0:
+            new_vision_consensus = vision_consensus_pro_short
+
+        if new_vision_consensus != old_vision_consensus:
+            if new_vision_consensus in [vision_consensus_pro_long , vision_consensus_pro_short]:
+                pass
+                # tk.create_new_notification("New consensus", f"consensus changed from {old_vision_consensus} to {new_vision_consensus}")
+
+
+        tk.update_admin_settings('vision_consensus', new_vision_consensus)

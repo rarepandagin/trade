@@ -17,6 +17,7 @@ def handle_ajax_posts_dex(req, payload):
         
         token = models_token.Token.objects.get(contract=payload['token_contract'])
         token.show = False
+        token.imported = False
         token.save()
 
 
@@ -31,6 +32,19 @@ def handle_ajax_posts_dex(req, payload):
         token.imported = False
         token.show = False
         token.save()
+
+    elif req == "dex_token_manual_tests":
+        token = models_token.Token.objects.get(contract=payload['token_contract'])
+
+        tk.update_admin_settings("command_function", req)
+        tk.update_admin_settings("command_arguments", payload)
+
+    elif req == "dex_set_token_as_red_flag":
+        token = models_token.Token.objects.get(contract=payload['token_contract'])
+
+        tk.update_admin_settings("command_function", req)
+        tk.update_admin_settings("command_arguments", payload)
+
 
     elif req == "dex_import_token":
         token = models_token.Token.objects.get(contract=payload['token_contract'])
@@ -64,6 +78,7 @@ def handle_ajax_posts_dex(req, payload):
                         fiat_to_token_amount=fiat_amount,
                         token_contract=token_contract
                     )
+
             else:
                 tk.send_message_to_frontend_dashboard(topic='display_toaster', payload={'message': f'invalid amount', 'color': 'red'})
 

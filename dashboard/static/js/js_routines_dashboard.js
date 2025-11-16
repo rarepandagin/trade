@@ -334,12 +334,6 @@ function update_positions_table(payload){
     $("#gas_update_epoch").html(delta_time_gas_update_html);
 
 
-    $("#uniswap_fiat_to_coin_slippage").html(payload.admin_settings.uniswap_asm_fiat_to_token);
-    $("#uniswap_coin_to_fiat_slippage").html(payload.admin_settings.uniswap_asm_token_to_fiat);
-
-    $("#sushiswap_fiat_to_coin_slippage").html(payload.admin_settings.sushiswap_asm_fiat_to_token);
-    $("#sushiswap_coin_to_fiat_slippage").html(payload.admin_settings.sushiswap_asm_token_to_fiat);
-
 
 
 

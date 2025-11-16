@@ -36,7 +36,28 @@ accounts = {
 
 }
 
+vision_consensus_unsure = "vision_consensus_unsure"
+vision_consensus_pro_long = "vision_consensus_pro_long"
+vision_consensus_pro_short = "vision_consensus_pro_short"
 
+vision_consensus_options = {
+    vision_consensus_unsure: "vision_consensus_unsure",
+    vision_consensus_pro_long: "vision_consensus_pro_long",
+    vision_consensus_pro_short: "vision_consensus_pro_short",
+}
+
+
+allow_auto_purchase_none = "allow_auto_purchase_none"
+allow_auto_purchase_safe = "allow_auto_purchase_safe"
+allow_auto_purchase_pass = "allow_auto_purchase_pass"
+allow_auto_purchase_all = "allow_auto_purchase_all"
+
+allow_auto_purchase_options = {
+    "allow_auto_purchase_none" : "allow_auto_purchase_none",
+    "allow_auto_purchase_safe" : "allow_auto_purchase_safe",
+    "allow_auto_purchase_pass" : "allow_auto_purchase_pass",
+    "allow_auto_purchase_all" : "allow_auto_purchase_all"
+}
 
 class AdminSettings(models.Model):
 
@@ -115,7 +136,13 @@ class AdminSettings(models.Model):
 
     vision                          = models.JSONField(default=dict, blank=True, null=True)
 
+
+    vision_consensus                = models.CharField(choices=vision_consensus_options, default=vision_consensus_unsure)
+
+
+
     # DEX
-    tokens                          = models.JSONField(default=list, blank=True, null=True)
-    allow_auto_purchase             = models.BooleanField(default=False)
-    auto_purchase_fiat_amount       = models.FloatField(default=1)
+    tokens                                      = models.JSONField(default=list, blank=True, null=True)
+    allow_auto_purchase                         = models.CharField(choices=allow_auto_purchase_options, default=allow_auto_purchase_none)
+    auto_purchase_safe_token_fiat_amount        = models.FloatField(default=1)
+    auto_purchase_pass_token_fiat_amount        = models.FloatField(default=1)

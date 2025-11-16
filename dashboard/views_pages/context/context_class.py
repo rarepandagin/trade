@@ -57,6 +57,7 @@ class context_class():
         self.dict['fiat_coins'] =  models_transaction.fiat_coins
         self.dict['gas_speeds'] =  models_adminsettings.gas_speeds
         self.dict['auto_exit_styles'] =  models_order.auto_exit_styles
+        self.dict['allow_auto_purchase_options'] =  models_adminsettings.allow_auto_purchase_options
 
         self.dict['new_random_name'] =  tk.get_new_random_name()
 

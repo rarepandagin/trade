@@ -124,15 +124,15 @@ def global_view(request):
         elif 'admin_settings_gas_speed' in request.POST:
             tk.update_admin_settings("gas_speed", request.POST['admin_settings_gas_speed'])
         
-        elif 'dex_fiat_amount_buy__input' in request.POST:
-            dex_fiat_amount_buy = eval(request.POST['dex_fiat_amount_buy__input'])
-            admin_settings=tk.get_admin_settings()
-            tk.update_admin_settings("auto_purchase_fiat_amount", dex_fiat_amount_buy)
+        elif 'auto_purchase_options' in request.POST:
+            auto_purchase_safe_token_fiat_amount = eval(request.POST['auto_purchase_safe_token_fiat_amount_input'])
+            auto_purchase_pass_token_fiat_amount = eval(request.POST['auto_purchase_pass_token_fiat_amount_input'])
+            auto_purchase_options = request.POST['auto_purchase_options__select']
 
+            tk.update_admin_settings("auto_purchase_safe_token_fiat_amount", auto_purchase_safe_token_fiat_amount)
+            tk.update_admin_settings("auto_purchase_pass_token_fiat_amount", auto_purchase_pass_token_fiat_amount)
+            tk.update_admin_settings("allow_auto_purchase", auto_purchase_options)
 
-        elif 'admin_settings_allow_auto_purchase' in request.POST:
-            admin_settings=tk.get_admin_settings()
-            tk.update_admin_settings("allow_auto_purchase", not admin_settings.allow_auto_purchase)
 
         elif 'active_account__select' in request.POST:
             tk.update_admin_settings("active_account", request.POST['active_account__select'])

@@ -531,4 +531,9 @@ function populate_observation_divs(payload){
 	$("#pro_short_observations__div").html(pro_short_html);
 	$("#against_short_observations__div").html(against_short_html);
 
+
+
+	let vision_consensus_html = `<h3 class="text-primary">${payload.admin_settings.vision_consensus}</h3>`
+	$("#vision_consensus__div").html(vision_consensus_html);
+
 }

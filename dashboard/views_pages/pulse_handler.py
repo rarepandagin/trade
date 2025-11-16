@@ -74,6 +74,7 @@ def handle_tokens(payload):
                 obj.volume                      = item['volume']
 
                 obj.locked                      = item['locked']
+                obj.lock_platform               = item['lock_platform']
                 obj.lock_token_amount           = item['lock_token_amount']
                 obj.lock_pool_lock_ratio        = item['lock_pool_lock_ratio']
                 obj.lock_epoch_start_lock       = item['lock_epoch_start_lock']
@@ -92,6 +93,9 @@ def handle_tokens(payload):
                 obj.investigation_red_flag      = item['investigation_red_flag']
                 obj.red_flag_reason             = item['red_flag_reason']
                 obj.investigated                = item['investigated']
+                obj.investigated_count          = item['investigated_count']
+
+                obj.manual_tests                = item['manual_tests']
 
 
         models_token.Token.objects.bulk_update(existing_token_to_be_updated.values(), fields=[
@@ -102,6 +106,7 @@ def handle_tokens(payload):
                 'volume',
 
                 'locked',
+                'lock_platform',
                 'lock_token_amount',
                 'lock_pool_lock_ratio',
                 'lock_epoch_start_lock',
@@ -120,6 +125,9 @@ def handle_tokens(payload):
                 'investigation_red_flag',
                 'red_flag_reason',
                 'investigated',
+                'investigated_count',
+
+                'manual_tests',
 
             ], batch_size=100)
 
@@ -127,6 +135,11 @@ def handle_tokens(payload):
     admin_settings = tk.get_admin_settings()
 
     for token in models_token.Token.objects.filter(show=True):
+
+        # make sure not to have imported a red flag token
+        # if token.investigation_red_flag:
+        #     token.imported = False
+        #     token.save()
 
         if not token.investigated:
             continue
@@ -153,7 +166,7 @@ def handle_tokens(payload):
             token.save()
 
 
-            sub_message = "PASSED" if token.investigation_pass else "SAFE"
+            sub_message = "********* PASSED *********" if token.investigation_pass else "SAFE"
             message = f" {sub_message}\n{token.name}\npair created: {tk.epoch_to_datetime(token.pair_creation_epoch)}"
             
             if token.locked:
@@ -163,18 +176,21 @@ def handle_tokens(payload):
             tk.create_new_notification(title="New Token", message=message)
 
 
-        if token.investigation_pass:
 
+        if token.investigation_safe or token.investigation_pass:
+
+            fiat_amount = 0
 
             # attempting to auto-buy
-            if (admin_settings.allow_auto_purchase) and (not token.auto_purchased):
+            if (token.investigation_safe) and (admin_settings.allow_auto_purchase in [models_adminsettings.allow_auto_purchase_safe, models_adminsettings.allow_auto_purchase_all]) and (not token.auto_purchased):
+                fiat_amount = admin_settings.auto_purchase_safe_token_fiat_amount
+                tk.logger.info(f"executing auto buy order for SAFE token {token.name} (fiat={fiat_amount} $)...")
 
-                fiat_amount = admin_settings.auto_purchase_fiat_amount
-                # if token.investigation_pass:
-                #     fiat_amount = 2 * fiat_amount
+            elif (token.investigation_pass) and (admin_settings.allow_auto_purchase in [models_adminsettings.allow_auto_purchase_pass, models_adminsettings.allow_auto_purchase_all]) and (not token.auto_purchased):
+                fiat_amount = admin_settings.auto_purchase_pass_token_fiat_amount
+                tk.logger.info(f"executing auto buy order for PASS token {token.name} (fiat={fiat_amount} $)...")
 
-                tk.logger.info(f"executing auto buy order (fiat={fiat_amount} $) for {token.name}...")
-
+            if fiat_amount > 0:
                 try:
                     tk.update_admin_settings('active_account', models_adminsettings.account_dex)
             
@@ -226,8 +242,6 @@ def handle_a_pulse(request):
 
         # if 'tokens' in payload:
         imported_token_contracts = handle_tokens(payload)
-
-
 
         tk.update_admin_settings('gas', json.loads(payload['gas']['price']))
         tk.update_admin_settings('gas_update_epoch', payload['gas']['epoch'])

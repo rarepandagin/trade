@@ -50,7 +50,7 @@ class Dapp():
         self.network = network
 
 
-        self.mainnet_infura_url = f"https://{self.network}.infura.io/v3/{os.getenv('trader_mainnet_infura_url')}" 
+        self.mainnet_infura_url = f"https://{self.network}.infura.io/v3/{os.getenv('trader_mainnet_infura_1_url')}" 
         self.mainnet_alchemy_url = f"https://eth-mainnet.g.alchemy.com/v2/{os.getenv('trader_mainnet_alchemy_key')}"
         
         
