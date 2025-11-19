@@ -39,6 +39,12 @@ def handle_ajax_posts_dex(req, payload):
         tk.update_admin_settings("command_function", req)
         tk.update_admin_settings("command_arguments", payload)
 
+    elif req == "dex_token_reinvestigate":
+        token = models_token.Token.objects.get(contract=payload['token_contract'])
+
+        tk.update_admin_settings("command_function", req)
+        tk.update_admin_settings("command_arguments", payload)
+
     elif req == "dex_set_token_as_red_flag":
         token = models_token.Token.objects.get(contract=payload['token_contract'])
 

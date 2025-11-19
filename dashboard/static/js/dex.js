@@ -224,6 +224,7 @@ class Token {
 		let html = ``
 		
 		html += `<button type="button" onclick="dex_token_manual_tests('${this.contract}');" class="btn btn-primary btn-sm m-1">manual tests</button>`
+		html += `<button type="button" onclick="dex_token_reinvestigate('${this.contract}');" class="btn btn-primary btn-sm m-1">reinvestigate</button>`
 	
 
 		if (this.manual_tests != '{}'){
@@ -578,6 +579,7 @@ function populate_dex_imported_tokens_table(payload){
     function dex_import_token(token_contract){ ajax_call('dex_import_token', {'token_contract': token_contract}) };
     function dex_remove_import_token(token_contract){ ajax_call('dex_remove_import_token', {'token_contract': token_contract}) };
     function dex_token_manual_tests(token_contract){ ajax_call('dex_token_manual_tests', {'token_contract': token_contract}) };
+    function dex_token_reinvestigate(token_contract){ ajax_call('dex_token_reinvestigate', {'token_contract': token_contract}) };
     function dex_set_token_as_red_flag(token_contract){ ajax_call('dex_set_token_as_red_flag', {'token_contract': token_contract}) };
     
     function dex_buy_token_by_fiat_amount(token_contract){ 
