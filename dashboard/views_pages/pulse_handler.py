@@ -231,14 +231,21 @@ def handle_a_pulse(request):
         tk.update_admin_settings('INDICATORS', payload['INDICATORS'])
         tk.update_admin_settings('MINUTES', payload['MINUTES'])
 
-        if 'live_indicators' in payload:
-            tk.update_admin_settings('live_indicators', payload['live_indicators'])
 
-            vision = Vision()
-            vision.look_around()
+
+        """
+        TEMPORARILY DISABLING VISION
+        """
+        # if 'live_indicators' in payload:
+        #     tk.update_admin_settings('live_indicators', payload['live_indicators'])
+
+        #     vision = Vision()
+        #     vision.look_around()
             
-            tk.update_admin_settings('vision', vision.serialize())
-
+        #     tk.update_admin_settings('vision', vision.serialize())
+        tk.update_admin_settings('live_indicators', {})
+        payload['chart_df'] = []
+        
 
         # if 'tokens' in payload:
         imported_token_contracts = handle_tokens(payload)
