@@ -529,11 +529,6 @@ function populate_dex_imported_tokens_table(payload){
 					
 					<td>
 						<div>
-							<div class="d-flex justify-content-start  gap-2">
-
-								<input class="form-control form-control-sm" type="number" style="width: 80px;" id="dex_buy_token_fiat_amount__input" value="5" />
-								<p class="mt-2">usd</p>
-							</div>
 
 							<button type="button" onclick="dex_buy_token_by_fiat_amount('${token.contract}')" class="btn btn-danger btn-sm m-1">buy token</button>
 						</div>

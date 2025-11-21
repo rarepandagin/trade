@@ -174,7 +174,8 @@ class Transaction(models.Model):
 
 
             if 'uniswap_' in str(self.transaction_type):
-        
+                tk.update_admin_settings('active_account', models_adminsettings.account_hedge)
+
                 uniswap = Uniswap()
 
                 # relevant added slippage multiplier is calculated by quoting before executing the swap 
@@ -400,6 +401,7 @@ class Transaction(models.Model):
 
                 tk.update_admin_settings('active_account', models_adminsettings.account_dex)
 
+                tk.update_admin_settings("gas_speed", models_adminsettings.ProposeGasPrice)
 
 
                 if self.transaction_type == dex_approve_token:
