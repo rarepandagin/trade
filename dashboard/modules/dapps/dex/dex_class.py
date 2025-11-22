@@ -271,10 +271,10 @@ class Dex(Dapp):
                 token_out_bought = 0
                 # token_out_bought = tx_return['logs_results'][token_out.name]['amount']
 
-                return successful, token_out_bought, tx_hash, tx_fee_in_eth
+                return successful, amount_in, token_out_bought, tx_hash, tx_fee_in_eth
 
 
-        return False, None, None, None
+        return False, None, None, None, None
 
 
 

@@ -74,13 +74,15 @@ def handle_ajax_posts_dex(req, payload):
 
 
     elif req == 'dex_buy_token':
+        tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+        
 
         if admin_settings.active_account == models_adminsettings.account_dex:
 
             token_contract = payload['token_contract']
             fiat_amount = float(payload['fiat_amount'])
             if 0 < fiat_amount < 100:
-                transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
+                tx = transaction_dispatch.create_and_actualize_dex_fiat_to_token_transaction(
                         fiat_to_token_amount=fiat_amount,
                         token_contract=token_contract
                     )
@@ -93,10 +95,14 @@ def handle_ajax_posts_dex(req, payload):
 
 
     elif req == 'dex_approve_token':
+        tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+        
         transaction_dispatch.create_and_actualize_dex_approve_token_transaction(payload['token_contract'])
 
 
     elif req == 'dex_sell_token':
+        tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+        
         token_contract = payload['token_contract']
         token = models_token.Token.objects.get(contract=token_contract)
         sell_percentage = float(payload['sell_percentage'])
@@ -113,6 +119,8 @@ def handle_ajax_posts_dex(req, payload):
 
 
     elif req == 'dex_check_balance_token':
+        tk.update_admin_settings('active_account', models_adminsettings.account_dex)
+
         token_contract = payload['token_contract']
         token = models_token.Token.objects.get(contract=payload['token_contract'])
         

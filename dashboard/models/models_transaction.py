@@ -443,7 +443,7 @@ class Transaction(models.Model):
                         from dashboard.models import models_token
                         token = models_token.Token.objects.get(contract=self.dex_token_contract)
 
-                        successful, token_bought, tx_hash, tx_fee = dex.fiat_to_token(
+                        successful, amount_in, token_bought, tx_hash, tx_fee = dex.fiat_to_token(
                             token_contract_address=self.dex_token_contract,
                             token_decimals=token.decimals,
                             fiat_amount=self.fiat_amount_spent,
@@ -456,6 +456,7 @@ class Transaction(models.Model):
                             self.hash = tx_hash
                             self.state = transaction_state_successful
                             self.fee = round(tx_fee, 2)
+                            self.token_amount_spent = amount_in
 
                         else:
                             self.state = transaction_state_failed

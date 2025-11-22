@@ -70,7 +70,7 @@ class Token {
 		
 			<a class="h5" href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" target="_blank" >${this.name}</a>
 			<div class="vstack  mt-1">
-				<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}" 	target="_blank" >Dex Tools</a>
+				<a href ="https://www.dextools.io/app/en/ether/pair-explorer/${this.contract}?maker=0xd9f4a6615ed03883809d4d8434c33023a174c03d" 	target="_blank" >Dex Tools</a>
 				<a href ="https://dexscreener.com/ethereum/${this.contract}" 					target="_blank" >Dex Screener</a>
 				<a href ="https://tokensniffer.com/bubble/v2/eth/${this.contract}" 				target="_blank" >Token Sniffer</a>
 				<br>

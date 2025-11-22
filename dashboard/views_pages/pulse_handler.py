@@ -203,7 +203,7 @@ def handle_tokens(payload):
                         token_contract=token.contract
                     )
 
-                    token.approved = Tr
+                    token.approved = True
 
                 except:
                     tk.logger.info(f"auto buy order ERROR:\n {format_exc()}")
